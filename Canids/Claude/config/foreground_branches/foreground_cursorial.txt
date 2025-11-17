@@ -1,0 +1,6 @@
+# Foreground branches for cursoriality/open habitat analysis
+# List species adapted to open habitats with cursorial locomotion
+
+Lycaon_pictus
+Canis_lupus
+Canis_latrans

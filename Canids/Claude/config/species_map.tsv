@@ -1,0 +1,17 @@
+scientific_name	ncbi_label	ensembl_label	trait_label	common_name	family	genome_status	priority	sociality	habitat_type
+Canis lupus	Canis_lupus	canlup	Canis lupus	Gray wolf	Canidae	chromosome_level	high	pack	open
+Canis familiaris	Canis_familiaris	canfam	Canis familiaris	Domestic dog	Canidae	chromosome_level	high	solitary	mixed
+Canis latrans	Canis_latrans	canlat	Canis latrans	Coyote	Canidae	scaffold_level	high	facultative	mixed
+Canis aureus	Canis_aureus	canaur	Canis aureus	Golden jackal	Canidae	check_ncbi	medium	solitary	mixed
+Canis mesomelas	Canis_mesomelas	canmes	Canis mesomelas	Black-backed jackal	Canidae	check_ncbi	medium	solitary	mixed
+Canis simensis	Canis_simensis	cansim	Canis simensis	Ethiopian wolf	Canidae	check_ncbi	medium	solitary	mixed
+Lycaon pictus	Lycaon_pictus	lycpic	Lycaon pictus	African wild dog	Canidae	scaffold_level	high	pack	open
+Cuon alpinus	Cuon_alpinus	cuoalp	Cuon alpinus	Dhole	Canidae	scaffold_level	high	pack	mixed
+Vulpes vulpes	Vulpes_vulpes	vulvul	Vulpes vulpes	Red fox	Canidae	chromosome_level	high	solitary	mixed
+Vulpes lagopus	Vulpes_lagopus	vullag	Vulpes lagopus	Arctic fox	Canidae	chromosome_level	medium	solitary	arctic
+Vulpes zerda	Vulpes_zerda	vulzer	Vulpes zerda	Fennec fox	Canidae	check_ncbi	medium	solitary	desert
+Urocyon cinereoargenteus	Urocyon_cinereoargenteus	urocin	Urocyon cinereoargenteus	Gray fox	Canidae	check_ncbi	medium	solitary	forest
+Nyctereutes procyonoides	Nyctereutes_procyonoides	nycpro	Nyctereutes procyonoides	Raccoon dog	Canidae	scaffold_level	medium	solitary	forest
+Otocyon megalotis	Otocyon_megalotis	otomeg	Otocyon megalotis	Bat-eared fox	Canidae	check_ncbi	medium	solitary	mixed
+Chrysocyon brachyurus	Chrysocyon_brachyurus	chrbra	Chrysocyon brachyurus	Maned wolf	Canidae	check_ncbi	medium	solitary	mixed
+Speothos venaticus	Speothos_venaticus	speven	Speothos venaticus	Bush dog	Canidae	check_ncbi	medium	solitary	mixed

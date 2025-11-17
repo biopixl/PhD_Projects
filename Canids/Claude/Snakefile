@@ -1,0 +1,350 @@
+"""
+Snakemake workflow for Canidae comparative genomics and selection analysis
+
+This workflow handles:
+1. Protein alignment with MAFFT
+2. Codon alignment back-translation
+3. Alignment filtering
+4. HyPhy selection tests (aBSREL, BUSTED, RELAX)
+5. Result aggregation and FDR correction
+6. Functional enrichment analysis
+
+Author: Isaac (generated with Claude Code)
+"""
+
+import os
+from pathlib import Path
+import pandas as pd
+
+# ============================================================================
+# Configuration
+# ============================================================================
+
+configfile: "config/analysis_config.yaml"
+
+# Load species list
+SPECIES_MAP = pd.read_csv("config/species_map.tsv", sep="\t")
+SPECIES = SPECIES_MAP['ncbi_label'].tolist()
+
+# Find all ortholog groups
+import glob
+from pathlib import Path
+GENES = [Path(f).parent.name for f in glob.glob("data/orthologs/*/*.protein.fa")]
+
+print(f"Species: {len(SPECIES)}")
+print(f"Ortholog groups: {len(GENES)}")
+
+# Selection test configurations
+TESTS = ["absrel", "busted", "relax"]
+THEMES = ["sociality", "cursorial", "domestication"]
+
+# ============================================================================
+# Target Rules
+# ============================================================================
+
+rule all:
+    input:
+        # Selection tests
+        expand("hyphy_results/absrel/{gene}.json", gene=GENES)
+
+# ============================================================================
+# Alignment Rules
+# ============================================================================
+
+rule align_protein:
+    """
+    Align protein sequences with MAFFT
+    """
+    input:
+        protein = "data/orthologs/{gene}/{gene}.protein.fa"
+    output:
+        aligned = "alignments/{gene}/{gene}.protein_aligned.fa"
+    log:
+        "logs/mafft/{gene}.log"
+    threads: 4
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        mafft --auto --thread {threads} {input.protein} > {output.aligned} 2> {log}
+        """
+
+rule codon_align:
+    """
+    Back-translate protein alignment to codon alignment
+    """
+    input:
+        protein_aln = "alignments/{gene}/{gene}.protein_aligned.fa",
+        cds = "data/orthologs/{gene}/{gene}.cds.fa"
+    output:
+        codon = "codon_alignments/{gene}.codon.fa"
+    log:
+        "logs/pal2nal/{gene}.log"
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        pal2nal.pl {input.protein_aln} {input.cds} -output fasta > {output.codon} 2> {log}
+        """
+
+rule filter_alignment:
+    """
+    Filter codon alignments for quality
+    """
+    input:
+        codon = "codon_alignments/{gene}.codon.fa"
+    output:
+        filtered = "codon_alignments/{gene}.filtered.fa"
+    params:
+        max_gap = 0.5,
+        min_species = 2,
+        min_length = 150
+    log:
+        "logs/filter/{gene}.log"
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        python scripts/alignment/filter_alignments.py \
+            --input {input.codon} \
+            --output {output.filtered} \
+            --max_gap_fraction {params.max_gap} \
+            --min_species {params.min_species} \
+            --min_alignment_length {params.min_length} \
+            > {log} 2>&1
+        """
+
+# ============================================================================
+# Selection Test Rules
+# ============================================================================
+
+rule absrel:
+    """
+    Run aBSREL to detect episodic positive selection
+    """
+    input:
+        alignment = "codon_alignments/{gene}.codon.fa",
+        tree = "data/phylogeny/canid_pruned.tre"
+    output:
+        json = "hyphy_results/absrel/{gene}.json"
+    log:
+        "logs/hyphy/absrel/{gene}.log"
+    threads: 2
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        hyphy absrel \
+            --alignment {input.alignment} \
+            --tree {input.tree} \
+            --output {output.json} \
+            CPU={threads} \
+            > {log} 2>&1
+        """
+
+rule busted:
+    """
+    Run BUSTED to test for gene-wide selection on foreground branches
+    """
+    input:
+        alignment = "codon_alignments/{gene}.filtered.fa",
+        tree = "data/phylogeny/canid_pruned.tre",
+        foreground = "config/foreground_branches/foreground_{theme}.txt"
+    output:
+        json = "hyphy_results/busted_{theme}/{gene}.json"
+    log:
+        "logs/hyphy/busted_{theme}/{gene}.log"
+    threads: 2
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        hyphy busted \
+            --alignment {input.alignment} \
+            --tree {input.tree} \
+            --branches Foreground \
+            --output {output.json} \
+            CPU={threads} \
+            > {log} 2>&1
+        """
+
+rule relax:
+    """
+    Run RELAX to test for relaxation/intensification of selection
+    """
+    input:
+        alignment = "codon_alignments/{gene}.filtered.fa",
+        tree = "data/phylogeny/canid_pruned.tre",
+        foreground = "config/foreground_branches/foreground_{theme}.txt"
+    output:
+        json = "hyphy_results/relax_{theme}/{gene}.json"
+    log:
+        "logs/hyphy/relax_{theme}/{gene}.log"
+    threads: 2
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        hyphy relax \
+            --alignment {input.alignment} \
+            --tree {input.tree} \
+            --test Foreground \
+            --reference Background \
+            --output {output.json} \
+            CPU={threads} \
+            > {log} 2>&1
+        """
+
+# ============================================================================
+# Result Aggregation Rules
+# ============================================================================
+
+rule parse_absrel:
+    """
+    Parse aBSREL JSON output
+    """
+    input:
+        expand("hyphy_results/absrel/{gene}.json", gene=GENES)
+    output:
+        csv = "selection_tables/absrel_results.csv"
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        python scripts/selection/parse_hyphy_results.py \
+            --input hyphy_results/absrel/ \
+            --output {output.csv} \
+            --test absrel
+        """
+
+rule aggregate_results:
+    """
+    Apply FDR correction to selection results
+    """
+    input:
+        csv = "selection_tables/{test}_results.csv"
+    output:
+        fdr = "selection_tables/{test}_results_fdr.csv",
+        top = "selection_tables/{test}_results_fdr_top_genes.txt"
+    params:
+        fdr_threshold = 0.1
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        Rscript scripts/selection/aggregate_selection_results.R \
+            --input {input.csv} \
+            --output {output.fdr} \
+            --fdr_threshold {params.fdr_threshold} \
+            --test_type {wildcards.test}
+        """
+
+# ============================================================================
+# Enrichment Analysis Rules
+# ============================================================================
+
+rule go_enrichment:
+    """
+    Run GO enrichment analysis on genes under selection
+    """
+    input:
+        genes = "selection_tables/{test}_results_fdr_top_genes.txt"
+    output:
+        enrichment = "enrichment/{test}_go_enrichment.csv",
+        significant = "enrichment/{test}_go_enrichment_significant.csv"
+    params:
+        organism = "hsapiens",
+        sources = "GO:BP,GO:MF,GO:CC,KEGG,REAC"
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        Rscript scripts/enrichment/run_go_enrichment.R \
+            --genes {input.genes} \
+            --output {output.enrichment} \
+            --organism {params.organism} \
+            --sources {params.sources}
+        """
+
+# ============================================================================
+# Preprocessing Rules (run these manually first)
+# ============================================================================
+
+rule create_species_map:
+    """
+    Create species name mapping table
+    """
+    output:
+        map = "config/species_map.tsv",
+        list = "config/species_list.txt"
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        Rscript scripts/preprocessing/harmonize_species_names.R \
+            --output {output.map}
+        """
+
+rule clean_traits:
+    """
+    Clean and harmonize trait data
+    """
+    input:
+        species_map = "config/species_map.tsv"
+    output:
+        traits = "data/traits_clean/canid_traits.tsv"
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        Rscript scripts/preprocessing/clean_trait_data.R \
+            --input data/traits_raw/ \
+            --species_map {input.species_map} \
+            --output {output.traits}
+        """
+
+rule prune_phylogeny:
+    """
+    Prune published phylogeny to Canidae species
+    """
+    input:
+        tree = "data/phylogeny/published_tree.tre",
+        species_list = "config/species_list.txt",
+        species_map = "config/species_map.tsv"
+    output:
+        pruned = "data/phylogeny/canid_pruned.tre",
+        plot = "data/phylogeny/canid_pruned.pdf"
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        Rscript scripts/preprocessing/prune_phylogeny.R \
+            --tree {input.tree} \
+            --species_list {input.species_list} \
+            --species_map {input.species_map} \
+            --output {output.pruned}
+        """
+
+# ============================================================================
+# Helper Rules
+# ============================================================================
+
+rule clean:
+    """
+    Remove all generated files (use with caution!)
+    """
+    shell:
+        """
+        rm -rf alignments/ codon_alignments/ hyphy_results/ selection_tables/ enrichment/
+        rm -rf logs/
+        echo "Cleaned all generated files"
+        """
+
+rule dry_run:
+    """
+    Perform a dry run to see what would be executed
+    """
+    shell:
+        """
+        snakemake -n --quiet
+        """

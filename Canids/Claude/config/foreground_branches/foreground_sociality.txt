@@ -1,0 +1,7 @@
+# Foreground branches for sociality analysis
+# List species with pack-living/highly social behavior
+# Species names must match tree tip labels exactly
+
+Canis_lupus
+Lycaon_pictus
+Cuon_alpinus

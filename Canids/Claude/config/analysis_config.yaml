@@ -1,0 +1,66 @@
+# Configuration file for Canidae phylogenomics pipeline
+
+# Species configuration
+species_map: "config/species_map.tsv"
+species_list: "config/species_list.txt"
+min_species_coverage: 4
+
+# Phylogeny
+phylogeny: "data/phylogeny/canid_pruned.tre"
+
+# Alignment parameters
+alignment:
+  mafft_strategy: "auto"  # Options: auto, linsi, ginsi
+  threads: 4
+
+  # Filtering thresholds
+  max_gap_fraction: 0.5
+  min_alignment_length: 150  # base pairs
+  trim_edges: true
+
+# Selection test parameters
+selection:
+  # Which tests to run
+  run_absrel: true
+  run_busted: true
+  run_relax: true
+  run_meme: false
+  run_fel: false
+
+  # FDR threshold
+  fdr_threshold: 0.1
+
+  # Branch-site tests
+  foreground_branches:
+    sociality: "config/foreground_branches/foreground_sociality.txt"
+    cursorial: "config/foreground_branches/foreground_cursorial.txt"
+    domestication: "config/foreground_branches/foreground_domestication.txt"
+    aridity: "config/foreground_branches/foreground_aridity.txt"
+
+# Enrichment analysis
+enrichment:
+  organism: "hsapiens"  # Or clfamiliaris for dog
+  sources:
+    - "GO:BP"  # Biological Process
+    - "GO:MF"  # Molecular Function
+    - "GO:CC"  # Cellular Component
+    - "KEGG"
+    - "REAC"   # Reactome
+  correction_method: "fdr"
+  significance_threshold: 0.05
+
+# Computational resources
+resources:
+  threads_per_alignment: 4
+  threads_per_hyphy: 2
+  max_concurrent_jobs: 10
+
+# Output settings
+output:
+  alignments_dir: "alignments"
+  codon_alignments_dir: "codon_alignments"
+  hyphy_results_dir: "hyphy_results"
+  selection_tables_dir: "selection_tables"
+  enrichment_dir: "enrichment"
+  figures_dir: "figures"
+  logs_dir: "logs"

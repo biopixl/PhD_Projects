@@ -1,0 +1,4 @@
+# Foreground branches for domestication analysis
+# Domestic dog lineage
+
+Canis_familiaris

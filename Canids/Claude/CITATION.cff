@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it as below."
+type: software
+title: "Comparative Phylogenomics of Canidae: Genome-Wide Selection Analysis"
+abstract: "Genome-wide detection of positive selection in red fox (Vulpes vulpes) compared to domestic dog (Canis lupus familiaris) using 18,008 orthologous genes. Identifies adaptive evolution in metabolic, neural, and signaling pathways."
+authors:
+  - family-names: "Your Last Name"
+    given-names: "Isaac"
+    affiliation: "Your Institution"
+repository-code: "https://github.com/biopixl/PhD_Projects/tree/main/Canids/Claude"
+keywords:
+  - phylogenomics
+  - positive selection
+  - Canidae
+  - red fox
+  - comparative genomics
+  - molecular evolution
+license: MIT
+version: "1.0.0"
+date-released: "2025-11-17"

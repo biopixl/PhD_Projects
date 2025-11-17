@@ -1,0 +1,90 @@
+name: canid_phylogenomics
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  # Python and core packages
+  - python=3.10
+  - pip
+
+  # Bioinformatics tools for alignment
+  - mafft>=7.490
+  - trimal>=1.4
+  - pal2nal>=14
+  - muscle  # Alternative aligner
+
+  # Selection analysis
+  - hyphy>=2.5.47
+
+  # Phylogenetics
+  - iqtree>=2.0
+  - raxml-ng
+  - fasttree
+
+  # Sequence processing
+  - biopython>=1.79
+  - seqkit
+
+  # Python data science
+  - numpy>=1.21
+  - pandas>=1.3
+  - scipy>=1.7
+  - matplotlib>=3.4
+  - seaborn>=0.11
+
+  # R and core packages
+  - r-base>=4.1
+  - r-essentials
+
+  # R packages for data manipulation
+  - r-tidyverse>=1.3
+  - r-dplyr>=1.0
+  - r-tidyr>=1.1
+  - r-readr>=2.0
+  - r-ggplot2>=3.3
+  - r-janitor
+
+  # R packages for phylogenetics
+  - r-ape>=5.5
+  - r-phytools
+  - r-geiger
+  - r-phangorn
+
+  # R packages for enrichment analysis
+  - r-gprofiler2
+  - bioconductor-biomart
+  - bioconductor-gostats
+
+  # R packages for visualization
+  - r-ggtree
+  - r-ggrepel
+  - r-patchwork
+  - r-cowplot
+  - r-viridis
+
+  # Statistical packages
+  - r-car
+  - r-lme4
+  - r-nlme
+
+  # Command line utilities
+  - parallel
+  - wget
+  - curl
+
+  # Workflow management
+  - snakemake-minimal>=7.0
+  - graphviz  # For workflow visualization
+
+  # Jupyter (optional, for interactive analysis)
+  - jupyter
+  - r-irkernel
+
+  # Additional pip packages
+  - pip:
+    - ete3  # Phylogenetic tree handling
+    - dendropy  # Phylogenetic computing
+    - biopython  # Ensure latest version
+    - pyvolve  # Sequence evolution simulation (optional)

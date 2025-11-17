@@ -1,0 +1,77 @@
+# Canidae Phylogenomics - Git Ignore File
+# Excludes large data files but keeps analysis scripts and documentation
+
+# ============================================================================
+# LARGE DATA FILES (exclude - can regenerate or download)
+# ============================================================================
+
+# Raw genome/CDS data (can re-download from Ensembl)
+data/cds/*.fa
+data/cds/*.fa.gz
+data/genomes/**/*.fa
+data/genomes/**/*.gz
+
+# Ortholog sequences (can regenerate)
+data/orthologs/*/Gene_*.fa
+data/orthologs_3species/*/Gene_*.fa
+data/orthologs_pilot/*/Gene_*.fa
+
+# Alignments (can regenerate)
+alignments/**/*.fa
+alignments_3species/**/*.fa
+codon_alignments/*.fa
+codon_alignments_3species/*.fa
+
+# Large HyPhy result files
+hyphy_results/**/*.json
+hyphy_results_3species/**/*.json
+logs/hyphy/**/*.log
+
+# Verbose logs
+logs/mafft/*.log
+logs/pal2nal/*.log
+logs/snakemake_*.log
+
+# Snakemake internal
+.snakemake/
+
+# ============================================================================
+# PYTHON / R
+# ============================================================================
+
+__pycache__/
+*.py[cod]
+.Python
+env/
+venv/
+.Rproj.user
+.Rhistory
+
+# ============================================================================
+# SYSTEM FILES
+# ============================================================================
+
+.DS_Store
+._*
+*~
+Thumbs.db
+nohup.out
+
+# ============================================================================
+# KEEP IMPORTANT FILES
+# ============================================================================
+
+!data/phylogeny/*.tre
+!data/gene_annotations.json
+!results_summary.tsv
+!*.md
+!scripts/**/*.py
+!scripts/**/*.sh
+!Snakefile
+!environment*.yml
+
+# Gene annotations too large
+data/gene_annotations.json
+
+# BioMart table too large
+data/orthologs/ensembl_compara_table.tsv
