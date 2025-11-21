@@ -1,0 +1,8 @@
+gene_id	dog_selected	dog_pvalue	dog_omega	dingo_selected	dingo_pvalue	dingo_omega	fox_selected	fox_pvalue	fox_omega	gene_symbol	description
+Gene_00845029249	True	0.0	0.5246120592296938	False	1.0	1.0	False	1.0	0.1777011029420063	LEF1	lymphoid enhancer binding factor 1
+Gene_00845027774	True	0.0	0.9897006919773884	False	1.0	1.0	False	1.0	0.1383581170125993	EDNRB	endothelin receptor type B
+Gene_00845022244	True	0.0	0.6736481570003602	False	1.0	1.0	False	1.0	0.0	FZD3	frizzled class receptor 3
+Gene_00845027434	True	0.0	0.5427427347664268	False	0.4189083312308552	10000000000.0	False	1.0	0.0	CXXC4	CXXC finger protein 4
+Gene_00845027028	True	2.314815006343451e-14	0.3160600628674382	False	1.0	1.0	False	1.0	0.0	SIX3	SIX homeobox 3
+Gene_00845006501	True	7.105982469113314e-13	0.7581378566041429	False	1.0	1.0	False	1.0	0.0	FZD4	frizzled class receptor 4
+Gene_00845026259	True	3.4694913608745985e-11	0.6065113449762201	False	1.0	1.0	False	1.0	0.0367040916343328	DVL3	dishevelled segment polarity protein 3

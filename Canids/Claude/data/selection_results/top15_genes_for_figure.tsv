@@ -1,0 +1,16 @@
+gene_symbol	dog_pvalue	dog_omega	description	neg_log10_p
+LEF1	< 1e-300	0.52	lymphoid enhancer binding factor 1	300
+PHETA1	< 1e-300	0.38	PH domain containing endocytic trafficking adaptor 1	300
+TMEM74B	< 1e-300	0.59	transmembrane protein 74B	300
+ASAP1	< 1e-300	0.19	No description	300
+MAP3K4	< 1e-300	0.67	mitogen-activated protein kinase kinase kinase 4	300
+ADAMTS6	< 1e-300	0.39	ADAM metallopeptidase with thrombospondin type 1 motif 6	300
+UBE2T	< 1e-300	0.67	ubiquitin conjugating enzyme E2 T	300
+CD34	< 1e-300	0.00	CD34 molecule	300
+NCF2	< 1e-300	1282399825.14	neutrophil cytosolic factor 2	300
+EREG	< 1e-300	0.58	epiregulin	300
+GALM	< 1e-300	1.09	galactose mutarotase	300
+MECR	< 1e-300	0.61	mitochondrial trans-2-enoyl-CoA reductase	300
+DUSP13B	< 1e-300	0.73	dual specificity phosphatase 13B	300
+HCRTR1	< 1e-300	0.55	hypocretin receptor 1	300
+MOB2	< 1e-300	0.47	No description	300

@@ -1,29 +1,73 @@
 Gene_ID	Gene_Symbol	Omega	Sites	P_value	Description
+Gene_00845005265	AHI1	>1000	NA	NA	Abelson helper integration site 1
+Gene_00845010898	CNP	>1000	NA	NA	2',3'-cyclic nucleotide 3' phosphodiesterase
+Gene_00845012916	DDHD2	>1000	NA	NA	DDHD domain containing 2
+Gene_00845012080	CDK7	>1000	NA	NA	cyclin dependent kinase 7
+Gene_00845002287	CPNE7	>1000	NA	NA	copine 7
 Gene_00845016594	Unknown	>1000	NA	NA	No description
 Gene_00845018750	KIF19	>1000	NA	NA	kinesin family member 19
+Gene_00845022382	FGF11	>1000	NA	NA	fibroblast growth factor 11
+Gene_00845013639	SELENON	>1000	NA	NA	selenoprotein N
+Gene_00845029228	LRATD1	>1000	NA	NA	LRAT domain containing 1
 Gene_00845030037	Unknown	>1000	NA	NA	No description
+Gene_00845013771	SMOX	>1000	NA	NA	spermine oxidase
 Gene_00845003562	GNG2	>1000	NA	NA	G protein subunit gamma 2
+Gene_00845003576	CHRNE	>1000	NA	NA	cholinergic receptor nicotinic epsilon subunit
 Gene_00845005661	NFIA	>1000	NA	NA	nuclear factor I A
+Gene_00845004231	NLRP12	>1000	NA	NA	NLR family pyrin domain containing 12
+Gene_00845009067	ERAL1	>1000	NA	NA	Era like 12S mitochondrial rRNA chaperone 1
+Gene_00845025566	GPR143	>1000	NA	NA	G protein-coupled receptor 143
+Gene_00845027371	Unknown	>1000	NA	NA	No description
 Gene_00845000916	ATP10B	>1000	NA	NA	ATPase phospholipid transporting 10B (putative)
 Gene_00845018354	METTL15	>1000	NA	NA	methyltransferase 15, mitochondrial 12S rRNA N4-cytidine
+Gene_00845009259	IDO1	>1000	NA	NA	No description
 Gene_00845015658	NUP210L	>1000	NA	NA	nucleoporin 210 like
 Gene_00845007248	TBC1D9B	>1000	NA	NA	TBC1 domain family member 9B
 Gene_00845018383	EP300	>1000	NA	NA	E1A binding protein p300
+Gene_00845028254	LOXL1	>1000	NA	NA	lysyl oxidase like 1
 Gene_00845021270	ISYNA1	>1000	NA	NA	elongation factor for RNA polymerase II
 Gene_00845010085	DARS1	>1000	NA	NA	aspartyl-tRNA synthetase 1
+Gene_00845030340	SPEGNB	>1000	NA	NA	SPEG neighbor
+Gene_00845026278	KLRK1	>1000	NA	NA	killer cell lectin like receptor K1
+Gene_00845026720	EAF1	>1000	NA	NA	ELL associated factor 1
+Gene_00845022220	SPEM2	>1000	NA	NA	SPEM family member 2
 Gene_00845024645	PHF6	>1000	NA	NA	PHD finger protein 6
 Gene_00845005853	HCRTR1	>1000	NA	NA	hypocretin receptor 1
 Gene_00845011198	CEP131	>1000	NA	NA	centrosomal protein 131
+Gene_00845030618	Unknown	>1000	NA	NA	No description
+Gene_00845019513	SWSAP1	>1000	NA	NA	SWIM-type zinc finger 7 associated protein 1
 Gene_00845006433	TUBGCP6	>1000	NA	NA	tubulin gamma complex associated protein 6
 Gene_00845003577	Unknown	>1000	NA	NA	No description
+Gene_00845026907	PDE4A	>1000	NA	NA	phosphodiesterase 4A
 Gene_00845013016	Unknown	>1000	NA	NA	No description
+Gene_00845010494	GSDMA	>1000	NA	NA	gasdermin A
+Gene_00845027238	TLL2	>1000	NA	NA	tolloid like 2
+Gene_00845019498	CNOT2	>1000	NA	NA	No description
+Gene_00845018786	GAB1	>1000	NA	NA	GRB2 associated binding protein 1
+Gene_00845022368	SYNGAP1	>1000	NA	NA	synaptic Ras GTPase activating protein 1
+Gene_00845023062	PRKCH	>1000	NA	NA	protein kinase C eta
+Gene_00845014631	PSMB2	>1000	NA	NA	proteasome 20S subunit beta 2
 Gene_00845008556	Unknown	>1000	NA	NA	No description
+Gene_00845015275	Unknown	>1000	NA	NA	No description
 Gene_00845027006	PER3	>1000	NA	NA	period circadian regulator 3
 Gene_00845020796	PTOV1	>1000	NA	NA	PTOV1 extended AT-hook containing adaptor protein
 Gene_00845006779	Unknown	>1000	NA	NA	No description
+Gene_00845008740	Unknown	>1000	NA	NA	No description
+Gene_00845001766	Unknown	>1000	NA	NA	No description
+Gene_00845007471	OR5D3	>1000	NA	NA	olfactory receptor family 5 subfamily D member 3
 Gene_00845016540	Unknown	>1000	NA	NA	No description
+Gene_00845025607	GALNT5	>1000	NA	NA	polypeptide N-acetylgalactosaminyltransferase 5
+Gene_00845004811	Unknown	>1000	NA	NA	No description
 Gene_00845030578	Unknown	>1000	NA	NA	No description
+Gene_00845028479	STARD8	>1000	NA	NA	StAR related lipid transfer domain containing 8
+Gene_00845013174	Unknown	>1000	NA	NA	No description
+Gene_00845005070	Unknown	>1000	NA	NA	No description
+Gene_00845009110	Unknown	>1000	NA	NA	No description
+Gene_00845026681	Unknown	>1000	NA	NA	No description
+Gene_00845020596	ATL2	>1000	NA	NA	atlastin GTPase 2
 Gene_00845021111	ANKRD33B	>1000	NA	NA	ankyrin repeat domain 33B
+Gene_00845027548	LCOR	>1000	NA	NA	ligand dependent nuclear receptor corepressor
+Gene_00845008420	Unknown	>1000	NA	NA	No description
 Gene_00845028082	MRPL4	>1000	NA	NA	mitochondrial ribosomal protein L4
 Gene_00845018828	EMX1	>1000	NA	NA	empty spiracles homeobox 1
 Gene_00845023114	RBMS3	>1000	NA	NA	RNA binding motif single stranded interacting protein 3
@@ -34,159 +78,345 @@ Gene_00845003788	VRK1	>1000	NA	NA	VRK serine/threonine kinase 1
 Gene_00845006828	TMEM192	>1000	NA	NA	transmembrane protein 192
 Gene_00845006196	RNGTT	>1000	NA	NA	RNA guanylyltransferase and 5'-phosphatase
 Gene_00845004781	Unknown	>1000	NA	NA	No description
+Gene_00845001835	C11orf52	>1000	NA	NA	chromosome 11 open reading frame 52
 Gene_00845028519	TTC7A	>1000	NA	NA	tetratricopeptide repeat domain 7A
 Gene_00845006815	QSOX2	>1000	NA	NA	quiescin sulfhydryl oxidase 2
 Gene_00845025772	CFAP54	>1000	NA	NA	cilia and flagella associated protein 54
+Gene_00845020839	Unknown	>1000	NA	NA	No description
 Gene_00845016435	USP47	>1000	NA	NA	ubiquitin specific peptidase 47
 Gene_00845027830	SPSB4	>1000	NA	NA	splA/ryanodine receptor domain and SOCS box containing 4
+Gene_00845023897	URB1	>1000	NA	NA	URB1 ribosome biogenesis homolog
 Gene_00845018815	Unknown	>1000	NA	NA	No description
 Gene_00845009930	OR13C1	>1000	NA	NA	olfactory receptor family 13 subfamily C member 1
 Gene_00845019289	Unknown	>1000	NA	NA	No description
+Gene_00845016804	PTDSS1	>1000	NA	NA	phosphatidylserine synthase 1
+Gene_00845018154	Unknown	>1000	NA	NA	No description
 Gene_00845008596	EDN2	>1000	NA	NA	endothelin 2
 Gene_00845015538	Unknown	>1000	NA	NA	No description
+Gene_00845003414	PLEKHH1	>1000	NA	NA	pleckstrin homology, MyTH4 and FERM domain containing H1
+Gene_00845029028	Unknown	>1000	NA	NA	No description
 Gene_00845010871	Unknown	>1000	NA	NA	No description
 Gene_00845021312	Unknown	>1000	NA	NA	No description
+Gene_00845002252	Unknown	>1000	NA	NA	No description
 Gene_00845010656	FER1L6	>1000	NA	NA	fer-1 like family member 6
+Gene_00845019100	OR51G2	>1000	NA	NA	olfactory receptor family 51 subfamily G member 2
+Gene_00845015074	Unknown	>1000	NA	NA	No description
+Gene_00845007464	COL15A1	>1000	NA	NA	collagen type XV alpha 1 chain
 Gene_00845011570	PHF21B	>1000	NA	NA	PHD finger protein 21B
+Gene_00845016592	Unknown	>1000	NA	NA	No description
+Gene_00845024252	PHF14	>1000	NA	NA	PHD finger protein 14
+Gene_00845023273	ZNF177	>1000	NA	NA	zinc finger protein 177
 Gene_00845019312	Unknown	>1000	NA	NA	No description
 Gene_00845011799	INHBE	>1000	NA	NA	inhibin subunit beta E
 Gene_00845023065	Unknown	>1000	NA	NA	No description
+Gene_00845020395	CCDC62	>1000	NA	NA	coiled-coil domain containing 62
 Gene_00845000045	CTDP1	>1000	NA	NA	CTD phosphatase subunit 1
+Gene_00845010530	SSR2	>1000	NA	NA	signal sequence receptor subunit 2
+Gene_00845030810	KIF1A	>1000	NA	NA	kinesin family member 1A
+Gene_00845028939	MYO9B	>1000	NA	NA	myosin IXB
 Gene_00845030623	GLYCTK	>1000	NA	NA	glycerate kinase
+Gene_00845020342	Unknown	>1000	NA	NA	No description
+Gene_00845008380	ZNF746	>1000	NA	NA	zinc finger protein 746
+Gene_00845025945	SPRED1	>1000	NA	NA	sprouty related EVH1 domain containing 1
 Gene_00845006193	LRIG2	>1000	NA	NA	leucine rich repeats and immunoglobulin like domains 2
 Gene_00845025038	ZNF605	>1000	NA	NA	zinc finger protein 605
 Gene_00845029164	FAM210B	>1000	NA	NA	family with sequence similarity 210 member B
 Gene_00845006811	KAT6A	>1000	NA	NA	lysine acetyltransferase 6A
 Gene_00845015879	TAF4	>1000	NA	NA	TATA-box binding protein associated factor 4
+Gene_00845023460	CCDC136	>1000	NA	NA	coiled-coil domain containing 136
+Gene_00845025011	CAFA-T2R43	>1000	NA	NA	bitter taste receptor Cafa-T2R43
 Gene_00845030352	ATRX	>1000	NA	NA	ATRX chromatin remodeler
+Gene_00845010082	DUSP13B	>1000	NA	NA	dual specificity phosphatase 13B
+Gene_00845008632	DCAF13	>1000	NA	NA	DDB1 and CUL4 associated factor 13
 Gene_00845011405	FAM117A	>1000	NA	NA	family with sequence similarity 117 member A
 Gene_00845028284	Unknown	>1000	NA	NA	No description
+Gene_00845003015	AKR1E2	>1000	NA	NA	aldo-keto reductase family 1 member E2
 Gene_00845001602	DENND2D	>1000	NA	NA	DENN domain containing 2D
+Gene_00845022965	Unknown	>1000	NA	NA	No description
 Gene_00845016430	STXBP4	>1000	NA	NA	syntaxin binding protein 4
 Gene_00845016424	RSPH1	>1000	NA	NA	radial spoke head component 1
 Gene_00845026054	REEP4	>1000	NA	NA	receptor accessory protein 4
+Gene_00845013789	Unknown	>1000	NA	NA	No description
+Gene_00845022226	OSBPL10	>1000	NA	NA	oxysterol binding protein like 10
+Gene_00845011607	SLC4A4	>1000	NA	NA	solute carrier family 4 member 4
+Gene_00845015307	LIPC	>1000	NA	NA	lipase C, hepatic type
 Gene_00845008342	PSME4	>1000	NA	NA	proteasome activator subunit 4
+Gene_00845009706	Unknown	>1000	NA	NA	No description
 Gene_00845025373	TBL1X	>1000	NA	NA	No description
+Gene_00845023716	RNF224	>1000	NA	NA	ring finger protein 224
+Gene_00845021667	Unknown	>1000	NA	NA	No description
 Gene_00845025429	Unknown	>1000	NA	NA	No description
 Gene_00845014838	ABCD3	>1000	NA	NA	ATP binding cassette subfamily D member 3
 Gene_00845026478	IFNAR2	>1000	NA	NA	interferon alpha and beta receptor subunit 2
 Gene_00845021471	Unknown	>1000	NA	NA	No description
+Gene_00845030226	SFRP5	>1000	NA	NA	secreted frizzled related protein 5
+Gene_00845027028	SIX3	>1000	NA	NA	SIX homeobox 3
+Gene_00845015703	Unknown	>1000	NA	NA	No description
 Gene_00845025818	NCAM2	>1000	NA	NA	neural cell adhesion molecule 2
 Gene_00845004168	Unknown	>1000	NA	NA	No description
+Gene_00845016544	RCOR1	>1000	NA	NA	REST corepressor 1
 Gene_00845006025	Unknown	>1000	NA	NA	No description
+Gene_00845001748	Unknown	>1000	NA	NA	No description
 Gene_00845000456	C2CD2L	>1000	NA	NA	C2CD2 like
+Gene_00845002269	TXNL1	>1000	NA	NA	thioredoxin like 1
 Gene_00845023270	BIN1	>1000	NA	NA	bridging integrator 1
 Gene_00845020779	PAQR5	>1000	NA	NA	progestin and adipoQ receptor family member 5
 Gene_00845019305	ZNF445	>1000	NA	NA	No description
+Gene_00845028696	NR2F6	>1000	NA	NA	nuclear receptor subfamily 2 group F member 6
+Gene_00845008234	BRD1	>1000	NA	NA	bromodomain containing 1
+Gene_00845012287	DPP6	>1000	NA	NA	dipeptidyl peptidase like 6
 Gene_00845002080	CUL2	>1000	NA	NA	cullin 2
 Gene_00845021117	IGFBP6	>1000	NA	NA	insulin like growth factor binding protein 6
 Gene_00845023066	TBP	>1000	NA	NA	TATA-box binding protein
 Gene_00845030191	LY9	>1000	NA	NA	lymphocyte antigen 9
+Gene_00845025588	Unknown	>1000	NA	NA	No description
 Gene_00845002651	LAT2	>1000	NA	NA	No description
+Gene_00845018635	DENND5B	>1000	NA	NA	DENN domain containing 5B
 Gene_00845012495	SACM1L	>1000	NA	NA	SAC1 like phosphatidylinositide phosphatase
+Gene_00845029417	MFAP5	>1000	NA	NA	microfibril associated protein 5
+Gene_00845015885	MKLN1	>1000	NA	NA	muskelin 1
+Gene_00845005328	POLR2F	>1000	NA	NA	MICAL like 1
+Gene_00845002335	SLC16A9	>1000	NA	NA	solute carrier family 16 member 9
 Gene_00845004744	NECAP2	>1000	NA	NA	SUZ RNA binding domain containing 1
+Gene_00845000522	Unknown	>1000	NA	NA	No description
+Gene_00845008803	DBF4	>1000	NA	NA	DBF4 zinc finger
+Gene_00845023462	GJA3	>1000	NA	NA	gap junction protein alpha 3
+Gene_00845023304	Unknown	>1000	NA	NA	No description
 Gene_00845029628	GET1	>1000	NA	NA	guided entry of tail-anchored proteins factor 1
 Gene_00845029600	ITIH3	>1000	NA	NA	inter-alpha-trypsin inhibitor heavy chain 3
+Gene_00845010081	MERTK	>1000	NA	NA	MER proto-oncogene, tyrosine kinase
+Gene_00845000523	FCHO2	>1000	NA	NA	FCH and mu domain containing endocytic adaptor 2
 Gene_00845025204	Unknown	>1000	NA	NA	No description
+Gene_00845023675	Unknown	>1000	NA	NA	No description
+Gene_00845005856	MCU	>1000	NA	NA	mitochondrial calcium uniporter
+Gene_00845026057	Unknown	>1000	NA	NA	No description
+Gene_00845004209	CELF4	>1000	NA	NA	CUGBP Elav-like family member 4
 Gene_00845013775	IQCM	>1000	NA	NA	IQ motif containing M
+Gene_00845006436	ORC4	>1000	NA	NA	origin recognition complex subunit 4
+Gene_00845027567	CHAF1B	>1000	NA	NA	chromatin assembly factor 1 subunit B
+Gene_00845030027	PBRM1	>1000	NA	NA	polybromo 1
+Gene_00845015502	Unknown	>1000	NA	NA	No description
+Gene_00845004369	Unknown	>1000	NA	NA	No description
+Gene_00845005063	TMEM39B	>1000	NA	NA	transmembrane protein 39B
+Gene_00845023926	PLBD2	>1000	NA	NA	phospholipase B domain containing 2
 Gene_00845011994	WDR5	>1000	NA	NA	WD repeat domain 5
+Gene_00845005739	TMEM106A	>1000	NA	NA	transmembrane protein 106A
 Gene_00845020778	Unknown	>1000	NA	NA	No description
 Gene_00845017856	OGFR	>1000	NA	NA	opioid growth factor receptor
+Gene_00845030543	Unknown	>1000	NA	NA	No description
+Gene_00845016235	HACD4	>1000	NA	NA	3-hydroxyacyl-CoA dehydratase 4
+Gene_00845025833	Unknown	>1000	NA	NA	No description
 Gene_00845001712	PFKFB3	>1000	NA	NA	6-phosphofructo-2-kinase/fructose-2,6-biphosphatase 3
 Gene_00845022685	Unknown	>1000	NA	NA	No description
 Gene_00845004124	SAR1A	>1000	NA	NA	secretion associated Ras related GTPase 1A
 Gene_00845010838	CD164	>1000	NA	NA	No description
 Gene_00845011717	PIK3R1	>1000	NA	NA	phosphoinositide-3-kinase regulatory subunit 1
+Gene_00845030901	ABCC2	>1000	NA	NA	ATP binding cassette subfamily C member 2
+Gene_00845003461	TCL1B	>1000	NA	NA	TCL1 family AKT coactivator B
 Gene_00845014653	Unknown	>1000	NA	NA	No description
+Gene_00845010421	HSP90B1	>1000	NA	NA	heat shock protein 90 beta family member 1
 Gene_00845021171	HIVEP1	>1000	NA	NA	HIVEP zinc finger 1
+Gene_00845010390	GNA15	>1000	NA	NA	G protein subunit alpha 15
+Gene_00845026636	Unknown	>1000	NA	NA	No description
 Gene_00845002179	HARS1	>1000	NA	NA	No description
 Gene_00845024196	TRAIP	>1000	NA	NA	TRAF interacting protein
+Gene_00845021011	KCNQ2	>1000	NA	NA	potassium voltage-gated channel subfamily Q member 2
+Gene_00845028753	ATR	>1000	NA	NA	ATR serine/threonine kinase
+Gene_00845005831	Unknown	>1000	NA	NA	No description
+Gene_00845030646	NSUN3	>1000	NA	NA	NOP2/Sun RNA methyltransferase 3
 Gene_00845015161	RAD23A	>1000	NA	NA	RAD23 homolog A, nucleotide excision repair protein
+Gene_00845005366	Unknown	>1000	NA	NA	No description
+Gene_00845020680	BTBD10	>1000	NA	NA	BTB domain containing 10
 Gene_00845027689	TRIM42	>1000	NA	NA	tripartite motif containing 42
 Gene_00845010757	Unknown	>1000	NA	NA	No description
+Gene_00845025934	Unknown	>1000	NA	NA	No description
+Gene_00845021213	RTN4RL2	>1000	NA	NA	reticulon 4 receptor like 2
 Gene_00845024343	UCK2	>1000	NA	NA	uridine-cytidine kinase 2
+Gene_00845017945	MCMBP	>1000	NA	NA	minichromosome maintenance complex binding protein
 Gene_00845000587	Unknown	>1000	NA	NA	No description
+Gene_00845025712	GLIPR1L1	>1000	NA	NA	GLIPR1 like 1
 Gene_00845003919	ZNF599	>1000	NA	NA	No description
+Gene_00845010030	DLA-64	>1000	NA	NA	MHC class I DLA-64
 Gene_00845005429	Unknown	>1000	NA	NA	No description
+Gene_00845014242	Unknown	>1000	NA	NA	No description
+Gene_00845011460	HCRTR2	>1000	NA	NA	hypocretin receptor 2
+Gene_00845015160	Unknown	>1000	NA	NA	No description
+Gene_00845010583	Unknown	>1000	NA	NA	No description
 Gene_00845021986	TEP1	>1000	NA	NA	telomerase associated protein 1
 Gene_00845024168	SHOX2	>1000	NA	NA	short stature homeobox 2
+Gene_00845022280	Unknown	>1000	NA	NA	No description
 Gene_00845001303	ADAMTS17	>1000	NA	NA	ADAM metallopeptidase with thrombospondin type 1 motif 17
 Gene_00845013713	TLCD3A	>1000	NA	NA	TLC domain containing 3A
 Gene_00845001288	Unknown	>1000	NA	NA	No description
+Gene_00845010346	Unknown	>1000	NA	NA	No description
+Gene_00845011058	COL11A1	>1000	NA	NA	collagen type XI alpha 1 chain
 Gene_00845000141	RGS17	>1000	NA	NA	regulator of G protein signaling 17
 Gene_00845010352	Unknown	>1000	NA	NA	No description
+Gene_00845016723	Unknown	>1000	NA	NA	No description
 Gene_00845022486	DGKD	>1000	NA	NA	diacylglycerol kinase delta
+Gene_00845002030	IL2RA	>1000	NA	NA	interleukin 2 receptor subunit alpha
 Gene_00845004858	AKT3	>1000	NA	NA	AKT serine/threonine kinase 3
+Gene_00845020736	CARS2	>1000	NA	NA	cysteinyl-tRNA synthetase 2, mitochondrial
+Gene_00845003851	SMURF1	>1000	NA	NA	SMAD specific E3 ubiquitin protein ligase 1
 Gene_00845000425	RBP7	>1000	NA	NA	retinol binding protein 7
+Gene_00845015014	FABP12	>1000	NA	NA	fatty acid binding protein 12
+Gene_00845003106	PCDHB15	>1000	NA	NA	protocadherin beta 15
 Gene_00845006917	TRIM54	>1000	NA	NA	tripartite motif containing 54
+Gene_00845017832	CEP44	>1000	NA	NA	centrosomal protein 44
 Gene_00845022651	NR5A2	>1000	NA	NA	nuclear receptor subfamily 5 group A member 2
 Gene_00845028368	IL6ST	>1000	NA	NA	interleukin 6 cytokine family signal transducer
 Gene_00845008523	PROCA1	>1000	NA	NA	protein interacting with cyclin A1
+Gene_00845005985	LRRC74A	>1000	NA	NA	leucine rich repeat containing 74A
+Gene_00845010350	HAS3	>1000	NA	NA	hyaluronan synthase 3
 Gene_00845020	Unknown	>1000	NA	NA	No description
+Gene_00845024022	MAP2	>1000	NA	NA	microtubule associated protein 2
 Gene_00845024036	IL12RB1	>1000	NA	NA	interleukin 12 receptor subunit beta 1
 Gene_00845013705	Unknown	>1000	NA	NA	No description
+Gene_00845007016	CDC42BPA	>1000	NA	NA	No description
 Gene_00845017211	SEMA4F	>1000	NA	NA	ssemaphorin 4F
 Gene_00845027305	IFT80	>1000	NA	NA	intraflagellar transport 80
+Gene_00845021774	Unknown	>1000	NA	NA	No description
+Gene_00845024156	AMDHD1	>1000	NA	NA	amidohydrolase domain containing 1
 Gene_00845022255	LAMP2	>1000	NA	NA	lysosomal associated membrane protein 2
 Gene_00845013513	LMBR1	>1000	NA	NA	limb development membrane protein 1
 Gene_00845017985	Unknown	>1000	NA	NA	No description
 Gene_00845004053	KBTBD3	>1000	NA	NA	kelch repeat and BTB domain containing 3
+Gene_00845012631	CLIC5	>1000	NA	NA	chloride intracellular channel 5
+Gene_00845014297	POU2F3	>1000	NA	NA	POU class 2 homeobox 3
+Gene_00845026231	Unknown	>1000	NA	NA	No description
+Gene_00845014282	Unknown	>1000	NA	NA	No description
+Gene_00845028547	TRAPPC2	>1000	NA	NA	No description
 Gene_00845014533	TRPC7	>1000	NA	NA	transient receptor potential cation channel subfamily C member 7
 Gene_00845009204	CNOT4	>1000	NA	NA	CCR4-NOT transcription complex subunit 4
 Gene_00845020443	B3GLCT	>1000	NA	NA	beta 3-glucosyltransferase
 Gene_00845004293	Unknown	>1000	NA	NA	No description
 Gene_00845024631	Unknown	>1000	NA	NA	No description
+Gene_00845023189	Unknown	>1000	NA	NA	No description
+Gene_00845016132	NCOR2	>1000	NA	NA	nuclear receptor corepressor 2
+Gene_00845016668	TAL1	>1000	NA	NA	TAL bHLH transcription factor 1, erythroid differentiation factor
+Gene_00845011107	EMC2	>1000	NA	NA	ER membrane protein complex subunit 2
+Gene_00845005947	AFP	>1000	NA	NA	alpha fetoprotein
 Gene_00845027516	SEMA3A	>1000	NA	NA	semaphorin 3A
+Gene_00845021832	FAM124A	>1000	NA	NA	family with sequence similarity 124 member A
+Gene_00845018719	CRACDL	>1000	NA	NA	CRACD like
 Gene_00845013116	LRRC40	>1000	NA	NA	leucine rich repeat containing 40
 Gene_00845017370	CYP1A1	>1000	NA	NA	cytochrome P450 family 1 subfamily A member 1
 Gene_00845006094	Unknown	>1000	NA	NA	No description
+Gene_00845024547	KDM2B	>1000	NA	NA	lysine demethylase 2B
+Gene_00845010184	NT5DC3	>1000	NA	NA	5'-nucleotidase domain containing 3
+Gene_00845018282	HOXC9	>1000	NA	NA	homeobox C9
+Gene_00845020090	GPR135	>1000	NA	NA	G protein-coupled receptor 135
 Gene_00845002543	ARF6	>1000	NA	NA	ADP ribosylation factor 6
+Gene_00845008720	ZNF618	>1000	NA	NA	zinc finger protein 618
 Gene_00845027923	NCAPH2	>1000	NA	NA	non-SMC condensin II complex subunit H2
 Gene_00845029926	IMMP2L	>1000	NA	NA	No description
+Gene_00845011513	OSTF1	>1000	NA	NA	osteoclast stimulating factor 1
 Gene_00845013489	ADGRF1	>1000	NA	NA	adhesion G protein-coupled receptor F1
+Gene_00845022654	PIBF1	>1000	NA	NA	progesterone immunomodulatory binding factor 1
+Gene_00845019371	RNF215	>1000	NA	NA	ring finger protein 215
 Gene_00845025488	TNFRSF13B	>1000	NA	NA	No description
+Gene_00845007601	Unknown	>1000	NA	NA	No description
+Gene_00845008526	ZNF512	>1000	NA	NA	zinc finger protein 512
 Gene_00845018053	Unknown	>1000	NA	NA	No description
+Gene_00845024999	Unknown	>1000	NA	NA	No description
+Gene_00845009189	Unknown	>1000	NA	NA	No description
+Gene_00845028621	TENM1	>1000	NA	NA	teneurin transmembrane protein 1
+Gene_00845000740	Unknown	>1000	NA	NA	No description
+Gene_00845006325	SLC41A2	>1000	NA	NA	solute carrier family 41 member 2
+Gene_00845028769	USE1	>1000	NA	NA	unconventional SNARE in the ER 1
+Gene_00845013933	ADA	>1000	NA	NA	adenosine deaminase
+Gene_00845028755	EDA	>1000	NA	NA	ectodysplasin A
+Gene_00845030668	DUOXA1	>1000	NA	NA	dual oxidase maturation factor 1
+Gene_00845020876	YBX2	>1000	NA	NA	Y-box binding protein 2
 Gene_00845022720	Unknown	>1000	NA	NA	No description
 Gene_00845020889	OR51K2	>1000	NA	NA	olfactory receptor family 51 subfamily K member 2
+Gene_00845010792	RPS27A	>1000	NA	NA	ribosomal protein S27a
+Gene_00845021201	PLSCR1	>1000	NA	NA	phospholipid scramblase 1
 Gene_00845024350	Unknown	>1000	NA	NA	No description
 Gene_00845017003	CAGE1	>1000	NA	NA	cancer antigen 1
+Gene_00845004719	Unknown	>1000	NA	NA	No description
 Gene_00845025099	TEX52	>1000	NA	NA	testis expressed 52
+Gene_00845026590	LAMP1	>1000	NA	NA	lysosomal associated membrane protein 1
+Gene_00845009567	DBN1	>1000	NA	NA	drebrin 1
+Gene_00845014536	Unknown	>1000	NA	NA	No description
 Gene_00845001885	Unknown	>1000	NA	NA	No description
+Gene_00845021016	SNED1	>1000	NA	NA	sushi, nidogen and EGF like domains 1
+Gene_00845001311	Unknown	>1000	NA	NA	No description
+Gene_00845024813	RBM24	>1000	NA	NA	RNA binding motif protein 24
+Gene_00845003512	PLLP	>1000	NA	NA	plasmolipin
 Gene_00845024	Unknown	>1000	NA	NA	No description
+Gene_00845025462	RFX1	>1000	NA	NA	regulatory factor X1
 Gene_00845004484	SSC4D	>1000	NA	NA	scavenger receptor cysteine rich family member with 4 domains
+Gene_00845024998	SLC8A1	>1000	NA	NA	solute carrier family 8 member A1
 Gene_00845001503	EAPP	>1000	NA	NA	E2F associated phosphoprotein
+Gene_00845001259	Unknown	>1000	NA	NA	No description
+Gene_00845022480	Unknown	>1000	NA	NA	No description
+Gene_00845024797	MYO3B	>1000	NA	NA	myosin IIIB
 Gene_00845019370	Unknown	>1000	NA	NA	No description
+Gene_00845013649	MRC1	>1000	NA	NA	mannose receptor C-type 1
+Gene_00845016282	XRCC6	>1000	NA	NA	X-ray repair cross complementing 6
 Gene_00845021348	GASK1A	>1000	NA	NA	golgi associated kinase 1A
+Gene_00845016296	CTNS	>1000	NA	NA	cystinosin, lysosomal cystine transporter
 Gene_00845015947	CSNK2A1	>1000	NA	NA	No description
 Gene_00845000379	CASP9	>1000	NA	NA	caspase 9
 Gene_00845026382	SERINC4	>1000	NA	NA	serine incorporator 4
 Gene_00845010156	Unknown	>1000	NA	NA	No description
+Gene_00845001059	Unknown	>1000	NA	NA	No description
+Gene_00845000421	NLRP9	>1000	NA	NA	No description
+Gene_00845030290	CRTAC1	>1000	NA	NA	cartilage acidic protein 1
 Gene_00845029919	SLC51A	>1000	NA	NA	solute carrier family 51 subunit alpha
 Gene_00845009439	TNR	>1000	NA	NA	tenascin R
 Gene_00845010197	MTCH1	>1000	NA	NA	mitochondrial carrier 1
+Gene_00845025892	CDC20B	>1000	NA	NA	cell division cycle 20B
 Gene_00845022131	UACA	>1000	NA	NA	uveal autoantigen with coiled-coil domains and ankyrin repeats
 Gene_00845006911	MOV10	>1000	NA	NA	Mov10 RISC complex RNA helicase
+Gene_00845029058	CCDC33	>1000	NA	NA	coiled-coil domain containing 33
 Gene_00845019372	FGFR2	>1000	NA	NA	fibroblast growth factor receptor 2
+Gene_00845026182	KIF13A	>1000	NA	NA	kinesin family member 13A
 Gene_00845013887	EBF2	>1000	NA	NA	EBF transcription factor 2
+Gene_00845000145	MFSD14B	>1000	NA	NA	No description
+Gene_00845030092	F11R	>1000	NA	NA	F11 receptor
+Gene_00845002746	ATXN2L	>1000	NA	NA	No description
+Gene_00845022496	UTY	>1000	NA	NA	tetratricopeptide repeat protein
+Gene_00845014642	ZBTB10	>1000	NA	NA	zinc finger and BTB domain containing 10
+Gene_00845005940	Unknown	>1000	NA	NA	No description
+Gene_00845026948	Unknown	>1000	NA	NA	No description
 Gene_00845013059	JADE2	>1000	NA	NA	jade family PHD finger 2
 Gene_00845009983	CABP4	>1000	NA	NA	calcium binding protein 4
+Gene_00845007206	TEX35	>1000	NA	NA	No description
 Gene_00845001105	BCL10	>1000	NA	NA	BCL10 immune signaling adaptor
 Gene_00845024346	GMPR	>1000	NA	NA	guanosine monophosphate reductase
 Gene_00845026551	TGS1	>1000	NA	NA	trimethylguanosine synthase 1
+Gene_00845021558	Unknown	>1000	NA	NA	No description
+Gene_00845006695	FAM20B	>1000	NA	NA	FAM20B glycosaminoglycan xylosylkinase
 Gene_00845008848	FCHSD2	>1000	NA	NA	FCH and double SH3 domains 2
+Gene_00845006871	Unknown	>1000	NA	NA	No description
+Gene_00845031004	Unknown	>1000	NA	NA	No description
+Gene_00845008849	WNT2	>1000	NA	NA	Wnt family member 2
+Gene_00845016487	HGSNAT	>1000	NA	NA	No description
 Gene_00845022736	Unknown	>1000	NA	NA	No description
+Gene_00845020874	Unknown	>1000	NA	NA	No description
 Gene_00845015171	NEK9	>1000	NA	NA	NIMA related kinase 9
+Gene_00845028582	HVCN1	>1000	NA	NA	hydrogen voltage gated channel 1
 Gene_00845001676	COLEC12	>1000	NA	NA	collectin subfamily member 12
 Gene_00845000226	MAP1B	>1000	NA	NA	microtubule associated protein 1B
+Gene_00845019763	TMEM116	>1000	NA	NA	transmembrane protein 116
+Gene_00845028743	NOP2	>1000	NA	NA	NOP2 nucleolar protein
 Gene_00845021029	Unknown	>1000	NA	NA	No description
+Gene_00845011698	Unknown	>1000	NA	NA	No description
 Gene_00845011115	Unknown	>1000	NA	NA	No description
+Gene_00845008444	PIP5K1C	>1000	NA	NA	phosphatidylinositol-4-phosphate 5-kinase type 1 gamma
 Gene_00845005160	MYB	>1000	NA	NA	MYB proto-oncogene, transcription factor
 Gene_00845019575	PLPPR2	>1000	NA	NA	phospholipid phosphatase related 2
+Gene_00845024838	ATP12A	>1000	NA	NA	ATPase H+/K+ transporting non-gastric alpha2 subunit
 Gene_00845013892	VIM	>1000	NA	NA	vimentin
 Gene_00845001528	CLINT1	>1000	NA	NA	clathrin interactor 1
 Gene_00845000636	ARID1B	>1000	NA	NA	AT-rich interaction domain 1B
+Gene_00845005982	CTRL	>1000	NA	NA	chymotrypsin like
 Gene_00845022483	Unknown	>1000	NA	NA	No description
 Gene_00845004322	COX16	>1000	NA	NA	cytochrome c oxidase assembly factor COX16
+Gene_00845023560	PCBP3	>1000	NA	NA	poly(rC) binding protein 3
+Gene_00845022118	Unknown	>1000	NA	NA	No description
 Gene_00845019818	CERS6	>1000	NA	NA	ceramide synthase 6
 Gene_00845030246	Unknown	>1000	NA	NA	No description
 Gene_00845028384	SH3KBP1	>1000	NA	NA	SH3 domain containing kinase binding protein 1
@@ -198,50 +428,111 @@ Gene_00845029097	CBLN4	>1000	NA	NA	cerebellin 4 precursor
 Gene_00845029083	ERC1	>1000	NA	NA	ELKS/RAB6-interacting/CAST family member 1
 Gene_00845015949	ARHGAP42	>1000	NA	NA	Rho GTPase activating protein 42
 Gene_00845006935	ADAMTS10	>1000	NA	NA	ADAM metallopeptidase with thrombospondin type 1 motif 10
+Gene_00845006921	Unknown	>1000	NA	NA	No description
+Gene_00845003454	LPGAT1	>1000	NA	NA	lysophosphatidylglycerol acyltransferase 1
+Gene_00845005019	COL26A1	>1000	NA	NA	collagen type XXVI alpha 1 chain
+Gene_00845012203	VDAC1	>1000	NA	NA	No description
+Gene_00845014672	Unknown	>1000	NA	NA	No description
+Gene_00845010414	ZNF692	>1000	NA	NA	zinc finger protein 692
+Gene_00845019342	INPP4A	>1000	NA	NA	inositol polyphosphate-4-phosphatase type I A
 Gene_00845023021	FAM228B	>1000	NA	NA	family with sequence similarity 228 member B
 Gene_00845020528	Unknown	>1000	NA	NA	No description
 Gene_00845017384	TSPYL5	>1000	NA	NA	TSPY like 5
+Gene_00845007183	Unknown	>1000	NA	NA	No description
+Gene_00845010399	Unknown	>1000	NA	NA	No description
+Gene_00845020272	ATE1	>1000	NA	NA	arginyltransferase 1
+Gene_00845002979	Unknown	>1000	NA	NA	No description
 Gene_00845000029	TRDN	>1000	NA	NA	triadin
+Gene_00845017555	NAPSA	>1000	NA	NA	napsin A aspartic peptidase
 Gene_00845025295	PICK1	>1000	NA	NA	protein interacting with PRKCA 1
+Gene_00845011118	Unknown	>1000	NA	NA	No description
 Gene_00845014060	ATP13A1	>1000	NA	NA	No description
 Gene_00845021965	Unknown	>1000	NA	NA	No description
+Gene_00845026987	ITGB5	>1000	NA	NA	integrin subunit beta 5
+Gene_00845009794	Unknown	>1000	NA	NA	No description
 Gene_00845030115	IP6K2	>1000	NA	NA	inositol hexakisphosphate kinase 2
 Gene_00845014909	SPATA16	>1000	NA	NA	spermatogenesis associated 16
+Gene_00845005435	Unknown	>1000	NA	NA	No description
 Gene_00845021583	SCN4A	>1000	NA	NA	sodium voltage-gated channel alpha subunit 4
 Gene_00845008663	PTN	>1000	NA	NA	No description
+Gene_00845001684	Unknown	>1000	NA	NA	No description
+Gene_00845008844	SUN3	>1000	NA	NA	No description
 Gene_00845029134	STIMATE	>1000	NA	NA	STIM activating enhancer
 Gene_00845009583	TRIP10	>1000	NA	NA	thyroid hormone receptor interactor 10
+Gene_00845015196	DDRGK1	>1000	NA	NA	DDRGK domain containing 1
 Gene_00845028217	Unknown	>1000	NA	NA	No description
 Gene_00845011496	DCK	>1000	NA	NA	deoxycytidine kinase
 Gene_00845003938	ZCCHC14	>1000	NA	NA	zinc finger CCHC-type containing 14
+Gene_00845022921	HELT	>1000	NA	NA	helt bHLH transcription factor
+Gene_00845024175	HES2	>1000	NA	NA	hes family bHLH transcription factor 2
+Gene_00845028997	CREB3L1	>1000	NA	NA	cAMP responsive element binding protein 3 like 1
+Gene_00845018854	SLF2	>1000	NA	NA	SMC5-SMC6 complex localization factor 2
+Gene_00845026776	RGS22	>1000	NA	NA	regulator of G protein signaling 22
+Gene_00845028954	CCL25	>1000	NA	NA	C-C motif chemokine ligand 25
 Gene_00845002617	QKI	>1000	NA	NA	QKI, KH domain containing RNA binding
+Gene_00845015419	MIB2	>1000	NA	NA	MIB E3 ubiquitin protein ligase 2
+Gene_00845015357	Unknown	>1000	NA	NA	No description
+Gene_00845001336	SLC4A9	>1000	NA	NA	solute carrier family 4 member 9
 Gene_00845006459	OR8J2C	>1000	NA	NA	olfactory receptor family 8 subfamily J member 2C
+Gene_00845002978	SHISA6	>1000	NA	NA	shisa family member 6
+Gene_00845025445	VWDE	>1000	NA	NA	von Willebrand factor D and EGF domains
+Gene_00845000835	Unknown	>1000	NA	NA	No description
 Gene_00845008272	Unknown	>1000	NA	NA	No description
+Gene_00845027291	ILRUN	>1000	NA	NA	inflammation and lipid regulator with UBA-like and NBR1-like domains
 Gene_00845025486	PDZD4	>1000	NA	NA	PDZ domain containing 4
+Gene_00845007155	Unknown	>1000	NA	NA	No description
 Gene_00845029041	FAM50A	>1000	NA	NA	family with sequence similarity 50 member A
 Gene_00845002207	UBL4B	>1000	NA	NA	ubiquitin like 4B
+Gene_00845023593	RBM6	>1000	NA	NA	RNA binding motif protein 6
 Gene_00845025684	RAPGEF3	>1000	NA	NA	Rap guanine nucleotide exchange factor 3
 Gene_00845017152	HECW1	>1000	NA	NA	HECT, C2 and WW domain containing E3 ubiquitin protein ligase 1
+Gene_00845002239	Unknown	>1000	NA	NA	No description
+Gene_00845007433	Unknown	>1000	NA	NA	No description
+Gene_00845012758	NAT8L	>1000	NA	NA	N-acetyltransferase 8 like
+Gene_00845006705	APOE	>1000	NA	NA	apolipoprotein E
+Gene_00845009393	GPR182	>1000	NA	NA	G protein-coupled receptor 182
+Gene_00845030937	IL1RAPL1	>1000	NA	NA	interleukin 1 receptor accessory protein like 1
+Gene_00845021812	CSAD	>1000	NA	NA	cysteine sulfinic acid decarboxylase
+Gene_00845003480	RPS17	>1000	NA	NA	ribosomal protein S17
 Gene_00845012599	KCTD1	>1000	NA	NA	potassium channel tetramerization domain containing 1
 Gene_00845003494	HK1	>1000	NA	NA	hexokinase 1
+Gene_00845030076	MARK1	>1000	NA	NA	microtubule affinity regulating kinase 1
+Gene_00845029255	RIN2	>1000	NA	NA	Ras and Rab interactor 2
+Gene_00845007816	RAMP2	>1000	NA	NA	receptor activity modifying protein 2
+Gene_00845004258	IRF8	>1000	NA	NA	interferon regulatory factor 8
+Gene_00845017224	CREB5	>1000	NA	NA	cAMP responsive element binding protein 5
 Gene_00845007023	RNF130	>1000	NA	NA	ring finger protein 130
 Gene_00845017556	RANGAP1	>1000	NA	NA	No description
 Gene_00845008476	GZMB	>1000	NA	NA	granzyme B
+Gene_00845017218	DELE1	>1000	NA	NA	DAP3 binding cell death enhancer 1
 Gene_00845002173	Unknown	>1000	NA	NA	No description
+Gene_00845019221	Unknown	>1000	NA	NA	No description
+Gene_00845006467	Unknown	>1000	NA	NA	No description
 Gene_00845026984	SLC38A4	>1000	NA	NA	solute carrier family 38 member 4
+Gene_00845000943	Unknown	>1000	NA	NA	No description
 Gene_00845025533	WBP1L	>1000	NA	NA	WW domain binding protein 1 like
+Gene_00845020339	Unknown	>1000	NA	NA	No description
 Gene_00845022260	DNAH12	>1000	NA	NA	dynein axonemal heavy chain 12
+Gene_00845006659	GABRR1	>1000	NA	NA	gamma-aminobutyric acid type A receptor subunit rho2
 Gene_00845001888	ONECUT2	>1000	NA	NA	one cut homeobox 2
+Gene_00845019751	MRTFA	>1000	NA	NA	myocardin related transcription factor A
+Gene_00845006842	Unknown	>1000	NA	NA	No description
+Gene_00845008853	WWP2	>1000	NA	NA	WW domain containing E3 ubiquitin protein ligase 2
 Gene_00845026576	Unknown	>1000	NA	NA	No description
 Gene_00845021218	CDAN1	>1000	NA	NA	codanin 1
+Gene_00845004715	ATP2C2	>1000	NA	NA	ATPase secretory pathway Ca2+ transporting 2
 Gene_00845000573	CEACAM1	>1000	NA	NA	CEA cell adhesion molecule 1
 Gene_00845013533	ZNF410	>1000	NA	NA	zinc finger protein 410
 Gene_00845006658	EREG	>1000	NA	NA	epiregulin
 Gene_00845030671	Unknown	>1000	NA	NA	No description
 Gene_00845011873	Unknown	>1000	NA	NA	No description
+Gene_00845027319	MROH8	>1000	NA	NA	maestro heat like repeat family member 8
 Gene_00845027443	ADGRG2	>1000	NA	NA	adhesion G protein-coupled receptor G2
 Gene_00845015432	UBE2T	>1000	NA	NA	ubiquitin conjugating enzyme E2 T
 Gene_00845028	Unknown	>1000	NA	NA	No description
+Gene_00845023779	FXR2	>1000	NA	NA	FMR1 autosomal homolog 2
+Gene_00845022467	WDCP	>1000	NA	NA	WD repeat and coiled coil containing
+Gene_00845011708	Unknown	>1000	NA	NA	No description
 Gene_00845004305	TMEM120A	>1000	NA	NA	transmembrane protein 120A
 Gene_00845016701	SEPHS1	>1000	NA	NA	selenophosphate synthetase 1
 Gene_00845016503	RASAL3	>1000	NA	NA	RAS protein activator like 3
@@ -250,198 +541,442 @@ Gene_00845002576	Unknown	>1000	NA	NA	No description
 Gene_00845006062	OR56B2	>1000	NA	NA	olfactory receptor family 56 subfamily B member 2
 Gene_00845016271	ULK2	>1000	NA	NA	unc-51 like autophagy activating kinase 2
 Gene_00845014328	TRIM29	>1000	NA	NA	tripartite motif containing 29
+Gene_00845011522	CCDC15	>1000	NA	NA	coiled-coil domain containing 15
+Gene_00845006700	RASEF	>1000	NA	NA	RAS and EF-hand domain containing
+Gene_00845025867	TBCD	>1000	NA	NA	tubulin folding cofactor D
+Gene_00845014310	MAT2A	>1000	NA	NA	methionine adenosyltransferase 2A
+Gene_00845009427	Unknown	>1000	NA	NA	No description
+Gene_00845021340	GALM	>1000	NA	NA	galactose mutarotase
+Gene_00845015783	Unknown	>1000	NA	NA	No description
+Gene_00845022885	WDR75	>1000	NA	NA	No description
+Gene_00845019813	Unknown	>1000	NA	NA	No description
 Gene_00845013641	Unknown	>1000	NA	NA	No description
+Gene_00845027282	NUCKS1	>1000	NA	NA	nuclear casein kinase and cyclin dependent kinase substrate 1
+Gene_00845023769	Unknown	>1000	NA	NA	No description
 Gene_00845007813	Unknown	>1000	NA	NA	No description
+Gene_00845023741	Unknown	>1000	NA	NA	No description
 Gene_00845000007	RMND1	>1000	NA	NA	required for meiotic nuclear division 1 homolog
+Gene_00845001325	Unknown	>1000	NA	NA	No description
+Gene_00845009786	Unknown	>1000	NA	NA	No description
+Gene_00845000946	CAPN9	>1000	NA	NA	calpain 9
+Gene_00845005180	Unknown	>1000	NA	NA	No description
 Gene_00845006489	SYNPO	>1000	NA	NA	synaptopodin
 Gene_00845012173	LSM7	>1000	NA	NA	LSM7 homolog, U6 small nuclear RNA and mRNA degradation associated
 Gene_00845001655	GAS7	>1000	NA	NA	No description
+Gene_00845009584	ZNF608	>1000	NA	NA	zinc finger protein 608
+Gene_00845021234	Unknown	>1000	NA	NA	No description
+Gene_00845012826	Unknown	>1000	NA	NA	No description
+Gene_00845021552	MYO7B	>1000	NA	NA	myosin VIIB
 Gene_00845022729	MNAT1	>1000	NA	NA	MNAT1 component of CDK activating kinase
+Gene_00845003080	CCDC102A	>1000	NA	NA	coiled-coil domain containing 102A
 Gene_00845010942	NFIB	>1000	NA	NA	nuclear factor I B
 Gene_00845027122	Unknown	>1000	NA	NA	No description
+Gene_00845021209	LLGL1	>1000	NA	NA	LLGL scribble cell polarity complex component 1
+Gene_00845027693	COL6A5	>1000	NA	NA	collagen type VI alpha 5 chain
+Gene_00845024615	MLF1	>1000	NA	NA	myeloid leukemia factor 1
+Gene_00845020315	APOB	>1000	NA	NA	apolipoprotein B
 Gene_00845012358	SLC6A4	>1000	NA	NA	solute carrier family 6 member 4
+Gene_00845002605	Unknown	>1000	NA	NA	No description
 Gene_00845016102	NCKAP1	>1000	NA	NA	NCK associated protein 1
 Gene_00845006311	NKAIN1	>1000	NA	NA	sodium/potassium transporting ATPase interacting 1
+Gene_00845014073	SEPHS2	>1000	NA	NA	selenophosphate synthetase 2
 Gene_00845026638	PCNT	>1000	NA	NA	pericentrin
 Gene_00845013697	REXO1	>1000	NA	NA	RNA exonuclease 1 homolog
 Gene_00845011731	SLC25A26	>1000	NA	NA	solute carrier family 25 member 26
 Gene_00845024946	MPRIP	>1000	NA	NA	myosin phosphatase Rho interacting protein
 Gene_00845023967	CHCHD4	>1000	NA	NA	No description
+Gene_00845014661	SLC4A8	>1000	NA	NA	solute carrier family 4 member 8
 Gene_00845006265	ABL2	>1000	NA	NA	ABL proto-oncogene 2, non-receptor tyrosine kinase
+Gene_00845028198	SLC22A15	>1000	NA	NA	solute carrier family 22 member 15
 Gene_00845019423	VIPR1	>1000	NA	NA	vasoactive intestinal peptide receptor 1
 Gene_00845024239	COMMD2	>1000	NA	NA	No description
 Gene_00845020077	SLC16A14	>1000	NA	NA	solute carrier family 16 member 14
 Gene_00845016274	RAB13	>1000	NA	NA	RAB13, member RAS onco family
+Gene_00845029092	VPS18	>1000	NA	NA	VPS18 core subunit of CORVET and HOPS complexes
 Gene_00845006703	HDAC9	>1000	NA	NA	histone deacetylase 9
 Gene_00845017815	Unknown	>1000	NA	NA	No description
+Gene_00845030272	HHIPL2	>1000	NA	NA	HHIP like 2
+Gene_00845006273	Unknown	>1000	NA	NA	No description
 Gene_00845006501	FZD4	>1000	NA	NA	frizzled class receptor 4
 Gene_00845011733	NDUFB9	>1000	NA	NA	NADH:ubiquinone oxidoreductase subunit B9
 Gene_00845013865	RPL23	>1000	NA	NA	ribosomal protein L23
 Gene_00845011900	Unknown	>1000	NA	NA	No description
+Gene_00845010571	GNA11	>1000	NA	NA	G protein subunit alpha 11
+Gene_00845012366	Unknown	>1000	NA	NA	No description
 Gene_00845011647	LRRC14	>1000	NA	NA	leucine rich repeat containing 14
+Gene_00845019569	OR7C19	>1000	NA	NA	olfactory receptor family 7 subfamily C member 19
 Gene_00845025521	Unknown	>1000	NA	NA	No description
 Gene_00845026982	NR4A1	>1000	NA	NA	nuclear receptor subfamily 4 group A member 1
+Gene_00845012616	MTRF1	>1000	NA	NA	mitochondrial translation release factor 1
+Gene_00845014501	FOXE1	>1000	NA	NA	forkhead box E1
+Gene_00845009222	SREK1IP1	>1000	NA	NA	SREK1 interacting protein 1
 Gene_00845020115	Unknown	>1000	NA	NA	No description
+Gene_00845002388	RYR2	>1000	NA	NA	ryanodine receptor 2
 Gene_00845030449	Unknown	>1000	NA	NA	No description
 Gene_00845011487	PTPRT	>1000	NA	NA	protein tyrosine phosphatase receptor type T
+Gene_00845024414	ETFA	>1000	NA	NA	electron transfer flavoprotein subunit alpha
+Gene_00845030313	IFIH1	>1000	NA	NA	interferon induced with helicase C domain 1
 Gene_00845024400	Unknown	>1000	NA	NA	No description
 Gene_00845000561	VGF	>1000	NA	NA	VGF nerve growth factor inducible
+Gene_00845002376	METTL4	>1000	NA	NA	methyltransferase 4, N6-adenosine
 Gene_00845030887	MARK2	>1000	NA	NA	microtubule affinity regulating kinase 2
 Gene_00845004539	Unknown	>1000	NA	NA	No description
+Gene_00845003242	Unknown	>1000	NA	NA	No description
 Gene_00845018886	Unknown	>1000	NA	NA	No description
 Gene_00845028170	ATP6V1B1	>1000	NA	NA	ATPase H+ transporting V1 subunit B1
 Gene_00845012	Unknown	>1000	NA	NA	No description
 Gene_00845013870	NELFE	>1000	NA	NA	negative elongation factor complex member E
+Gene_00845026161	ITGBL1	>1000	NA	NA	integrin subunit beta like 1
 Gene_00845012549	CCDC171	>1000	NA	NA	coiled-coil domain containing 171
+Gene_00845026808	SLC9A6	>1000	NA	NA	solute carrier family 9 member A6
 Gene_00845016288	MTAP	>1000	NA	NA	methylthioadenosine phosphorylase
+Gene_00845006931	Unknown	>1000	NA	NA	No description
 Gene_00845023569	PIKFYVE	>1000	NA	NA	phosphoinositide kinase, FYVE-type zinc finger containing
+Gene_00845018514	Unknown	>1000	NA	NA	No description
 Gene_00845015756	Unknown	>1000	NA	NA	No description
 Gene_00845010160	TMEM8B	>1000	NA	NA	transmembrane protein 8B
+Gene_00845018573	TUT4	>1000	NA	NA	terminal uridylyl transferase 4
 Gene_00845020952	RAPSN	>1000	NA	NA	receptor associated protein of the synapse
 Gene_00845004600	EMC9	>1000	NA	NA	ER membrane protein complex subunit 9
+Gene_00845002271	MAP3K4	>1000	NA	NA	mitogen-activated protein kinase kinase kinase 4
+Gene_00845002265	ATP4A	>1000	NA	NA	ATPase H+/K+ transporting subunit alpha
+Gene_00845017683	TMEM132A	>1000	NA	NA	transmembrane protein 132A
+Gene_00845013383	TMEM184C	>1000	NA	NA	transmembrane protein 184C
 Gene_00845020749	TRPM1	>1000	NA	NA	transient receptor potential cation channel subfamily M member 1
+Gene_00845030200	GCG	>1000	NA	NA	glucagon
 Gene_00845015533	PPP1R3D	>1000	NA	NA	protein phosphatase 1 regulatory subunit 3D
+Gene_00845007679	CREB3L2	>1000	NA	NA	diacylglycerol kinase iota
 Gene_00845003379	FXYD2	>1000	NA	NA	FXYD domain containing ion transport regulator 2
+Gene_00845025427	ATP13A5	>1000	NA	NA	ATPase 13A5
+Gene_00845001432	MEF2A	>1000	NA	NA	myocyte enhancer factor 2A
+Gene_00845008370	GCKR	>1000	NA	NA	glucokinase regulator
+Gene_00845019269	DNAJC2	>1000	NA	NA	DnaJ heat shock protein family (Hsp40) member C2
 Gene_00845009720	TXK	>1000	NA	NA	TXK tyrosine kinase
+Gene_00845015309	SSU72	>1000	NA	NA	SSU72 homolog, RNA polymerase II CTD phosphatase
 Gene_00845009907	Unknown	>1000	NA	NA	No description
 Gene_00845003594	Unknown	>1000	NA	NA	No description
+Gene_00845030176	RAB6B	>1000	NA	NA	RAB6B, member RAS oncogene family
+Gene_00845017734	WDR35	>1000	NA	NA	WD repeat domain 35
+Gene_00845003033	ADGRG5	>1000	NA	NA	adhesion G protein-coupled receptor G5
+Gene_00845004774	RNASET2	>1000	NA	NA	ribonuclease T2
 Gene_00845000512	EFNA5	>1000	NA	NA	ephrin A5
 Gene_00845025751	TMCO5A	>1000	NA	NA	transmembrane and coiled-coil domains 5A
+Gene_00845011392	SGTA	>1000	NA	NA	small glutamine rich tetratricopeptide repeat co-chaperone alpha
 Gene_00845028249	Unknown	>1000	NA	NA	No description
 Gene_00845003797	GLTPD2	>1000	NA	NA	glycolipid transfer protein domain containing 2
+Gene_00845006823	Unknown	>1000	NA	NA	No description
 Gene_00845028260	CEP112	>1000	NA	NA	centrosomal protein 112
+Gene_00845012103	FZD1	>1000	NA	NA	frizzled class receptor 1
 Gene_00845029817	Unknown	>1000	NA	NA	No description
 Gene_00845007532	ADAM21	>1000	NA	NA	No description
 Gene_00845025787	Unknown	>1000	NA	NA	No description
 Gene_00845005457	Unknown	>1000	NA	NA	No description
 Gene_00845024670	Unknown	>1000	NA	NA	No description
+Gene_00845022201	Unknown	>1000	NA	NA	No description
+Gene_00845003595	Unknown	>1000	NA	NA	No description
+Gene_00845010270	ZFPM2	>1000	NA	NA	zinc finger protein, FOG family member 2
 Gene_00845021913	Unknown	>1000	NA	NA	No description
 Gene_00845021907	Unknown	>1000	NA	NA	No description
 Gene_00845027386	SGSM1	>1000	NA	NA	No description
+Gene_00845011634	ZMIZ2	>1000	NA	NA	zinc finger MIZ-type containing 2
+Gene_00845003224	B3GALNT2	>1000	NA	NA	beta-1,3-N-acetylgalactosaminyltransferase 2
 Gene_00845005133	PPM1N	>1000	NA	NA	protein phosphatase, Mg2+/Mn2+ dependent 1N (putative)
+Gene_00845019485	TMEM74B	>1000	NA	NA	transmembrane protein 74B
+Gene_00845005084	ST3GAL2	>1000	NA	NA	ST3 beta-galactoside alpha-2,3-sialyltransferase 2
 Gene_00845007678	TMEM30A	>1000	NA	NA	transmembrane protein 30A
+Gene_00845006566	TXNRD1	>1000	NA	NA	thioredoxin reductase 1
+Gene_00845009133	NACA	>1000	NA	NA	nascent polypeptide associated complex subunit alpha
+Gene_00845005709	Unknown	>1000	NA	NA	No description
+Gene_00845001235	ATP1A3	>1000	NA	NA	ATPase Na+/K+ transporting subunit alpha 3
+Gene_00845030956	AGO3	>1000	NA	NA	argonaute RISC catalytic component 3
 Gene_00845024089	SON	>1000	NA	NA	SON DNA and RNA binding protein
+Gene_00845019687	CDC42EP3	>1000	NA	NA	CDC42 effector protein 3
+Gene_00845013396	PRICKLE2	>1000	NA	NA	prickle planar cell polarity protein 2
 Gene_00845003185	GSC	>1000	NA	NA	goosecoid homeobox
 Gene_00845014360	PITPNA	>1000	NA	NA	phosphatidylinositol transfer protein alpha
 Gene_00845002258	TMEM91	>1000	NA	NA	branched chain keto acid dehydrogenase E1 subunit alpha
 Gene_00845006994	MMRN2	>1000	NA	NA	multimerin 2
+Gene_00845018572	FAM217A	>1000	NA	NA	family with sequence similarity 217 member A
 Gene_00845021497	ATF4	>1000	NA	NA	activating transcription factor 4
 Gene_00845007336	TFAP2B	>1000	NA	NA	transcription factor AP-2 beta
 Gene_00845008763	RAB3GAP1	>1000	NA	NA	RAB3 GTPase activating protein catalytic subunit 1
+Gene_00845010104	C3	>1000	NA	NA	complement C3
+Gene_00845003178	ABCA14	>1000	NA	NA	ATP binding cassette subfamily A member 14
+Gene_00845012075	EFCAB5	>1000	NA	NA	EF-hand calcium binding domain 5
+Gene_00845001790	DIXDC1	>1000	NA	NA	DIX domain containing 1
+Gene_00845025626	RBBP5	>1000	NA	NA	RB binding protein 5, histone lysine methyltransferase complex subunit
+Gene_00845003187	KIFBP	>1000	NA	NA	kinesin family binding protein
+Gene_00845022607	CUL4B	>1000	NA	NA	cullin 4B
+Gene_00845021859	Unknown	>1000	NA	NA	No description
 Gene_00845024921	OR51V1B	>1000	NA	NA	olfactory receptor family 51 subfamily V member 1B
+Gene_00845013169	IFT52	>1000	NA	NA	intraflagellar transport 52
 Gene_00845028672	Unknown	>1000	NA	NA	No description
+Gene_00845003391	SYNE3	>1000	NA	NA	spectrin repeat containing nuclear envelope family member 3
 Gene_00845014809	KLK12	>1000	NA	NA	kallikrein related peptidase 12
 Gene_00845001419	GRIN2D	>1000	NA	NA	glutamate ionotropic receptor NMDA type subunit 2D
 Gene_00845003568	CEP164	>1000	NA	NA	centrosomal protein 164
+Gene_00845002474	Unknown	>1000	NA	NA	No description
 Gene_00845003018	ZNF782	>1000	NA	NA	zinc finger protein 782
+Gene_00845029183	Unknown	>1000	NA	NA	No description
+Gene_00845017904	Unknown	>1000	NA	NA	No description
 Gene_00845025009	Unknown	>1000	NA	NA	No description
 Gene_00845027636	UBXN2B	>1000	NA	NA	UBX domain protein 2B
+Gene_00845010703	AMTN	>1000	NA	NA	amelotin
 Gene_00845017078	RBBP8NL	>1000	NA	NA	RBBP8 N-terminal like
+Gene_00845010059	Unknown	>1000	NA	NA	No description
+Gene_00845014798	NOS2	>1000	NA	NA	nitric oxide synthase 2
+Gene_00845014954	Unknown	>1000	NA	NA	No description
+Gene_00845023875	BPIFB1	>1000	NA	NA	BPI fold containing family B member 1
+Gene_00845000712	SSC5D	>1000	NA	NA	scavenger receptor cysteine rich family member with 5 domains
 Gene_00845019243	Unknown	>1000	NA	NA	No description
 Gene_00845018149	RAB3IP	>1000	NA	NA	RAB3A interacting protein
 Gene_00845010273	TNNT3	>1000	NA	NA	No description
 Gene_00845021086	FGF8	>1000	NA	NA	fibroblast growth factor 8
 Gene_00845005642	GGN	>1000	NA	NA	gametogenetin
+Gene_00845021131	PRDM12	>1000	NA	NA	PR/SET domain 12
+Gene_00845010313	FOSL2	>1000	NA	NA	FOS like 2, AP-1 transcription factor subunit
+Gene_00845002065	ENOSF1	>1000	NA	NA	enolase superfamily member 1
 Gene_00845030941	ERAS	>1000	NA	NA	ES cell expressed Ras
+Gene_00845021694	SPC24	>1000	NA	NA	SPC24 component of NDC80 kinetochore complex
 Gene_00845013154	NOBOX	>1000	NA	NA	NOBOX oogenesis homeobox
+Gene_00845025380	Unknown	>1000	NA	NA	No description
+Gene_00845005050	CCDC28B	>1000	NA	NA	coiled-coil domain containing 28B
+Gene_00845022160	Unknown	>1000	NA	NA	No description
+Gene_00845022606	HTR2B	>1000	NA	NA	5-hydroxytryptamine receptor 2B
 Gene_00845020763	OR4Q3	>1000	NA	NA	olfactory receptor family 4 subfamily Q member 3
 Gene_00845030558	AP1B1	>1000	NA	NA	No description
+Gene_00845005291	SLC36A1	>1000	NA	NA	solute carrier family 36 member 1
+Gene_00845004602	E4F1	>1000	NA	NA	E4F transcription factor 1
 Gene_00845003623	CUL5	>1000	NA	NA	cullin 5
+Gene_00845020798	Unknown	>1000	NA	NA	No description
+Gene_00845017134	Unknown	>1000	NA	NA	No description
+Gene_00845030574	ESRRA	>1000	NA	NA	estrogen related receptor alpha
+Gene_00845016014	PITX2	>1000	NA	NA	paired like homeodomain 2
 Gene_00845027587	PLCB2	>1000	NA	NA	phospholipase C beta 2
 Gene_00845003394	MLXIPL	>1000	NA	NA	MLX interacting protein like
+Gene_00845028677	Unknown	>1000	NA	NA	No description
+Gene_00845013018	GRIP1	>1000	NA	NA	glutamate receptor interacting protein 1
+Gene_00845007079	AVIL	>1000	NA	NA	advillin
 Gene_00845021928	TEX14	>1000	NA	NA	testis expressed 14, intercellular bridge forming factor
 Gene_00845020363	TOP3A	>1000	NA	NA	DNA topoisomerase III alpha
 Gene_00845013795	VPS53	>1000	NA	NA	VPS53 subunit of GARP complex
 Gene_00845022548	SIX1	>1000	NA	NA	SIX homeobox 1
+Gene_00845010075	ABLIM3	>1000	NA	NA	actin binding LIM protein family member 3
+Gene_00845001622	ANKHD1	>1000	NA	NA	ankyrin repeat and KH domain containing 1
 Gene_00845026289	UBE2D3	>1000	NA	NA	ubiquitin conjugating enzyme E2 D3
 Gene_00845030366	GMPPA	>1000	NA	NA	GDP-mannose pyrophosphorylase A
 Gene_00845021519	SCOC	>1000	NA	NA	No description
+Gene_00845011394	Unknown	>1000	NA	NA	No description
+Gene_00845007284	CLEC20A	>1000	NA	NA	C-type lectin domain containing 20A
+Gene_00845023455	CNBD2	>1000	NA	NA	cyclic nucleotide binding domain containing 2
+Gene_00845020821	CSPP1	>1000	NA	NA	centrosome and spindle pole associated protein 1
 Gene_00845003752	AP3B2	>1000	NA	NA	No description
 Gene_00845005690	DGKA	>1000	NA	NA	diacylglycerol kinase alpha
+Gene_00845021040	ADAM23	>1000	NA	NA	ADAM metallopeptidase domain 23
 Gene_00845000918	DBP	>1000	NA	NA	D-box binding PAR bZIP transcription factor
+Gene_00845002882	CALML5	>1000	NA	NA	calmodulin like 5
+Gene_00845017531	MTMR2	>1000	NA	NA	myotubularin related protein 2
 Gene_00845015332	KLK6	>1000	NA	NA	kallikrein related peptidase 6
+Gene_00845030818	Unknown	>1000	NA	NA	No description
 Gene_00845015468	Unknown	>1000	NA	NA	No description
 Gene_00845012298	TMEM165	>1000	NA	NA	transmembrane protein 165
 Gene_00845030039	GAR1	>1000	NA	NA	retinal pigment epithelium-derived rhodopsin homolog
+Gene_00845007695	GPSM2	>1000	NA	NA	No description
+Gene_00845022373	ILDR1	>1000	NA	NA	immunoglobulin like domain containing receptor 1
 Gene_00845015508	RBBP8	>1000	NA	NA	RB binding protein 8, endonuclease
 Gene_00845009121	Unknown	>1000	NA	NA	No description
+Gene_00845029583	CRY2	>1000	NA	NA	cryptochrome circadian regulator 2
 Gene_00845017684	MGLL	>1000	NA	NA	monoglyceride lipase
+Gene_00845015050	DYDC1	>1000	NA	NA	No description
+Gene_00845020955	LIN54	>1000	NA	NA	lin-54 DREAM MuvB core complex component
+Gene_00845002510	NLRP1	>1000	NA	NA	NLR family pyrin domain containing 1
+Gene_00845010672	TEX43	>1000	NA	NA	sperm associated microtubule inner protein 10
 Gene_00845019132	Unknown	>1000	NA	NA	No description
+Gene_00845014364	ADGRL3	>1000	NA	NA	adhesion G protein-coupled receptor L3
+Gene_00845003624	TENM2	>1000	NA	NA	teneurin transmembrane protein 2
+Gene_00845015913	TRAPPC11	>1000	NA	NA	trafficking protein particle complex subunit 11
 Gene_00845003817	Unknown	>1000	NA	NA	No description
+Gene_00845015244	Unknown	>1000	NA	NA	No description
+Gene_00845027590	CLSTN2	>1000	NA	NA	calsyntenin 2
 Gene_00845027235	ATP9A	>1000	NA	NA	ATPase phospholipid transporting 9A (putative)
+Gene_00845014199	Unknown	>1000	NA	NA	No description
+Gene_00845029393	Unknown	>1000	NA	NA	No description
+Gene_00845012463	CFAP99	>1000	NA	NA	cilia and flagella associated protein 99
+Gene_00845011142	EDEM1	>1000	NA	NA	ER degradation enhancing alpha-mannosidase like protein 1
 Gene_00845015324	Unknown	>1000	NA	NA	No description
 Gene_00845005889	TPCN2	>1000	NA	NA	two pore segment channel 2
+Gene_00845027396	EPB41L5	>1000	NA	NA	erythrocyte membrane protein band 4.1 like 5
+Gene_00845005645	Unknown	>1000	NA	NA	No description
 Gene_00845008407	RUNDC3B	>1000	NA	NA	RUN domain containing 3B
+Gene_00845028728	NELL2	>1000	NA	NA	neural EGFL like 2
+Gene_00845001392	Unknown	>1000	NA	NA	No description
 Gene_00845028066	XPO7	>1000	NA	NA	exportin 7
+Gene_00845007091	PDE4D	>1000	NA	NA	phosphodiesterase 4D
+Gene_00845016407	SERPINA7	>1000	NA	NA	serpin family A member 7
 Gene_00845006172	RASSF6	>1000	NA	NA	Ras association domain family member 6
+Gene_00845009282	Unknown	>1000	NA	NA	No description
 Gene_00845023331	FAM227A	>1000	NA	NA	family with sequence similarity 227 member A
+Gene_00845005490	TLE7	>1000	NA	NA	TLE family member 7
 Gene_00845023443	SPTLC3	>1000	NA	NA	serine palmitoyltransferase long chain base subunit 3
 Gene_00845023325	Unknown	>1000	NA	NA	No description
 Gene_00845003962	STYX	>1000	NA	NA	serine/threonine/tyrosine interacting protein
+Gene_00845021296	EFHB	>1000	NA	NA	EF-hand domain family member B
+Gene_00845018365	CYP26A1	>1000	NA	NA	cytochrome P450 family 26 subfamily A member 1
+Gene_00845012106	PSMD11	>1000	NA	NA	proteasome 26S subunit, non-ATPase 11
+Gene_00845010063	MYO18A	>1000	NA	NA	myosin XVIIIA
 Gene_00845019286	Unknown	>1000	NA	NA	No description
 Gene_00845027368	ECE2	>1000	NA	NA	endothelin converting enzyme 2
 Gene_00845022210	Unknown	>1000	NA	NA	No description
+Gene_00845029392	SCP2D1	>1000	NA	NA	SCP2 sterol binding domain containing 1
 Gene_00845000066	HDDC2	>1000	NA	NA	HD domain containing 2
+Gene_00845023720	KRT78	>1000	NA	NA	keratin 78
 Gene_00845022358	Unknown	>1000	NA	NA	No description
 Gene_00845011792	ARHGAP8	>1000	NA	NA	Rho GTPase activating protein 8
+Gene_00845007866	MYBPC1	>1000	NA	NA	myosin binding protein C1
+Gene_00845007127	Unknown	>1000	NA	NA	No description
 Gene_00845010329	Unknown	>1000	NA	NA	No description
+Gene_00845017308	Unknown	>1000	NA	NA	No description
+Gene_00845014601	MFRP	>1000	NA	NA	membrane frizzled-related protein
 Gene_00845029580	SCLY	>1000	NA	NA	selenocysteine lyase
 Gene_00845018749	PIK3C2G	>1000	NA	NA	phosphatidylinositol-4-phosphate 3-kinase catalytic subunit type 2 gamma
 Gene_00845009491	TAC3	>1000	NA	NA	tachykinin 3
+Gene_00845024517	ACP2	>1000	NA	NA	acid phosphatase 2, lysosomal
 Gene_00845030562	TRMT112	>1000	NA	NA	tRNA methyltransferase activator subunit 11-2
+Gene_00845014359	SIGLECL1	>1000	NA	NA	SIGLEC family like 1
+Gene_00845006985	Unknown	>1000	NA	NA	No description
 Gene_00845006991	Unknown	>1000	NA	NA	No description
+Gene_00845002261	LAIR1	>1000	NA	NA	No description
+Gene_00845010671	CIAO2B	>1000	NA	NA	cytosolic iron-sulfur assembly component 2B
 Gene_00845005658	SPATA19	996.98	NA	NA	spermatogenesis associated 19
+Gene_00845028864	CCDC60	994.01	NA	NA	coiled-coil domain containing 60
+Gene_00845005511	ZNF23	981.58	NA	NA	zinc finger protein 23
+Gene_00845015070	DLGAP5	970.18	NA	NA	DLG associated protein 5
 Gene_00845028210	IPO13	962.68	NA	NA	importin 13
+Gene_00845025383	Unknown	953.33	NA	NA	No description
 Gene_00845019048	MTNR1A	936.37	NA	NA	melatonin receptor 1A
 Gene_00845029158	ITGB6	924.74	NA	NA	integrin subunit beta 6
+Gene_00845028783	DCDC1	921.04	NA	NA	doublecortin domain containing 1
+Gene_00845018798	BTK	907.82	NA	NA	Bruton tyrosine kinase
+Gene_00845010151	Unknown	900.89	NA	NA	No description
 Gene_00845027248	SRBD1	891.73	NA	NA	S1 RNA binding domain 1
+Gene_00845028832	DCLK1	881.83	NA	NA	doublecortin like kinase 1
+Gene_00845026328	Unknown	873.40	NA	NA	No description
 Gene_00845022317	MSH3	860.59	NA	NA	mutS homolog 3
 Gene_00845025322	TSN	857.10	NA	NA	translin
+Gene_00845000207	Unknown	850.98	NA	NA	No description
+Gene_00845026480	HR	850.09	NA	NA	HR lysine demethylase and nuclear receptor corepressor
+Gene_00845029568	PLEKHG6	846.19	NA	NA	pleckstrin homology and RhoGEF domain containing G6
 Gene_00845028924	SDHC	835.31	NA	NA	succinate dehydrogenase complex subunit C
+Gene_00845024177	DPH6	827.05	NA	NA	diphthamine biosynthesis 6
+Gene_00845016951	CLCN1	823.18	NA	NA	chloride voltage-gated channel 1
+Gene_00845017184	SEC31B	822.19	NA	NA	SEC31 homolog B, COPII coat complex component
+Gene_00845024423	Unknown	818.35	NA	NA	No description
 Gene_00845020691	EHBP1L1	799.83	NA	NA	EH domain binding protein 1 like 1
 Gene_00845030548	DLG1	791.78	NA	NA	discs large MAGUK scaffold protein 1
+Gene_00845023250	POLG2	789.20	NA	NA	DNA polymerase gamma 2, accessory subunit
 Gene_00845005377	Unknown	778.47	NA	NA	No description
+Gene_00845028929	RAPGEF4	778.33	NA	NA	Rap guanine nucleotide exchange factor 4
 Gene_00845018917	PKN2	776.48	NA	NA	protein kinase N2
+Gene_00845028574	IQCG	774.62	NA	NA	IQ motif containing G
 Gene_00845017866	MUS81	774.22	NA	NA	MUS81 structure-specific endonuclease subunit
 Gene_00845024611	CLSTN3	760.50	NA	NA	calsyntenin 3
 Gene_00845023596	Unknown	759.83	NA	NA	No description
 Gene_00845027279	AADAC	749.92	NA	NA	arylacetamide deacetylase
+Gene_00845014591	NMT2	743.97	NA	NA	N-myristoyltransferase 2
+Gene_00845012335	RIC8B	740.88	NA	NA	RIC8 guanine nucleotide exchange factor B
+Gene_00845013233	ELMSAN1	738.50	NA	NA	mitotic deacetylase associated SANT domain protein
+Gene_00845000495	Unknown	732.58	NA	NA	No description
 Gene_00845021676	Unknown	731.72	NA	NA	No description
+Gene_00845011859	Unknown	719.02	NA	NA	No description
+Gene_00845011964	Unknown	714.18	NA	NA	No description
 Gene_00845005361	CCL21	711.04	NA	NA	C-C motif chemokine ligand 21
+Gene_00845019013	BFSP1	708.02	NA	NA	No description
+Gene_00845010961	RAC1	704.24	NA	NA	Rac family small GTPase 1
 Gene_00845024395	Unknown	704.10	NA	NA	No description
 Gene_00845021151	Unknown	703.49	NA	NA	No description
 Gene_00845022593	PRDX1	701.56	NA	NA	peroxiredoxin 1
 Gene_00845002326	Unknown	695.91	NA	NA	No description
 Gene_00845010236	INPPL1	694.34	NA	NA	inositol polyphosphate phosphatase like 1
+Gene_00845021253	STAG1	690.75	NA	NA	STAG1 cohesin complex component
 Gene_00845030936	SSBP1	684.66	NA	NA	single stranded DNA binding protein 1
 Gene_00845013733	GNAS	676.45	NA	NA	GNAS complex locus
+Gene_00845008230	PDILT	670.09	NA	NA	protein disulfide isomerase like, testis expressed
+Gene_00845000999	POU2F2	669.45	NA	NA	POU class 2 homeobox 2
 Gene_00845000	Unknown	669.45	NA	NA	No description
 Gene_00845028537	CTNNBL1	660.80	NA	NA	catenin beta like 1
+Gene_00845005718	Unknown	655.94	NA	NA	No description
 Gene_00845022559	PLEKHA3	648.51	NA	NA	pleckstrin homology domain containing A3
+Gene_00845021896	SSBP4	643.03	NA	NA	single stranded DNA binding protein 4
+Gene_00845015282	FAM172A	640.77	NA	NA	family with sequence similarity 172 member A
+Gene_00845004884	Unknown	639.14	NA	NA	No description
 Gene_00845029592	Unknown	638.38	NA	NA	No description
+Gene_00845026602	MED13	635.10	NA	NA	mediator complex subunit 13
+Gene_00845009049	GRM6	630.95	NA	NA	glutamate metabotropic receptor 6
 Gene_00845027774	EDNRB	628.89	NA	NA	endothelin receptor type B
+Gene_00845021177	Unknown	626.41	NA	NA	No description
+Gene_00845006117	RELB	621.58	NA	NA	RELB proto-oncogene, NF-kB subunit
 Gene_00845011445	RNF139	620.19	NA	NA	ring finger protein 139
+Gene_00845005159	EIF3K	618.92	NA	NA	eukaryotic translation initiation factor 3 subunit K
 Gene_00845019113	NDUFAF7	613.37	NA	NA	NADH:ubiquinone oxidoreductase complex assembly factor 7
+Gene_00845005909	KIAA1549	611.94	NA	NA	KIAA1549
+Gene_00845002107	SLC13A5	610.52	NA	NA	solute carrier family 13 member 5
+Gene_00845003449	DACT3	605.38	NA	NA	dishevelled binding antagonist of beta catenin 3
+Gene_00845012933	DENND3	602.94	NA	NA	DENN domain containing 3
+Gene_00845018387	GINM1	594.56	NA	NA	glycosylated integral membrane protein 1
+Gene_00845006761	PROM2	593.89	NA	NA	prominin 2
 Gene_00845010483	ADAMTS13	592.68	NA	NA	ADAM metallopeptidase with thrombospondin type 1 motif 13
 Gene_00845006609	Unknown	589.26	NA	NA	No description
+Gene_00845012684	TAF4B	584.36	NA	NA	TATA-box binding protein associated factor 4b
+Gene_00845007447	CAMSAP1	582.59	NA	NA	calmodulin regulated spectrin associated protein 1
+Gene_00845005311	TICAM2	581.86	NA	NA	toll like receptor adaptor molecule 2
+Gene_00845021660	Unknown	579.96	NA	NA	No description
+Gene_00845015652	KLK1	578.51	NA	NA	kallikrein 1
 Gene_00845002193	SULT1A1	577.42	NA	NA	sulfotransferase family, cytosolic, 1A, phenol-preferring, member 1
 Gene_00845021751	Unknown	573.43	NA	NA	No description
+Gene_00845012881	L3MBTL1	568.59	NA	NA	L3MBTL histone methyl-lysine binding protein 1
 Gene_00845030327	SF3A3	565.13	NA	NA	No description
+Gene_00845019617	KIF21B	557.37	NA	NA	kinesin family member 21B
+Gene_00845009762	LIN7A	552.67	NA	NA	lin-7 homolog A, crumbs cell polarity complex component
+Gene_00845025416	NEK10	540.53	NA	NA	NIMA related kinase 10
 Gene_00845020860	CSPG4	531.89	NA	NA	chondroitin sulfate proteoglycan 4
 Gene_00845025058	Unknown	531.64	NA	NA	No description
+Gene_00845009802	PKD1L1	528.58	NA	NA	polycystin 1 like 1, transient receptor potential channel interacting
+Gene_00845022837	Unknown	525.91	NA	NA	No description
 Gene_00845021782	IDS	525.75	NA	NA	iduronate 2-sulfatase
+Gene_00845028809	HSPB8	520.06	NA	NA	heat shock protein family B (small) member 8
+Gene_00845011986	FUS	518.84	NA	NA	FUS RNA binding protein
 Gene_00845027012	KSR2	515.03	NA	NA	kinase suppressor of ras 2
 Gene_00845014474	LRG1	514.40	NA	NA	leucine rich alpha-2-glycoprotein 1
 Gene_00845025227	LMO7	513.99	NA	NA	LIM domain 7
+Gene_00845008154	RUSC2	513.77	NA	NA	RUN and SH3 domain containing 2
+Gene_00845017940	Unknown	512.96	NA	NA	No description
 Gene_00845011806	LRRIQ1	511.38	NA	NA	leucine rich repeats and IQ motif containing 1
+Gene_00845007512	DEPDC1B	507.91	NA	NA	DEP domain containing 1B
+Gene_00845012682	POLN	505.93	NA	NA	DNA polymerase nu
 Gene_00845006563	NARF	504.36	NA	NA	nuclear prelamin A recognition factor
+Gene_00845010890	SYN3	501.56	NA	NA	synapsin III
+Gene_00845027292	ATG13	501.43	NA	NA	autophagy related 13
+Gene_00845000348	UVSSA	501.12	NA	NA	UV stimulated scaffold protein A
+Gene_00845021149	Unknown	499.11	NA	NA	No description
+Gene_00845024020	Unknown	498.45	NA	NA	No description
+Gene_00845025602	SLC26A4	498.01	NA	NA	solute carrier family 26 member 4
 Gene_00845018762	OR5B33	491.22	NA	NA	olfactory receptor family 5 subfamily B member 33
 Gene_00845024769	RPL18A	491.01	NA	NA	No description
+Gene_00845026692	Unknown	490.45	NA	NA	No description
+Gene_00845030325	SPTBN5	480.26	NA	NA	spectrin beta, non-erythrocytic 5
 Gene_00845000266	ARL15	478.41	NA	NA	ADP ribosylation factor like GTPase 15
+Gene_00845030098	F8	478.37	NA	NA	coagulation factor VIII
+Gene_00845009403	NFXL1	477.07	NA	NA	nuclear transcription factor, X-box binding like 1
+Gene_00845017021	KIF11	467.92	NA	NA	kinesin family member 11
 Gene_00845005891	IPO4	466.50	NA	NA	importin 4
+Gene_00845026533	CCNB3	464.45	NA	NA	cyclin B3
+Gene_00845027198	MYO5C	463.15	NA	NA	myosin VC
 Gene_00845008092	IFT172	463.08	NA	NA	intraflagellar transport 172
+Gene_00845005247	FAT2	462.65	NA	NA	FAT atypical cadherin 2
+Gene_00845007472	LIN28B	460.69	NA	NA	lin-28 homolog B
 Gene_00845030766	PORCN	458.59	NA	NA	porcupine O-acyltransferase
 Gene_00845002666	MAX	456.72	NA	NA	MYC associated factor X
+Gene_00845001140	GRIK5	456.52	NA	NA	glutamate ionotropic receptor kainate type subunit 5
 Gene_00845005060	TMED3	454.63	NA	NA	transmembrane p24 trafficking protein 3
 Gene_00845017424	CD6	449.02	NA	NA	CD6 molecule
 Gene_00845026194	TRANK1	447.95	NA	NA	tetratricopeptide repeat and ankyrin repeat containing 1
@@ -450,136 +985,286 @@ Gene_00845022241	CARMIL1	443.72	NA	NA	capping protein regulator and myosin 1 lin
 Gene_00845011534	LANCL2	439.73	NA	NA	LanC like glutathione S-transferase 2
 Gene_00845031038	BRAF	432.52	NA	NA	B-Raf proto-oncogene, serine/threonine kinase
 Gene_00845021771	Unknown	430.44	NA	NA	No description
+Gene_00845003555	EFS	427.99	NA	NA	embryonal Fyn-associated substrate
 Gene_00845015	Unknown	425.72	NA	NA	No description
+Gene_00845015999	LSM14B	425.72	NA	NA	LSM family member 14B
+Gene_00845015325	VIPR2	424.29	NA	NA	vasoactive intestinal peptide receptor 2
 Gene_00845018546	EPHX3	422.80	NA	NA	epoxide hydrolase 3
 Gene_00845024778	Unknown	421.74	NA	NA	No description
+Gene_00845011930	LTF	419.34	NA	NA	lactotransferrin
 Gene_00845008077	Unknown	414.89	NA	NA	No description
+Gene_00845014669	SYCP2	413.91	NA	NA	synaptonemal complex protein 2
 Gene_00845030800	TAS2R38	411.69	NA	NA	taste 2 receptor member 38
 Gene_00845018898	FDFT1	408.79	NA	NA	farnesyl-diphosphate farnesyltransferase 1
 Gene_00845027569	XRN2	408.69	NA	NA	5'-3' exoribonuclease 2
+Gene_00845002840	Unknown	407.52	NA	NA	No description
+Gene_00845018177	ZC3H12D	405.16	NA	NA	zinc finger CCCH-type containing 12D
+Gene_00845016440	FAM81A	404.73	NA	NA	family with sequence similarity 81 member A
 Gene_00845009197	ARHGDIA	403.83	NA	NA	Rho GDP dissociation inhibitor alpha
+Gene_00845028947	GCSAM	401.68	NA	NA	germinal center associated signaling and motility
 Gene_00845011536	Unknown	399.83	NA	NA	No description
 Gene_00845022515	ZBTB4	398.89	NA	NA	zinc finger and BTB domain containing 4
+Gene_00845022205	CCNDBP1	396.61	NA	NA	cyclin D1 binding protein 1
+Gene_00845007217	LGSN	392.68	NA	NA	lengsin, lens protein with glutamine synthetase domain
 Gene_00845010866	SYTL1	388.52	NA	NA	synaptotagmin like 1
+Gene_00845024333	INPP5A	388.17	NA	NA	inositol polyphosphate-5-phosphatase A
 Gene_00845025630	TRPM8	386.13	NA	NA	transient receptor potential cation channel subfamily M member 8
+Gene_00845027901	FLNA	382.71	NA	NA	No description
+Gene_00845000050	Unknown	380.41	NA	NA	No description
+Gene_00845000756	TAPT1	379.47	NA	NA	transmembrane anterior posterior transformation 1
 Gene_00845024397	Unknown	378.51	NA	NA	No description
 Gene_00845009995	KCNK10	377.50	NA	NA	potassium two pore domain channel subfamily K member 10
+Gene_00845012015	ADD1	373.95	NA	NA	adducin 1
+Gene_00845022499	THAP10	373.68	NA	NA	THAP domain containing 10
 Gene_00845017081	GEN1	371.81	NA	NA	GEN1 Holliday junction 5' flap endonuclease
+Gene_00845021143	Unknown	370.00	NA	NA	No description
 Gene_00845010697	DCUN1D4	367.58	NA	NA	defective in cullin neddylation 1 domain containing 4
+Gene_00845013477	OR6B1	359.78	NA	NA	olfactory receptor family 6 subfamily B member 1
+Gene_00845025961	Unknown	355.02	NA	NA	No description
 Gene_00845003599	Unknown	354.03	NA	NA	No description
 Gene_00845027654	RINT1	353.50	NA	NA	RAD50 interactor 1
 Gene_00845027434	CXXC4	353.42	NA	NA	CXXC finger protein 4
 Gene_00845008950	FAM126A	351.08	NA	NA	hyccin PI4KA lipid kinase complex subunit 1
+Gene_00845027388	VSIG4	348.31	NA	NA	No description
 Gene_00845009475	MRPL33	343.87	NA	NA	mitochondrial ribosomal protein L33
 Gene_00845021743	TLE3	339.25	NA	NA	TLE family member 3, transcriptional corepressor
 Gene_00845007701	SLIRP	338.45	NA	NA	No description
+Gene_00845027302	DMTN	337.90	NA	NA	dematin actin binding protein
+Gene_00845010342	NXPH4	336.04	NA	NA	neurexophilin 4
+Gene_00845024365	ADAMTS16	335.88	NA	NA	ADAM metallopeptidase with thrombospondin type 1 motif 16
+Gene_00845019752	FAM110A	334.08	NA	NA	family with sequence similarity 110 member A
+Gene_00845022336	FNBP1	333.14	NA	NA	formin binding protein 1
 Gene_00845005218	ST6GALNAC6	332.65	NA	NA	ST6 N-acetylgalactosaminide alpha-2,6-sialyltransferase 6
 Gene_00845029623	SIN3B	327.60	NA	NA	SIN3 transcription regulator family member B
+Gene_00845019686	DACT1	327.28	NA	NA	dishevelled binding antagonist of beta catenin 1
+Gene_00845012415	Unknown	326.32	NA	NA	No description
+Gene_00845008119	WDR97	323.12	NA	NA	WD repeat domain 97
 Gene_00845002180	Unknown	320.65	NA	NA	No description
 Gene_00845023296	PSMB4	318.80	NA	NA	proteasome 20S subunit beta 4
 Gene_00845018168	Unknown	318.76	NA	NA	No description
+Gene_00845009387	ADAMTS6	316.23	NA	NA	ADAM metallopeptidase with thrombospondin type 1 motif 6
+Gene_00845005121	PAXX	315.59	NA	NA	PAXX non-homologous end joining factor
+Gene_00845019143	Unknown	312.33	NA	NA	No description
 Gene_00845016973	SKI	311.23	NA	NA	SKI proto-oncogene
+Gene_00845005674	Unknown	307.93	NA	NA	No description
+Gene_00845024115	Unknown	306.78	NA	NA	No description
 Gene_00845028435	CAMK2D	305.15	NA	NA	calcium/calmodulin dependent protein kinase II delta
+Gene_00845028035	PDHA1	300.11	NA	NA	pyruvate dehydrogenase E1 subunit alpha 1
+Gene_00845022723	TIMM29	297.00	NA	NA	translocase of inner mitochondrial membrane 29
 Gene_00845026154	Unknown	293.97	NA	NA	No description
 Gene_00845027915	DDX51	284.78	NA	NA	DEAD-box helicase 51
+Gene_00845006929	PANX	283.56	NA	NA	pannexin 2
 Gene_00845028559	GK5	277.48	NA	NA	glycerol kinase 5
+Gene_00845013103	RPL31	276.25	NA	NA	ribosomal protein L31
+Gene_00845030895	SLAMF9	274.75	NA	NA	SLAM family member 9
 Gene_00845026635	CACNA2D3	274.73	NA	NA	calcium voltage-gated channel auxiliary subunit alpha2delta 3
 Gene_00845000008	ENPP1	274.65	NA	NA	No description
+Gene_00845008525	Unknown	271.42	NA	NA	No description
+Gene_00845029155	TAPBPL	271.21	NA	NA	TAP binding protein like
+Gene_00845021542	EEF1A2	269.15	NA	NA	eukaryotic translation elongation factor 1 alpha 2
+Gene_00845014640	RNF141	267.91	NA	NA	ring finger protein 141
 Gene_00845009459	Unknown	264.82	NA	NA	No description
 Gene_00845016481	ZYX	263.27	NA	NA	zyxin
+Gene_00845013330	RAB22A	260.79	NA	NA	RAB22A, member RAS onco family
+Gene_00845003326	ZNF365	258.78	NA	NA	zinc finger protein 365
 Gene_00845001932	Unknown	258.37	NA	NA	No description
+Gene_00845015295	TBPL2	257.76	NA	NA	TATA-box binding protein like 2
 Gene_00845024074	Unknown	252.53	NA	NA	No description
+Gene_00845022953	UBE3B	251.75	NA	NA	ubiquitin protein ligase E3B
 Gene_00845005848	Unknown	250.87	NA	NA	No description
+Gene_00845002598	EEF2K	250.57	NA	NA	eukaryotic elongation factor 2 kinase
 Gene_00845012478	Unknown	249.52	NA	NA	No description
+Gene_00845025766	Unknown	246.73	NA	NA	No description
 Gene_00845007738	GJC2	244.44	NA	NA	gap junction protein gamma 2
 Gene_00845014688	ANO1	243.15	NA	NA	anoctamin 1
+Gene_00845009564	GNAQ	241.27	NA	NA	G protein subunit alpha q
+Gene_00845015224	ZFAND1	239.15	NA	NA	zinc finger AN1-type containing 1
+Gene_00845011505	SHROOM1	238.89	NA	NA	shroom family member 1
 Gene_00845000073	NFATC1	236.44	NA	NA	nuclear factor of activated T cells 1
+Gene_00845015474	TBL1XR1	236.29	NA	NA	TBL1X/Y related 1
+Gene_00845015545	PODXL	235.81	NA	NA	podocalyxin like
 Gene_00845001300	Unknown	235.51	NA	NA	No description
 Gene_00845022642	RBMX	234.61	NA	NA	No description
+Gene_00845009314	BOP1	233.01	NA	NA	BOP1 ribosomal biogenesis factor
+Gene_00845019510	PSMF1	232.96	NA	NA	proteasome inhibitor subunit 1
 Gene_00845025855	FAM243A	231.71	NA	NA	chromosome 21 open reading frame 140
+Gene_00845003003	Unknown	230.11	NA	NA	No description
+Gene_00845000404	NRBF2	229.22	NA	NA	nuclear receptor binding factor 2
+Gene_00845028798	PDK1	228.92	NA	NA	pyruvate dehydrogenase kinase 1
 Gene_00845013000	PSMC1	227.56	NA	NA	proteasome 26S subunit, ATPase 1
 Gene_00845011397	SCFD2	226.69	NA	NA	sec1 family domain containing 2
+Gene_00845016990	Unknown	220.95	NA	NA	No description
+Gene_00845014808	Unknown	214.74	NA	NA	No description
 Gene_00845020741	Unknown	212.72	NA	NA	No description
 Gene_00845029777	Unknown	211.06	NA	NA	No description
 Gene_00845010034	TMEM182	210.10	NA	NA	transmembrane protein 182
 Gene_00845002253	NOP53	209.76	NA	NA	NOP53 ribosome biogenesis factor
+Gene_00845030335	NDUFA10	209.63	NA	NA	NADH:ubiquinone oxidoreductase subunit A10
 Gene_00845026199	TCP11L1	209.40	NA	NA	t-complex 11 like 1
+Gene_00845027834	EIF3J	209.16	NA	NA	eukaryotic translation initiation factor 3 subunit J
+Gene_00845001454	ROCK1	209.14	NA	NA	Rho associated coiled-coil containing protein kinase 1
 Gene_00845003491	SPNS1	209.13	NA	NA	SPNS lysolipid transporter 1, lysophospholipid
 Gene_00845026	Unknown	208.06	NA	NA	No description
+Gene_00845025759	Unknown	204.60	NA	NA	No description
 Gene_00845014308	AP5Z1	203.42	NA	NA	adaptor related protein complex 5 subunit zeta 1
+Gene_00845005904	C5H1orf87	203.18	NA	NA	chromosome 1 open reading frame 87
+Gene_00845009737	PDE2A	201.21	NA	NA	phosphodiesterase 2A
 Gene_00845000354	NLRP5	201.01	NA	NA	NLR family pyrin domain containing 5
+Gene_00845024364	ATP1B2	199.08	NA	NA	ATPase Na+/K+ transporting subunit beta 2
+Gene_00845017173	ZNF598	198.25	NA	NA	zinc finger protein 598, E3 ubiquitin ligase
 Gene_00845020666	Unknown	198.11	NA	NA	No description
+Gene_00845018985	Unknown	197.76	NA	NA	No description
+Gene_00845009553	PAH	196.42	NA	NA	phenylalanine hydroxylase
+Gene_00845011071	ACLY	196.41	NA	NA	ATP citrate lyase
+Gene_00845003347	PCDHGB1	193.13	NA	NA	protocadherin gamma subfamily B, 1
 Gene_00845012980	GOSR1	192.09	NA	NA	No description
 Gene_00845007589	ZNF180	185.81	NA	NA	zinc finger protein 180
 Gene_00845029328	Unknown	185.46	NA	NA	No description
+Gene_00845024125	Unknown	185.20	NA	NA	No description
+Gene_00845018359	RPL3L	183.92	NA	NA	ribosomal protein L3 like
+Gene_00845027788	LAG3	182.04	NA	NA	lymphocyte activating 3
+Gene_00845027910	VANGL1	181.05	NA	NA	VANGL planar cell polarity protein 1
+Gene_00845008436	Unknown	178.93	NA	NA	No description
 Gene_00845003808	NSL1	176.04	NA	NA	NSL1 component of MIS12 kinetochore complex
 Gene_00845019152	Unknown	174.63	NA	NA	No description
 Gene_00845026139	RUNX1	174.41	NA	NA	RUNX family transcription factor 1
+Gene_00845003218	NUMBL	169.30	NA	NA	NUMB like endocytic adaptor protein
 Gene_00845007976	ALG12	168.11	NA	NA	ALG12 alpha-1,6-mannosyltransferase
 Gene_00845020108	Unknown	167.65	NA	NA	No description
+Gene_00845025517	Unknown	165.91	NA	NA	No description
 Gene_00845009267	CWC27	163.80	NA	NA	CWC27 spliceosome associated cyclophilin
 Gene_00845025074	KNDC1	161.09	NA	NA	kinase non-catalytic C-lobe domain containing 1
+Gene_00845028794	NEK11	160.33	NA	NA	NIMA related kinase 11
+Gene_00845026613	KRT80	157.59	NA	NA	keratin 80
 Gene_00845025947	Unknown	157.30	NA	NA	No description
+Gene_00845009436	Unknown	156.86	NA	NA	No description
+Gene_00845015986	Unknown	153.81	NA	NA	No description
 Gene_00845003378	POGLUT3	152.83	NA	NA	protein O-glucosyltransferase 3
 Gene_00845007033	Unknown	151.33	NA	NA	No description
 Gene_00845010819	Unknown	148.58	NA	NA	No description
+Gene_00845029297	ZDHHC16	145.48	NA	NA	zinc finger DHHC-type palmitoyltransferase 16
+Gene_00845025696	GABRA3	145.19	NA	NA	gamma-aminobutyric acid type A receptor subunit alpha3
 Gene_00845011765	ASTN2	143.87	NA	NA	astrotactin 2
 Gene_00845019041	Unknown	142.07	NA	NA	No description
+Gene_00845025823	Unknown	140.73	NA	NA	No description
 Gene_00845029048	NAA20	140.66	NA	NA	N-alpha-acetyltransferase 20, NatB catalytic subunit
 Gene_00845014578	PGS1	140.00	NA	NA	phosphatidylglycerophosphate synthase 1
+Gene_00845003753	ERCC6L2	139.68	NA	NA	ERCC excision repair 6 like 2
 Gene_00845007453	SLC13A2	139.59	NA	NA	solute carrier family 13 member 2
+Gene_00845020817	SMTNL1	138.22	NA	NA	smoothelin like 1
 Gene_00845010145	PDLIM4	137.85	NA	NA	PDZ and LIM domain 4
+Gene_00845019387	Unknown	135.85	NA	NA	No description
+Gene_00845007587	Unknown	135.38	NA	NA	No description
+Gene_00845020227	EYA2	135.28	NA	NA	EYA transcriptional coactivator and phosphatase 2
 Gene_00845021547	RHEBL1	135.20	NA	NA	RHEB like 1
+Gene_00845013190	PAICS	132.93	NA	NA	capping protein inhibiting regulator of actin dynamics
 Gene_00845019951	SHC3	131.93	NA	NA	SHC adaptor protein 3
+Gene_00845028313	CYP27A1	131.87	NA	NA	cytochrome P450 family 27 subfamily A member 1
+Gene_00845004690	PAF1	130.76	NA	NA	PAF1 homolog, Paf1/RNA polymerase II complex component
+Gene_00845027643	ANKS1B	129.56	NA	NA	No description
+Gene_00845012622	Unknown	129.11	NA	NA	No description
+Gene_00845027271	Unknown	128.98	NA	NA	No description
 Gene_00845011919	CTNNAL1	128.48	NA	NA	catenin alpha like 1
 Gene_00845001208	POP4	128.43	NA	NA	POP4 homolog, ribonuclease P/MRP subunit
+Gene_00845008099	Unknown	128.31	NA	NA	No description
 Gene_00845013367	MROH5	127.77	NA	NA	maestro heat like repeat family member 5 (gene/pseudogene)
+Gene_00845001289	IL10	127.63	NA	NA	interleukin 10
+Gene_00845021838	TMEM95	123.21	NA	NA	transmembrane protein 95
 Gene_00845007817	COQ8A	123.02	NA	NA	coenzyme Q8A
+Gene_00845008165	Unknown	121.73	NA	NA	No description
 Gene_00845022285	Unknown	121.67	NA	NA	No description
 Gene_00845018471	Unknown	120.63	NA	NA	No description
+Gene_00845030240	Unknown	119.95	NA	NA	No description
 Gene_00845018130	Unknown	118.38	NA	NA	No description
+Gene_00845011604	OR8G3	118.00	NA	NA	olfactory receptor family 8 subfamily G member 3
+Gene_00845009334	Unknown	116.12	NA	NA	No description
+Gene_00845023303	Unknown	115.80	NA	NA	No description
+Gene_00845009466	MOB2	115.55	NA	NA	No description
+Gene_00845013514	Unknown	115.53	NA	NA	No description
+Gene_00845030116	HNF1A	115.27	NA	NA	HNF1 homeobox A
+Gene_00845006645	SLC2A8	113.98	NA	NA	solute carrier family 2 member 8
+Gene_00845001217	Unknown	112.67	NA	NA	No description
 Gene_00845030907	LRRC15	111.64	NA	NA	leucine rich repeat containing 15
 Gene_00845014162	RNF181	109.64	NA	NA	ring finger protein 181
 Gene_00845017240	CERS5	108.99	NA	NA	ceramide synthase 5
 Gene_00845000444	Unknown	108.66	NA	NA	No description
 Gene_00845022295	PKN1	107.61	NA	NA	protein kinase N1
 Gene_00845011070	SMPDL3B	107.22	NA	NA	sphingomyelin phosphodiesterase acid like 3B
+Gene_00845011940	SPATS1	106.83	NA	NA	spermatogenesis associated serine rich 1
 Gene_00845007256	ADAMTS19	105.61	NA	NA	ADAM metallopeptidase with thrombospondin type 1 motif 19
 Gene_00845029412	Unknown	105.51	NA	NA	No description
 Gene_00845025130	NRIP2	104.19	NA	NA	nuclear receptor interacting protein 2
+Gene_00845029029	GDAP1	102.81	NA	NA	ganglioside induced differentiation associated protein 1
+Gene_00845030696	Unknown	101.87	NA	NA	No description
+Gene_00845014015	COPRS	100.46	NA	NA	coordinator of PRMT5 and differentiation stimulator
+Gene_00845019414	Unknown	100.07	NA	NA	No description
+Gene_00845027760	CALHM1	99.75	NA	NA	calcium homeostasis modulator 1
+Gene_00845000340	LIN7B	97.76	NA	NA	No description
+Gene_00845004909	RINL	97.56	NA	NA	Ras and Rab interactor like
+Gene_00845009595	Unknown	96.45	NA	NA	No description
 Gene_00845016782	Unknown	96.37	NA	NA	No description
 Gene_00845024070	TM4SF4	93.38	NA	NA	transmembrane 4 L six family member 4
 Gene_00845011486	PGAP2	92.04	NA	NA	post-GPI attachment to proteins 2
 Gene_00845022854	NRCAM	88.75	NA	NA	neuronal cell adhesion molecule
 Gene_00845003536	Unknown	87.17	NA	NA	No description
+Gene_00845003676	Unknown	83.35	NA	NA	No description
+Gene_00845019238	IL13RA1	82.53	NA	NA	interleukin 13 receptor subunit alpha 1
+Gene_00845013882	PITX1	81.98	NA	NA	No description
 Gene_00845025078	CHTF18	81.28	NA	NA	chromosome transmission fidelity factor 18
+Gene_00845018221	Unknown	81.09	NA	NA	No description
+Gene_00845002877	Unknown	80.21	NA	NA	No description
 Gene_00845023083	Unknown	79.54	NA	NA	No description
+Gene_00845027465	BOLL	78.91	NA	NA	boule homolog, RNA binding protein
+Gene_00845024896	Unknown	78.35	NA	NA	No description
+Gene_00845015294	PYROXD1	78.27	NA	NA	pyridine nucleotide-disulphide oxidoreductase domain 1
 Gene_00845001882	DAD1	77.94	NA	NA	defender against cell death 1
+Gene_00845001775	CARD8	77.82	NA	NA	caspase recruitment domain family member 8
 Gene_00845000411	TIAM2	77.23	NA	NA	TIAM Rac1 associated GEF 2
 Gene_00845024749	Unknown	75.91	NA	NA	No description
 Gene_00845030435	STX10	75.26	NA	NA	syntaxin 10
 Gene_00845021499	Unknown	74.51	NA	NA	No description
 Gene_00845030632	UXT	74.45	NA	NA	ubiquitously expressed prefoldin like chaperone
+Gene_00845003876	GLB1L2	73.10	NA	NA	galactosidase beta 1 like 2
+Gene_00845022284	Unknown	72.36	NA	NA	No description
 Gene_00845000256	TRMT11	71.97	NA	NA	tRNA methyltransferase 11 homolog
+Gene_00845007573	TMEM243	71.76	NA	NA	transmembrane protein 243
 Gene_00845019728	Unknown	67.71	NA	NA	No description
+Gene_00845018495	Unknown	66.36	NA	NA	No description
 Gene_00845030185	DES	65.06	NA	NA	desmin
+Gene_00845022418	Unknown	64.81	NA	NA	No description
+Gene_00845031109	FMN1	63.63	NA	NA	formin 1
 Gene_00845014543	BEND4	63.20	NA	NA	BEN domain containing 4
 Gene_00845016881	OVOL2	62.34	NA	NA	ovo like zinc finger 2
 Gene_00845011756	LMNB2	60.82	NA	NA	lamin B2
+Gene_00845018374	Unknown	58.54	NA	NA	No description
+Gene_00845025443	Unknown	58.14	NA	NA	No description
 Gene_00845028946	OTUD6A	57.07	NA	NA	OTU deubiquitinase 6A
 Gene_00845009321	TRAM2	54.75	NA	NA	translocation associated membrane protein 2
+Gene_00845014617	PLIN4	54.58	NA	NA	perilipin 4
+Gene_00845008164	CDX1	54.39	NA	NA	caudal type homeobox 1
+Gene_00845014105	ZNF771	52.98	NA	NA	zinc finger protein 771
+Gene_00845021507	TMEM164	52.35	NA	NA	transmembrane protein 164
 Gene_00845015348	CCND1	51.99	NA	NA	cyclin D1
 Gene_00845000817	DIPK1C	47.24	NA	NA	divergent protein kinase domain 1C
 Gene_00845017122	OR4C59	45.13	NA	NA	olfactory receptor family 4 subfamily C member 59
 Gene_00845000096	Unknown	43.95	NA	NA	No description
+Gene_00845030997	AGK	43.91	NA	NA	acylglycerol kinase
+Gene_00845030768	MRPS15	43.71	NA	NA	mitochondrial ribosomal protein S15
 Gene_00845004591	MOCOS	42.17	NA	NA	molybdenum cofactor sulfurase
+Gene_00845022303	PSTPIP1	41.63	NA	NA	proline-serine-threonine phosphatase interacting protein 1
+Gene_00845016944	CPM	39.89	NA	NA	carboxypeptidase M
 Gene_00845029609	AICDA	38.24	NA	NA	activation induced cytidine deaminase
 Gene_00845020114	Unknown	36.92	NA	NA	No description
 Gene_00845005515	PCDH7	34.76	NA	NA	protocadherin 7
 Gene_00845003370	RPGRIP1L	33.60	NA	NA	RPGRIP1 like
+Gene_00845007507	Unknown	31.24	NA	NA	No description
+Gene_00845013515	Unknown	30.72	NA	NA	No description
 Gene_00845024767	UGT1A6	29.45	NA	NA	UDP glucuronosyltransferase 1 family, polypeptide A6
 Gene_00845028644	DBX2	28.16	NA	NA	developing brain homeobox 2
 Gene_00845026241	Unknown	27.81	NA	NA	No description
+Gene_00845004856	Unknown	27.73	NA	NA	No description
 Gene_00845026834	CXCL12	24.10	NA	NA	C-X-C motif chemokine ligand 12
 Gene_00845001286	MRPS30	23.30	NA	NA	mitochondrial ribosomal protein S30
 Gene_00845011896	Unknown	23.04	NA	NA	No description
+Gene_00845001754	SOD2	17.73	NA	NA	superoxide dismutase 2
+Gene_00845002466	Unknown	16.32	NA	NA	No description

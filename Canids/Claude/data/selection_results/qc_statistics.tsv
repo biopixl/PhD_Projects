@@ -1,0 +1,10 @@
+Metric	Value
+Total genes analyzed	430
+Genomic inflation factor (lambda)	67.698
+Genes with p < 1e-6	340
+Annotation coverage (%)	78.4%
+Genes with gene symbols	337
+Genes with descriptions	317
+Median omega	0.683
+Genes with omega < 1 (purifying)	321
+Genes with omega ≥ 1 (neutral/positive)	109

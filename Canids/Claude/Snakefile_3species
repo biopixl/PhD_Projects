@@ -1,0 +1,134 @@
+"""
+Snakemake workflow for THREE-SPECIES canid comparative genomics
+Dog + Dingo + Fox selection analysis
+
+This workflow handles:
+1. Protein alignment with MAFFT (3 sequences)
+2. Codon alignment back-translation
+3. HyPhy aBSREL selection test (tests all 3 lineages)
+
+Author: Isaac (generated with Claude Code)
+Date: November 2025
+"""
+
+import os
+from pathlib import Path
+import glob
+
+# ============================================================================
+# Configuration
+# ============================================================================
+
+# Find all 3-species ortholog groups
+GENES_3SPECIES = [Path(f).parent.name for f in glob.glob("data/orthologs_3species/*/*.protein.fa")]
+
+print(f"Three-species ortholog groups: {len(GENES_3SPECIES)}")
+
+# ============================================================================
+# Target Rules
+# ============================================================================
+
+rule all:
+    input:
+        # Selection tests for all 3-species genes
+        expand("hyphy_results_3species/absrel/{gene}.json", gene=GENES_3SPECIES)
+
+# ============================================================================
+# Alignment Rules
+# ============================================================================
+
+rule align_protein_3species:
+    """
+    Align protein sequences with MAFFT (3 sequences: Dog, Dingo, Fox)
+    """
+    input:
+        protein = "data/orthologs_3species/{gene}/{gene}.protein.fa"
+    output:
+        aligned = "alignments_3species/{gene}/{gene}.protein_aligned.fa"
+    log:
+        "logs/mafft_3species/{gene}.log"
+    threads: 2
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        mkdir -p alignments_3species/{wildcards.gene}
+        mafft --auto --thread {threads} {input.protein} > {output.aligned} 2> {log}
+        """
+
+rule codon_align_3species:
+    """
+    Back-translate protein alignment to codon alignment (3 sequences)
+    """
+    input:
+        protein_aln = "alignments_3species/{gene}/{gene}.protein_aligned.fa",
+        cds = "data/orthologs_3species/{gene}/{gene}.cds.fa"
+    output:
+        codon = "codon_alignments_3species/{gene}.codon.fa"
+    log:
+        "logs/pal2nal_3species/{gene}.log"
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        mkdir -p codon_alignments_3species
+        pal2nal.pl {input.protein_aln} {input.cds} -output fasta > {output.codon} 2> {log}
+        """
+
+# ============================================================================
+# Selection Test Rules
+# ============================================================================
+
+rule absrel_3species:
+    """
+    Run aBSREL to detect episodic positive selection on all 3 lineages
+    Tests:
+    - Canis_familiaris (Dog) lineage → domestication
+    - Canis_dingo (Dingo) lineage → wild Canis
+    - Vulpes_vulpes (Fox) lineage → validation
+    """
+    input:
+        alignment = "codon_alignments_3species/{gene}.codon.fa",
+        tree = "data/phylogeny/canid_3species.tre"
+    output:
+        json = "hyphy_results_3species/absrel/{gene}.json"
+    log:
+        "logs/hyphy_3species/absrel/{gene}.log"
+    threads: 2
+    conda:
+        "envs/phylogenomics.yaml"
+    shell:
+        """
+        mkdir -p hyphy_results_3species/absrel
+        mkdir -p logs/hyphy_3species/absrel
+        hyphy absrel \
+            --alignment {input.alignment} \
+            --tree {input.tree} \
+            --output {output.json} \
+            CPU={threads} \
+            > {log} 2>&1
+        """
+
+# ============================================================================
+# Helper Rules
+# ============================================================================
+
+rule clean_3species:
+    """
+    Remove all 3-species generated files (use with caution!)
+    """
+    shell:
+        """
+        rm -rf alignments_3species/ codon_alignments_3species/ hyphy_results_3species/
+        rm -rf logs/mafft_3species/ logs/pal2nal_3species/ logs/hyphy_3species/
+        echo "Cleaned all 3-species generated files"
+        """
+
+rule dry_run_3species:
+    """
+    Perform a dry run to see what would be executed
+    """
+    shell:
+        """
+        snakemake -s Snakefile_3species -n --quiet
+        """

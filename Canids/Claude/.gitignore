@@ -71,7 +71,6 @@ nohup.out
 !environment*.yml
 
 # Gene annotations too large
-data/gene_annotations.json
 
 # BioMart table too large
 data/orthologs/ensembl_compara_table.tsv

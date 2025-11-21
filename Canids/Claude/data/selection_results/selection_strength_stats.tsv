@@ -1,0 +1,10 @@
+Metric	Value
+Total selected genes	430
+Strong selection (p<1e-10)	278
+Moderate selection (1e-10 to 1e-7)	43
+Threshold selection (1e-7 to 2.93e-6)	26
+Mean omega	18133919057193.352
+Median omega	0.683
+Omega range	0.000 - 7020395471688484.000
+Mean -log10(p)	136.33
+Median -log10(p)	14.35
