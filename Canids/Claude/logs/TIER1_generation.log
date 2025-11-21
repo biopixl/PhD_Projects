@@ -1,0 +1,120 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: viridisLite
+
+Attaching package: ‘viridis’
+
+The following object is masked from ‘package:scales’:
+
+    viridis_pal
+
+
+Attaching package: ‘cowplot’
+
+The following object is masked from ‘package:patchwork’:
+
+    align_plots
+
+
+╔════════════════════════════════════════════════════════════════╗
+║  TIER 1 FIGURE GENERATION - Publication Quality               ║
+╚════════════════════════════════════════════════════════════════╝
+
+█ STEP 1: Data Loading and Quality Control
+─────────────────────────────────────────────────────────────────
+  • Loaded raw data: 430 genes
+  • Found 23 extreme outliers (omega > 100)
+    Range: 1.62e+03 to 7.02e+15
+  • After QC filtering: 403 genes
+  • Removed: 27 outliers/invalid (6.3%)
+  • Final omega range: 0.000 to 2.579
+  • P-value range: 0.00e+00 to 4.69e-02
+
+█ STEP 2: Generating SelectionStrength_Combined
+─────────────────────────────────────────────────────────────────
+Warning messages:
+1: In grSoftVersion() :
+  unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R_X11.so':
+  dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 0x0006): Library not loaded: /opt/X11/lib/libSM.6.dylib
+  Referenced from: <5DF35BD4-5789-357C-B931-3EEDFD1A6C8A> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/modules/R_X11.so
+  Reason: tried: '/opt/X11/lib/libSM.6.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libSM.6.dylib' (no such file), '/opt/X11/lib/libSM.6.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libSM.6.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libSM.6.dylib' (no such file)
+2: In cairoVersion() :
+  unable to load shared object '/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so':
+  dlopen(/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so, 0x0006): Library not loaded: /opt/X11/lib/libXrender.1.dylib
+  Referenced from: <5F2DB685-0B04-32B6-A805-B370989FC049> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/grDevices/libs/cairo.so
+  Reason: tried: '/opt/X11/lib/libXrender.1.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libXrender.1.dylib' (no such file), '/opt/X11/lib/libXrender.1.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libXrender.1.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libXrender.1.dylib' (no such file)
+3: In device(filename = "manuscript/figures/SelectionStrength_Combined.pdf",  :
+  failed to load cairo DLL
+4: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on '64.7% with p<10⁻¹⁰' in 'mbcsToSbcs': for ⁻ (U+207B)
+5: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on '64.7% with p<10⁻¹⁰' in 'mbcsToSbcs': for ⁰ (U+2070)
+6: ggrepel: 12 unlabeled data points (too many overlaps). Consider increasing max.overlaps 
+7: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'Strong (p<10⁻⁷)' in 'mbcsToSbcs': for ⁻ (U+207B)
+8: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'Strong (p<10⁻⁷)' in 'mbcsToSbcs': for ⁷ (U+2077)
+9: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'Very Strong (p<10⁻¹⁰)' in 'mbcsToSbcs': for ⁻ (U+207B)
+10: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'Very Strong (p<10⁻¹⁰)' in 'mbcsToSbcs': for ⁰ (U+2070)
+Warning message:
+ggrepel: 9 unlabeled data points (too many overlaps). Consider increasing max.overlaps 
+  ✓ SelectionStrength_Combined saved (PDF & PNG)
+
+█ STEP 3: Generating QualityControl_Combined
+─────────────────────────────────────────────────────────────────
+Warning messages:
+1: In device(filename = "manuscript/figures/QualityControl_Combined.pdf",  :
+  failed to load cairo DLL
+2: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'λ = 127.6' in 'mbcsToSbcs': for λ (U+03BB)
+3: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'Strong (p<10⁻⁷)' in 'mbcsToSbcs': for ⁻ (U+207B)
+4: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'Strong (p<10⁻⁷)' in 'mbcsToSbcs': for ⁷ (U+2077)
+5: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'Very Strong (p<10⁻¹⁰)' in 'mbcsToSbcs': for ⁻ (U+207B)
+6: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'Very Strong (p<10⁻¹⁰)' in 'mbcsToSbcs': for ⁰ (U+2070)
+7: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'Neutral (ω=1)' in 'mbcsToSbcs': for ω (U+03C9)
+  ✓ QualityControl_Combined saved (PDF & PNG)
+
+█ STEP 4: ChromosomeDistribution figure
+─────────────────────────────────────────────────────────────────
+  → Using existing plot_chromosome_distribution.R script
+  → Verifying data compatibility...
+  ✓ ChromosomeDistribution_Combined already exists
+
+╔════════════════════════════════════════════════════════════════╗
+║  TIER 1 FIGURE GENERATION COMPLETE                            ║
+╚════════════════════════════════════════════════════════════════╝
+
+Generated figures:
+  1. ✓ SelectionStrength_Combined (14×12 in, 600 DPI)
+  2. ✓ QualityControl_Combined (14×12 in, 600 DPI)
+  3. → ChromosomeDistribution_Combined (verify existing)
+
+Data quality summary:
+  • Analyzed: 403 genes (filtered from 430)
+  • Omega range: 0.000 - 2.579 (realistic values)
+  • Selection categories:
+    - Not Significant: 79 genes
+    - Significant (Bonferroni): 26 genes
+    - Strong (p<10⁻⁷): 42 genes
+    - Very Strong (p<10⁻¹⁰): 256 genes
+
+All figures ready for manuscript integration.
+
