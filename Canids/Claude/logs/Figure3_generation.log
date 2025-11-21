@@ -1,0 +1,52 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: viridisLite
+
+Attaching package: ‘viridis’
+
+The following object is masked from ‘package:scales’:
+
+    viridis_pal
+
+Warning message:
+In geom_text_repel(aes(label = gene_symbol), size = 4, fontface = "italic",  :
+  Ignoring unknown parameters: `segment.linewidth`
+Warning messages:
+1: In grSoftVersion() :
+  unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R_X11.so':
+  dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 0x0006): Library not loaded: /opt/X11/lib/libSM.6.dylib
+  Referenced from: <5DF35BD4-5789-357C-B931-3EEDFD1A6C8A> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/modules/R_X11.so
+  Reason: tried: '/opt/X11/lib/libSM.6.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libSM.6.dylib' (no such file), '/opt/X11/lib/libSM.6.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libSM.6.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libSM.6.dylib' (no such file)
+2: In cairoVersion() :
+  unable to load shared object '/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so':
+  dlopen(/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so, 0x0006): Library not loaded: /opt/X11/lib/libXrender.1.dylib
+  Referenced from: <5F2DB685-0B04-32B6-A805-B370989FC049> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/grDevices/libs/cairo.so
+  Reason: tried: '/opt/X11/lib/libXrender.1.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libXrender.1.dylib' (no such file), '/opt/X11/lib/libXrender.1.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libXrender.1.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libXrender.1.dylib' (no such file)
+3: In device(filename = "manuscript/figures/Figure3_WntEnrichment.pdf",  :
+  failed to load cairo DLL
+4: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'p < 10⁻¹⁰' in 'mbcsToSbcs': for ⁻ (U+207B)
+5: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on 'p < 10⁻¹⁰' in 'mbcsToSbcs': for ⁰ (U+2070)
+
+=== Figure 3 Enhanced Version Complete ===
+Saved to:
+  - manuscript/figures/Figure3_WntEnrichment.pdf
+  - manuscript/figures/Figure3_WntEnrichment.png
+
+Key improvements:
+  - Publication-quality aesthetics with professional color schemes
+  - Scientifically accurate Wnt pathway with proper cellular compartments
+  - Intuitive symbology (size = significance, color = ω, borders = selection status)
+  - Replaced prescriptive hypothesis panel with data-driven functional summary

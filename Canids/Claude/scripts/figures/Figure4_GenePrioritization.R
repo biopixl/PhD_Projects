@@ -10,6 +10,7 @@ library(ComplexHeatmap)
 library(circlize)
 library(patchwork)
 library(grid)
+library(ggrepel)
 
 # Set output directory
 output_dir <- "manuscript/figures"
@@ -50,7 +51,7 @@ p_tier_dist <- ggplot(tier_counts, aes(x = tier_label, y = count, fill = tier)) 
     axis.text = element_text(size = 10),
     axis.text.x = element_text(size = 11),
     legend.position = "none",
-    panel.border = element_rect(fill = NA, color = "black", size = 1)
+    panel.border = element_rect(fill = NA, color = "black", linewidth = 1)
   )
 
 # ============================================================================
@@ -84,7 +85,7 @@ p_scores_dist <- ggplot(score_data, aes(x = score, fill = criterion)) +
     legend.position = "none",
     strip.background = element_rect(fill = "gray90", color = "black"),
     strip.text = element_text(size = 11, face = "bold"),
-    panel.border = element_rect(fill = NA, color = "black", size = 1)
+    panel.border = element_rect(fill = NA, color = "black", linewidth = 1)
   )
 
 # ============================================================================
@@ -120,6 +121,7 @@ row_ha <- rowAnnotation(
   annotation_name_side = "top",
   annotation_legend_param = list(
     Tier = list(title = "Priority Tier",
+                 at = c(1, 2, 3),
                  labels = c("1 (IMMEDIATE)", "2 (FOLLOW-UP)", "3 (EXPLORATORY)"))
   )
 )
@@ -227,7 +229,7 @@ p_tier1 <- ggplot(tier1_long, aes(x = gene_symbol, y = score, fill = criterion))
     legend.position = "right",
     legend.title = element_text(size = 11, face = "bold"),
     legend.text = element_text(size = 10),
-    panel.border = element_rect(fill = NA, color = "black", size = 1)
+    panel.border = element_rect(fill = NA, color = "black", linewidth = 1)
   )
 
 # ============================================================================
@@ -247,8 +249,8 @@ p_scatter <- ggplot(prioritization_data, aes(x = log10p, y = total_score)) +
   # Size scale
   scale_size_continuous(range = c(1, 8), guide = "none") +
   # Tier threshold lines
-  geom_hline(yintercept = 16, linetype = "dashed", color = "#E74C3C", size = 1) +
-  geom_hline(yintercept = 13, linetype = "dashed", color = "#F39C12", size = 1) +
+  geom_hline(yintercept = 16, linetype = "dashed", color = "#E74C3C", linewidth = 1) +
+  geom_hline(yintercept = 13, linetype = "dashed", color = "#F39C12", linewidth = 1) +
   # Annotations
   annotate("text", x = max(prioritization_data$log10p) * 0.9, y = 16.5,
            label = "Tier 1 threshold (≥16)", hjust = 1, size = 3.5, fontface = "bold", color = "#E74C3C") +
@@ -278,7 +280,7 @@ p_scatter <- ggplot(prioritization_data, aes(x = log10p, y = total_score)) +
     legend.background = element_rect(fill = "white", color = "black"),
     legend.title = element_text(size = 10, face = "bold"),
     legend.text = element_text(size = 9),
-    panel.border = element_rect(fill = NA, color = "black", size = 1)
+    panel.border = element_rect(fill = NA, color = "black", linewidth = 1)
   )
 
 # ============================================================================
