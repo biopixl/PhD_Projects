@@ -1,0 +1,140 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+ggtree v3.16.3 Learn more at https://yulab-smu.top/contribution-tree-data/
+
+Please cite:
+
+Guangchuang Yu, David Smith, Huachen Zhu, Yi Guan, Tommy Tsan-Yuk Lam.
+ggtree: an R package for visualization and annotation of phylogenetic
+trees with their covariates and other associated data. Methods in
+Ecology and Evolution. 2017, 8(1):28-36. doi:10.1111/2041-210X.12628
+Warning message:
+package ‘ggtree’ was built under R version 4.5.1 
+
+Attaching package: ‘ape’
+
+The following object is masked from ‘package:ggtree’:
+
+    rotate
+
+
+Attaching package: ‘cowplot’
+
+The following object is masked from ‘package:patchwork’:
+
+    align_plots
+
+
+╔════════════════════════════════════════════════════════════════╗
+║  FIGURE 1 GENERATION - Publication Quality Study Design       ║
+╚════════════════════════════════════════════════════════════════╝
+
+█ Generating Figure 1A: Phylogeny-Timeline Cladogram
+─────────────────────────────────────────────────────────────────
+Scale for x is already present.
+Adding another scale for x, which will replace the existing scale.
+Warning messages:
+1: `aes_()` was deprecated in ggplot2 3.0.0.
+ℹ Please use tidy evaluation idioms with `aes()`
+ℹ The deprecated feature was likely used in the ggtree package.
+  Please report the issue at <https://github.com/YuLab-SMU/ggtree/issues>. 
+2: In fortify(data, ...) : Arguments in `...` must be used.
+✖ Problematic arguments:
+• as.Date = as.Date
+• yscale_mapping = yscale_mapping
+• hang = hang
+• size = 1.8
+ℹ Did you misspell an argument name?
+3: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the ggtree package.
+  Please report the issue at <https://github.com/YuLab-SMU/ggtree/issues>. 
+4: `aes_string()` was deprecated in ggplot2 3.0.0.
+ℹ Please use tidy evaluation idioms with `aes()`.
+ℹ See also `vignette("ggplot2-in-packages")` for more information.
+ℹ The deprecated feature was likely used in the ggtree package.
+  Please report the issue at <https://github.com/YuLab-SMU/ggtree/issues>. 
+Warning messages:
+1: In plot_theme(plot) :
+  The `base_size` theme element is not defined in the element hierarchy.
+2: In grSoftVersion() :
+  unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R_X11.so':
+  dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 0x0006): Library not loaded: /opt/X11/lib/libSM.6.dylib
+  Referenced from: <5DF35BD4-5789-357C-B931-3EEDFD1A6C8A> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/modules/R_X11.so
+  Reason: tried: '/opt/X11/lib/libSM.6.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libSM.6.dylib' (no such file), '/opt/X11/lib/libSM.6.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libSM.6.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libSM.6.dylib' (no such file)
+3: In cairoVersion() :
+  unable to load shared object '/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so':
+  dlopen(/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so, 0x0006): Library not loaded: /opt/X11/lib/libXrender.1.dylib
+  Referenced from: <5F2DB685-0B04-32B6-A805-B370989FC049> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/grDevices/libs/cairo.so
+  Reason: tried: '/opt/X11/lib/libXrender.1.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libXrender.1.dylib' (no such file), '/opt/X11/lib/libXrender.1.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libXrender.1.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libXrender.1.dylib' (no such file)
+4: In device(filename = "manuscript/figures/Figure1A_Phylogeny_Timeline.pdf",  :
+  failed to load cairo DLL
+5: In geom_text(aes(x = 6, y = 2.7), label = "~12 Million years ago\nDog-Fox divergence",  :
+  All aesthetics have length 1, but the data has 5 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.
+6: In geom_text(aes(x = 11.8, y = 1.5), label = "~8,000 years ago\nDomestication event\n(Dog-Dingo split)",  :
+  All aesthetics have length 1, but the data has 5 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.
+7: In geom_text(aes(x = 12.3, y = 0.8), label = "~200 years ago\nBreed formation\n(TEST BRANCH)",  :
+  All aesthetics have length 1, but the data has 5 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.
+8: In plot_theme(plot) :
+  The `base_size` theme element is not defined in the element hierarchy.
+Warning messages:
+1: In plot_theme(plot) :
+  The `base_size` theme element is not defined in the element hierarchy.
+2: In geom_text(aes(x = 6, y = 2.7), label = "~12 Million years ago\nDog-Fox divergence",  :
+  All aesthetics have length 1, but the data has 5 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.
+3: In geom_text(aes(x = 11.8, y = 1.5), label = "~8,000 years ago\nDomestication event\n(Dog-Dingo split)",  :
+  All aesthetics have length 1, but the data has 5 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.
+4: In geom_text(aes(x = 12.3, y = 0.8), label = "~200 years ago\nBreed formation\n(TEST BRANCH)",  :
+  All aesthetics have length 1, but the data has 5 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.
+5: In plot_theme(plot) :
+  The `base_size` theme element is not defined in the element hierarchy.
+  ✓ Figure 1A saved (16×10 in, 600 DPI)
+    - Phylogeny + Timeline combined in cladogram format
+    - Clear timeline axis showing deep (12 Mya) to recent (200 ya) events
+
+█ Generating Figure 1B: Study Design Flowchart (Standalone)
+─────────────────────────────────────────────────────────────────
+Warning message:
+In device(filename = "manuscript/figures/Figure1B_StudyDesign_Flowchart.pdf",  :
+  failed to load cairo DLL
+  ✓ Figure 1B saved (18×10 in, 600 DPI)
+    - Standalone flowchart with professional spacing
+    - Clear arrow connections between components
+    - Column-based layout: Species → Pressures → Methods → Results
+
+╔════════════════════════════════════════════════════════════════╗
+║  FIGURE 1 GENERATION COMPLETE                                 ║
+╚════════════════════════════════════════════════════════════════╝
+
+Generated publication-quality figures:
+  1. Figure1A_Phylogeny_Timeline.pdf/png
+     - Combined phylogeny + timeline in cladogram format
+     - Timeline axis spanning 12 Mya to present
+     - Clear annotation of divergence events
+
+  2. Figure1B_StudyDesign_Flowchart.pdf/png
+     - Standalone conceptual study design
+     - Professional arrow connections and spacing
+     - Four-column layout with clear flow
+
+Improvements over previous version:
+  ✓ Phylogeny and timeline unified (addresses user feedback)
+  ✓ Flowchart expanded to standalone figure (better spacing)
+  ✓ Professional arrow connections (properly aligned)
+  ✓ Colorblind-friendly palette (Okabe-Ito)
+  ✓ 600 DPI publication quality
+
+Ready for manuscript integration.
+
