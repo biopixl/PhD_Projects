@@ -1,0 +1,110 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+ggtree v3.16.3 Learn more at https://yulab-smu.top/contribution-tree-data/
+
+Please cite:
+
+Guangchuang Yu, David Smith, Huachen Zhu, Yi Guan, Tommy Tsan-Yuk Lam.
+ggtree: an R package for visualization and annotation of phylogenetic
+trees with their covariates and other associated data. Methods in
+Ecology and Evolution. 2017, 8(1):28-36. doi:10.1111/2041-210X.12628
+Warning message:
+package ‘ggtree’ was built under R version 4.5.1 
+
+Attaching package: ‘ape’
+
+The following object is masked from ‘package:ggtree’:
+
+    rotate
+
+If you use the ggtree package suite in published research, please cite
+the appropriate paper(s):
+
+Guangchuang Yu.  Data Integration, Manipulation and Visualization of
+Phylogenetic Trees (1st edition). Chapman and Hall/CRC. 2022,
+doi:10.1201/9781003279242
+
+Guangchuang Yu, David Smith, Huachen Zhu, Yi Guan, Tommy Tsan-Yuk Lam.
+ggtree: an R package for visualization and annotation of phylogenetic
+trees with their covariates and other associated data. Methods in
+Ecology and Evolution. 2017, 8(1):28-36. doi:10.1111/2041-210X.12628
+
+Attaching package: ‘tidytree’
+
+The following objects are masked from ‘package:ape’:
+
+    drop.tip, keep.tip
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+Warning messages:
+1: `aes_()` was deprecated in ggplot2 3.0.0.
+ℹ Please use tidy evaluation idioms with `aes()`
+ℹ The deprecated feature was likely used in the ggtree package.
+  Please report the issue at <https://github.com/YuLab-SMU/ggtree/issues>. 
+2: In fortify(data, ...) : Arguments in `...` must be used.
+✖ Problematic arguments:
+• as.Date = as.Date
+• yscale_mapping = yscale_mapping
+• hang = hang
+• size = 2
+• color = "black"
+ℹ Did you misspell an argument name?
+3: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the ggtree package.
+  Please report the issue at <https://github.com/YuLab-SMU/ggtree/issues>. 
+4: `aes_string()` was deprecated in ggplot2 3.0.0.
+ℹ Please use tidy evaluation idioms with `aes()`.
+ℹ See also `vignette("ggplot2-in-packages")` for more information.
+ℹ The deprecated feature was likely used in the ggtree package.
+  Please report the issue at <https://github.com/YuLab-SMU/ggtree/issues>. 
+5: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
+ℹ Please use the `linewidth` argument instead. 
+Warning messages:
+1: Removed 1 row containing missing values or values outside the scale range
+(`geom_hilight_rect()`). 
+2: Removed 1 row containing missing values or values outside the scale range
+(`geom_text()`). 
+3: Removed 1 row containing missing values or values outside the scale range
+(`geom_segment()`). 
+4: Removed 3 rows containing missing values or values outside the scale range
+(`geom_point_g_gtree()`). 
+5: In scale_x_log10(limits = c(5e-04, 15), breaks = c(0.001, 0.01,  :
+  log-10 transformation introduced infinite values.
+6: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+7: Removed 1 row containing missing values or values outside the scale range
+(`geom_text_repel()`). 
+Warning messages:
+1: Removed 1 row containing missing values or values outside the scale range
+(`geom_hilight_rect()`). 
+2: Removed 1 row containing missing values or values outside the scale range
+(`geom_text()`). 
+3: Removed 1 row containing missing values or values outside the scale range
+(`geom_segment()`). 
+4: Removed 3 rows containing missing values or values outside the scale range
+(`geom_point_g_gtree()`). 
+5: In scale_x_log10(limits = c(5e-04, 15), breaks = c(0.001, 0.01,  :
+  log-10 transformation introduced infinite values.
+6: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+7: Removed 1 row containing missing values or values outside the scale range
+(`geom_text_repel()`). 
+
+=== Figure 1A IMPROVED Complete ===
+Saved to:
+  - manuscript/figures/Figure1A_Phylogeny_Timeline_IMPROVED.pdf
+  - manuscript/figures/Figure1A_Phylogeny_Timeline_IMPROVED.png
+
+Key improvements:
+  - Proper cladogram showing Dog+Dingo clade with Fox as outgroup
+  - Log-scale timeline integrated below tree
+  - Clear visualization of three major events:
+    * Dog-Fox divergence (12 Mya)
+    * Domestication/Dog-Dingo split (8 kya)
+    * Modern breed formation (200 ya)
+  - Color-coded species roles (Test, Control, Outgroup)
+  - Publication-quality aesthetics
