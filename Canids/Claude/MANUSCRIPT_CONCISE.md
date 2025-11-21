@@ -26,7 +26,7 @@ We tested whether genes involved in Wnt signaling and neural crest development a
 
 ### 2.1 Genome Data and Ortholog Identification
 
-We obtained reference genomes from Ensembl (release 111): *C. l. familiaris* (CanFam4.0/ROS_Cfam_1.0), *C. l. dingo* (ASM325472v1), and *V. vulpes* (VulVul2.2). Orthologous genes were identified using Ensembl Compara with high-confidence one-to-one orthologs. Coding sequences were extracted for 17,078 genes present across all three species.
+We obtained reference genomes from Ensembl (release 115): *C. l. familiaris* (CanFam4.0/ROS_Cfam_1.0), *C. l. dingo* (ASM325472v1), and *V. vulpes* (VulVul2.2). Orthologous genes were identified using Ensembl Compara with high-confidence one-to-one orthologs. Coding sequences were extracted for 17,078 genes present across all three species.
 
 ### 2.2 Sequence Alignment and Phylogeny
 
