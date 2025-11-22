@@ -1,0 +1,9 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+
+=== Simple Phylogeny Complete ===
+Clean cladogram with:
+  - Fox at 12 Mya (divergence point)
+  - Dog and Dingo at 0 Mya (present)
+  - Dog-Dingo split visible at ~0.008 Mya
+  - Horizontal branch lengths show divergence times
