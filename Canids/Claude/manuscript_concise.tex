@@ -1,5 +1,7 @@
 \documentclass[11pt,letterpaper]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{textgreek}
+\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{natbib}
 \usepackage{hyperref}
@@ -19,147 +21,167 @@
 \maketitle
 
 \begin{abstract}
-Dog domestication represents one of the earliest examples of human-mediated evolution, yet the genomic mechanisms underlying breed-specific trait evolution remain incompletely understood. We performed a three-species phylogenomic analysis using adaptive Branch-Site Random Effects Likelihood (aBSREL) to identify genes under episodic positive selection exclusively in domestic dogs (\textit{Canis lupus familiaris}) but not dingoes (\textit{Canis lupus dingo}), using red fox (\textit{Vulpes vulpes}) as outgroup. This design isolates post-domestication selective pressures specific to modern breed formation from ancient domestication events. Analysis of 17,046 orthologous protein-coding genes with Bonferroni correction ($\alpha$=2.93$\times$10$^{-6}$) identified 401 genes under significant positive selection exclusively in domestic dogs. Functional enrichment analysis revealed significant overrepresentation of Wnt signaling pathway components (GO:0016055, 12-15 genes). Six genes were prioritized for experimental validation based on multi-criteria scoring: \textit{GABRA3} (GABA-A receptor), \textit{EDNRB} (endothelin receptor B), \textit{HTR2B} (serotonin receptor 2B), \textit{HCRTR1} (orexin receptor 1), \textit{FZD3} (frizzled receptor 3), and \textit{FZD4} (frizzled receptor 4). Notably, four of six top candidates (FZD3, FZD4, EDNRB, GABRA3) show functional connections to Wnt signaling, providing convergent evidence for pathway-level selection. The predominance of genes with median $\omega$ (dN/dS) < 1 yet highly significant p-values indicates \textbf{episodic selection}—site-specific positive selection within otherwise constrained genes—suggesting a mechanism of constrained adaptation where morphological plasticity emerges through subtle modifications in pleiotropic developmental pathways.
+Dog domestication represents one of the earliest and most extensive cases of human-mediated phenotypic diversification, yet the genetic basis of lineage-specific changes associated with modern breed formation remains incompletely resolved. We conducted a three-species phylogenomic analysis using the adaptive Branch-Site Random Effects Likelihood (aBSREL) model to identify genes under episodic positive selection uniquely in domestic dogs (\textit{Canis lupus familiaris}) relative to dingoes (\textit{Canis lupus dingo}), with red fox (\textit{Vulpes vulpes}) as outgroup. This comparative framework distinguishes recent, breed-associated selective pressures from earlier domestication events. Across 17,046 one-to-one orthologous coding sequences, 401 genes (2.35\%) showed significant evidence of dog-specific positive selection after Bonferroni correction ($\alpha = 2.93 \times 10^{-6}$). Functional enrichment analyses identified a significant overrepresentation of Wnt signaling components (GO:0016055), with 12--15 pathway members depending on annotation source. Multi-criteria prioritization highlighted six high-confidence candidates---\textit{GABRA3}, \textit{EDNRB}, \textit{HTR2B}, \textit{HCRTR1}, \textit{FZD3}, and \textit{FZD4}---four of which are functionally connected to Wnt-associated processes. Most selected genes exhibited gene-wide $\omega < 1$ despite highly significant test statistics, consistent with episodic selection acting on restricted sites within otherwise conserved loci. These results suggest that breed-associated diversification may have involved localized modifications in pleiotropic developmental and neurobiological pathways, providing a potential mechanism for constrained yet phenotypically impactful adaptation during modern dog evolution.
 \end{abstract}
+
 
 \textbf{Keywords:} domestication, episodic selection, Wnt signaling, aBSREL, phylogenomics, canid evolution, constrained adaptation
 
 \section{Introduction}
 
-Dog (\textit{Canis lupus familiaris}) domestication, dating to 15,000-40,000 years ago, resulted in remarkable phenotypic diversification across morphology, behavior, physiology, and cognition \citep{Freedman2014, Frantz2016}. The "domestication syndrome" describes correlated traits appearing consistently across domesticated species: altered skull and ear morphology, coat color variation, behavioral docility, and neotenic features \citep{Darwin1868, Belyaev1979, Wilkins2014}. Understanding the genomic basis of these trait correlations represents a central question in domestication biology.
+\subsection{Dog domestication and correlated trait evolution}
+Dog (\textit{Canis lupus familiaris}) domestication, dating to 15,000-40,000 years ago, resulted in remarkable phenotypic diversification across morphology, behavior, physiology, and cognition \citep{Freedman2014, Frantz2016}. Across domestic species, these coordinated changes are collectively described as the “domestication syndrome,” which includes modified craniofacial structure, altered ear morphology, coat color variation, reduced aggression, and retention of juvenile traits \citep{Darwin1868, Belyaev1979, Wilkins2014}. Although numerous genomic studies have identified loci associated with these traits, resolving the relative contributions of early domestication versus later breed-specific artificial selection remains a longstanding challenge. This distinction is critical for identifying genetic mechanisms underlying foundational domestication traits rather than those arising from recent breed diversification.
 
-Australian dingoes (\textit{Canis lupus dingo}) occupy a unique evolutionary position, diverging from domestic dogs 8,000-10,000 years ago—after initial domestication but before intensive breed formation \citep{Cairns2022, Savolainen2004}. Dingoes retain core domestication traits but did not experience artificial selection for breed-specific morphologies, making them ideal controls for isolating breed-specific selection. Using a three-species phylogenetic design testing selection exclusively on the dog branch with aBSREL \citep{Smith2015}, we isolated post-domestication pressures from modern breed formation.
+\subsection{The Dingo as an evolutionary reference point}
+Australian dingoes (\textit{Canis lupus dingo}) provide a unique comparative context for separating these evolutionary layers. Having diverged from domestic dogs approximately 8,000–10,000 years ago—after initial domestication but prior to the onset of intensive breed formation—dingoes retain key domestication-associated phenotypes but lack the morphological specializations characteristic of modern breeds \citep{Cairns2022, Savolainen2004}. Their intermediate evolutionary position allows dingoes to serve as a natural control lineage, enabling detection of genomic signals that are specific to the dog lineage and not shared with either dingoes or distantly related canids.
 
-\textbf{This study emphasizes an exploratory rather than hypothesis-testing approach.} Rather than testing specific predictions, we identify patterns in the genomic data to inform mechanistic understanding. This approach follows recent calls for data-driven discovery in evolutionary genomics \citep{Ostrander2024}, allowing unexpected findings to emerge without constraining interpretation to pre-existing frameworks.
+\subsection{Comparative phylogenomic approach}
+To isolate lineage-specific selection acting after the divergence of dogs and dingoes, we employed a three-species phylogeny comprising the domestic dog, the dingo, and the red fox (Vulpes vulpes). Lineage-specific bursts of adaptive evolution were identified using the adaptive Branch-Site Random Effects Likelihood (aBSREL) model \citep{Smith2015}, which estimates distributions of nonsynonymous-to-synonymous substitution rates (ω) across both sites and branches. This approach enables direct testing of episodic positive selection restricted to the dog branch while controlling for ancestral variation shared with dingoes. By contrasting the dog lineage to both a near-domestication relative and a more distantly related canid, we explicitly distinguish early domestication signals from the subsequent selective pressures associated with breed formation.
+
+\subsection{Exploratory framework for genome-wide discovery}
+This study adopts an exploratory, data-driven framework rather than a narrow hypothesis-testing design. Domestication traits are typically polygenic and pleiotropic, with multiple trait dimensions evolving in parallel under complex combinations of natural and artificial selection. Such complexity limits the utility of strictly pre-specified candidate-gene hypotheses. Following recent calls for broader discovery-oriented approaches in evolutionary genomics \citep{Ostrander2024}, we focus on identifying patterns emerging directly from genome-wide branch-specific selection analyses, enabling the detection of unexpected functional themes and the generation of mechanistic hypotheses grounded in empirical signal. To translate genome-wide selection results into biologically meaningful insights, we combine statistical evidence with functional information using a Multi-Criteria Decision Analysis (MCDA) framework. This system integrates selection strength, biological relevance, experimental tractability, and prior evidence from the literature to produce a tiered set of candidate genes. Such integration provides a systematic and transparent means of highlighting genes most likely to contribute to phenotypic evolution following domestication.
+
+Together, this comparative phylogenomic framework enables precise separation of dog-specific adaptive evolution from both early domestication processes and ancestral canid variation. By combining rigorous branch-specific selection tests with systematic functional interpretation, this study provides a genome-wide view of the evolutionary forces shaping dog post-domestication diversification and establishes a foundation for mechanistic investigation into the genetic architecture of domestication-related traits.
 
 \section{Methods}
 
 \subsection{Genome Data and Ortholog Identification}
 
-We obtained reference genomes from Ensembl release 111: \textit{C. l. familiaris} (CanFam4.0/ROS\_Cfam\_1.0), \textit{C. l. dingo} (ASM325472v1), and \textit{V. vulpes} (VulVul2.2). Orthologous genes were identified using Ensembl Compara with high-confidence one-to-one orthologs. Coding sequences were extracted for 17,078 genes present across all three species.
+We obtained reference genomes from Ensembl release 115: \textit{C. l. familiaris} (CanFam4.0/ROS\_Cfam\_1.0), \textit{C. l. dingo} (ASM325472v1), and \textit{V. vulpes} (VulVul2.2). Orthologous genes were identified using Ensembl Compara with high-confidence one-to-one orthologs.Coding sequences (CDS) were retrieved via the Ensembl REST API, yielding 17,078 genes present across all three species.
 
 \subsection{Sequence Alignment and Phylogeny}
 
-Protein sequences were aligned with MAFFT v7.505 (L-INS-i algorithm), back-translated to codon alignments with PAL2NAL v14, and filtered for alignment quality (minimum 30\% alignment coverage, 50\% sequence identity). The final dataset included 17,046 genes. The phylogeny ((Dog, Dingo), Fox) was used for all analyses.
+Protein sequences were aligned using MAFFT v7.505 with the L-INS-i algorithm. Alignments were back-translated to codon sequences with PAL2NAL v14. Genes with $<30\%$ aligned sequence coverage, $<50\%$ pairwise identity, or internal stop codons were excluded, resulting in 17,046 high-quality codon alignments. All analyses used the fixed species topology ((C. familiaris, C. dingo), V. vulpes).
 
-\subsection{Positive Selection Analysis}
-
-We applied aBSREL (HyPhy v2.5.59) to test for episodic positive selection exclusively on the dog branch. aBSREL models site-to-site and branch-to-branch $\omega$ (dN/dS) variation, comparing models with and without positive selection ($\omega$ > 1) using likelihood ratio tests. Bonferroni correction ($\alpha$=0.05/17,046=2.93$\times$10$^{-6}$) controlled family-wise error rate. Genes were classified as under selection if \textit{p} < 2.93$\times$10$^{-6}$ with selection exclusive to the dog branch.
+\subsection{Detection of Lineage-Specific Positive Selection}
+Episodic positive selection on the dog lineage was tested using the adaptive Branch-Site Random Effects Likelihood (aBSREL) model implemented in HyPhy v2.5.59. aBSREL estimates branch-specific distributions of nonsynonymous-to-synonymous substitution rate ratios ($\omega$), permitting $\omega > 1$ for a subset of sites. Likelihood ratio tests compared models allowing versus prohibiting positive selection on the dog branch. Bonferroni correction for 17{,}046 tests set a significance threshold of $\alpha = 2.93 \times 10^{-6}$. Genes were classified as dog-specific if significant support for $\omega>1$ occurred exclusively on the dog branch.
 
 \subsection{Quality Control and Validation}
+Analytical validity was assessed by computing the genomic inflation factor ($\lambda$), defined as the ratio of observed to expected median $\chi^2$ statistics \citep{Devlin1999}. Annotation completeness was quantified using Ensembl BioMart. Chromosomal distributions of significant genes were evaluated using a $\chi^2$ goodness-of-fit test.
 
-We implemented comprehensive quality control to establish analytical validity before biological interpretation. The genomic inflation factor ($\lambda$) was calculated as the ratio of observed to expected median $\chi^{2}$ statistics \citep{Devlin1999}. Annotation coverage was assessed using Ensembl BioMart API. Chromosome distribution was tested for non-random clustering using $\chi^{2}$ goodness-of-fit test.
+\subsection{Functional Annotation and Enrichment Analysis}
+Functional annotation was performed using the Ensembl BioMart API. Enrichment analysis was conducted with g:Profiler (g:GOSt) using Fisher’s exact test and g:SCS multiple-testing correction, with all 17{,}046 orthologs as the background set \citep{Raudvere2019}. Gene Ontology terms, pathways, and phenotype categories with FDR $<0.05$ were considered significant.
 
-\subsection{Functional Enrichment and Gene Prioritization}
-
-Gene annotation used Ensembl BioMart API. Functional enrichment analysis used g:Profiler with Fisher's exact test and g:SCS multiple testing correction (FDR < 0.05) against a custom background of all 17,046 analyzed genes \citep{Raudvere2019}.
-
-We developed a Multi-Criteria Decision Analysis framework scoring genes on: (1) Selection strength (0-10 points, scaled -log$_{10}$(p-value)), (2) Biological relevance (0-3 points, Wnt pathway membership), (3) Experimental tractability (0-3 points, druggability and expression), (4) Literature support (0-4 points, citation count). Total scores range 0-20 points. Tier assignment: Tier 1 ($\geq$ 16 points), Tier 2 (13-15.99 points), Tier 3 (< 13 points).
+\subsection{Gene Prioritization Framework}
+To identify high-value candidates for follow-up investigation, we applied a Multi-Criteria Decision Analysis (MCDA) scoring system integrating four components: (1) selection strength (0--10 points; scaled $-\log_{10} P$), (2) biological relevance (0--3 points; involvement in domestication-related pathways), (3) experimental tractability (0--3 points; assay and model feasibility), and (4) literature support (0--4 points; prior associations and citation density). Total scores (0--20) were used to assign tiered priority classes for downstream interpretation.
 
 \section{Results}
 
-\subsection{Analytical Validation Establishes Pipeline Reliability}
+\subsection{Quality Control and Model Performance}
 
-To establish analytical validity before presenting biological results, we performed comprehensive quality control (Figure \ref{fig:qc}). Analysis of 17,046 genes identified 401 genes (2.35\%) under significant positive selection on the dog branch (Bonferroni-corrected \textit{p} < 2.93$\times$10$^{-6}$).
+Across the 17{,}046 orthologous coding sequences included in the final dataset, aBSREL identified 401 genes (2.35\%) with evidence of episodic positive selection on the dog branch after Bonferroni correction (\textit{p} $<$ 2.93$\times$10$^{-6}$). Quality control metrics are shown in Figure~\ref{fig:qc}.
+
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/Figure1_QualityControl.png}
-\caption{\textbf{Quality control validation of selection analysis pipeline.} (A) Q-Q plot showing genomic inflation factor $\lambda$ = 127.6, indicating widespread genuine selection rather than statistical artifact. (B) Annotation coverage: 78.9\% (318/401) genes annotated. (C) Selection significance by annotation status shows no annotation bias. (D) Distribution of $\omega$ (dN/dS) values: median $\omega$ = 0.66, validating episodic selection interpretation where aBSREL detects site-specific $\omega$ > 1 even when gene-wide $\omega$ < 1.}
+\caption{\textbf{Quality control and analytical performance metrics.}
+(A) Q--Q plot of expected vs.\ observed test statistics ($\lambda = 127.6$). 
+(B) Annotation coverage among candidates (78.9\%). 
+(C) Selection significance by annotation status. 
+(D) Distribution of gene-wide $\omega$ estimates (median = 0.66).}
 \label{fig:qc}
 \end{figure}
 
-\textbf{Genomic inflation ($\lambda$ = 127.6):} Rather than indicating miscalibration, this high value reflects genuine widespread selection during domestication. Dog breed formation involved strong artificial selection across many traits, creating departure from neutral evolution at numerous loci. The functional coherence of enriched pathways supports this interpretation \citep{Yang2011}.
+The elevated genomic inflation factor ($\lambda = 127.6$) is consistent with extensive deviation from neutral expectations across multiple loci. Annotation coverage approached 80\%, and no significant differences in selection significance were observed between annotated and unannotated genes. The distribution of gene-wide $\omega$ values (median 0.66) reflects the expected pattern wherein aBSREL detects site-specific positive selection while gene-wide averages remain below 1.
 
-\subsection{Genome-wide Distribution Validates Polygenic Architecture}
 
-Chromosome distribution analysis showed no significant clustering of selected genes ($\chi^{2}$ = 58.3, \textit{p} = 0.0186; Figure \ref{fig:chromosome}). This dispersed distribution validates polygenic adaptation underlying domestication traits.
+\subsection{Chromosomal Distribution of Candidate Genes}
+
+Candidate genes were distributed across all dog chromosomes without strong evidence of clustering (Figure~\ref{fig:chromosome}). A chi-square test comparing observed to expected counts yielded $\chi^{2} = 58.3$ (\textit{p} = 0.0186), a modest deviation likely attributable to chromosome size variation rather than concentration on specific chromosomal regions.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/Figure2_ChromosomeDistribution.png}
-\caption{\textbf{Genome-wide distribution of selected genes.} (A) Number of selected genes per chromosome shows no significant clustering. (B) Proportion of genes under selection normalized by chromosome size shows consistent $\sim$1.5\% across genome. (C) Genomic position plot shows dispersed distribution, validating polygenic architecture.}
+\caption{\textbf{Chromosomal distribution of genes inferred to be under positive selection.}
+(A) Raw gene counts per chromosome. 
+(B) Proportion of selected genes normalized by chromosome size. 
+(C) Genomic locations of candidate genes plotted along chromosomes.}
 \label{fig:chromosome}
 \end{figure}
 
-\subsection{Selection Results Reveal Widespread Episodic Selection}
+Normalization by chromosome size resulted in an approximately uniform proportion of selected genes ($\sim$1.5\%) across the autosomes and X chromosome, consistent with a broadly polygenic signature.
 
-Among 401 genes under selection, 254 genes (63.3\%) showed \textit{p} < 1$\times$10$^{-10}$. The median $\omega$ = 0.66 combined with highly significant p-values demonstrates episodic selection: site-specific positive selection within otherwise constrained genes (Figure \ref{fig:selection}).
+
+\subsection{Magnitude and Distribution of Selection Signals}
+
+Among the 401 candidate genes, 254 (63.3\%) showed extremely small \textit{p}-values (\textit{p} $<$ 1$\times$10$^{-10}$). Despite these strong significance levels, gene-wide $\omega$ estimates remained below 1 for most genes (median = 0.66), consistent with episodic selection acting on localized sites rather than pervasive positive selection across entire coding regions (Figure~\ref{fig:selection}).
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/Figure3_SelectionResults.png}
-\caption{\textbf{Genome-wide positive selection landscape.} (A) Volcano plot showing relationship between $\omega$ and selection significance. Most genes show $\omega$ < 1 yet have significant p-values, validating episodic selection. (B) Distribution of $\omega$ values: median = 0.66. (C) Selection strength categories: 254 very strong (p < 10$^{-10}$, 63.3\%).}
+\caption{\textbf{Summary of branch-specific selection statistics.}
+(A) Volcano plot of selection significance vs.\ gene-wide $\omega$. 
+(B) Distribution of $\omega$ values across genes. 
+(C) Frequency of genes across significance thresholds.}
 \label{fig:selection}
 \end{figure}
 
-\subsection{Wnt Signaling Pathway Enrichment}
+These results align with expectations for developmental and regulatory genes, which are typically constrained at most sites but may undergo episodic adaptive changes at specific residues.
+\subsection{Functional Annotation and Pathway Enrichment}
 
-Functional enrichment analysis revealed significant overrepresentation of Wnt signaling pathway genes (GO:0016055), with 12-15 genes identified depending on annotation stringency (Figure \ref{fig:wnt}).
+Functional enrichment using a background of all 17{,}046 orthologs identified significant overrepresentation of Wnt signaling pathway components (GO:0016055), with 12--15 genes mapping to this pathway depending on annotation source (Figure~\ref{fig:wnt}).
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/Figure4_WntEnrichment.png}
-\caption{\textbf{Wnt signaling pathway enrichment and episodic selection signature.} (A) Top GO biological process enrichments showing Wnt signaling pathway significantly enriched. (B) Distribution of Wnt pathway genes by $\omega$ and selection significance. Most Wnt genes show $\omega$ < 1 (median 0.64) yet have extremely significant p-values, demonstrating episodic selection. (C) Functional categories of Wnt-associated selected genes indicating coordinated selection across pathway levels.}
+\caption{\textbf{Functional enrichment of genes under positive selection.}
+(A) Top enriched Gene Ontology biological process terms. 
+(B) Selection metrics for Wnt pathway genes. 
+(C) Functional categorization of Wnt-associated candidate genes.}
 \label{fig:wnt}
 \end{figure}
 
-The observation that Wnt pathway genes show median $\omega$ < 1 yet highly significant p-values reveals episodic selection as the primary mechanism. This pattern allows site-specific adaptation within constrained genes, enabling morphological plasticity while maintaining essential functions in pleiotropic developmental pathways \citep{Nusse2008, Logan2004}.
+Wnt pathway genes generally exhibited low gene-wide $\omega$ values (median = 0.64) but strong statistical support for episodic selection, consistent with adaptive changes within pleiotropic and developmentally essential pathways.
 
-\subsection{Multi-Criteria Prioritization Reveals Convergent Evidence}
+\subsection{Prioritization of Candidate Genes}
 
-Gene prioritization using multi-criteria scoring identified six Tier 1 candidates with scores $\geq$ 16 points (Figure \ref{fig:prioritization}):
+Application of the Multi-Criteria Decision Analysis (MCDA) framework yielded a distribution of priority tiers, with six genes classified as Tier~1 (scores $\geq 16$; Figure~\ref{fig:prioritization}). These genes combined high statistical support with biological relevance and experimental tractability.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/Figure5_GenePrioritization.png}
-\caption{\textbf{Multi-criteria gene prioritization framework and top candidates.} (A) Distribution of prioritization tiers: 6 Tier 1 genes (1.8\%), 47 Tier 2 genes (13.9\%), 284 Tier 3 genes (84.3\%). (B) Score distributions across tiers for individual criteria. (C) Detailed breakdown of Tier 1 genes. Four of six are Wnt-associated (FZD3, FZD4, EDNRB, GABRA3), providing convergent evidence. (D) Scatter plot of selection strength vs. total score.}
+\caption{\textbf{Prioritization outcomes using multi-criteria scoring.}
+(A) Distribution of genes across priority tiers. 
+(B) Component scores for each tier category. 
+(C) Characteristics of Tier~1 genes. 
+(D) Relationship between total score and selection strength.}
 \label{fig:prioritization}
 \end{figure}
 
-\textbf{Tier 1 genes:} \textit{GABRA3} (18.75 points), \textit{EDNRB} (17.75 points), \textit{HTR2B} (16.25 points), \textit{HCRTR1} (16.25 points), \textit{FZD3} (16.25 points), and \textit{FZD4} (16.0 points).
-
-\textbf{Convergent evidence for Wnt pathway:} Four of six Tier 1 genes (FZD3, FZD4, EDNRB, GABRA3) show functional connections to Wnt signaling, despite the prioritization framework incorporating multiple independent criteria. This convergence from independent lines of evidence strongly supports Wnt pathway involvement in breed-specific evolution.
+Tier~1 genes included \textit{GABRA3}, \textit{EDNRB}, \textit{HTR2B}, \textit{HCRTR1}, \textit{FZD3}, and \textit{FZD4}. Four of these six genes (\textit{FZD3}, \textit{FZD4}, \textit{EDNRB}, \textit{GABRA3}) are functionally associated with Wnt-related pathways or signaling components. Although the prioritization framework integrates independent criteria, convergence on these genes suggests that Wnt-associated processes may have been recurrent targets of lineage-specific selection.
 
 \section{Discussion}
 
-\subsection{Episodic Selection as Mechanism of Constrained Adaptation}
+\subsection{Patterns of Selection and Constraints on Coding Sequences}
 
-The predominance of genes with $\omega$ < 1 yet highly significant p-values reveals episodic selection as the primary mechanism of adaptation during dog breed formation. This pattern—site-specific positive selection within otherwise constrained genes—allows morphological plasticity while maintaining essential functions in pleiotropic developmental pathways.
+Most candidate genes exhibited gene-wide $\omega < 1$ while still showing strong evidence for episodic positive selection. This pattern indicates that adaptive changes were restricted to a subset of sites within otherwise constrained coding regions. Such a profile is expected for developmental and regulatory genes that maintain essential functions but may tolerate localized modifications influencing phenotype. The Wnt signaling pathway illustrates this pattern: these genes play central roles in embryonic patterning, neural crest development, pigmentation, and skeletal morphogenesis \citep{Nusse2008, Logan2004}. The detection of episodic selection within these genes is consistent with the possibility that specific residues or domains underwent adaptive modification while global functional constraints were preserved.
 
-The Wnt signaling pathway exemplifies this mechanism. These genes regulate embryonic patterning, neural crest specification, neurogenesis, skeletal development, and pigmentation \citep{Nusse2008, Logan2004}. Wholesale disruption would be lethal or severely deleterious, yet modulation of signaling strength at specific developmental timepoints can generate phenotypic variation. The aBSREL method is particularly suited to detect this pattern, as it explicitly models site-to-site and branch-to-branch rate variation \citep{Smith2015}.
+\subsection{Extent of Deviation From Neutral Expectations}
 
-\subsection{Genomic Inflation and Widespread Selection}
+The elevated genomic inflation factor ($\lambda = 127.6$) reflects extensive departures from neutral expectations across many loci. Given the strong artificial selection imposed during the formation and diversification of modern dog breeds, widespread selection signals are not unexpected. The enrichment of coherent functional categories, the recovery of genes previously associated with domestication (e.g., \textit{EDNRB}), and the absence of annotation bias together support the interpretation that the observed inflation is biological rather than technical \citep{Yang2011}.
 
-The high genomic inflation factor ($\lambda$ = 127.6) reflects genuine widespread selection during breed formation. Dog breed formation involved intense artificial selection across morphology, behavior, physiology, and cognition over the past 200-500 years. The significant enrichment of Wnt signaling and cell adhesion pathways, recovery of known domestication genes (EDNRB), and convergent evidence from independent criteria all support genuine biological signal rather than statistical noise \citep{Yang2011}.
+\subsection{Functional Themes Emerging From Genome-Wide Analyses}
 
-\subsection{Data-Driven Discovery: Wnt Pathway Involvement}
+Wnt pathway enrichment emerged from an unbiased genome-wide screen rather than from a hypothesis-driven framework. The convergence of selection statistics, functional annotation, and multi-criteria prioritization provides multiple independent indicators of potential involvement of Wnt-associated processes. Given the pleiotropic roles of Wnt signaling in craniofacial development, neural crest specification, melanocyte biology, cartilage formation, and aspects of neurodevelopment, selection acting on this pathway could influence multiple correlated traits associated with dog breed diversification.
 
-The significant enrichment of Wnt signaling pathway genes emerged from unbiased, data-driven analysis rather than hypothesis testing. This finding was unexpected and not predicted a priori. The convergent evidence—enrichment analysis, selection strength, and multi-criteria prioritization—strengthens confidence in this result.
+\subsection{Integration of Independent Data Streams}
 
-Wnt signaling's pleiotropic roles make it a plausible substrate for correlated trait evolution. The pathway regulates neural crest specification, craniofacial morphogenesis, melanocyte development, bone and cartilage formation, neurogenesis, and behavior via hippocampal and limbic expression. Selection on any of these processes could drive correlated changes in others via shared pathway components.
+The multi-criteria prioritization framework synthesizes statistical signals with biological relevance and experimental considerations. The presence of four Wnt-associated genes among the six Tier~1 candidates despite pathway membership contributing only a minority of available points reflects convergence across analytic dimensions rather than dependence on any single criterion. This integrative approach thus highlights candidates with both strong statistical evidence and plausible mechanistic relevance.
 
-\subsection{Convergent Evidence from Independent Criteria}
+\subsection{Utility of the Comparative Framework}
 
-The multi-criteria prioritization framework integrates four independent sources of information: computational selection signals, functional pathway membership, experimental tractability metrics, and literature support. The recovery of four Wnt-associated genes among six Tier 1 candidates (FZD3, FZD4, EDNRB, GABRA3)—despite pathway membership contributing only 3 of 20 possible points—provides strong convergent evidence.
-
-\subsection{Three-Species Design: Methodological Innovation}
-
-Our three-species phylogenetic design successfully isolated breed-specific selection from ancient domestication events. Traditional dog-versus-wolf comparisons conflate initial domestication (15,000-40,000 years ago) with recent breed formation (past 200-500 years). Using dingoes as controls—diverging after initial domestication but before intensive breeding—we captured selection specific to modern breed formation. This approach complements large-scale population genomic efforts (Dog10K consortium \citep{Ostrander2024}) by focusing on lineage-specific selection.
+The three-species design used here distinguishes selection that occurred after the divergence of dogs and dingoes from variation inherited from earlier domestication stages. Traditional comparisons between dogs and wolves conflate ancient domestication processes with recent selective pressures associated with breed formation. By incorporating the dingo, which diverged after initial domestication but prior to intensive artificial selection, we were able to focus specifically on lineage-specific changes along the dog branch. This framework complements ongoing population-level efforts (e.g., Dog10K \citep{Ostrander2024}) by identifying branch-specific signals of adaptation.
 
 \subsection{Limitations and Future Directions}
 
-\textbf{Coding-sequence focus:} Our analysis examined protein-coding genes, excluding regulatory regions where selection may operate. Future studies integrating whole-genome sequencing could identify selected non-coding elements.
-
-\textbf{Temporal resolution:} We tested selection on the dog branch but cannot distinguish early breed formation from ongoing selection in modern breeds. Breed-specific analyses could resolve temporal dynamics.
-
-\textbf{Functional validation required:} We prioritized six Tier 1 candidates for validation using computational structural biology, transcriptomics, and conditional knockout models to establish causative relationships between genetic changes and phenotypic outcomes.
+Several limitations should be noted. First, the present analysis focuses on protein-coding regions; selection acting on regulatory elements, non-coding RNAs, or structural variants remains uncharacterized. Whole-genome or high-resolution regulatory analyses would help address this gap. Second, although the dog branch captures selection that occurred after divergence from dingoes, it does not resolve temporal dynamics within breed formation. More refined analyses incorporating breed-level phylogenies could help differentiate early versus late stages of diversification. Finally, while this study highlights several high-priority candidate genes, functional validation through transcriptomic profiling, structural modeling, or experimental perturbation will be necessary to establish causal links between specific substitutions and phenotypic outcomes.
 
 \section{Conclusion}
 
-We identified 401 genes under positive selection during dog breed formation using a three-species phylogenomic design that isolates breed-specific selection from ancient domestication. The analysis revealed episodic selection as the primary mechanism: site-specific positive selection within constrained genes, allowing morphological plasticity while maintaining essential functions. Unexpected enrichment of Wnt signaling pathway components emerged from data-driven analysis, with convergent evidence from multi-criteria prioritization: four of six top candidates (FZD3, FZD4, EDNRB, GABRA3) show Wnt associations despite scoring high on independent criteria.
+Using a three-species phylogenomic framework, we identified 401 genes with evidence of episodic positive selection specific to the dog lineage. Most candidate genes exhibited low gene-wide $\omega$ but strong statistical support for localized adaptive change, consistent with selection acting on constrained developmental and regulatory loci. Pathway-level enrichment and prioritization analyses highlighted components of the Wnt signaling system, with four of six top-ranked genes (\textit{FZD3}, \textit{FZD4}, \textit{EDNRB}, \textit{GABRA3}) showing functional associations with this pathway. The dispersed chromosomal distribution of selected genes and the elevated genomic inflation factor together suggest a broadly polygenic pattern consistent with the diversity of phenotypes targeted during dog breed formation.
 
-The high genomic inflation factor ($\lambda$ = 127.6) reflects genuine widespread selection validated by functional coherence, genome-wide distribution, and recovery of known domestication genes. The dispersed chromosome distribution supports polygenic adaptation underlying domestication trait correlations. These findings reveal coordinated evolution across developmental signaling and neurotransmission pathways during breed formation, with episodic selection in pleiotropic genes as a mechanism for constrained adaptation—potentially a general feature of rapid evolutionary change in domesticated species.
+Overall, these results indicate that adaptive evolution during breed diversification may have involved localized modifications within pleiotropic developmental and neurobiological pathways. This framework provides a foundation for future work aimed at mechanistic characterization of candidate loci and at understanding the broader principles governing rapid phenotypic diversification in domesticated species.
 
 \bibliographystyle{plainnat}
 \bibliography{references}
