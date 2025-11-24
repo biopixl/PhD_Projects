@@ -247,7 +247,7 @@ cat("Panel C saved successfully.\n")
 
 # Streamlined 3-panel combined figure
 ggsave(
-  filename = file.path(output_dir, "Figure3_WntEnrichment.pdf"),
+  filename = file.path(output_dir, "Figure4_WntEnrichment.pdf"),
   plot = figure3,
   width = 14,
   height = 16,
@@ -256,7 +256,7 @@ ggsave(
 )
 
 ggsave(
-  filename = file.path(output_dir, "Figure3_WntEnrichment.png"),
+  filename = file.path(output_dir, "Figure4_WntEnrichment.png"),
   plot = figure3,
   width = 14,
   height = 16,
@@ -265,8 +265,8 @@ ggsave(
 
 cat("\n=== Figure 3 Streamlined 3-Panel Version Complete ===\n")
 cat("Saved to:\n")
-cat("  - manuscript/figures/Figure3_WntEnrichment.pdf\n")
-cat("  - manuscript/figures/Figure3_WntEnrichment.png\n")
+cat("  - manuscript/figures/Figure4_WntEnrichment.pdf\n")
+cat("  - manuscript/figures/Figure4_WntEnrichment.png\n")
 cat("\nKey improvements:\n")
 cat("  - Removed Panel C (pathway diagram) to eliminate white space\n")
 cat("  - Balanced 3-panel layout with optimized spacing\n")

@@ -144,7 +144,7 @@ row_ha2 <- rowAnnotation(
 )
 
 # Create heatmap
-pdf(file.path(output_dir, "Figure4_GenePrioritization_Heatmap.pdf"), width = 12, height = 10)
+pdf(file.path(output_dir, "Figure5_GenePrioritization_Heatmap.pdf"), width = 12, height = 10)
 
 ht <- Heatmap(
   heatmap_matrix,
@@ -187,7 +187,7 @@ draw(ht, heatmap_legend_side = "right")
 dev.off()
 
 # Also save as PNG
-png(file.path(output_dir, "Figure4_GenePrioritization_Heatmap.png"),
+png(file.path(output_dir, "Figure5_GenePrioritization_Heatmap.png"),
     width = 12, height = 10, units = "in", res = 300)
 draw(ht, heatmap_legend_side = "right")
 dev.off()
@@ -299,7 +299,7 @@ figure4_panels <- (p_tier_dist | p_scores_dist) /
 
 # Save combined panels
 ggsave(
-  filename = file.path(output_dir, "Figure4_GenePrioritization.pdf"),
+  filename = file.path(output_dir, "Figure5_GenePrioritization.pdf"),
   plot = figure4_panels,
   width = 16,
   height = 14,
@@ -308,7 +308,7 @@ ggsave(
 )
 
 ggsave(
-  filename = file.path(output_dir, "Figure4_GenePrioritization.png"),
+  filename = file.path(output_dir, "Figure5_GenePrioritization.png"),
   plot = figure4_panels,
   width = 16,
   height = 14,
@@ -335,7 +335,7 @@ print(tier1_genes[, c("gene_symbol", "total_score", "selection_score", "relevanc
 
 cat("\nFigure 4 created successfully!\n")
 cat("Saved to:\n")
-cat("  - manuscript/figures/Figure4_GenePrioritization.pdf (panels)\n")
-cat("  - manuscript/figures/Figure4_GenePrioritization.png (panels)\n")
-cat("  - manuscript/figures/Figure4_GenePrioritization_Heatmap.pdf (heatmap)\n")
-cat("  - manuscript/figures/Figure4_GenePrioritization_Heatmap.png (heatmap)\n")
+cat("  - manuscript/figures/Figure5_GenePrioritization.pdf (panels)\n")
+cat("  - manuscript/figures/Figure5_GenePrioritization.png (panels)\n")
+cat("  - manuscript/figures/Figure5_GenePrioritization_Heatmap.pdf (heatmap)\n")
+cat("  - manuscript/figures/Figure5_GenePrioritization_Heatmap.png (heatmap)\n")
