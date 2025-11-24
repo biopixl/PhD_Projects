@@ -124,11 +124,11 @@ p_volcano <- ggplot(selection_data, aes(x = dog_omega, y = log10p)) +
     y = expression(-log[10](italic(p)*"-value")),
     color = ""
   ) +
-  # Log scale for x-axis (omega) - CROPPED AT 3 to focus on majority of data
+  # Log scale for x-axis (omega) - CROPPED AT 2 to focus on majority of data
   scale_x_log10(
-    breaks = c(0.5, 1, 2, 3),
-    labels = c("0.5", "1", "2", "3"),
-    limits = c(0.3, 3.5)
+    breaks = c(0.5, 1, 2),
+    labels = c("0.5", "1", "2"),
+    limits = c(0.3, 2.2)
   ) +
   # Y-axis with better breaks
   scale_y_continuous(
@@ -179,11 +179,11 @@ p_omega_dist <- ggplot(selection_data, aes(x = dog_omega)) +
     x = expression(paste(omega, " (d"[N], "/d"[S], " ratio)")),
     y = "Density"
   ) +
-  # Log scale for x-axis - CROPPED AT 3 to match Panel A
+  # Log scale for x-axis - CROPPED AT 2 to match Panel A
   scale_x_log10(
-    breaks = c(0.5, 1, 2, 3),
-    labels = c("0.5", "1", "2", "3"),
-    limits = c(0.3, 3.5)
+    breaks = c(0.5, 1, 2),
+    labels = c("0.5", "1", "2"),
+    limits = c(0.3, 2.2)
   ) +
   # Theme
   theme_classic() +
@@ -236,11 +236,11 @@ p_qq <- ggplot(qq_data, aes(x = expected, y = observed)) +
 # Combine All Panels (NO TABLE - Panel D removed)
 # ============================================================================
 
-# Two-row layout: Volcano (full width) | Omega dist (square) + Q-Q plot (wider)
-# Adjust widths: Panel B smaller/square, Panel C gets more space
+# Two-row layout: Volcano (full width) | Omega dist (compact) + Q-Q plot (expanded)
+# Adjust widths: Panel B compact (1/3), Panel C expanded (2/3 = >1/3 of Panel A)
 figure2 <- p_volcano /
            (p_omega_dist | p_qq) +
-  plot_layout(heights = c(2.5, 1.5), widths = c(1, 1.5)) +
+  plot_layout(heights = c(2.5, 1.5), widths = c(1, 2)) +
   plot_annotation(
     title = "Figure 2: Positive Selection in Dog Domestication",
     subtitle = paste0(nrow(selection_data), " genes under significant positive selection (Bonferroni-corrected, p < 2.93×10⁻⁶)"),
@@ -291,13 +291,13 @@ cat("\n=== FINAL IMPROVEMENTS ===\n")
 cat("✓ Fixed p-value = 0 issue (replaced with minimum non-zero)\n")
 cat("✓ Removed extreme omega outliers (> 10)\n")
 cat("✓ Applied log scale to omega axis for better visualization\n")
-cat("✓ Cropped x-axis at omega = 3 (focuses on 95%+ of data)\n")
+cat("✓ Cropped x-axis at omega = 2 (focuses on majority of data)\n")
 cat("✓ Removed 'Unknown' gene labels for clarity\n")
 cat("✓ Label only top 10 KNOWN genes\n")
 cat("✓ Unknown genes shown with transparency (alpha = 0.25)\n")
 cat("✓ Known genes more opaque (alpha = 0.8)\n")
 cat("✓ Removed Panel D (table) - more space for panels B & C\n")
-cat("✓ Panel B made square/compact, Panel C expanded horizontally\n")
+cat("✓ Panel B compact (1/3 width), Panel C expanded (2/3 width)\n")
 cat("✓ Table data will be incorporated into manuscript text\n")
 cat("✓ Updated deprecated 'size' to 'linewidth' parameters\n")
 cat("✓ Increased DPI to 600 (matching Figure 1)\n")
