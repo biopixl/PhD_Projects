@@ -142,8 +142,8 @@ p_volcano <- ggplot(selection_data, aes(x = dog_omega, y = log10p)) +
     plot.title = element_text(size = 12, face = "bold", hjust = 0),
     axis.title = element_text(size = 11, face = "bold"),
     axis.text = element_text(size = 9),
-    legend.position = c(0.02, 0.98),
-    legend.justification = c(0, 1),
+    legend.position = c(0.98, 0.02),
+    legend.justification = c(1, 0),
     legend.background = element_rect(fill = "white", color = "black", linewidth = 0.5),
     legend.title = element_blank(),
     legend.text = element_text(size = 9),
@@ -236,11 +236,11 @@ p_qq <- ggplot(qq_data, aes(x = expected, y = observed)) +
 # Combine All Panels (NO TABLE - Panel D removed)
 # ============================================================================
 
-# Two-row layout: Volcano (full width) | Omega dist (compact) + Q-Q plot (expanded)
-# Adjust widths: Panel B compact (1/3), Panel C expanded (2/3 = >1/3 of Panel A)
+# Two-row layout: Volcano (full width) | Omega dist (compressed) + Q-Q plot (wide)
+# Adjust widths: Panel B compressed (0.5), Panel C wide (2.5 = 83% of bottom row)
 figure2 <- p_volcano /
            (p_omega_dist | p_qq) +
-  plot_layout(heights = c(2.5, 1.5), widths = c(1, 2)) +
+  plot_layout(heights = c(2.5, 1.5), widths = c(0.5, 2.5)) +
   plot_annotation(
     title = "Figure 2: Positive Selection in Dog Domestication",
     subtitle = paste0(nrow(selection_data), " genes under significant positive selection (Bonferroni-corrected, p < 2.93×10⁻⁶)"),
@@ -297,7 +297,8 @@ cat("✓ Label only top 10 KNOWN genes\n")
 cat("✓ Unknown genes shown with transparency (alpha = 0.25)\n")
 cat("✓ Known genes more opaque (alpha = 0.8)\n")
 cat("✓ Removed Panel D (table) - more space for panels B & C\n")
-cat("✓ Panel B compact (1/3 width), Panel C expanded (2/3 width)\n")
+cat("✓ Panel B compressed, Panel C widened (83% of bottom row)\n")
+cat("✓ Legend moved to bottom right of Panel A\n")
 cat("✓ Table data will be incorporated into manuscript text\n")
 cat("✓ Updated deprecated 'size' to 'linewidth' parameters\n")
 cat("✓ Increased DPI to 600 (matching Figure 1)\n")
