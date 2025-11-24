@@ -1,14 +1,12 @@
 #!/usr/bin/env Rscript
-# Figure 2: Genome-Wide Selection Results - IMPROVED
-# Critical fixes: p-value=0 handling, omega outliers, log scales, text positioning
+# Figure 2: Genome-Wide Selection Results - FINAL
+# Improvements: Remove "Unknown" labels, transparency, no table panel
 
 library(ggplot2)
 library(ggrepel)
 library(patchwork)
 library(dplyr)
 library(scales)
-library(gridExtra)
-library(grid)
 
 # Set output directory
 output_dir <- "manuscript/figures"
@@ -65,11 +63,19 @@ bonferroni_threshold <- -log10(0.05 / 17046)
 cat(sprintf("Bonferroni threshold: -log10(p) = %.2f (p = %.2e)\n",
             bonferroni_threshold, 0.05/17046))
 
-# Identify top genes to label (top 10 for clarity)
+# Identify top KNOWN genes to label (exclude "Unknown")
 top_genes <- selection_data %>%
+  filter(gene_symbol != "Unknown") %>%
   arrange(dog_pvalue) %>%
   head(10) %>%
   pull(gene_symbol)
+
+# Add transparency based on whether gene is known
+selection_data$is_known <- selection_data$gene_symbol != "Unknown"
+
+cat(sprintf("Known genes: %d, Unknown genes: %d\n",
+            sum(selection_data$is_known),
+            sum(!selection_data$is_known)))
 
 # ============================================================================
 # Panel A: Volcano Plot (ω vs -log10(p-value))
@@ -80,14 +86,15 @@ selection_data$significance <- ifelse(selection_data$log10p > bonferroni_thresho
                                        "Significant", "Not significant")
 
 p_volcano <- ggplot(selection_data, aes(x = dog_omega, y = log10p)) +
-  # Points with alpha gradient
-  geom_point(aes(color = significance, alpha = log10p),
+  # Points - known genes more opaque, unknown more transparent
+  geom_point(aes(color = significance,
+                 alpha = ifelse(is_known, 0.8, 0.25)),
              size = 2) +
   # Color scale
   scale_color_manual(values = c("Significant" = "#E74C3C",
                                   "Not significant" = "#95A5A6")) +
-  # Alpha scale
-  scale_alpha_continuous(range = c(0.3, 0.9), guide = "none") +
+  # Alpha scale (fixed values, no gradient)
+  scale_alpha_identity() +
   # Bonferroni threshold line
   geom_hline(yintercept = bonferroni_threshold,
              linetype = "dashed", color = "black", linewidth = 1) +
@@ -95,19 +102,20 @@ p_volcano <- ggplot(selection_data, aes(x = dog_omega, y = log10p)) +
   annotate("text", x = 1, y = bonferroni_threshold + 1.5,
            label = "Bonferroni threshold",
            size = 3.5, fontface = "bold", hjust = 0) +
-  # Label top genes with repel
+  # Label top KNOWN genes only (no "Unknown")
   geom_text_repel(
-    data = subset(selection_data, gene_symbol %in% top_genes),
+    data = subset(selection_data, gene_symbol %in% top_genes & is_known),
     aes(label = gene_symbol),
-    size = 2.8,
+    size = 3.5,
     fontface = "bold.italic",
-    max.overlaps = 25,
-    box.padding = 0.5,
-    point.padding = 0.5,
+    max.overlaps = 30,
+    box.padding = 0.7,
+    point.padding = 0.6,
     segment.color = "gray40",
-    segment.size = 0.3,
+    segment.size = 0.4,
     min.segment.length = 0,
-    force = 2
+    force = 4,
+    seed = 42  # Reproducible label positions
   ) +
   # Axis labels with proper notation
   labs(
@@ -187,7 +195,7 @@ p_omega_dist <- ggplot(selection_data, aes(x = dog_omega)) +
   )
 
 # ============================================================================
-# Panel C: Q-Q Plot
+# Panel C: Q-Q Plot (EXPANDED - no Panel D)
 # ============================================================================
 
 # Calculate expected vs observed -log10(p-values)
@@ -201,7 +209,7 @@ qq_data <- data.frame(
 
 p_qq <- ggplot(qq_data, aes(x = expected, y = observed)) +
   # Points
-  geom_point(color = "#9B59B6", alpha = 0.5, size = 1.5) +
+  geom_point(color = "#9B59B6", alpha = 0.5, size = 2) +
   # Diagonal line (expected if no enrichment)
   geom_abline(slope = 1, intercept = 0, linetype = "dashed",
               color = "black", linewidth = 1) +
@@ -224,60 +232,21 @@ p_qq <- ggplot(qq_data, aes(x = expected, y = observed)) +
   )
 
 # ============================================================================
-# Panel D: Top 10 Genes Table
+# Combine All Panels (NO TABLE - Panel D removed)
 # ============================================================================
 
-# Prepare top genes table
-top_genes_table <- selection_data %>%
-  arrange(dog_pvalue) %>%
-  head(10) %>%
-  select(gene_symbol, dog_pvalue, dog_omega) %>%
-  mutate(
-    p_value = format(dog_pvalue, scientific = TRUE, digits = 2),
-    omega = round(dog_omega, 2)
-  ) %>%
-  select(Gene = gene_symbol, `p-value` = p_value, ω = omega)
-
-table_grob <- tableGrob(
-  top_genes_table,
-  rows = NULL,
-  theme = ttheme_default(
-    base_size = 9,
-    padding = unit(c(3, 3), "mm"),
-    core = list(
-      fg_params = list(hjust = 0, x = 0.05),
-      bg_params = list(fill = c("#F8F9F9", "#EAECEE"))
-    ),
-    colhead = list(
-      fg_params = list(fontface = "bold"),
-      bg_params = list(fill = "#D5D8DC")
-    )
-  )
-)
-
-p_table <- ggplot() +
-  annotation_custom(table_grob) +
-  labs(title = "D. Top 10 Selected Genes") +
-  theme_void() +
-  theme(
-    plot.title = element_text(size = 11, face = "bold", hjust = 0),
-    plot.margin = margin(5, 5, 5, 5)
-  )
-
-# ============================================================================
-# Combine All Panels
-# ============================================================================
-
-# Two-row layout: Volcano (full width) | Three panels below
+# Two-row layout: Volcano (full width) | Omega dist + Q-Q plot (expanded)
 figure2 <- p_volcano /
-           (p_omega_dist | p_qq | p_table) +
-  plot_layout(heights = c(2, 1.5)) +
+           (p_omega_dist | p_qq) +
+  plot_layout(heights = c(2.5, 1.5)) +
   plot_annotation(
     title = "Figure 2: Positive Selection in Dog Domestication",
     subtitle = paste0(nrow(selection_data), " genes under significant positive selection (Bonferroni-corrected, p < 2.93×10⁻⁶)"),
+    caption = "Known genes labeled in volcano plot. Unknown genes shown with reduced opacity. Full gene list in Supplementary Table S1.",
     theme = theme(
       plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
       plot.subtitle = element_text(size = 11, hjust = 0.5),
+      plot.caption = element_text(size = 9, hjust = 1, face = "italic"),
       plot.margin = margin(10, 10, 10, 10)
     )
   )
@@ -287,7 +256,7 @@ ggsave(
   filename = file.path(output_dir, "Figure2_SelectionResults.pdf"),
   plot = figure2,
   width = 12,
-  height = 10,
+  height = 9,
   dpi = 600,
   device = "pdf"
 )
@@ -296,7 +265,7 @@ ggsave(
   filename = file.path(output_dir, "Figure2_SelectionResults.png"),
   plot = figure2,
   width = 12,
-  height = 10,
+  height = 9,
   dpi = 600,
   device = "png"
 )
@@ -306,6 +275,9 @@ cat("\n=== Figure 2 Summary ===\n")
 cat(sprintf("Genes analyzed: 17,046\n"))
 cat(sprintf("Significantly selected genes: %d (%.2f%%)\n",
             nrow(selection_data), (nrow(selection_data) / 17046) * 100))
+cat(sprintf("Known genes: %d, Unknown genes: %d\n",
+            sum(selection_data$is_known),
+            sum(!selection_data$is_known)))
 cat(sprintf("Mean ω: %.2f\n", mean(selection_data$dog_omega)))
 cat(sprintf("Median ω: %.2f\n", median(selection_data$dog_omega)))
 cat(sprintf("Range ω: %.2f - %.2f\n", min(selection_data$dog_omega), max(selection_data$dog_omega)))
@@ -313,15 +285,19 @@ cat(sprintf("Strong selection (p < 1e-10): %d genes (%.1f%%)\n",
             sum(selection_data$dog_pvalue < 1e-10),
             (sum(selection_data$dog_pvalue < 1e-10) / nrow(selection_data)) * 100))
 
-cat("\n=== IMPROVEMENTS APPLIED ===\n")
+cat("\n=== FINAL IMPROVEMENTS ===\n")
 cat("✓ Fixed p-value = 0 issue (replaced with minimum non-zero)\n")
 cat("✓ Removed extreme omega outliers (> 10)\n")
 cat("✓ Applied log scale to omega axis for better visualization\n")
-cat("✓ Improved text positioning to prevent cropping/overlap\n")
+cat("✓ Removed 'Unknown' gene labels for clarity\n")
+cat("✓ Label only top 10 KNOWN genes\n")
+cat("✓ Unknown genes shown with transparency (alpha = 0.25)\n")
+cat("✓ Known genes more opaque (alpha = 0.8)\n")
+cat("✓ Removed Panel D (table) - more space for panels B & C\n")
+cat("✓ Table data will be incorporated into manuscript text\n")
 cat("✓ Updated deprecated 'size' to 'linewidth' parameters\n")
 cat("✓ Increased DPI to 600 (matching Figure 1)\n")
-cat("✓ Optimized figure dimensions (12x10)\n")
-cat("✓ Reduced to top 10 genes for clearer labeling\n")
+cat("✓ Optimized figure dimensions (12x9)\n")
 
 cat("\nFigure 2 saved to:\n")
 cat("  - manuscript/figures/Figure2_SelectionResults.pdf\n")
