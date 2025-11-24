@@ -44,7 +44,7 @@ wnt_data <- read.delim(wnt_file, header = TRUE, stringsAsFactors = FALSE)
 # ============================================================================
 
 enrichment_data$log10p <- -log10(enrichment_data$p_value)
-enrichment_data$term_short <- substr(enrichment_data$term_name, 1, 45)
+enrichment_data$term_short <- substr(enrichment_data$term_name, 1, 40)
 
 # Categorize enrichment strength
 enrichment_data$strength <- cut(enrichment_data$log10p,
@@ -90,17 +90,27 @@ panel_a <- ggplot(enrichment_data, aes(x = log10p, y = term_short)) +
     y = NULL,
     fill = "GO Category"
   ) +
-  scale_x_continuous(expand = expansion(mult = c(0, 0.15))) +
-  theme_pub() +
+  scale_x_continuous(limits = c(0, 2.3), expand = expansion(mult = c(0, 0.05))) +
+  theme_pub(base_size = 13) +
   theme(
-    axis.text.y = element_text(size = 10),
-    legend.position = c(0.75, 0.25),
-    legend.background = element_rect(fill = "white", color = "black", linewidth = 0.5)
+    axis.text.y = element_text(size = 11),
+    axis.text.x = element_text(size = 11),
+    axis.title.x = element_text(size = 13),
+    legend.position = c(0.98, 0.98),
+    legend.justification = c(1, 1),
+    legend.background = element_rect(fill = "white", color = "black", linewidth = 0.5),
+    legend.text = element_text(size = 11),
+    legend.title = element_text(size = 12),
+    plot.margin = margin(5, 5, 5, 5)
   )
 
 # ============================================================================
 # Panel B: Wnt Pathway Genes - Enhanced Volcano Plot with Clear Symbology
 # ============================================================================
+
+# Handle p-value = 0 (replace with minimum non-zero value)
+min_nonzero_p <- min(wnt_data$dog_pvalue[wnt_data$dog_pvalue > 0], na.rm = TRUE)
+wnt_data$dog_pvalue[wnt_data$dog_pvalue == 0] <- min_nonzero_p
 
 wnt_data$log10p <- -log10(wnt_data$dog_pvalue)
 
@@ -125,174 +135,42 @@ panel_b <- ggplot(wnt_data, aes(x = dog_omega, y = log10p)) +
                         limits = c(0, max(wnt_data$dog_omega))) +
   # Size scale
   scale_size_continuous(range = c(8, 20), guide = "none") +
-  # Reference lines
-  geom_hline(yintercept = -log10(1e-10), linetype = "dashed",
-             color = "#E03030", linewidth = 1) +
+  # Reference line - neutral selection only
   geom_vline(xintercept = 1, linetype = "dotted",
              color = "grey40", linewidth = 1) +
-  # Annotations
+  # Annotation for neutral selection
   annotate("text", x = 1, y = max(wnt_data$log10p) * 0.95,
            label = "Neutral selection\n(ω = 1)", hjust = -0.1,
            size = 3.5, fontface = "bold", color = "grey30") +
-  annotate("rect", xmin = 0.85, xmax = max(wnt_data$dog_omega) * 0.4,
-           ymin = -log10(1e-10) - 0.5, ymax = -log10(1e-10) + 0.5,
-           fill = "white", color = "#E03030", linewidth = 0.8, alpha = 0.9) +
-  annotate("text", x = mean(c(0.85, max(wnt_data$dog_omega) * 0.4)),
-           y = -log10(1e-10),
-           label = "p < 10⁻¹⁰", size = 4, fontface = "bold", color = "#E03030") +
   # Gene labels with better placement
   geom_text_repel(aes(label = gene_symbol),
-                  size = 4, fontface = "italic",
-                  box.padding = 0.6, point.padding = 0.4,
-                  max.overlaps = 20, min.segment.length = 0.1,
-                  segment.color = "grey30", segment.linewidth = 0.4) +
+                  size = 3.8, fontface = "italic",
+                  box.padding = 1.5, point.padding = 0.8,
+                  max.overlaps = 20, min.segment.length = 0.2,
+                  segment.color = "grey30", segment.size = 0.4,
+                  force = 3, force_pull = 1) +
   # Labels
   labs(
     title = "B",
     x = expression(bold(omega*" (dN/dS ratio)")),
     y = expression(bold("-log"[10]*"(p-value)"))
   ) +
-  scale_x_continuous(limits = c(0, max(wnt_data$dog_omega) + 0.15),
+  scale_x_continuous(limits = c(0.2, 1.2), expand = expansion(mult = c(0.02, 0.02))) +
+  scale_y_continuous(limits = c(8, max(wnt_data$log10p) + 2),
                      expand = c(0, 0)) +
-  scale_y_continuous(limits = c(0, max(wnt_data$log10p) + 2),
-                     expand = c(0, 0)) +
-  theme_pub() +
-  theme(legend.position = c(0.85, 0.25),
-        legend.background = element_rect(fill = "white", color = "black", linewidth = 0.5))
+  theme_pub(base_size = 13) +
+  theme(legend.position = c(0.95, 0.15),
+        legend.justification = c(1, 0),
+        legend.background = element_rect(fill = "white", color = "black", linewidth = 0.5),
+        legend.text = element_text(size = 11),
+        legend.title = element_text(size = 12),
+        axis.text = element_text(size = 11),
+        axis.title.x = element_text(size = 13),
+        axis.title.y = element_text(size = 13, margin = margin(r = 0)),
+        plot.margin = margin(5, 5, 5, 5))
 
-# ============================================================================
-# Panel C: Wnt Pathway Cellular Diagram - SCIENTIFICALLY ACCURATE
-# ============================================================================
-
-# Create biologically accurate pathway with proper compartments
-panel_c <- ggplot() +
-  # BACKGROUND: Cellular compartments with proper shading
-  annotate("rect", xmin = 0, xmax = 10, ymin = 0, ymax = 3,
-           fill = "#FFF8DC", color = NA, alpha = 0.3) +
-  annotate("text", x = 5, y = 2.8, label = "EXTRACELLULAR SPACE",
-           size = 4.5, fontface = "bold", color = "grey40") +
-
-  annotate("rect", xmin = 0, xmax = 10, ymin = 3, ymax = 3.5,
-           fill = "#8B7355", alpha = 0.6) +
-  annotate("text", x = 5, y = 3.25, label = "MEMBRANE",
-           size = 4, fontface = "bold", color = "white") +
-
-  annotate("rect", xmin = 0, xmax = 10, ymin = 3.5, ymax = 6.5,
-           fill = "#E8F4F8", alpha = 0.4) +
-  annotate("text", x = 1, y = 6.2, label = "CYTOPLASM",
-           size = 4.5, fontface = "bold", color = "grey40", hjust = 0) +
-
-  annotate("rect", xmin = 6.5, xmax = 9.5, ymin = 4, ymax = 6,
-           fill = "#FFE4E1", alpha = 0.6, color = "#8B4513", linewidth = 1.5) +
-  annotate("text", x = 8, y = 5.8, label = "NUCLEUS",
-           size = 4.5, fontface = "bold", color = "#8B4513") +
-
-  # RECEPTORS at membrane (FZD3, FZD4)
-  annotate("rect", xmin = 1.5, xmax = 2.5, ymin = 3, ymax = 4,
-           fill = "#3498DB", color = "red", linewidth = 2, alpha = 0.85) +
-  annotate("text", x = 2, y = 3.5, label = "FZD3", size = 4, fontface = "bold.italic", color = "white") +
-
-  annotate("rect", xmin = 3, xmax = 4, ymin = 3, ymax = 4,
-           fill = "#3498DB", color = "red", linewidth = 2, alpha = 0.85) +
-  annotate("text", x = 3.5, y = 3.5, label = "FZD4", size = 4, fontface = "bold.italic", color = "white") +
-
-  # CYTOPLASMIC COMPONENTS (using circular nodes)
-  # DVL3 (Dishevelled) - transducer
-  geom_point(aes(x = 2.75, y = 4.8), size = 35, shape = 21,
-             fill = "#9B59B6", color = "red", stroke = 2, alpha = 0.85) +
-  annotate("text", x = 2.75, y = 4.8, label = "DVL3", size = 4, fontface = "bold.italic", color = "white") +
-
-  # CXXC4 (inhibitor)
-  geom_point(aes(x = 4.5, y = 5.5), size = 38, shape = 21,
-             fill = "#E67E22", color = "red", stroke = 2, alpha = 0.85) +
-  annotate("text", x = 4.5, y = 5.5, label = "CXXC4", size = 4, fontface = "bold.italic", color = "white") +
-
-  # GSK3B (not selected - shown in grey)
-  geom_point(aes(x = 4.5, y = 4.3), size = 38, shape = 21,
-             fill = "#95A5A6", color = "black", stroke = 1.5, alpha = 0.7) +
-  annotate("text", x = 4.5, y = 4.3, label = "GSK3B", size = 3.5, fontface = "italic", color = "white") +
-
-  # NUCLEAR TRANSCRIPTION FACTORS
-  # LEF1
-  geom_point(aes(x = 7.5, y = 5.3), size = 35, shape = 21,
-             fill = "#E74C3C", color = "red", stroke = 2, alpha = 0.9) +
-  annotate("text", x = 7.5, y = 5.3, label = "LEF1", size = 4, fontface = "bold.italic", color = "white") +
-
-  # SIX3
-  geom_point(aes(x = 7.5, y = 4.5), size = 35, shape = 21,
-             fill = "#E74C3C", color = "red", stroke = 2, alpha = 0.9) +
-  annotate("text", x = 7.5, y = 4.5, label = "SIX3", size = 4, fontface = "bold.italic", color = "white") +
-
-  # EDNRB (additional receptor)
-  annotate("rect", xmin = 6, xmax = 7, ymin = 3, ymax = 4,
-           fill = "#16A085", color = "red", linewidth = 2, alpha = 0.85) +
-  annotate("text", x = 6.5, y = 3.5, label = "EDNRB", size = 4, fontface = "bold.italic", color = "white") +
-
-  # ARROWS showing pathway flow
-  # FZD3/4 to DVL3
-  geom_curve(aes(x = 2.5, y = 4, xend = 2.75, yend = 4.4),
-             arrow = arrow(length = unit(0.25, "cm"), type = "closed"),
-             curvature = 0.2, linewidth = 1.2, color = "black") +
-  geom_curve(aes(x = 3.5, y = 4, xend = 2.75, yend = 4.4),
-             arrow = arrow(length = unit(0.25, "cm"), type = "closed"),
-             curvature = -0.2, linewidth = 1.2, color = "black") +
-
-  # DVL3 to nucleus
-  geom_curve(aes(x = 3.3, y = 4.8, xend = 6.95, yend = 5.3),
-             arrow = arrow(length = unit(0.25, "cm"), type = "closed"),
-             curvature = 0.15, linewidth = 1.2, color = "black") +
-
-  # CXXC4 inhibition (dashed line with bar)
-  geom_segment(aes(x = 4.5, y = 5.1, xend = 4.5, yend = 4.7),
-               arrow = arrow(length = unit(0.2, "cm"), type = "closed", ends = "first"),
-               linetype = "dashed", linewidth = 1.2, color = "red") +
-
-  # EDNRB to nucleus
-  geom_curve(aes(x = 6.5, y = 4, xend = 7, yend = 4.5),
-             arrow = arrow(length = unit(0.25, "cm"), type = "closed"),
-             curvature = -0.3, linewidth = 1.2, color = "black") +
-
-  # LEGEND
-  annotate("rect", xmin = 0.3, xmax = 1.8, ymin = 0.3, ymax = 2.5,
-           fill = "white", color = "black", linewidth = 1) +
-  annotate("text", x = 1.05, y = 2.3, label = "Symbol Key",
-           size = 4, fontface = "bold") +
-
-  # Red border = under selection
-  annotate("rect", xmin = 0.4, xmax = 0.8, ymin = 1.9, ymax = 2.1,
-           fill = "#3498DB", color = "red", linewidth = 2) +
-  annotate("text", x = 1.3, y = 2, label = "Under selection", hjust = 0, size = 3) +
-
-  # Black border = not selected
-  annotate("rect", xmin = 0.4, xmax = 0.8, ymin = 1.5, ymax = 1.7,
-           fill = "#95A5A6", color = "black", linewidth = 1) +
-  annotate("text", x = 1.3, y = 1.6, label = "Not significant", hjust = 0, size = 3) +
-
-  # Arrow types
-  geom_segment(aes(x = 0.5, y = 1.2, xend = 0.9, yend = 1.2),
-               arrow = arrow(length = unit(0.15, "cm"), type = "closed"),
-               linewidth = 1) +
-  annotate("text", x = 1.3, y = 1.2, label = "Activation", hjust = 0, size = 3) +
-
-  geom_segment(aes(x = 0.5, y = 0.8, xend = 0.9, yend = 0.8),
-               arrow = arrow(length = unit(0.15, "cm"), type = "closed", ends = "first"),
-               linetype = "dashed", linewidth = 1, color = "red") +
-  annotate("text", x = 1.3, y = 0.8, label = "Inhibition", hjust = 0, size = 3) +
-
-  # Functional groups
-  annotate("text", x = 1.05, y = 0.5, label = "Colors:",
-           size = 3.5, fontface = "bold") +
-
-  # Title
-  labs(title = "C") +
-  coord_fixed(ratio = 1) +
-  xlim(0, 10) +
-  ylim(0, 7) +
-  theme_void() +
-  theme(
-    plot.title = element_text(face = "bold", size = 16, hjust = 0),
-    plot.margin = margin(10, 10, 10, 10)
-  )
+# Panel C removed - pathway diagram was difficult to stylize and created
+# unnecessary white space. Focus on A, B, D for cleaner presentation.
 
 # ============================================================================
 # Panel D: Functional Categories - Data-Driven Alternative to Hypothesis
@@ -314,18 +192,14 @@ functional_summary$category <- factor(functional_summary$category,
                                       levels = functional_summary$category)
 
 panel_d <- ggplot(functional_summary, aes(x = avg_omega, y = median_log10p)) +
-  # Points sized by gene count
+  # Reference lines first (behind points)
+  geom_vline(xintercept = 1, linetype = "dotted", color = "grey40", linewidth = 0.8) +
+  # Points with smaller size range
   geom_point(aes(size = gene_count, fill = category),
-             shape = 21, color = "black", stroke = 1.5, alpha = 0.85) +
-  # Labels
-  geom_text_repel(aes(label = paste0(category, "\n(n=", gene_count, ")")),
-                  size = 3.8, fontface = "bold",
-                  box.padding = 0.8, point.padding = 0.5,
-                  min.segment.length = 0) +
-  # Reference lines
-  geom_vline(xintercept = 1, linetype = "dotted", color = "grey40", linewidth = 1) +
-  geom_hline(yintercept = -log10(1e-10), linetype = "dashed",
-             color = "#E03030", linewidth = 1) +
+             shape = 21, color = "black", stroke = 1, alpha = 0.8) +
+  # Simplified text labels with nudge (not overlapping points)
+  geom_text(aes(label = paste0(gsub("\\n", " ", category), " (", gene_count, ")")),
+            size = 3.5, fontface = "bold", vjust = -1.5) +
   # Color scheme
   scale_fill_manual(values = c(
     "Wnt Signaling\nPathway" = "#E74C3C",
@@ -334,62 +208,68 @@ panel_d <- ggplot(functional_summary, aes(x = avg_omega, y = median_log10p)) +
     "Neural\nDevelopment" = "#1ABC9C",
     "Other\nProcesses" = "#95A5A6"
   )) +
-  scale_size_continuous(range = c(8, 25), name = "Gene count") +
+  scale_size_continuous(range = c(4, 12), name = "Genes") +
   # Labels
   labs(
-    title = "D",
-    x = expression(bold("Mean "*omega*" (dN/dS ratio)")),
-    y = expression(bold("Median -log"[10]*"(p-value)"))
+    title = "C",
+    x = expression(bold("Mean "*omega)),
+    y = expression(bold("Median -log"[10]*"(p)"))
   ) +
-  scale_x_continuous(limits = c(0, 1.5), expand = c(0, 0)) +
-  scale_y_continuous(limits = c(0, 20), expand = c(0, 0)) +
-  theme_pub() +
-  theme(legend.position = "none")
+  scale_x_continuous(limits = c(0.5, 1.3), expand = c(0.05, 0.05)) +
+  scale_y_continuous(limits = c(4, 20), expand = c(0.05, 0.05)) +
+  theme_pub(base_size = 13) +
+  theme(legend.position = "none",
+        axis.text = element_text(size = 11),
+        axis.title.x = element_text(size = 13),
+        axis.title.y = element_text(size = 13, margin = margin(r = 0)),
+        plot.margin = margin(5, 5, 5, 5))
 
 # ============================================================================
-# Combine All Panels
+# Combine All Panels - 3-panel layout (removed Panel C pathway diagram)
 # ============================================================================
 
-figure3 <- (panel_a | panel_b) / (panel_c | panel_d) +
-  plot_layout(heights = c(1.2, 1)) +
-  plot_annotation(
-    title = "Figure 3: Functional Enrichment and Wnt Signaling Pathway Analysis",
-    caption = paste0(
-      "(A) Gene Ontology enrichment among 430 genes under selection. Wnt signaling pathway significantly enriched (p=0.041, FDR<0.05).\n",
-      "(B) Wnt pathway genes showing strong positive selection. Point size indicates significance; color indicates ω value.\n",
-      "(C) Simplified Wnt signaling pathway across cellular compartments. Red borders indicate genes under significant selection.\n",
-      "(D) Functional category summary showing gene counts, selection strength, and average ω values."
-    ),
-    theme = theme(
-      plot.title = element_text(size = 17, face = "bold", hjust = 0),
-      plot.caption = element_text(size = 11, hjust = 0, margin = margin(t = 10))
-    )
-  )
+# Streamlined 3-panel layout to eliminate white space
+figure3 <- panel_a / panel_b / panel_d +
+  plot_layout(heights = c(1, 1.3, 1))
 
-# Save high-resolution figures
+# Save individual panels for manual assembly
+cat("\nSaving Panel A...\n")
+ggsave(file.path(output_dir, "Figure3A_GOenrichment.png"), panel_a, width = 14, height = 5, dpi = 600)
+cat("Panel A saved successfully.\n")
+
+cat("\nSaving Panel B...\n")
+ggsave(file.path(output_dir, "Figure3B_WntGenes.png"), panel_b, width = 14, height = 6.5, dpi = 600)
+cat("Panel B saved successfully.\n")
+
+cat("\nSaving Panel C (formerly D)...\n")
+ggsave(file.path(output_dir, "Figure3C_Functional.png"), panel_d, width = 14, height = 5, dpi = 600)
+cat("Panel C saved successfully.\n")
+
+# Streamlined 3-panel combined figure
 ggsave(
   filename = file.path(output_dir, "Figure3_WntEnrichment.pdf"),
   plot = figure3,
-  width = 16,
-  height = 13,
+  width = 14,
+  height = 16,
   dpi = 600,
-  device = cairo_pdf
+  device = "pdf"
 )
 
 ggsave(
   filename = file.path(output_dir, "Figure3_WntEnrichment.png"),
   plot = figure3,
-  width = 16,
-  height = 13,
+  width = 14,
+  height = 16,
   dpi = 600
 )
 
-cat("\n=== Figure 3 Enhanced Version Complete ===\n")
+cat("\n=== Figure 3 Streamlined 3-Panel Version Complete ===\n")
 cat("Saved to:\n")
 cat("  - manuscript/figures/Figure3_WntEnrichment.pdf\n")
 cat("  - manuscript/figures/Figure3_WntEnrichment.png\n")
 cat("\nKey improvements:\n")
+cat("  - Removed Panel C (pathway diagram) to eliminate white space\n")
+cat("  - Balanced 3-panel layout with optimized spacing\n")
 cat("  - Publication-quality aesthetics with professional color schemes\n")
-cat("  - Scientifically accurate Wnt pathway with proper cellular compartments\n")
-cat("  - Intuitive symbology (size = significance, color = ω, borders = selection status)\n")
-cat("  - Replaced prescriptive hypothesis panel with data-driven functional summary\n")
+cat("  - Intuitive symbology (size = significance, color = ω)\n")
+cat("  - Focus on data-driven functional enrichment results\n")

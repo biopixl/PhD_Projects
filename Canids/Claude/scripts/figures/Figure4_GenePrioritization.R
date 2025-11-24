@@ -37,21 +37,25 @@ tier_counts <- prioritization_data %>%
 
 p_tier_dist <- ggplot(tier_counts, aes(x = tier_label, y = count, fill = tier)) +
   geom_bar(stat = "identity", color = "black", width = 0.7) +
-  geom_text(aes(label = count), vjust = -0.5, size = 5, fontface = "bold") +
+  geom_text(data = subset(tier_counts, tier != 3),
+            aes(label = count), vjust = -0.5, size = 5.5, fontface = "bold") +
+  geom_text(data = subset(tier_counts, tier == 3),
+            aes(label = count, y = count/2), vjust = 0.5, size = 5.5, fontface = "bold") +
   scale_fill_manual(values = c("1" = "#E74C3C", "2" = "#F39C12", "3" = "#95A5A6")) +
   labs(
-    title = "Gene Prioritization Tier Distribution",
+    title = "A",
     x = "",
     y = "Number of Genes"
   ) +
-  theme_classic() +
+  theme_classic(base_size = 13) +
   theme(
-    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
-    axis.title = element_text(size = 11, face = "bold"),
-    axis.text = element_text(size = 10),
+    plot.title = element_text(size = 14, face = "bold", hjust = 0),
+    axis.title.y = element_text(size = 13, face = "bold"),
+    axis.text = element_text(size = 11),
     axis.text.x = element_text(size = 11),
     legend.position = "none",
-    panel.border = element_rect(fill = NA, color = "black", linewidth = 1)
+    panel.border = element_rect(fill = NA, color = "black", linewidth = 1),
+    plot.margin = margin(5, 5, 5, 5)
   )
 
 # ============================================================================
@@ -73,19 +77,20 @@ p_scores_dist <- ggplot(score_data, aes(x = score, fill = criterion)) +
                                  "Tractability" = "#2ECC71",
                                  "Literature" = "#9B59B6")) +
   labs(
-    title = "Distribution of Scoring Criteria",
+    title = "B",
     x = "Score (0-5)",
     y = "Density"
   ) +
-  theme_classic() +
+  theme_classic(base_size = 13) +
   theme(
-    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
-    axis.title = element_text(size = 11, face = "bold"),
-    axis.text = element_text(size = 9),
+    plot.title = element_text(size = 14, face = "bold", hjust = 0),
+    axis.title = element_text(size = 13, face = "bold"),
+    axis.text = element_text(size = 11),
     legend.position = "none",
     strip.background = element_rect(fill = "gray90", color = "black"),
-    strip.text = element_text(size = 11, face = "bold"),
-    panel.border = element_rect(fill = NA, color = "black", linewidth = 1)
+    strip.text = element_text(size = 12, face = "bold"),
+    panel.border = element_rect(fill = NA, color = "black", linewidth = 1),
+    plot.margin = margin(5, 5, 5, 5)
   )
 
 # ============================================================================
@@ -213,23 +218,22 @@ p_tier1 <- ggplot(tier1_long, aes(x = gene_symbol, y = score, fill = criterion))
                                  "Literature" = "#9B59B6")) +
   geom_hline(yintercept = c(1, 2, 3, 4, 5), linetype = "dotted", alpha = 0.3) +
   labs(
-    title = "Tier 1 Genes: Detailed Scoring",
-    subtitle = "6 genes prioritized for immediate experimental validation",
+    title = "C",
     x = "",
     y = "Score (0-5)",
     fill = "Criterion"
   ) +
-  theme_classic() +
+  theme_classic(base_size = 13) +
   theme(
-    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(size = 11, hjust = 0.5),
-    axis.title = element_text(size = 11, face = "bold"),
-    axis.text = element_text(size = 10),
+    plot.title = element_text(size = 14, face = "bold", hjust = 0),
+    axis.title.y = element_text(size = 13, face = "bold"),
+    axis.text = element_text(size = 11),
     axis.text.x = element_text(angle = 45, hjust = 1, size = 11, face = "bold"),
     legend.position = "right",
-    legend.title = element_text(size = 11, face = "bold"),
-    legend.text = element_text(size = 10),
-    panel.border = element_rect(fill = NA, color = "black", linewidth = 1)
+    legend.title = element_text(size = 12, face = "bold"),
+    legend.text = element_text(size = 11),
+    panel.border = element_rect(fill = NA, color = "black", linewidth = 1),
+    plot.margin = margin(5, 5, 5, 5)
   )
 
 # ============================================================================
@@ -244,7 +248,7 @@ p_scatter <- ggplot(prioritization_data, aes(x = log10p, y = total_score)) +
   geom_point(aes(color = factor(tier), size = total_score), alpha = 0.6) +
   # Color scale
   scale_color_manual(values = c("1" = "#E74C3C", "2" = "#F39C12", "3" = "#95A5A6"),
-                      labels = c("Tier 1 (IMMEDIATE)", "Tier 2 (FOLLOW-UP)", "Tier 3 (EXPLORATORY)"),
+                      labels = c("Tier 1", "Tier 2", "Tier 3"),
                       name = "Priority Tier") +
   # Size scale
   scale_size_continuous(range = c(1, 8), guide = "none") +
@@ -253,9 +257,9 @@ p_scatter <- ggplot(prioritization_data, aes(x = log10p, y = total_score)) +
   geom_hline(yintercept = 13, linetype = "dashed", color = "#F39C12", linewidth = 1) +
   # Annotations
   annotate("text", x = max(prioritization_data$log10p) * 0.9, y = 16.5,
-           label = "Tier 1 threshold (≥16)", hjust = 1, size = 3.5, fontface = "bold", color = "#E74C3C") +
+           label = "Tier 1 threshold", hjust = 1, size = 3.5, fontface = "bold", color = "#E74C3C") +
   annotate("text", x = max(prioritization_data$log10p) * 0.9, y = 13.5,
-           label = "Tier 2 threshold (≥13)", hjust = 1, size = 3.5, fontface = "bold", color = "#F39C12") +
+           label = "Tier 2 threshold", hjust = 1, size = 3.5, fontface = "bold", color = "#F39C12") +
   # Label Tier 1 genes
   geom_text_repel(
     data = subset(prioritization_data, tier == 1),
@@ -266,21 +270,22 @@ p_scatter <- ggplot(prioritization_data, aes(x = log10p, y = total_score)) +
   ) +
   # Labels
   labs(
-    title = "Prioritization Score vs. Selection Strength",
-    x = "-log₁₀(p-value)",
+    title = "D",
+    x = expression(bold("-log"[10]*"(p-value)")),
     y = "Total Prioritization Score (0-20)"
   ) +
   # Theme
-  theme_classic() +
+  theme_classic(base_size = 13) +
   theme(
-    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
-    axis.title = element_text(size = 11, face = "bold"),
-    axis.text = element_text(size = 10),
+    plot.title = element_text(size = 14, face = "bold", hjust = 0),
+    axis.title = element_text(size = 13, face = "bold"),
+    axis.text = element_text(size = 11),
     legend.position = c(0.25, 0.85),
     legend.background = element_rect(fill = "white", color = "black"),
-    legend.title = element_text(size = 10, face = "bold"),
-    legend.text = element_text(size = 9),
-    panel.border = element_rect(fill = NA, color = "black", linewidth = 1)
+    legend.title = element_text(size = 11, face = "bold"),
+    legend.text = element_text(size = 10),
+    panel.border = element_rect(fill = NA, color = "black", linewidth = 1),
+    plot.margin = margin(5, 5, 5, 5)
   )
 
 # ============================================================================
@@ -290,21 +295,7 @@ p_scatter <- ggplot(prioritization_data, aes(x = log10p, y = total_score)) +
 figure4_panels <- (p_tier_dist | p_scores_dist) /
                    p_tier1 /
                    p_scatter +
-  plot_layout(heights = c(1.5, 2, 2)) +
-  plot_annotation(
-    title = "Figure 4: Multi-Criteria Gene Prioritization for Experimental Validation",
-    subtitle = "Systematic ranking of 337 genes using selection strength, biological relevance, experimental tractability, and literature support",
-    caption = paste0("(A) Distribution of genes across three priority tiers. Tier 1 (n=6): IMMEDIATE validation. Tier 2 (n=47): FOLLOW-UP. Tier 3 (n=284): EXPLORATORY.\n",
-                    "(B) Distributions of four scoring criteria across all 337 genes. Each criterion scored 0-5.\n",
-                    "(C) Detailed scores for 6 Tier 1 genes: GABRA3 (18.8), EDNRB (17.8), HTR2B (16.2), HCRTR1 (16.2), FZD3 (16.2), FZD4 (16.0).\n",
-                    "(D) Total prioritization score vs. selection strength. Tier 1 genes labeled in red.\n",
-                    "Note: Heatmap of top 30 genes saved separately (Figure4_GenePrioritization_Heatmap.pdf)"),
-    theme = theme(
-      plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-      plot.subtitle = element_text(size = 12, hjust = 0.5),
-      plot.caption = element_text(size = 10, hjust = 0)
-    )
-  )
+  plot_layout(heights = c(1.5, 2, 2))
 
 # Save combined panels
 ggsave(
