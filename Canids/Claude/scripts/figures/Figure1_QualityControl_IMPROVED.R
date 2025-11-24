@@ -197,20 +197,10 @@ plot_d <- ggplot(results_omega, aes(x = omega_display)) +
 
 cat("\nCombining panels into Figure 1...\n")
 
-# Add panel labels above plot box boundaries
-plot_a_labeled <- plot_a +
-  draw_plot_label("A", x = 0, y = 1.03, size = 20, fontface = "bold", hjust = 0, vjust = 0)
-plot_b_labeled <- plot_b +
-  draw_plot_label("B", x = 0, y = 1.03, size = 20, fontface = "bold", hjust = 0, vjust = 0)
-plot_c_labeled <- plot_c +
-  draw_plot_label("C", x = 0, y = 1.03, size = 20, fontface = "bold", hjust = 0, vjust = 0)
-plot_d_labeled <- plot_d +
-  draw_plot_label("D", x = 0, y = 1.03, size = 20, fontface = "bold", hjust = 0, vjust = 0)
-
-# Arrange panels in 2x2 grid with optimal spacing
+# Arrange panels in 2x2 grid with optimal spacing (no panel labels)
 combined_figure <- plot_grid(
-  plot_a_labeled, plot_b_labeled,
-  plot_c_labeled, plot_d_labeled,
+  plot_a, plot_b,
+  plot_c, plot_d,
   ncol = 2,
   nrow = 2,
   align = "hv",
