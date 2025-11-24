@@ -190,15 +190,10 @@ plot_chr_counts <- ggplot(chr_comparison, aes(x = chromosome_name, y = n_selecte
   annotate("text", x = 35, y = mean(chr_comparison$n_selected) + 1,
           label = sprintf("Mean = %.1f", mean(chr_comparison$n_selected)),
           color = "red", size = 3) +
-  labs(title = "A. Distribution of Selected Genes Across Chromosomes",
-       subtitle = sprintf("χ² test: p = %.4f (no significant clustering)",
-                         chisq_test$p.value),
-       x = "Chromosome",
+  labs(x = "Chromosome",
        y = "Number of selected genes") +
   theme_classic(base_size = 12) +
-  theme(plot.title = element_text(face = "bold", size = 14),
-        plot.subtitle = element_text(size = 10),
-        axis.title = element_text(face = "bold"),
+  theme(axis.title = element_text(face = "bold"),
         axis.text.x = element_text(angle = 45, hjust = 1, size = 8),
         panel.grid.major.y = element_line(color = "grey90"))
 
@@ -209,14 +204,10 @@ plot_chr_proportion <- ggplot(chr_comparison,
   geom_hline(yintercept = (sum(chr_comparison$n_selected) /
                           sum(chr_comparison$total_genes)) * 100,
             linetype = "dashed", color = "red", size = 1) +
-  labs(title = "B. Proportion of Genes Under Selection per Chromosome",
-       subtitle = "Normalized by total genes per chromosome",
-       x = "Chromosome",
+  labs(x = "Chromosome",
        y = "% of genes under selection") +
   theme_classic(base_size = 12) +
-  theme(plot.title = element_text(face = "bold", size = 14),
-        plot.subtitle = element_text(size = 10),
-        axis.title = element_text(face = "bold"),
+  theme(axis.title = element_text(face = "bold"),
         axis.text.x = element_text(angle = 45, hjust = 1, size = 8),
         panel.grid.major.y = element_line(color = "grey90"))
 
@@ -239,14 +230,10 @@ plot_karyotype <- results_chr_main %>%
                     name = "Selection status") +
   scale_y_reverse(breaks = chr_breaks,
                  labels = chr_labels) +
-  labs(title = "C. Genomic Distribution of Selected Genes",
-       subtitle = "Position along chromosomes (no obvious clustering)",
-       x = "Position (Mb)",
+  labs(x = "Position (Mb)",
        y = "Chromosome") +
   theme_classic(base_size = 14) +
-  theme(plot.title = element_text(face = "bold", size = 15),
-        plot.subtitle = element_text(size = 11),
-        axis.title = element_text(face = "bold", size = 14),
+  theme(axis.title = element_text(face = "bold", size = 14),
         axis.text.y = element_text(size = 11),
         axis.text.x = element_text(size = 12),
         legend.position = "bottom",

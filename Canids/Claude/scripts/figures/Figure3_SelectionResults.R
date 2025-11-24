@@ -108,7 +108,6 @@ p_volcano <- ggplot(selection_data, aes(x = dog_omega, y = log10p)) +
   ) +
   # Axis labels
   labs(
-    title = "A",
     x = expression(omega~"(d"[N]*"/d"[S]*" ratio)"),
     y = expression("-log"[10]*"("*italic(p)*"-value)"),
     color = ""
@@ -169,7 +168,6 @@ p_omega_dist <- ggplot(selection_data, aes(x = dog_omega)) +
            vjust = -0.5, hjust = 1.1, size = 3, angle = 90, color = "gray20") +
   # Labels
   labs(
-    title = "B",
     x = expression(omega~"(d"[N]*"/d"[S]*" ratio)"),
     y = "Density"
   ) +
@@ -217,7 +215,6 @@ p_strength <- ggplot(strength_summary, aes(x = strength_category, y = count, fil
                                  "Significant\n(p < 2.93×10⁻⁶)" = "#3498DB",
                                  "Very Strong\n(p < 10⁻¹⁰)" = "#E74C3C")) +
   labs(
-    title = "C",
     x = "",
     y = "Number of Genes"
   ) +
