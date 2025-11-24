@@ -220,7 +220,11 @@ plot_chr_proportion <- ggplot(chr_comparison,
         axis.text.x = element_text(angle = 45, hjust = 1, size = 8),
         panel.grid.major.y = element_line(color = "grey90"))
 
-# Plot 3: Genomic position plot (karyotype-like)
+# Plot 3: Genomic position plot (karyotype-like) - IMPROVED AESTHETICS
+# Show every 2nd chromosome label to reduce overcrowding
+chr_breaks <- c(seq(1, 38, by = 2), 39)  # 1, 3, 5, ..., 37, X
+chr_labels <- c(as.character(seq(1, 38, by = 2)), "X")
+
 plot_karyotype <- results_chr_main %>%
   mutate(
     midpoint = (start_position + end_position) / 2,
@@ -233,17 +237,20 @@ plot_karyotype <- results_chr_main %>%
   scale_color_manual(values = c("FALSE" = "grey70", "TRUE" = "#e74c3c"),
                     labels = c("Non-significant", "Significant"),
                     name = "Selection status") +
-  scale_y_reverse(breaks = c(1:38, 39),
-                 labels = c(as.character(1:38), "X")) +
+  scale_y_reverse(breaks = chr_breaks,
+                 labels = chr_labels) +
   labs(title = "C. Genomic Distribution of Selected Genes",
        subtitle = "Position along chromosomes (no obvious clustering)",
        x = "Position (Mb)",
        y = "Chromosome") +
-  theme_classic(base_size = 12) +
-  theme(plot.title = element_text(face = "bold", size = 14),
-        plot.subtitle = element_text(size = 10),
-        axis.title = element_text(face = "bold"),
+  theme_classic(base_size = 14) +
+  theme(plot.title = element_text(face = "bold", size = 15),
+        plot.subtitle = element_text(size = 11),
+        axis.title = element_text(face = "bold", size = 14),
+        axis.text.y = element_text(size = 11),
+        axis.text.x = element_text(size = 12),
         legend.position = "bottom",
+        legend.text = element_text(size = 11),
         panel.grid.major = element_line(color = "grey90"))
 
 # Combine plots
