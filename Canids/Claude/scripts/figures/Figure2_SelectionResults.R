@@ -236,10 +236,10 @@ p_qq <- ggplot(qq_data, aes(x = expected, y = observed)) +
 # Combine All Panels (NO TABLE - Panel D removed)
 # ============================================================================
 
-# Two-row layout: Volcano (full width) | Omega dist (narrow) + Q-Q plot (wide)
-# Use wrap_plots with explicit widths for bottom row: 1:4 ratio (20% vs 80%)
+# Two-row layout: Volcano (full width) | Omega dist + Q-Q plot (balanced)
+# Use wrap_plots with explicit widths for bottom row: 1:2.5 ratio (29% vs 71%)
 figure2 <- p_volcano /
-           wrap_plots(p_omega_dist, p_qq, widths = c(1, 4)) +
+           wrap_plots(p_omega_dist, p_qq, widths = c(1, 2.5)) +
   plot_layout(heights = c(2.5, 1.5)) +
   plot_annotation(
     title = "Figure 2: Positive Selection in Dog Domestication",
@@ -297,7 +297,7 @@ cat("✓ Label only top 10 KNOWN genes\n")
 cat("✓ Unknown genes shown with transparency (alpha = 0.25)\n")
 cat("✓ Known genes more opaque (alpha = 0.8)\n")
 cat("✓ Removed Panel D (table) - more space for panels B & C\n")
-cat("✓ Panel B narrow (20%), Panel C wide (80%) using wrap_plots\n")
+cat("✓ Panel B (29%), Panel C (71%) balanced ratio using wrap_plots\n")
 cat("✓ Legend moved to bottom right of Panel A\n")
 cat("✓ Table data will be incorporated into manuscript text\n")
 cat("✓ Updated deprecated 'size' to 'linewidth' parameters\n")
