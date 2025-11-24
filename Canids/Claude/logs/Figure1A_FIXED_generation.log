@@ -1,0 +1,9 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+
+=== Simple Phylogeny Complete ===
+Clean cladogram with:
+  - All species extant (extend to present, 0 Mya)
+  - Fox-Dog divergence at 12 Mya
+  - Dog-Dingo split at 0.008 Mya (8,000 years ago)
+  - Horizontal branch lengths show divergence times

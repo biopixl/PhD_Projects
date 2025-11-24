@@ -1,0 +1,27 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+trying URL 'https://cloud.r-project.org/bin/macosx/big-sur-arm64/contrib/4.5/ggbreak_0.1.6.tgz'
+Content type 'application/x-gzip' length 233305 bytes (227 KB)
+==================================================
+downloaded 227 KB
+
+
+The downloaded binary packages are in
+	/var/folders/3z/t12j307d2ln8lgyg8h83vmtr0000gn/T//Rtmp8NCbID/downloaded_packages
+ggbreak v0.1.6 Learn more at https://yulab-smu.top/
+
+
+If you use ggbreak in published research, please cite the following
+paper:
+
+S Xu, M Chen, T Feng, L Zhan, L Zhou, G Yu. Use ggbreak to effectively
+utilize plotting space to deal with large datasets and outliers.
+Frontiers in Genetics. 2021, 12:774846. doi: 10.3389/fgene.2021.774846
+
+=== Simple Phylogeny with Broken Axis Complete ===
+Clean cladogram with:
+  - All species extant (extend to present, 0 Mya)
+  - Fox-Dog divergence at 12 Mya
+  - Dog-Dingo split at 0.008 Mya (8,000 years ago)
+  - Broken axis (1-0.05 Mya) to extend Dog-Dingo branch visibility
+  - Horizontal branch lengths show divergence times

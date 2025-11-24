@@ -1,0 +1,11 @@
+Linking to ImageMagick 6.9.13.29
+Enabled features: cairo, fontconfig, freetype, heic, lcms, pango, raw, rsvg, webp
+Disabled features: fftw, ghostscript, x11
+
+=== Figure 1 Combined ===
+Panel A: Three-species phylogeny (Dog-Dingo-Fox)
+Panel B: Analysis workflow (Genomes → Pathways)
+Format: 10" width, stacked vertically
+Saved to:
+  - manuscript/figures/Figure1_Combined.pdf
+  - manuscript/figures/Figure1_Combined.png

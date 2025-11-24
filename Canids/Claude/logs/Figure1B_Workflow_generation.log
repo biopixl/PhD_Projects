@@ -1,0 +1,14 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+Warning messages:
+1: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  for 'Dog • Dingo • Fox' in 'mbcsToSbcs': . substituted for • (U+2022)
+2: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  for 'Dog • Dingo • Fox' in 'mbcsToSbcs': . substituted for • (U+2022)
+
+=== Figure 1B Workflow Complete ===
+Clean workflow diagram with:
+  - 6 main analysis steps
+  - Key metrics at each stage
+  - Visual flow from data to results
+  - Minimal text, maximum clarity

@@ -23,17 +23,26 @@ dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 phylo_data <- data.frame(
   species = c("Fox", "Dingo", "Dog"),
-  x = c(12, 0, 0),  # Time before present in Mya
-  y = c(1, 3, 2),   # Y positions for layout
+  x = c(-0.1, -0.1, -0.1),  # Slightly offset for tick extension
+  y = c(1, 3.5, 2),   # Y positions for layout (increased spacing)
   stringsAsFactors = FALSE
 )
 
 # Branch data (in millions of years)
+# All branches extend to present since all species are extant
 branches <- data.frame(
-  x_start = c(12, 12, 0.008, 0.008, 0),
-  x_end = c(12, 0.008, 0.008, 0, 0),
-  y_start = c(1, 2.5, 2.5, 3, 2.5),
-  y_end = c(2.5, 2.5, 3, 3, 2)
+  # Vertical: Fox-Dog common ancestor to Fox-Dog/Dingo split midpoint
+  # Horizontal: Fox branch (12 Mya to present)
+  # Horizontal: Fox-Dog/Dingo split (12 Mya to 0.008 Mya, centered)
+  # Vertical: Dingo connector (from center to Dingo)
+  # Vertical: Dog connector (from center to Dog)
+  # Horizontal: Dingo branch (0.008 Mya to present)
+  # Horizontal: Dog branch (0.008 Mya to present)
+  # Tick extensions at endpoints
+  x_start = c(12,   12,    12,     0.008,  0.008,  0.008,  0.008,  0,     0,      0),
+  x_end =   c(12,   0,     0.008,  0.008,  0.008,  0,      0,      -0.1,  -0.1,   -0.1),
+  y_start = c(1,    1,     2.75,   2.75,   2.75,   3.5,    2,      1,     3.5,    2),
+  y_end =   c(2.75, 1,     2.75,   3.5,    2,      3.5,    2,      1,     3.5,    2)
 )
 
 # Create plot
@@ -43,12 +52,7 @@ p <- ggplot() +
                aes(x = x_start, xend = x_end, y = y_start, yend = y_end),
                linewidth = 1.5, color = "black") +
 
-  # Add node points
-  geom_point(data = phylo_data,
-             aes(x = x, y = y),
-             size = 4, color = "black") +
-
-  # Add species labels
+  # Add species labels (no visible points, just labels)
   geom_text(data = phylo_data,
             aes(x = x, y = y, label = species),
             hjust = -0.2, size = 6, fontface = "italic") +
@@ -58,11 +62,11 @@ p <- ggplot() +
     name = "Time (millions of years ago)",
     breaks = seq(0, 12, 2),
     labels = seq(0, 12, 2),
-    limits = c(13, -0.5)
+    limits = c(13, -0.8)
   ) +
 
   # Y axis
-  scale_y_continuous(limits = c(0.5, 3.5)) +
+  scale_y_continuous(limits = c(0.5, 4)) +
 
   # Theme
   theme_classic() +
@@ -100,7 +104,7 @@ ggsave(
 
 cat("\n=== Simple Phylogeny Complete ===\n")
 cat("Clean cladogram with:\n")
-cat("  - Fox at 12 Mya (divergence point)\n")
-cat("  - Dog and Dingo at 0 Mya (present)\n")
-cat("  - Dog-Dingo split visible at ~0.008 Mya\n")
+cat("  - All species extant (extend to present, 0 Mya)\n")
+cat("  - Fox-Dog divergence at 12 Mya\n")
+cat("  - Dog-Dingo split at 0.008 Mya (8,000 years ago)\n")
 cat("  - Horizontal branch lengths show divergence times\n")
