@@ -1,0 +1,74 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Initial data: 430 genes
+Minimum non-zero p-value: 1.665335e-16
+WARNING: 189 genes have p-value = 0 (will use 1.665335e-16)
+Omega range before filtering: 0.00 - 7.02e+15
+After filtering: 401 genes
+Omega range: 0.00 - 7.42
+Bonferroni threshold: -log10(p) = 5.53 (p = 2.93e-06)
+Known genes: 316, Unknown genes: 85
+Warning messages:
+1: Removed 24 rows containing missing values or values outside the scale range
+(`geom_point()`). 
+2: Removed 1 row containing missing values or values outside the scale range
+(`geom_text_repel()`). 
+3: Removed 24 rows containing non-finite outside the scale range (`stat_bin()`). 
+4: Removed 24 rows containing non-finite outside the scale range
+(`stat_density()`). 
+5: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`). 
+6: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on '401 genes under significant positive selection (Bonferroni-corrected, p < 2.93×10⁻⁶)' in 'mbcsToSbcs': for ⁻ (U+207B)
+7: In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  conversion failure on '401 genes under significant positive selection (Bonferroni-corrected, p < 2.93×10⁻⁶)' in 'mbcsToSbcs': for ⁶ (U+2076)
+Warning messages:
+1: Removed 24 rows containing missing values or values outside the scale range
+(`geom_point()`). 
+2: Removed 1 row containing missing values or values outside the scale range
+(`geom_text_repel()`). 
+3: Removed 24 rows containing non-finite outside the scale range (`stat_bin()`). 
+4: Removed 24 rows containing non-finite outside the scale range
+(`stat_density()`). 
+5: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`). 
+
+=== Figure 2 Summary ===
+Genes analyzed: 17,046
+Significantly selected genes: 401 (2.35%)
+Known genes: 316, Unknown genes: 85
+Mean ω: 0.78
+Median ω: 0.66
+Range ω: 0.00 - 7.42
+Strong selection (p < 1e-10): 254 genes (63.3%)
+
+=== FINAL IMPROVEMENTS ===
+✓ Fixed p-value = 0 issue (replaced with minimum non-zero)
+✓ Removed extreme omega outliers (> 10)
+✓ Applied log scale to omega axis for better visualization
+✓ Cropped x-axis at omega = 3 (focuses on 95%+ of data)
+✓ Removed 'Unknown' gene labels for clarity
+✓ Label only top 10 KNOWN genes
+✓ Unknown genes shown with transparency (alpha = 0.25)
+✓ Known genes more opaque (alpha = 0.8)
+✓ Removed Panel D (table) - more space for panels B & C
+✓ Panel B made square/compact, Panel C expanded horizontally
+✓ Table data will be incorporated into manuscript text
+✓ Updated deprecated 'size' to 'linewidth' parameters
+✓ Increased DPI to 600 (matching Figure 1)
+✓ Optimized figure dimensions (12x9)
+
+Figure 2 saved to:
+  - manuscript/figures/Figure2_SelectionResults.pdf
+  - manuscript/figures/Figure2_SelectionResults.png
