@@ -220,8 +220,9 @@ p_qq <- ggplot(qq_data, aes(x = expected, y = observed)) +
     x = expression(Expected~-log[10](italic(p))),
     y = expression(Observed~-log[10](italic(p)))
   ) +
-  # Equal scales for proper interpretation
-  coord_equal(ratio = 1, xlim = c(0, max(expected)*1.1), ylim = c(0, max(observed)*1.1)) +
+  # Set axis limits without constraining aspect ratio (allows horizontal stretch)
+  scale_x_continuous(limits = c(0, max(expected)*1.1), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0, max(observed)*1.1), expand = c(0, 0)) +
   # Theme
   theme_classic() +
   theme(
