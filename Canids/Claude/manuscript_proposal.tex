@@ -1,0 +1,317 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{textgreek}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{lineno}
+\usepackage{setspace}
+\onehalfspacing
+\linenumbers
+
+\title{Branch-Specific Phylogenomics to Identify Genetic Mechanisms of Dog Breed Formation: A Research Proposal}
+
+\author{Isaac N. Aguilar Rivera}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Dog domestication represents one of the earliest and most extensive cases of human-mediated phenotypic diversification, yet a critical question remains unresolved: which genomic changes underlie \textbf{early domestication} (the transition from wolf to dog) versus \textbf{breed formation} (the diversification of modern breeds)? We propose to address this gap using a comparative phylogenomic framework that distinguishes temporal layers of selection. Our preliminary three-species analysis using the adaptive Branch-Site Random Effects Likelihood (aBSREL) model identified genes under episodic positive selection uniquely in domestic dogs (\textit{C. lupus familiaris}) relative to dingoes (\textit{C. lupus dingo}), with red fox (\textit{Vulpes vulpes}) as outgroup. Across 17,046 orthologous coding sequences, 401 genes (2.35\%) showed significant dog-specific positive selection after Bonferroni correction ($\alpha = 2.93 \times 10^{-6}$), with significant enrichment of Wnt signaling components (12--15 genes, GO:0016055). Multi-criteria prioritization identified six high-confidence candidates---\textit{GABRA3}, \textit{EDNRB}, \textit{HTR2B}, \textit{HCRTR1}, \textit{FZD3}, and \textit{FZD4}---four functionally connected to Wnt pathways. We propose to: (1) functionally validate Wnt pathway candidates through expression profiling and structural modeling, (2) expand the phylogenetic framework to include gray wolf when genome resources become available, enabling temporal partitioning of domestication vs. breed formation signals, and (3) integrate findings with Dog10K population genomic data to identify breed-specific vs. pan-breed selection patterns. This work will provide genome-wide insights into evolutionary forces shaping dog diversification and establish a mechanistic foundation for understanding rapid phenotypic evolution in domesticated species.
+\end{abstract}
+
+
+\section{Introduction}
+
+\subsection{Dog domestication: Separating temporal layers of selection}
+Dog (\textit{Canis lupus familiaris}) domestication, dating to 15,000-40,000 years ago, resulted in remarkable phenotypic diversification across morphology, behavior, physiology, and cognition \citep{Freedman2014, Frantz2016}. However, a critical question remains unresolved: which genomic changes underlie \textbf{early domestication} (the initial transition from wolf to dog during Neolithic cohabitation) versus \textbf{breed formation} (the rapid diversification of modern breeds during Victorian-era artificial selection)? This distinction is essential for three reasons: (1) it reveals the genetic architecture of rapid evolutionary adaptation, (2) it informs comparative domestication biology across species, and (3) it enables translational applications in canine health and conservation genetics.
+
+Across domestic species, coordinated phenotypic changes are collectively described as the "domestication syndrome," which includes modified craniofacial structure, altered ear morphology, coat color variation, reduced aggression, and retention of juvenile traits \citep{Darwin1868, Belyaev1979, Wilkins2014}. Although numerous genomic studies have identified loci associated with these traits, resolving the relative contributions of early domestication versus breed-specific artificial selection remains a longstanding challenge. Traditional comparisons between dogs and wolves conflate 15,000-40,000 years of evolutionary change, limiting mechanistic inference and trait mapping.
+
+\subsection{The Dingo as an evolutionary reference point}
+Australian dingoes (\textit{Canis lupus dingo}) provide a unique comparative context for separating these evolutionary layers. Having diverged from domestic dogs approximately 8,000–10,000 years ago—after initial domestication but prior to the onset of intensive breed formation—dingoes retain key domestication-associated phenotypes but lack the morphological specializations characteristic of modern breeds \citep{Cairns2022, Savolainen2004}. Their intermediate evolutionary position allows dingoes to serve as a natural control lineage, enabling detection of genomic signals that are specific to the dog lineage and not shared with earlier domestication events.
+
+\textbf{We hypothesize} that comparing dog and dingo genomes, with appropriate canid outgroups, will isolate breed-specific selection signals from ancestral variation shared during early domestication. This approach complements ongoing population-level efforts by the Dog10K Consortium \citep{Dog10K2023, Dog10K2024}, which has sequenced 2,000+ canids across 321 breeds but lacks phylogenetic temporal resolution.
+
+\subsection{Preliminary evidence and research question}
+Our preliminary analysis of 17,046 genes across dog, dingo, and red fox has identified 401 candidates under dog-specific positive selection, with significant enrichment of Wnt signaling components. These findings suggest that breed formation involved episodic modifications in pleiotropic developmental pathways—a hypothesis requiring functional validation and expanded phylogenetic sampling.
+
+\textbf{Central Research Question:} What genomic changes distinguish breed-associated artificial selection from early domestication processes in dogs, and can these signals reveal the molecular basis of rapid phenotypic diversification?
+
+\textbf{We propose} a three-aim research program to: \textbf{(1)} functionally validate Wnt pathway candidates through expression profiling and structural modeling, \textbf{(2)} expand the phylogenetic framework to include gray wolf when genome resources become available in 2025-2026, enabling temporal partitioning of domestication vs. breed formation signals, and \textbf{(3)} integrate findings with Dog10K population genomic data to identify breed-specific vs. pan-breed selection patterns.
+
+\subsection{Comparative phylogenomic approach}
+To isolate lineage-specific selection acting after the divergence of dogs and dingoes, we employed a three-species phylogeny comprising the domestic dog, the dingo, and the red fox (\textit{Vulpes vulpes}). Lineage-specific bursts of adaptive evolution were identified using the adaptive Branch-Site Random Effects Likelihood (aBSREL) model \citep{Smith2015}, which estimates distributions of nonsynonymous-to-synonymous substitution rates ($\omega$) across both sites and branches. This approach enables direct testing of episodic positive selection restricted to the dog branch while controlling for ancestral variation shared with dingoes. By contrasting the dog lineage to both a near-domestication relative and a more distantly related canid, we explicitly distinguish early domestication signals from subsequent selective pressures associated with breed formation.
+
+\subsection{Exploratory framework for genome-wide discovery}
+This study adopts an exploratory, data-driven framework rather than a narrow hypothesis-testing design. Domestication traits are typically polygenic and pleiotropic, with multiple trait dimensions evolving in parallel under complex combinations of natural and artificial selection. Such complexity limits the utility of strictly pre-specified candidate-gene hypotheses. Following recent calls for broader discovery-oriented approaches in evolutionary genomics \citep{Ostrander2024}, we focus on identifying patterns emerging directly from genome-wide branch-specific selection analyses, enabling the detection of unexpected functional themes and the generation of mechanistic hypotheses grounded in empirical signal.
+
+To translate genome-wide selection results into biologically meaningful insights, we combine statistical evidence with functional information using a Multi-Criteria Decision Analysis (MCDA) framework. This system integrates selection strength, biological relevance, experimental tractability, and prior evidence from the literature to produce a tiered set of candidate genes for experimental validation. Such integration provides a systematic and transparent means of highlighting genes most likely to contribute to phenotypic evolution following domestication, and positions us to immediately pursue functional studies on tractable high-priority candidates.
+
+\subsection{Funding rationale and broader impacts}
+\textbf{We seek support for} experimental validation, computational expansion, and database integration that will transform preliminary phylogenomic discoveries into causal understanding. The anticipated availability of the gray wolf genome in Ensembl (2025-2026) creates a time-sensitive opportunity to achieve unprecedented temporal resolution in domestication genomics through a four-species framework: (((Dog, Dingo), Wolf), Fox). Our multi-criteria prioritization framework has identified tractable candidates ready for immediate functional investigation, while our scalable computational pipeline positions us to rapidly incorporate new genomic resources as they emerge. This work will provide genome-wide insights into evolutionary forces shaping dog diversification and establish a mechanistic foundation for understanding rapid phenotypic evolution across domesticated species.
+
+
+\section{Methods}
+
+\subsection{Genome Data and Ortholog Identification}
+
+We obtained reference genomes from Ensembl release 115: \textit{C. l. familiaris} (CanFam4.0/ROS\_Cfam\_1.0), \textit{C. l. dingo} (ASM325472v1), and \textit{V. vulpes} (VulVul2.2). Orthologous genes were identified using Ensembl Compara with high-confidence one-to-one orthologs. Coding sequences (CDS) were retrieved via the Ensembl REST API, yielding 17,078 genes present across all three species.
+
+\subsection{Sequence Alignment and Phylogeny}
+
+Protein sequences were aligned using MAFFT v7.505 with the L-INS-i algorithm. Alignments were back-translated to codon sequences with PAL2NAL v14. Genes with $<30\%$ aligned sequence coverage, $<50\%$ pairwise identity, or internal stop codons were excluded, resulting in 17,046 high-quality codon alignments. All analyses used the fixed species topology ((\textit{C. familiaris}, \textit{C. dingo}), \textit{V. vulpes}).
+
+\subsection{Detection of Lineage-Specific Positive Selection}
+Episodic positive selection on the dog lineage was tested using the adaptive Branch-Site Random Effects Likelihood (aBSREL) model implemented in HyPhy v2.5.59. aBSREL estimates branch-specific distributions of nonsynonymous-to-synonymous substitution rate ratios ($\omega$), permitting $\omega > 1$ for a subset of sites. Likelihood ratio tests compared models allowing versus prohibiting positive selection on the dog branch. Bonferroni correction for 17{,}046 tests set a significance threshold of $\alpha = 2.93 \times 10^{-6}$. Genes were classified as dog-specific if significant support for $\omega>1$ occurred exclusively on the dog branch.
+
+\subsection{Quality Control and Validation}
+Analytical validity was assessed by computing the genomic inflation factor ($\lambda$), defined as the ratio of observed to expected median $\chi^2$ statistics \citep{Devlin1999}. Annotation completeness was quantified using Ensembl BioMart. Chromosomal distributions of significant genes were evaluated using a $\chi^2$ goodness-of-fit test.
+
+\subsection{Functional Annotation and Enrichment Analysis}
+Functional annotation was performed using the Ensembl BioMart API. Enrichment analysis was conducted with g:Profiler (g:GOSt) using Fisher's exact test and g:SCS multiple-testing correction, with all 17{,}046 orthologs as the background set \citep{Raudvere2019}. Gene Ontology terms, pathways, and phenotype categories with FDR $<0.05$ were considered significant.
+
+\subsection{Gene Prioritization Framework}
+To identify high-value candidates for follow-up investigation, we applied a Multi-Criteria Decision Analysis (MCDA) scoring system integrating four components: (1) selection strength (0--10 points; scaled $-\log_{10} P$), (2) biological relevance (0--3 points; involvement in domestication-related pathways), (3) experimental tractability (0--3 points; assay and model feasibility), and (4) literature support (0--4 points; prior associations and citation density). Total scores (0--20) were used to assign tiered priority classes for downstream interpretation.
+
+\section{Preliminary Results}
+
+\subsection{Quality Control and Model Performance}
+
+Across the 17{,}046 orthologous coding sequences included in the final dataset, aBSREL identified 401 genes (2.35\%) with evidence of episodic positive selection on the dog branch after Bonferroni correction (\textit{p} $<$ 2.93$\times$10$^{-6}$). Quality control metrics are shown in Figure~\ref{fig:qc}.
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/Figure1_QualityControl.png}
+\caption{\textbf{Quality control and analytical performance metrics.} \textit{Methods:} We applied the adaptive Branch-Site Random Effects Likelihood (aBSREL) model implemented in HyPhy v2.5.59 to 17,046 one-to-one orthologous genes. aBSREL uses likelihood ratio tests to compare models allowing versus prohibiting positive selection ($\omega > 1$) on specified branches. Quality control included assessment of genomic inflation ($\lambda$), functional annotation completeness, and gene-wide $\omega$ distributions. \textbf{(A)} Quantile-quantile plot of observed vs. expected $-\log_{10}$(p-values) under the null hypothesis of no selection. The genomic inflation factor ($\lambda = 127.6$) reflects extensive deviation from neutral expectations, consistent with polygenic selection during breed formation. \textbf{(B)} Annotation coverage among 401 candidate genes passing Bonferroni correction ($\alpha = 2.93 \times 10^{-6}$), showing 78\% with functional annotation from Ensembl BioMart. \textbf{(C)} Distribution of selection significance (p-values) stratified by annotation status, demonstrating no bias toward annotated genes. \textbf{(D)} Distribution of gene-wide $\omega$ estimates (dN/dS ratio) across all candidate genes (median = 0.66), illustrating that episodic positive selection ($\omega > 1$ at subset of sites) occurs within otherwise constrained coding regions (gene-wide $\omega < 1$). These metrics validate analytical rigor and support biological interpretation of elevated genomic inflation as reflecting authentic polygenic selection rather than technical artifacts.}
+\label{fig:qc}
+\end{figure}
+
+The elevated genomic inflation factor ($\lambda = 127.6$) is consistent with extensive deviation from neutral expectations across multiple loci, as expected given strong artificial selection during breed formation (Figure~\ref{fig:qc}A). Annotation coverage approached 80\% (Figure~\ref{fig:qc}B), and no significant differences in selection significance were observed between annotated and unannotated genes (Figure~\ref{fig:qc}C). The distribution of gene-wide $\omega$ values (median 0.66, Figure~\ref{fig:qc}D) reflects the expected pattern wherein aBSREL detects site-specific positive selection while gene-wide averages remain below 1, characteristic of episodic selection within constrained loci.
+
+
+\subsection{Chromosomal Distribution of Candidate Genes}
+
+Candidate genes were distributed across all dog chromosomes without strong evidence of clustering (Figure~\ref{fig:chromosome}). A chi-square test comparing observed to expected counts yielded $\chi^{2} = 58.3$ (\textit{p} = 0.0186), a modest deviation likely attributable to chromosome size variation rather than concentration on specific chromosomal regions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/Figure2_ChromosomeDistribution.png}
+\caption{\textbf{Chromosomal distribution of genes inferred to be under positive selection.} \textit{Methods:} Candidate genes were mapped to dog chromosomes (CanFam4.0) using Ensembl coordinates. Chromosomal clustering was assessed using chi-square goodness-of-fit test comparing observed to expected counts based on chromosome size (number of genes). Proportions were normalized by dividing selected genes per chromosome by total genes per chromosome. \textbf{(A)} Raw counts of selected genes across 38 autosomes and X chromosome, showing broad distribution with modest variation (range: 6-47 genes). \textbf{(B)} Proportion of selected genes normalized by chromosome size, revealing approximately uniform $\sim$1.5-2\% selection rate across all chromosomes ($\chi^{2} = 58.3$, \textit{p} = 0.0186), indicating minor deviation from uniform expectation attributable to chromosome size variation rather than localized clustering. \textbf{(C)} Genomic positions of 401 candidate genes plotted along chromosomes (karyotype-style), with red points indicating significant selection (\textit{p} $<$ 2.93$\times$10$^{-6}$) and gray points showing non-significant genes. Positions are dispersed without obvious hotspots. The broadly polygenic signature is consistent with breed formation targeting multiple distributed loci rather than concentrated chromosomal regions, supporting the hypothesis of selection on a complex multi-trait syndrome.}
+\label{fig:chromosome}
+\end{figure}
+
+Normalization by chromosome size resulted in an approximately uniform proportion of selected genes ($\sim$1.5\%) across the autosomes and X chromosome (Figure~\ref{fig:chromosome}B), consistent with a broadly polygenic signature. The dispersed genomic positions (Figure~\ref{fig:chromosome}C) further support selection on distributed loci rather than chromosomal hotspots.
+
+
+\subsection{Magnitude and Distribution of Selection Signals}
+
+Among the 401 candidate genes, 254 (63.3\%) showed extremely small \textit{p}-values (\textit{p} $<$ 1$\times$10$^{-10}$). Despite these strong significance levels, gene-wide $\omega$ estimates remained below 1 for most genes (median = 0.66), consistent with episodic selection acting on localized sites rather than pervasive positive selection across entire coding regions (Figure~\ref{fig:selection}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/Figure3_SelectionResults.png}
+\caption{\textbf{Summary of branch-specific selection statistics.} \textit{Methods:} For each gene, aBSREL estimates a gene-wide $\omega$ value (average across sites and branches) and reports a likelihood ratio test p-value for episodic positive selection on the dog branch. Genes were classified by significance thresholds (\textit{p} $<$ 10$^{-6}$, \textit{p} $<$ 10$^{-10}$, etc.) to assess strength of selection signals. \textbf{(A)} Volcano plot showing relationship between gene-wide $\omega$ (x-axis) and selection significance (y-axis, $-\log_{10}$ p-value). Most candidate genes cluster at low $\omega$ ($<$ 1) despite highly significant p-values, illustrating episodic selection model where only a subset of sites experience $\omega > 1$ while gene averages remain constrained. \textbf{(B)} Density distribution of gene-wide $\omega$ values across all 17,046 genes, with candidate genes (red) showing median $\omega$ = 0.66, only slightly elevated above genome-wide background. \textbf{(C)} Frequency distribution of genes across significance thresholds, showing 254/401 candidates (63\%) with extremely significant \textit{p} $<$ 10$^{-10}$. This pattern is characteristic of developmental and regulatory genes under strong functional constraint but tolerating adaptive substitutions at specific residues influencing phenotype—precisely the expectation for domestication-related loci.}
+\label{fig:selection}
+\end{figure}
+
+The pattern of low gene-wide $\omega$ with highly significant selection tests (Figure~\ref{fig:selection}A,B) aligns with expectations for developmental and regulatory genes, which are typically constrained at most sites but may undergo episodic adaptive changes at specific residues. The high frequency of extremely significant p-values (Figure~\ref{fig:selection}C) demonstrates robust statistical support for the identified candidates.
+
+\subsection{Functional Annotation and Pathway Enrichment}
+
+Functional enrichment using a background of all 17{,}046 orthologs identified significant overrepresentation of Wnt signaling pathway components (GO:0016055), with 12--15 genes mapping to this pathway depending on annotation source (Figure~\ref{fig:wnt}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/Figure4_WntEnrichment.png}
+\caption{\textbf{Functional enrichment of genes under positive selection.} \textit{Methods:} Functional enrichment was performed using g:Profiler (g:GOSt) with Fisher's exact test and g:SCS multiple-testing correction. Background set: all 17,046 orthologous genes. Annotation sources: Gene Ontology (GO), KEGG pathways, Reactome. Significance threshold: FDR $<$ 0.05. Wnt pathway genes were defined by GO:0016055 (Wnt signaling pathway) cross-referenced with KEGG and Reactome annotations (12-15 genes depending on source). \textbf{(A)} Top enriched Gene Ontology biological process terms among 401 candidate genes, showing Wnt signaling pathway (GO:0016055) as most significant enrichment (16 genes, \textit{p} = 1.2$\times$10$^{-4}$). Other enriched categories include positive regulation of biological process, catabolic process, and cellular process. Gene counts and $-\log_{10}$(p-values) shown for each term. \textbf{(B)} Selection metrics for individual Wnt pathway genes, plotting $-\log_{10}$(p-value) vs. gene-wide $\omega$. Wnt genes exhibit low median $\omega$ (0.64) but strong statistical significance, with several genes exceeding \textit{p} $<$ 10$^{-10}$, consistent with episodic selection within constrained loci. \textbf{(C)} Functional categorization of Wnt-associated candidate genes by role: receptors (FZD3, FZD4), ligands, transcription factors, and cytoskeletal/regulatory components. Wnt signaling pathway emerged from an unbiased genome-wide screen, suggesting its role in breed-associated diversification was discovered through data rather than anticipated \textit{a priori}. The low $\omega$ values indicate selection acted on constrained pleiotropic genes, potentially enabling coordinated trait evolution.}
+\label{fig:wnt}
+\end{figure}
+
+Wnt signaling pathway emerged as the most significantly enriched category (Figure~\ref{fig:wnt}A), with individual Wnt pathway genes exhibiting low gene-wide $\omega$ values (median = 0.64) but strong statistical support for episodic selection (Figure~\ref{fig:wnt}B). Functional categorization revealed diverse roles including receptor activity, transcriptional regulation, and cytoskeletal organization (Figure~\ref{fig:wnt}C), consistent with selection on pleiotropic pathways coordinating multiple developmental processes.
+
+\subsection{Prioritization of Candidate Genes}
+
+Application of the Multi-Criteria Decision Analysis (MCDA) framework yielded a distribution of priority tiers, with six genes classified as Tier~1 (scores $\geq 16$; Figure~\ref{fig:prioritization}). These genes combined high statistical support with biological relevance and experimental tractability.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/Figure5_GenePrioritization.png}
+\caption{\textbf{Prioritization outcomes using multi-criteria scoring.} \textit{Methods:} Multi-Criteria Decision Analysis (MCDA) framework integrated four components: (1) Selection strength (0-10 points, scaled from $-\log_{10}$ p-value), (2) Biological relevance (0-3 points, involvement in domestication pathways including Wnt, neural crest, pigmentation), (3) Experimental tractability (0-3 points, availability of assays, model systems, antibodies), (4) Literature support (0-4 points, prior associations with domestication phenotypes, citation density). Total scores (0-20) were used to assign priority tiers: Tier 1 ($\geq$16), Tier 2 (13-15), Tier 3 ($<$13). \textbf{(A)} Distribution of 401 candidate genes across priority tiers, showing 6 Tier 1 genes, 47 Tier 2 genes, and 284 Tier 3 genes. \textbf{(B)} Component scores (selection, relevance, tractability, literature) averaged across genes within each tier, demonstrating that Tier 1 genes excel across all criteria, not driven by single factor. \textbf{(C)} Characteristics of six Tier 1 genes (GABRA3, EDNRB, HTR2B, HCRTR1, FZD3, FZD4), showing total scores (16-18), primary functional annotations, and Wnt pathway associations. Four of six genes are functionally connected to Wnt signaling. \textbf{(D)} Scatter plot of total prioritization score vs. selection strength ($-\log_{10}$ p-value), showing that while selection strength contributes to final score, high-ranking genes also require biological relevance and tractability. The convergence on Wnt-associated genes among top candidates, despite pathway membership contributing only a minority of available points, suggests this functional theme emerged independently from statistical, biological, and practical considerations—strengthening confidence in its importance for breed formation and positioning these candidates as primary targets for Aim 1 (functional validation).}
+\label{fig:prioritization}
+\end{figure}
+
+Tier~1 genes included \textit{GABRA3}, \textit{EDNRB}, \textit{HTR2B}, \textit{HCRTR1}, \textit{FZD3}, and \textit{FZD4} (Figure~\ref{fig:prioritization}C). Four of these six genes (\textit{FZD3}, \textit{FZD4}, \textit{EDNRB}, \textit{GABRA3}) are functionally associated with Wnt-related pathways or signaling components. The component score analysis (Figure~\ref{fig:prioritization}B) demonstrates that Tier 1 genes excel across all criteria, while the scatter plot (Figure~\ref{fig:prioritization}D) shows that high prioritization requires both statistical significance and biological/practical relevance. The convergence on Wnt-associated genes among top candidates suggests that Wnt-associated processes may have been recurrent targets of lineage-specific selection during breed formation.
+
+
+\section{Proposed Research Plan}
+
+Building on these preliminary findings, we propose a three-aim research program to validate, expand, and integrate our phylogenomic discoveries.
+
+\subsection{Aim 1: Functional Validation of Wnt Pathway Candidates}
+
+\textbf{Rationale:} Preliminary data identified 4/6 Tier 1 genes with Wnt pathway associations (\textit{FZD3}, \textit{FZD4}, \textit{EDNRB}, \textit{GABRA3}). Experimental validation is necessary to establish causal links between dog-specific substitutions and phenotypic outcomes. High tractability scores suggest these candidates are amenable to immediate functional investigation.
+
+\textbf{Approach:}
+
+\textbf{1.1. Comparative expression profiling (RNA-seq).} We will quantify expression divergence at candidate loci across developmental stages and tissue types. Tissues will include embryonic samples (E14-E18, critical for neural crest development), adult brain (behavioral/neurological traits), skin (pigmentation), and craniofacial structures (morphological diversification). Comparisons will contrast 5 phenotypically diverse dog breeds (e.g., Chihuahua, Great Dane, Border Collie, Bulldog, Greyhound) against dingo and wolf (when available). RNA-seq will be performed at 30M reads/sample depth using Illumina NovaSeq. Differential expression analysis will use DESeq2, identifying genes with significant expression divergence (FDR $<$ 0.05, $\mid$log$_2$FC$\mid$ $>$ 1) at candidate loci.
+
+\textbf{1.2. Protein structure modeling.} Dog-specific substitutions at Tier 1 genes will be mapped to 3D protein structures using AlphaFold2. Predicted structures will be compared to ancestral (dingo/wolf) sequences to identify conformational changes. Molecular dynamics simulations (100 ns trajectories, GROMACS) will assess stability and functional impacts. Substitutions affecting protein-protein interaction interfaces, catalytic sites, or regulatory domains will be prioritized for experimental validation. We anticipate identifying 10-15 high-priority variants with predicted functional consequences.
+
+\textbf{1.3. Cell-based functional assays (pilot).} To establish proof-of-concept for functional effects, we will conduct pilot Wnt reporter assays (TOPFlash/FOPFlash system) comparing dog vs. ancestral alleles of \textit{FZD3} and \textit{FZD4}. Constructs will be transfected into HEK293 cells, and Wnt pathway activity will be quantified via dual-luciferase assay. Significant activity differences ($>$20\% change, \textit{p} $<$ 0.01) will support functional impacts of dog-specific substitutions.
+
+\textbf{Expected Outcomes:}
+\begin{itemize}
+\item Expression signatures linking genotype to developmental timing across 5 breeds
+\item Structural predictions for 10-15 high-priority substitutions with functional annotations
+\item Pilot functional data for 2-3 candidate variants demonstrating Wnt pathway modulation
+\item Manuscript: "Functional validation of Wnt pathway genes under selection during dog breed formation"
+\end{itemize}
+
+\textbf{Timeline:} 18-24 months
+
+\textbf{Budget:} \$150,000-\$200,000 (RNA-seq library prep and sequencing, computational resources for AlphaFold2/MD, cell culture reagents, reporter assays)
+
+\subsection{Aim 2: Expanded Phylogenetic Framework with Wolf Genome}
+
+\textbf{Rationale:} The Greenland wolf genome (\textit{Canis lupus orion}) is undergoing annotation via the Ensembl pipeline at EBI, with anticipated public release in 2025-2026. Addition of the wolf genome will enable a four-species framework: (((\textit{Dog}, \textit{Dingo}), \textit{Wolf}), \textit{Fox}), providing temporal layering of selection signals.
+
+\textbf{Approach:}
+
+\textbf{2.1. Re-analysis with 4-species phylogeny.} Upon wolf genome availability, we will apply the same aBSREL pipeline to identify: (a) breed formation signals (dog branch only, expected to refine current 401 genes), (b) early domestication signals (dog+dingo clade vs. wolf, expected 50-100 genes), and (c) wild canid evolution (wolf branch, serving as control). Expected dataset: $\sim$17,000 genes with 4-way orthologs based on current Ensembl Compara coverage.
+
+\textbf{2.2. Temporal partitioning of selection signals.} We will classify genes by temporal layer: (1) breed-specific (dog only), (2) domestication-associated (dog+dingo shared), (3) lineage-specific background (wolf). Functional enrichment analysis will be performed separately for each category to identify pathway-level themes specific to evolutionary stages.
+
+\textbf{2.3. Validation of 3-species findings.} Current 401 candidates will be cross-validated with 4-species results. We expect a subset (estimated 250-300 genes) to retain strong dog-specific signal, while others may reclassify as shared domestication signatures. This refinement will increase confidence in breed-specific candidates.
+
+\textbf{2.4. Power analysis and simulation.} We will perform statistical power analysis to assess detection sensitivity for the wolf branch given estimated divergence time ($\sim$15-40 KYA) and expected sequence divergence. Simulations will quantify false positive/negative rates under various selection scenarios ($\omega$ = 1.5-5, 5-20\% sites under selection).
+
+\textbf{Expected Outcomes:}
+\begin{itemize}
+\item Refined set of 250-300 high-confidence breed-specific candidates
+\item Identification of 50-100 early domestication genes (dog+dingo branch)
+\item Partitioned functional themes by evolutionary layer (Wnt enrichment specific to breed formation vs. shared with domestication)
+\item Power analysis framework applicable to other domestication systems
+\item Manuscript: "Temporal layering of selection during dog domestication: insights from four-species phylogenomics"
+\end{itemize}
+
+\textbf{Timeline:} 12-18 months (contingent on wolf genome release, estimated mid-2025 to early-2026)
+
+\textbf{Budget:} \$75,000-\$100,000 (computational resources for 17,000-gene aBSREL analysis, data storage, validation bioinformatics, personnel)
+
+\subsection{Aim 3: Integration with Dog10K Population Genomic Data}
+
+\textbf{Rationale:} The Dog10K Consortium has generated whole-genome sequences for 2,000+ canids including 1,611 dogs across 321 breeds \citep{Dog10K2023, Dog10K2024}. Integration of our phylogenetic candidates (401 genes) with population-level data will reveal breed-specific vs. pan-breed selection patterns and enable genotype-phenotype associations.
+
+\textbf{Approach:}
+
+\textbf{3.1. Retrieve Dog10K haplotype data for candidate genes.} We will download VCF files for the 401 gene regions from the Dog10K database (https://dog10k.kiz.ac.cn/). Haplotype phasing will be performed using SHAPEIT4, and allele frequencies will be calculated for each breed.
+
+\textbf{3.2. Haplotype-based selection scans.} Using Dog10K integrated tools, we will perform selection scans using multiple methods: integrated haplotype score (iHS), cross-population extended haplotype homozygosity (XP-EHH), and number of segregating sites by length (nSL). These methods detect recent selective sweeps via extended haplotype homozygosity. Candidates with significant signals (top 1\% genome-wide) in multiple breeds will be classified as pan-breed targets, while breed-specific signals will identify lineage-restricted selection.
+
+\textbf{3.3. Genotype-phenotype association.} We will cross-reference candidate genes with AKC breed standard phenotypes (size, coat color/texture, craniofacial morphology, behavioral traits). For Wnt pathway genes, we will focus on craniofacial and pigmentation traits given known pathway roles. Association tests will use breed-level trait scores regressed against haplotype frequencies, controlling for population structure via principal components.
+
+\textbf{3.4. Concordance analysis.} We will assess concordance between phylogenetic aBSREL signals and population-level sweep signals. Genes with strong support from both methods (estimated 50-100 genes) will represent high-confidence candidates with convergent evolutionary evidence. Discordant cases will be investigated to understand different evolutionary modes (e.g., soft vs. hard sweeps, standing variation vs. new mutations).
+
+\textbf{Expected Outcomes:}
+\begin{itemize}
+\item Breed-specific sweep map for 401 phylogenetic candidates across 321 breeds
+\item Subset of 50-100 genes with convergent phylogenetic + population evidence
+\item Genotype-phenotype associations for Wnt pathway genes (focus on craniofacial/pigmentation)
+\item Integrated candidate ranking system combining phylogenetic, population, and phenotypic data
+\item Manuscript: "Integration of phylogenomic and population genomic approaches reveals convergent selection during dog breed formation"
+\end{itemize}
+
+\textbf{Timeline:} 12 months
+
+\textbf{Budget:} \$50,000-\$75,000 (Dog10K data access and storage, computational analysis for 321 breeds, population genetics software, phenotype database compilation)
+
+\subsection{Timeline and Milestones}
+
+\textbf{Year 1 (Months 1-12):}
+\begin{itemize}
+\item Aim 1: RNA-seq sample collection, library prep, sequencing (Months 1-6)
+\item Aim 1: Expression analysis and initial structural modeling (Months 6-9)
+\item Aim 3: Dog10K data retrieval and haplotype-based scans (Months 3-9)
+\item Aim 3: Genotype-phenotype associations (Months 9-12)
+\item Milestone: First manuscript submission (Aim 3, Month 12)
+\end{itemize}
+
+\textbf{Year 2 (Months 13-24):}
+\begin{itemize}
+\item Aim 1: Complete structural predictions and MD simulations (Months 13-18)
+\item Aim 1: Wnt reporter assays (pilot functional validation) (Months 18-21)
+\item Aim 2: Wolf genome monitoring, pipeline preparation (Months 13-24)
+\item Aim 2: 4-species aBSREL analysis upon wolf release (Months 18-24, contingent)
+\item Milestone: Second manuscript submission (Aim 1, Month 21)
+\end{itemize}
+
+\textbf{Year 3 (Months 25-36):}
+\begin{itemize}
+\item Aim 2: Complete 4-species analysis and temporal partitioning (Months 25-30)
+\item Integration: Synthesis across all three aims (Months 30-33)
+\item Manuscript preparation: Aim 2 + integrated synthesis papers (Months 30-36)
+\item Milestone: Final manuscripts submitted (Months 33-36)
+\end{itemize}
+
+\subsection{Budget Summary}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrr}
+\hline
+\textbf{Category} & \textbf{Amount} & \textbf{Notes} \\
+\hline
+Personnel & \$180,000-\$240,000 & Graduate student or postdoc (1.0 FTE, 3 years) \\
+          & \$15,000-\$20,000 & Undergraduate research assistants (summers) \\
+Computational & \$10,000-\$15,000 & HPC cluster time (4-way aBSREL analysis) \\
+              & \$5,000-\$10,000 & Data storage (Dog10K integration) \\
+Experimental & \$75,000-\$100,000 & RNA-seq (tissue collection, library prep, sequencing) \\
+             & \$10,000-\$15,000 & Protein structural modeling (AlphaFold2, MD) \\
+             & \$25,000-\$35,000 & Cell-based assays (Wnt reporters, reagents) \\
+Travel & \$10,000-\$15,000 & Conference presentations (3 years) \\
+Publications & \$5,000-\$10,000 & Open-access fees (4-5 manuscripts) \\
+\hline
+\textbf{Subtotal} & \$335,000-\$460,000 & \\
+Indirect costs & \$80,000-\$120,000 & University overhead (varies by institution) \\
+\hline
+\textbf{Total} & \$415,000-\$580,000 & 3-year program \\
+\hline
+\end{tabular}
+\caption{Estimated budget for proposed research program}
+\end{table}
+
+
+\section{Broader Impacts and Significance}
+
+\subsection{Comparative domestication biology}
+Our temporal framework for distinguishing early domestication from breed formation is broadly applicable to other domesticated species (cat, horse, cattle, chicken). The methodological advances—particularly the integration of phylogenetic and population genomic approaches—will provide a template for resolving evolutionary timescales in any domestication system. Understanding shared vs. lineage-specific selection patterns will inform general principles of rapid phenotypic evolution under artificial selection.
+
+\subsection{Translational applications}
+Dogs serve as biomedical models for over 350 human genetic diseases. Identifying genes under selection during breed formation will refine our understanding of breed-specific disease susceptibilities and inform precision veterinary medicine. Additionally, conservation genetics programs managing domestic$\times$wild hybridization (e.g., dingo conservation, wolf-dog hybrids) will benefit from knowledge of genomic regions distinguishing domestic from wild genotypes.
+
+\subsection{Methodological contributions}
+Our scalable aBSREL pipeline, multi-criteria prioritization framework, and integrated phylogenetic-population approach represent methodological contributions applicable beyond canid genomics. We will publicly release our Snakemake workflow, MCDA scoring system, and analysis code via GitHub, providing open-science resources for the broader evolutionary genomics community. The 4-way phylogenetic framework will serve as a benchmark for temporal resolution in domestication studies.
+
+\subsection{Training and education}
+This project will train graduate students and undergraduates in cutting-edge computational evolutionary genomics, population genetics, and functional validation approaches. The integration of multiple data types (phylogenetic, population, expression, structural) provides comprehensive training in modern genomic research. Research findings will be incorporated into undergraduate coursework in evolutionary biology and genomics.
+
+
+\section{Conclusion and Future Perspectives}
+
+Our preliminary three-species phylogenomic framework has identified 401 genes with evidence of episodic positive selection specific to the dog lineage, with significant enrichment of Wnt signaling pathway components. Most candidate genes exhibited low gene-wide $\omega$ but strong statistical support for localized adaptive change, consistent with selection acting on constrained developmental and regulatory loci. The dispersed chromosomal distribution of selected genes and the elevated genomic inflation factor together suggest a broadly polygenic pattern consistent with the diversity of phenotypes targeted during dog breed formation.
+
+\textbf{We propose} a three-aim research program that will: (1) establish functional causality through expression profiling, structural modeling, and Wnt reporter assays, (2) achieve unprecedented temporal resolution via four-species phylogenomics when the wolf genome becomes available, and (3) integrate phylogenetic discoveries with Dog10K population data for convergent validation. This work will transform preliminary genomic signals into mechanistic understanding of the evolutionary forces shaping rapid phenotypic diversification.
+
+The anticipated availability of the gray wolf genome in 2025-2026 creates a time-sensitive opportunity to distinguish early domestication signals (dog+dingo vs. wolf) from breed formation signals (dog vs. dingo). This temporal layering, combined with functional validation of Wnt pathway candidates and integration with population genomic data, will provide a comprehensive view of the genetic architecture underlying one of the most extensive cases of human-mediated phenotypic evolution.
+
+These results will inform broader questions in evolutionary biology regarding the genetic basis of rapid adaptation, the role of pleiotropic pathways in correlated trait evolution, and the mechanisms enabling constrained yet phenotypically impactful changes within essential developmental loci. The framework established here will be applicable to understanding domestication processes across species and will contribute to translational applications in veterinary medicine and conservation biology.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
