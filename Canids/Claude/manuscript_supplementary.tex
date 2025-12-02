@@ -1,0 +1,183 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{textgreek}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{lineno}
+\usepackage{setspace}
+\onehalfspacing
+\linenumbers
+
+\title{Supplementary Material: Proposed Research Plan\\
+\large Branch-Specific Phylogenomics to Identify Genetic Mechanisms of Dog Breed Formation}
+
+\author{Isaac N. Aguilar Rivera}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This supplementary document details the proposed three-aim research program to functionally validate, expand, and integrate preliminary phylogenomic discoveries from the main manuscript. The proposed research includes: (1) functional validation of neurotransmitter and developmental signaling candidates through expression profiling, structural modeling, and cell-based assays, (2) expansion of the phylogenetic framework to include grey wolf when genome resources become available, and (3) integration with Dog10K population genomic data to identify breed-specific selection patterns. Total estimated budget: \$415,000--\$580,000 over 3 years.
+\end{abstract}
+
+\section{Proposed Research Plan}
+
+Building on these preliminary findings, we propose a three-aim research program to validate, expand, and integrate our phylogenomic discoveries.
+
+\subsection{Aim 1: Functional Validation of Neurotransmitter and Developmental Signaling Candidates}
+
+\textbf{Rationale:} Preliminary data identified Tier 1 genes representing two distinct functional categories: neurotransmitter receptors (50\%, 3/6: \textit{GABRA3}, \textit{HTR2B}, \textit{HCRTR1}) and developmental signaling genes (3/6: \textit{FZD3}, \textit{FZD4}, \textit{EDNRB}). Experimental validation is necessary to establish causal links between dog-specific substitutions and phenotypic outcomes in both behavioral and morphological trait dimensions. High tractability scores suggest these candidates are amenable to immediate functional investigation across multiple systems.
+
+\textbf{Approach:}
+
+\textbf{1.1. Comparative expression profiling (RNA-seq).} We will quantify expression divergence at candidate loci across developmental stages and tissue types, with specific focus on brain region-specific analysis for neurotransmitter receptors. Tissues will include: \textbf{(a) Brain regions} for neurotransmitter candidates: amygdala (fear/aggression, \textit{GABRA3}), prefrontal cortex (social cognition, \textit{HTR2B}), hypothalamus (arousal/motivation, \textit{HCRTR1}); \textbf{(b) Embryonic samples} (E14-E18, critical for neural crest development, \textit{FZD3}, \textit{FZD4}, \textit{EDNRB}); \textbf{(c) Adult tissues}: skin (pigmentation), craniofacial structures (morphological diversification). Comparisons will contrast 5 phenotypically diverse dog breeds (e.g., Chihuahua, Great Dane, Border Collie, Bulldog, Greyhound) against dingo and wolf (when available). RNA-seq will be performed at 30M reads/sample depth using Illumina NovaSeq. Differential expression analysis will use DESeq2, identifying genes with significant expression divergence (FDR $<$ 0.05, $\mid$log$_2$FC$\mid$ $>$ 1) at candidate loci.
+
+\textbf{1.2. Protein structure modeling.} Dog-specific substitutions at Tier 1 genes will be mapped to 3D protein structures using AlphaFold2. Predicted structures will be compared to ancestral (dingo/wolf) sequences to identify conformational changes. Molecular dynamics simulations (100 ns trajectories, GROMACS) will assess stability and functional impacts. Substitutions affecting protein-protein interaction interfaces, catalytic sites, or regulatory domains will be prioritized for experimental validation. We anticipate identifying 10-15 high-priority variants with predicted functional consequences.
+
+\textbf{1.3. Cell-based functional assays (pilot).} To establish proof-of-concept for functional effects across both neurotransmitter and developmental pathways, we will conduct multiple assay systems:
+
+\textbf{(a) Neurotransmitter receptor activity assays:}
+\begin{itemize}
+\item \textbf{GABA receptor function}: Electrophysiology (patch-clamp) or GABA-induced chloride flux measurements comparing dog vs. ancestral \textit{GABRA3} alleles expressed in HEK293 cells or Xenopus oocytes
+\item \textbf{Serotonin receptor signaling}: G-protein coupled receptor (GPCR) activation assays (cAMP, IP$_3$ measurements) comparing dog vs. ancestral \textit{HTR2B} variants in mammalian cell lines
+\item \textbf{Orexin receptor function}: Calcium mobilization or cAMP assays for \textit{HCRTR1} comparing dog vs. ancestral alleles
+\end{itemize}
+
+\textbf{(b) Wnt pathway activity} (retain original plan):
+\begin{itemize}
+\item TOPFlash/FOPFlash reporter assays comparing dog vs. ancestral alleles of \textit{FZD3} and \textit{FZD4}
+\item Transfection into HEK293 cells, quantification via dual-luciferase assay
+\end{itemize}
+
+Significant activity differences ($>$20\% change, \textit{p} $<$ 0.01) will support functional impacts of dog-specific substitutions.
+
+\textbf{Expected Outcomes:}
+\begin{itemize}
+\item Expression signatures for \textbf{both neurotransmitter and developmental genes} across brain regions and developmental stages
+\item Structural predictions for 10-15 high-priority substitutions across neurotransmitter receptors and developmental signaling genes
+\item Pilot functional data demonstrating altered receptor activity for neurotransmitter genes (GABA, serotonin, orexin) and Wnt pathway modulation for developmental genes
+\item Comparative evidence for \textbf{parallel selection on behavioral AND morphological pathways}
+\item Manuscript: "Multi-pathway validation reveals neurotransmitter and developmental targets of dog breed formation"
+\end{itemize}
+
+\textbf{Timeline:} 18-24 months
+
+\textbf{Budget:} \$150,000-\$200,000 (RNA-seq library prep and sequencing, computational resources for AlphaFold2/MD, cell culture reagents, reporter assays)
+
+\subsection{Aim 2: Expanded Phylogenetic Framework with Wolf Genome}
+
+\textbf{Rationale:} The Greenland wolf genome (\textit{Canis lupus orion}) is undergoing annotation via the Ensembl pipeline at EBI, with anticipated public release in 2025-2026. Addition of the wolf genome will enable a four-species framework: (((\textit{Dog}, \textit{Dingo}), \textit{Wolf}), \textit{Fox}), providing temporal layering of selection signals.
+
+\textbf{Approach:}
+
+\textbf{2.1. Re-analysis with 4-species phylogeny.} Upon wolf genome availability, we will apply the same aBSREL pipeline to identify: (a) breed formation signals (dog branch only, expected to refine current 401 genes), (b) early domestication signals (dog+dingo clade vs. wolf, expected 50-100 genes), and (c) wild canid evolution (wolf branch, serving as control). Expected dataset: $\sim$17,000 genes with 4-way orthologs based on current Ensembl Compara coverage.
+
+\textbf{2.2. Temporal partitioning of selection signals.} We will classify genes by temporal layer: (1) breed-specific (dog only), (2) domestication-associated (dog+dingo shared), (3) lineage-specific background (wolf). Functional enrichment analysis will be performed separately for each category to identify pathway-level themes specific to evolutionary stages.
+
+\textbf{2.3. Validation of 3-species findings.} Current 401 candidates will be cross-validated with 4-species results. We expect a subset (estimated 250-300 genes) to retain strong dog-specific signal, while others may reclassify as shared domestication signatures. This refinement will increase confidence in breed-specific candidates.
+
+\textbf{2.4. Power analysis and simulation.} We will perform statistical power analysis to assess detection sensitivity for the wolf branch given estimated divergence time ($\sim$15-40 KYA) and expected sequence divergence. Simulations will quantify false positive/negative rates under various selection scenarios ($\omega$ = 1.5-5, 5-20\% sites under selection).
+
+\textbf{Expected Outcomes:}
+\begin{itemize}
+\item Refined set of 250-300 high-confidence breed-specific candidates
+\item Identification of 50-100 early domestication genes (dog+dingo branch)
+\item Partitioned functional themes by evolutionary layer (Wnt enrichment specific to breed formation vs. shared with domestication)
+\item Power analysis framework applicable to other domestication systems
+\item Manuscript: "Temporal layering of selection during dog domestication: insights from four-species phylogenomics"
+\end{itemize}
+
+\textbf{Timeline:} 12-18 months (contingent on wolf genome release, estimated mid-2025 to early-2026)
+
+\textbf{Budget:} \$75,000-\$100,000 (computational resources for 17,000-gene aBSREL analysis, data storage, validation bioinformatics, personnel)
+
+\subsection{Aim 3: Integration with Dog10K Population Genomic Data}
+
+\textbf{Rationale:} The Dog10K Consortium has generated whole-genome sequences for 2,000+ canids including 1,611 dogs across 321 breeds \citep{Dog10K2023, Dog10K2024}. Integration of our phylogenetic candidates (401 genes) with population-level data will reveal breed-specific vs. pan-breed selection patterns and enable genotype-phenotype associations.
+
+\textbf{Approach:}
+
+\textbf{3.1. Retrieve Dog10K haplotype data for candidate genes.} We will download VCF files for the 401 gene regions from the Dog10K database (https://dog10k.kiz.ac.cn/). Haplotype phasing will be performed using SHAPEIT4, and allele frequencies will be calculated for each breed.
+
+\textbf{3.2. Haplotype-based selection scans.} Using Dog10K integrated tools, we will perform selection scans using multiple methods: integrated haplotype score (iHS), cross-population extended haplotype homozygosity (XP-EHH), and number of segregating sites by length (nSL). These methods detect recent selective sweeps via extended haplotype homozygosity. Candidates with significant signals (top 1\% genome-wide) in multiple breeds will be classified as pan-breed targets, while breed-specific signals will identify lineage-restricted selection.
+
+\textbf{3.3. Genotype-phenotype association.} We will cross-reference candidate genes with AKC breed standard phenotypes (size, coat color/texture, craniofacial morphology, behavioral traits). For Wnt pathway genes, we will focus on craniofacial and pigmentation traits given known pathway roles. Association tests will use breed-level trait scores regressed against haplotype frequencies, controlling for population structure via principal components.
+
+\textbf{3.4. Concordance analysis.} We will assess concordance between phylogenetic aBSREL signals and population-level sweep signals. Genes with strong support from both methods (estimated 50-100 genes) will represent high-confidence candidates with convergent evolutionary evidence. Discordant cases will be investigated to understand different evolutionary modes (e.g., soft vs. hard sweeps, standing variation vs. new mutations).
+
+\textbf{Expected Outcomes:}
+\begin{itemize}
+\item Breed-specific sweep map for 401 phylogenetic candidates across 321 breeds
+\item Subset of 50-100 genes with convergent phylogenetic + population evidence
+\item Genotype-phenotype associations for Wnt pathway genes (focus on craniofacial/pigmentation)
+\item Integrated candidate ranking system combining phylogenetic, population, and phenotypic data
+\item Manuscript: "Integration of phylogenomic and population genomic approaches reveals convergent selection during dog breed formation"
+\end{itemize}
+
+\textbf{Timeline:} 12 months
+
+\textbf{Budget:} \$50,000-\$75,000 (Dog10K data access and storage, computational analysis for 321 breeds, population genetics software, phenotype database compilation)
+
+\subsection{Timeline and Milestones}
+
+\textbf{Year 1 (Months 1-12):}
+\begin{itemize}
+\item Aim 1: RNA-seq sample collection, library prep, sequencing (Months 1-6)
+\item Aim 1: Expression analysis and initial structural modeling (Months 6-9)
+\item Aim 3: Dog10K data retrieval and haplotype-based scans (Months 3-9)
+\item Aim 3: Genotype-phenotype associations (Months 9-12)
+\item Milestone: First manuscript submission (Aim 3, Month 12)
+\end{itemize}
+
+\textbf{Year 2 (Months 13-24):}
+\begin{itemize}
+\item Aim 1: Complete structural predictions and MD simulations (Months 13-18)
+\item Aim 1: Wnt reporter assays (pilot functional validation) (Months 18-21)
+\item Aim 2: Wolf genome monitoring, pipeline preparation (Months 13-24)
+\item Aim 2: 4-species aBSREL analysis upon wolf release (Months 18-24, contingent)
+\item Milestone: Second manuscript submission (Aim 1, Month 21)
+\end{itemize}
+
+\textbf{Year 3 (Months 25-36):}
+\begin{itemize}
+\item Aim 2: Complete 4-species analysis and temporal partitioning (Months 25-30)
+\item Integration: Synthesis across all three aims (Months 30-33)
+\item Manuscript preparation: Aim 2 + integrated synthesis papers (Months 30-36)
+\item Milestone: Final manuscripts submitted (Months 33-36)
+\end{itemize}
+
+\subsection{Budget Summary}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrr}
+\hline
+\textbf{Category} & \textbf{Amount} & \textbf{Notes} \\
+\hline
+Personnel & \$180,000-\$240,000 & Graduate student or postdoc (1.0 FTE, 3 years) \\
+          & \$15,000-\$20,000 & Undergraduate research assistants (summers) \\
+Computational & \$10,000-\$15,000 & HPC cluster time (4-way aBSREL analysis) \\
+              & \$5,000-\$10,000 & Data storage (Dog10K integration) \\
+Experimental & \$75,000-\$100,000 & RNA-seq (tissue collection, library prep, sequencing) \\
+             & \$10,000-\$15,000 & Protein structural modeling (AlphaFold2, MD) \\
+             & \$25,000-\$35,000 & Cell-based assays (Wnt reporters, reagents) \\
+Travel & \$10,000-\$15,000 & Conference presentations (3 years) \\
+Publications & \$5,000-\$10,000 & Open-access fees (4-5 manuscripts) \\
+\hline
+\textbf{Subtotal} & \$335,000-\$460,000 & \\
+Indirect costs & \$80,000-\$120,000 & University overhead (varies by institution) \\
+\hline
+\textbf{Total} & \$415,000-\$580,000 & 3-year program \\
+\hline
+\end{tabular}
+\caption{Estimated budget for proposed research program}
+\end{table}
+
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
