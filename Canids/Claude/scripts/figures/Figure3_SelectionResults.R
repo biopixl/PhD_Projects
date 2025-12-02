@@ -54,12 +54,12 @@ selection_data$log10p <- -log10(selection_data$dog_pvalue)
 n_tests <- 17046  # Total genes tested
 bonferroni_threshold <- -log10(0.05 / n_tests)
 
-# Identify top 6 KNOWN genes to label (reduced from 10 to prevent crowding)
-top_genes <- selection_data %>%
-  filter(gene_symbol != "Unknown") %>%
-  arrange(dog_pvalue) %>%
-  head(6) %>%
-  pull(gene_symbol)
+# Label Tier 1 genes for consistency with Figure 4 Panel B
+# These are the top priority candidates highlighted in Figure 4
+top_genes <- c("GABRA3", "EDNRB", "HTR2B", "HCRTR1", "FZD3", "FZD4")
+
+# Verify all genes exist in the data
+top_genes <- top_genes[top_genes %in% selection_data$gene_symbol]
 
 # Add transparency for known vs unknown genes
 selection_data$is_known <- selection_data$gene_symbol != "Unknown"
