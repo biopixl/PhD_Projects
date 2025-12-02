@@ -288,6 +288,9 @@ panel_c <- ggplot(functional_summary, aes(x = median_omega, y = median_log10p)) 
   # Reference line for Bonferroni threshold
   geom_hline(yintercept = -log10(2.93e-6), linetype = "dashed",
              color = "#E03030", linewidth = 0.8) +
+  # Reference line for neutral selection (ω=1)
+  geom_vline(xintercept = 1, linetype = "dashed",
+             color = "grey30", linewidth = 1) +
   # Points sized by gene count
   geom_point(aes(size = gene_count, fill = category),
              shape = 21, color = "black", stroke = 1.2, alpha = 0.85) +
@@ -333,7 +336,10 @@ panel_c <- ggplot(functional_summary, aes(x = median_omega, y = median_log10p)) 
   ) +
   annotate("text", x = 0.88, y = -log10(2.93e-6),
            label = "Bonferroni",
-           size = 2.8, vjust = -0.5, color = "#E03030", fontface = "italic")
+           size = 2.8, vjust = -0.5, color = "#E03030", fontface = "italic") +
+  annotate("text", x = 1.005, y = 8.5,
+           label = "Neutral\nselection\n(ω=1)",
+           size = 2.8, hjust = 0, color = "grey30", fontface = "italic")
 
 # ============================================================================
 # Combine All Panels - 3-panel layout
