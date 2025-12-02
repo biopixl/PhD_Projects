@@ -1,0 +1,6 @@
+gene_id	dog_selected	dog_pvalue	dog_omega	dingo_selected	dingo_pvalue	dingo_omega	fox_selected	fox_pvalue	fox_omega	gene_symbol	description
+Gene_00845012358	True	0.0	1.122043272186322	False	1.0	1.0	False	1.0	0.0809352913716421	SLC6A4	solute carrier family 6 member 4
+Gene_00845022606	True	0.0	0.8978427968935899	False	1.0	1.0	False	1.0	0.4924891357201194	HTR2B	5-hydroxytryptamine receptor 2B
+Gene_00845025696	True	0.0	0.6780833602814698	False	0.3269519413749513	10000000000.0	False	1.0	0.0	GABRA3	gamma-aminobutyric acid type A receptor subunit alpha3
+Gene_00845005853	True	0.0	0.551397387732079	False	1.0	1.0	False	1.0	0.0705584569596429	HCRTR1	hypocretin receptor 1
+Gene_00845006659	True	2.446030045177849e-10	0.3226719054793303	False	1.0	1.0	False	1.0	0.0	GABRR1	gamma-aminobutyric acid type A receptor subunit rho2
