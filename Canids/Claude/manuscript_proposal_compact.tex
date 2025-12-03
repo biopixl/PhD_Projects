@@ -10,7 +10,7 @@
 \setstretch{1.15}  % Tighter than onehalfspacing (1.5), looser than single (1.0)
 \linenumbers
 
-\title{Branch-Specific Phylogenomics to Identify Genetic Mechanisms of Dog Domestication}
+\title{Branch-Specific Phylogenomics to Identify Genetic Mechanisms of Domestication in Dog Breed Diversification}
 
 \author{Isaac N. Aguilar Rivera}
 
@@ -67,7 +67,7 @@ Across the 17{,}046 orthologous coding sequences included in the final dataset, 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/Figure1_QualityControl.png}
-\caption{\textbf{Quality control and analytical performance metrics.} We applied the adaptive Branch-Site Random Effects Likelihood (aBSREL) model implemented in HyPhy v2.5.59 to 17,046 one-to-one orthologous genes. aBSREL uses likelihood ratio tests to compare models allowing versus prohibiting positive selection ($\omega > 1$) on specified branches. \textbf{(A)} Quantile-quantile plot of observed vs. expected $-\log_{10}$(p-values) under the null hypothesis of no selection. The genomic inflation factor ($\lambda = 67.7$) reflects extensive deviation from neutral expectations. \textbf{(B)} Annotation coverage among 430 candidate genes passing Bonferroni correction ($\alpha = 2.93 \times 10^{-6}$), showing 78\% with functional annotation from Ensembl BioMart. \textbf{(C)} Distribution of selection significance (p-values) stratified by annotation status. \textbf{(D)} Distribution of gene-wide $\omega$ estimates (dN/dS ratio) across all candidate genes (median = 0.68).}
+\caption{\textbf{Quality control and analytical performance metrics.} We applied the adaptive Branch-Site Random Effects Likelihood (aBSREL) model implemented in HyPhy v2.5.59 to 17,046 one-to-one orthologous genes.  \textbf{(A)} Quantile-quantile plot of observed vs. expected $-\log_{10}$(p-values) under the null hypothesis of no selection. The genomic inflation factor ($\lambda = 67.7$) reflects extensive deviation from neutral expectations. \textbf{(B)} Annotation coverage among 430 candidate genes passing Bonferroni correction ($\alpha = 2.93 \times 10^{-6}$), showing 78\% with functional annotation from Ensembl BioMart. \textbf{(C)} Distribution of selection significance (p-values) stratified by annotation status. \textbf{(D)} Distribution of gene-wide $\omega$ estimates (dN/dS ratio) across all candidate genes (median = 0.68).}
 \label{fig:qc}
 \end{figure}
 
@@ -107,8 +107,8 @@ Functional enrichment analysis using all 17{,}046 orthologs as background identi
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/Figure4_WntEnrichment.png}
-\caption{\textbf{Functional enrichment of genes under positive selection.} Functional enrichment was performed using g:Profiler (g:GOSt) with Fisher's exact test and g:SCS multiple-testing correction. Background set: all 17,046 orthologous genes. Significance threshold: FDR $<$ 0.05. \textbf{(A)} Top enriched Gene Ontology terms among 430 candidate genes, sorted by statistical significance. Gene counts and $-\log_{10}$(p-values) shown for each term. \textbf{(B)} Selection strength (gene-wide $\omega$) for nine Tier 1 candidates, grouped by functional category. Dashed line indicates neutral selection ($\omega=1$). \textbf{(C)} Functional theme comparison across all 430 candidates, plotting median $\omega$ vs. median $-\log_{10}$(p-value) for six functional categories. Bubble size represents gene count; dashed lines indicate significance (p $<$ 10$^{-6}$) and neutral selection thresholds.}
+\includegraphics[width=\textwidth]{manuscript/figures/Figure4_WntEnrichment.png}
+\caption{\textbf{Functional enrichment of genes under positive selection} using g:Profiler (g:GOSt) with Fisher's exact test and g:SCS multiple-testing correction. \textbf{(A)} Top enriched Gene Ontology terms with gene counts and $-\log_{10}$(p-values). \textbf{(B)} Selection strength ($\omega$) for nine candidates, grouped by functional category. \textbf{(C)} Functional theme comparison across all 430 candidates, plotting median $\omega$ vs. median $-\log_{10}$(p-value) for six functional categories. Bubble size represents gene count; dashed lines indicate significance (p $<$ 10$^{-6}$) and neutral selection thresholds.}
 \label{fig:wnt}
 \end{figure}
 
