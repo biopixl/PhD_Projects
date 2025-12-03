@@ -8,7 +8,7 @@ Gene_00845006501	FZD4	frizzled class receptor 4	7.105982469113314e-13	0.75813785
 Gene_00845017201	PTPRF	protein tyrosine phosphatase receptor type F	0.0	0.5390338492875739	5.0	2.75	4.5	3.5	15.75	2
 Gene_00845006659	GABRR1	gamma-aminobutyric acid type A receptor subunit rho2	2.446030045177849e-10	0.3226719054793303	4.0	2.75	4.5	4.5	15.75	2
 Gene_00845025630	TRPM8	transient receptor potential cation channel subfamily M member 8	1.665334536937735e-16	0.3811045497662336	5.0	1.25	4.5	4.5	15.25	2
-Gene_00845019372	FGFR2	fibroblast growth factor receptor 2	8.739342582941845e-12	0.4238701221936803	4.5	2.75	4.5	3.5	15.25	2
+Gene_00845019372	FGFR2	fibroblast growth factor receptor 2	8.739342582941845e-12	0.4238701221936803	4.5	2.75	4.5	3.5	15.25	1
 Gene_00845002598	EEF2K	eukaryotic elongation factor 2 kinase	0.0	0.9458932998413296	5.0	2.25	4.5	3.5	15.25	2
 Gene_00845026982	NR4A1	nuclear receptor subfamily 4 group A member 1	0.0	0.3388745354619584	5.0	2.25	4.0	3.5	14.75	2
 Gene_00845023569	PIKFYVE	phosphoinositide kinase, FYVE-type zinc finger containing	1.320610287791624e-13	0.5180454521662518	4.75	1.25	4.5	4.0	14.5	2
@@ -26,7 +26,7 @@ Gene_00845000550	MESP2	mesoderm posterior bHLH transcription factor 2	0.0	176187
 Gene_00845014187	UNC5D	unc-5 netrin receptor D	0.0	0.0	5.0	1.25	4.5	3.5	14.25	2
 Gene_00845003712	PTGDR	prostaglandin D2 receptor	0.0	92453698234851.9	5.0	1.25	4.5	3.5	14.25	2
 Gene_00845027443	ADGRG2	adhesion G protein-coupled receptor G2	0.0	0.7454522397579977	5.0	1.25	4.5	3.5	14.25	2
-Gene_00845012358	SLC6A4	solute carrier family 6 member 4	0.0	1.122043272186322	5.0	3.0	3.0	3.0	14.0	2
+Gene_00845012358	SLC6A4	solute carrier family 6 member 4	0.0	1.122043272186322	5.0	3.0	3.0	3.0	14.0	1
 Gene_00845026054	REEP4	receptor accessory protein 4	1.501632151956755e-12	0.611030517118273	4.75	1.25	4.5	3.5	14.0	2
 Gene_00845022802	FASTKD3	FAST kinase domains 3	0.0	1.225004742980908	5.0	1.25	4.5	3.0	13.75	2
 Gene_00845004995	SGK1	serum/glucocorticoid regulated kinase 1	3.497202527569243e-15	0.957115404125352	5.0	1.25	4.5	3.0	13.75	2
@@ -42,7 +42,7 @@ Gene_00845004858	AKT3	AKT serine/threonine kinase 3	4.329869796038111e-15	1.4285
 Gene_00845021117	IGFBP6	insulin like growth factor binding protein 6	0.0	0.6051597785872412	5.0	1.0	4.0	3.5	13.5	2
 Gene_00845021069	OR11H4	olfactory receptor family 11 subfamily H member 4	1.138382426657536e-07	0.5490128616381394	4.25	1.25	4.5	3.5	13.5	2
 Gene_00845024921	OR51V1B	olfactory receptor family 51 subfamily V member 1B	6.29345252578517e-08	0.4429375450101399	4.0	1.25	4.5	3.5	13.25	2
-Gene_00845007336	TFAP2B	transcription factor AP-2 beta	0.0	1.200838015714883	5.0	0.25	4.5	3.5	13.25	2
+Gene_00845007336	TFAP2B	transcription factor AP-2 beta	0.0	1.200838015714883	5.0	0.25	4.5	3.5	13.25	1
 Gene_00845026010	RGS4	regulator of G protein signaling 4	0.0	0.7452351855202274	5.0	2.25	3.0	3.0	13.25	2
 Gene_00845004602	E4F1	E4F transcription factor 1	0.0	0.9316489718261254	5.0	0.25	4.5	3.5	13.25	2
 Gene_00845018768	PROCR	protein C receptor	3.2577142983214464e-08	0.4024494075217808	4.0	1.25	4.5	3.5	13.25	2

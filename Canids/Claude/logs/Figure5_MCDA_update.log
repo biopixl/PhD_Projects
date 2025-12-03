@@ -1,0 +1,89 @@
+Warning message:
+package ‘ggplot2’ was built under R version 4.5.2 
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: grid
+========================================
+ComplexHeatmap version 2.24.1
+Bioconductor page: http://bioconductor.org/packages/ComplexHeatmap/
+Github page: https://github.com/jokergoo/ComplexHeatmap
+Documentation: http://jokergoo.github.io/ComplexHeatmap-reference
+
+If you use it in published research, please cite either one:
+- Gu, Z. Complex Heatmap Visualization. iMeta 2022.
+- Gu, Z. Complex heatmaps reveal patterns and correlations in multidimensional 
+    genomic data. Bioinformatics 2016.
+
+
+The new InteractiveComplexHeatmap package can directly export static 
+complex heatmaps into an interactive Shiny app with zero effort. Have a try!
+
+This message can be suppressed by:
+  suppressPackageStartupMessages(library(ComplexHeatmap))
+========================================
+
+Warning message:
+package ‘ComplexHeatmap’ was built under R version 4.5.1 
+========================================
+circlize version 0.4.16
+CRAN page: https://cran.r-project.org/package=circlize
+Github page: https://github.com/jokergoo/circlize
+Documentation: https://jokergoo.github.io/circlize_book/book/
+
+If you use it in published research, please cite:
+Gu, Z. circlize implements and enhances circular visualization
+  in R. Bioinformatics 2014.
+
+This message can be suppressed by:
+  suppressPackageStartupMessages(library(circlize))
+========================================
+
+null device 
+          1 
+null device 
+          1 
+Heatmap created and saved separately
+
+=== Gene Prioritization Summary ===
+Total genes prioritized: 337
+Tier 1 (≥16 points): 9 genes (2.7%)
+Tier 2 (13-15.99 points): 44 genes (13.1%)
+Tier 3 (<13 points): 284 genes (84.3%)
+
+Tier 1 Genes:
+  gene_symbol total_score selection_score relevance_score tractability_score
+1      GABRA3       18.75            5.00            4.75                4.5
+2       EDNRB       17.75            5.00            4.75                4.5
+3       HTR2B       16.25            5.00            3.25                4.5
+4      HCRTR1       16.25            5.00            3.25                4.5
+5        FZD3       16.25            5.00            3.25                4.5
+6        FZD4       16.00            4.75            3.25                4.5
+7       FGFR2       15.25            4.50            2.75                4.5
+8      SLC6A4       14.00            5.00            3.00                3.0
+9      TFAP2B       13.25            5.00            0.25                4.5
+  literature_score
+1              4.5
+2              3.5
+3              3.5
+4              3.5
+5              3.5
+6              3.5
+7              3.5
+8              3.0
+9              3.5
+
+Figure 4 created successfully!
+Saved to:
+  - manuscript/figures/Figure5_GenePrioritization.pdf (panels)
+  - manuscript/figures/Figure5_GenePrioritization.png (panels)
+  - manuscript/figures/Figure5_GenePrioritization_Heatmap.pdf (heatmap)
+  - manuscript/figures/Figure5_GenePrioritization_Heatmap.png (heatmap)
