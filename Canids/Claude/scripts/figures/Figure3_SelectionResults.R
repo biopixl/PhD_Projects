@@ -84,10 +84,17 @@ p_volcano <- ggplot(selection_data, aes(x = dog_omega, y = log10p)) +
   # Bonferroni threshold line
   geom_hline(yintercept = bonferroni_threshold,
              linetype = "dashed", color = "black", linewidth = 0.8) +
+  # Neutral selection line (ω=1)
+  geom_vline(xintercept = 1,
+             linetype = "dashed", color = "grey30", linewidth = 1) +
   # Threshold annotation
   annotate("text", x = 0.8, y = bonferroni_threshold,
            label = "Bonferroni threshold",
            size = 3.5, fontface = "bold", hjust = 0, vjust = -0.5) +
+  # Neutral selection annotation
+  annotate("text", x = 1.05, y = 1.5,
+           label = "Neutral selection",
+           size = 3.5, fontface = "italic", hjust = 0, color = "grey30") +
   # Label top 6 KNOWN genes with improved spacing
   geom_text_repel(
     data = subset(selection_data, gene_symbol %in% top_genes),
