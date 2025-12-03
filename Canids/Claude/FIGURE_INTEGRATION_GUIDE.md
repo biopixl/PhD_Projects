@@ -63,12 +63,12 @@ Rscript scripts/figures/Figure4_WntEnrichment_NEUROTRANSMITTER_FOCUS.R
   - Wnt Pathway: #E74C3C (red)
 
 **Panel B:**
-- Shows all **9 Tier 1 genes** (updated from 6)
+- Shows all **9 Tier 1 genes** (CRITICAL FIX: removed GABRR1 which is Tier 2)
 - Grouped by functional category:
-  - Neurotransmitter (cyan): GABRA3, HTR2B, HCRTR1
-  - Neural Crest (purple): SLC6A4, TFAP2B
-  - Wnt Pathway (orange): FZD3, FZD4, FGFR2
-  - Craniofacial (yellow): EDNRB
+  - Neurotransmitter (purple): SLC6A4, HTR2B, GABRA3, HCRTR1 (4 genes)
+  - Neural Crest (cyan): TFAP2B, EDNRB (2 genes)
+  - Wnt Pathway (red): FZD3, FZD4 (2 genes)
+  - Craniofacial (orange): FGFR2 (1 gene)
 
 **Panel C:**
 - **6 functional categories** (updated caption)
@@ -134,6 +134,9 @@ cd manuscript && pdflatex manuscript_proposal_compact.tex
 
 ## Recent Updates
 
+- **Dec 2, 2025 21:00:** CRITICAL FIX - Panel B now shows exactly 9 Tier 1 genes (removed GABRR1 which is Tier 2)
+- **Dec 2, 2025 21:00:** Script updated to filter neurotransmitter genes to only include Tier 1
+- **Dec 2, 2025 21:00:** Console output messages corrected (9 genes, not 6)
 - **Dec 2, 2025 19:40:** Figure 4 Panel C - Final z-ordering and label positioning fixes
 - **Dec 2, 2025:** Unicode LaTeX errors fixed throughout manuscript
 - **Dec 2, 2025:** Figure 4 caption updated to reflect 9 genes and 6 categories
