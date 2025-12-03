@@ -1,7 +1,10 @@
 gene_id	gene_symbol	description	p_value	omega	selection_score	relevance_score	tractability_score	literature_score	total_score	tier
+Gene_00845007336	TFAP2B	transcription factor AP-2 beta	0.0	1.200838015714883	5.0	0.25	4.5	3.5	13.25	1
+Gene_00845012358	SLC6A4	solute carrier family 6 member 4	0.0	1.122043272186322	5.0	1.0	4.5	3.5	14.0	1
 Gene_00845025696	GABRA3	gamma-aminobutyric acid type A receptor subunit alpha3	0.0	0.6780833602814698	5.0	4.75	4.5	4.5	18.75	1
-Gene_00845027774	EDNRB	endothelin receptor type B	0.0	0.9897006919773884	5.0	4.75	4.5	3.5	17.75	1
 Gene_00845022606	HTR2B	5-hydroxytryptamine receptor 2B	0.0	0.8978427968935899	5.0	3.25	4.5	3.5	16.25	1
 Gene_00845005853	HCRTR1	hypocretin receptor 1	0.0	0.551397387732079	5.0	3.25	4.5	3.5	16.25	1
 Gene_00845022244	FZD3	frizzled class receptor 3	0.0	0.6736481570003602	5.0	3.25	4.5	3.5	16.25	1
 Gene_00845006501	FZD4	frizzled class receptor 4	7.105982469113314e-13	0.7581378566041429	4.75	3.25	4.5	3.5	16.0	1
+Gene_00845027774	EDNRB	endothelin receptor type B	0.0	0.9897006919773884	5.0	4.75	4.5	3.5	17.75	1
+Gene_00845019372	FGFR2	fibroblast growth factor receptor 2	8.739342582941845e-12	0.4238701221936803	4.5	1.25	4.5	5.0	15.25	1

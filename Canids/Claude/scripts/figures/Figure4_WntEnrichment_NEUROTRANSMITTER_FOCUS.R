@@ -124,36 +124,28 @@ neurotrans_plot <- neurotrans_data %>%
 
 # Add non-neurotransmitter Tier 1 genes for comparison
 tier1_non_neuro <- tier1_data %>%
-  filter(!gene_symbol %in% c("GABRA3", "HTR2B", "HCRTR1")) %>%
+  filter(!gene_symbol %in% c("GABRA3", "HTR2B", "HCRTR1", "SLC6A4")) %>%
   select(gene_symbol, omega, p_value) %>%
   mutate(
     functional_category = case_when(
       gene_symbol %in% c("FZD3", "FZD4") ~ "Wnt Pathway",
-      gene_symbol == "EDNRB" ~ "Neural Crest",
+      gene_symbol %in% c("EDNRB", "TFAP2B") ~ "Neural Crest",
+      gene_symbol == "FGFR2" ~ "Craniofacial",
       TRUE ~ "Other"
     ),
     gene_type = case_when(
       gene_symbol == "EDNRB" ~ "Endothelin receptor B",
+      gene_symbol == "TFAP2B" ~ "Neural crest TF AP-2β",
       gene_symbol == "FZD3" ~ "Frizzled receptor 3",
       gene_symbol == "FZD4" ~ "Frizzled receptor 4",
+      gene_symbol == "FGFR2" ~ "FGF receptor 2",
       TRUE ~ NA_character_
     ),
-    is_omega_above_1 = FALSE
+    is_omega_above_1 = omega > 1
   )
 
-# Add TFAP2B - newly discovered high-significance gene (ω=1.20, p<10^-16)
-# This gene was missed by Tier 1 scoring but has strong positive selection
-tfap2b_data <- data.frame(
-  gene_symbol = "TFAP2B",
-  omega = 1.20,
-  p_value = 1e-16,
-  functional_category = "Neural Crest",
-  gene_type = "Neural crest transcription factor 2B",
-  is_omega_above_1 = TRUE
-)
-
-# Combine datasets (include TFAP2B with Tier 1 genes for visualization)
-combined_plot <- bind_rows(neurotrans_plot, tier1_non_neuro, tfap2b_data)
+# Combine datasets (all Tier 1 genes from updated file)
+combined_plot <- bind_rows(neurotrans_plot, tier1_non_neuro)
 
 # Handle p-value = 0
 min_nonzero_p <- min(combined_plot$p_value[combined_plot$p_value > 0], na.rm = TRUE)
@@ -181,7 +173,8 @@ panel_b <- ggplot(combined_plot, aes(x = reorder(gene_symbol, -omega), y = omega
     values = c(
       "Neurotransmitter" = "#9B59B6",
       "Wnt Pathway" = "#E74C3C",
-      "Neural Crest" = "#1ABC9C"
+      "Neural Crest" = "#1ABC9C",
+      "Craniofacial" = "#E67E22"
     ),
     name = "Category"
   ) +
@@ -242,7 +235,16 @@ neural_crest_stats <- data.frame(
   median_log10p = 300  # Both have p < 10^-16
 )
 
-# 4. Protein binding hub genes (n=117 from enrichment)
+# 4. Craniofacial morphogenesis (FGFR2, n=1)
+craniofacial_stats <- data.frame(
+  category = "Craniofacial",
+  gene_count = 1,  # FGFR2
+  median_omega = 0.42,  # FGFR2 omega
+  max_omega = 0.42,
+  median_log10p = 11.1  # p = 8.7e-12
+)
+
+# 5. Protein binding hub genes (n=117 from enrichment)
 # Note: We don't have individual gene data, so use representative values
 protein_binding_stats <- data.frame(
   category = "Molecular",
@@ -252,10 +254,10 @@ protein_binding_stats <- data.frame(
   median_log10p = 8.0   # Moderate selection
 )
 
-# 5. All other candidates
+# 6. All other candidates
 other_stats <- data.frame(
   category = "Other",
-  gene_count = 430 - nrow(neurotrans_data) - nrow(wnt_data) - 2 - 117,  # 430 total - neurotrans - wnt - neural crest (2 genes: EDNRB+TFAP2B) - protein binding
+  gene_count = 430 - nrow(neurotrans_data) - nrow(wnt_data) - 2 - 1 - 117,  # 430 total - neurotrans - wnt - neural crest (2) - craniofacial (1) - protein binding
   median_omega = 0.68,  # Genome-wide median from Figure 1
   max_omega = 0.90,
   median_log10p = 7.0
@@ -266,6 +268,7 @@ functional_summary <- bind_rows(
   neurotrans_stats,
   neural_crest_stats,
   wnt_stats,
+  craniofacial_stats,
   protein_binding_stats,
   other_stats
 )
@@ -316,6 +319,7 @@ panel_c <- ggplot(functional_summary, aes(x = median_omega, y = median_log10p)) 
       "Wnt Pathway" = "#E74C3C",
       "Molecular" = "#F39C12",
       "Neural Crest" = "#1ABC9C",
+      "Craniofacial" = "#E67E22",
       "Other" = "#95A5A6"
     ),
     name = "Category"
