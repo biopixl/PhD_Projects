@@ -26,8 +26,9 @@ Last Updated: December 2, 2025
 
 - **LaTeX Reference:** `\includegraphics[width=\textwidth]{figures/Figure3_SelectionResults.png}`
 - **File Location:** `manuscript/figures/Figure3_SelectionResults.png`
-- **Last Updated:** Dec 2, 2025 18:20
-- **Status:** ✓ EXISTS
+- **Last Updated:** Dec 2, 2025 22:15 (FINAL REGENERATION)
+- **Generate Script:** `scripts/figures/Figure3_SelectionResults.R`
+- **Status:** ✓ EXISTS - LATEST VERSION
 
 ---
 
@@ -37,7 +38,7 @@ Last Updated: December 2, 2025
 
 - **LaTeX Reference:** `\includegraphics[width=\textwidth]{figures/Figure4_WntEnrichment.png}`
 - **File Location:** `manuscript/figures/Figure4_WntEnrichment.png`
-- **Last Updated:** Dec 2, 2025 19:40 (LATEST VERSION)
+- **Last Updated:** Dec 2, 2025 22:15 (FINAL REGENERATION)
 - **Generate Script:** `scripts/figures/Figure4_WntEnrichment_NEUROTRANSMITTER_FOCUS.R`
 
 ### To Regenerate:
@@ -134,7 +135,11 @@ cd manuscript && pdflatex manuscript_proposal_compact.tex
 
 ## Recent Updates
 
-- **Dec 2, 2025 21:00:** CRITICAL FIX - Panel B now shows exactly 9 Tier 1 genes (removed GABRR1 which is Tier 2)
+- **Dec 2, 2025 22:15:** FINAL REGENERATION - Both Figure 3 and Figure 4 regenerated with latest data
+- **Dec 2, 2025 22:15:** Deleted old Figure3_SelectionResults_UPDATED.png (outdated file)
+- **Dec 2, 2025 22:15:** Verified Figure 4 Panel B shows exactly 9 Tier 1 genes
+- **Dec 2, 2025 22:15:** All figure-manuscript inconsistencies resolved
+- **Dec 2, 2025 21:00:** CRITICAL FIX - Panel B filter added to show only Tier 1 neurotransmitter genes (removed GABRR1 which is Tier 2)
 - **Dec 2, 2025 21:00:** Script updated to filter neurotransmitter genes to only include Tier 1
 - **Dec 2, 2025 21:00:** Console output messages corrected (9 genes, not 6)
 - **Dec 2, 2025 19:40:** Figure 4 Panel C - Final z-ordering and label positioning fixes
