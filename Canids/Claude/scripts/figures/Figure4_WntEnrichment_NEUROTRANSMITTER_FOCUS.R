@@ -193,11 +193,7 @@ panel_b <- ggplot(combined_plot, aes(x = reorder(gene_symbol, -omega), y = omega
     legend.title = element_text(size = 11),
     plot.margin = margin(5, 5, 5, 5),
     panel.grid.major.x = element_blank()
-  ) +
-  # Add annotation for neutral selection line
-  annotate("text", x = 2, y = 1.05,
-           label = "Neutral selection (ω=1)",
-           size = 3.5, hjust = 0, color = "grey30")
+  )
 
 # ============================================================================
 # Panel C: Comparison of Major Functional Themes (NEW - REAL DATA)
