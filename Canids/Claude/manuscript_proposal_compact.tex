@@ -10,7 +10,7 @@
 \onehalfspacing
 \linenumbers
 
-\title{Branch-Specific Phylogenomics to Identify Genetic Mechanisms of Dog Breed Domestication}
+\title{Branch-Specific Phylogenomics to Identify Genetic Mechanisms of Dog Domestication}
 
 \author{Isaac N. Aguilar Rivera}
 
@@ -52,7 +52,7 @@ Episodic positive selection on the dog lineage was tested using the adaptive Bra
 Analytical validity was assessed by computing the genomic inflation factor ($\lambda$), defined as the ratio of observed to expected median $\chi^2$ statistics \citep{Devlin1999}. Annotation completeness was quantified using Ensembl BioMart. Chromosomal distributions of significant genes were evaluated using a $\chi^2$ goodness-of-fit test.
 
 \subsection{Functional Annotation and Enrichment Analysis}
-Functional annotation was performed using the Ensembl BioMart API. Enrichment analysis was conducted with g:Profiler (g:GOSt) using Fisher's exact test and g:SCS multiple-testing correction, with all 17{,}046 orthologs as the background set \citep{Raudvere2019}. Gene Ontology terms, pathways, and phenotype categories with FDR $<0.05$ were considered significant.
+Functional annotation was performed using the Ensembl BioMart API. Enrichment analysis was conducted with g:Profiler (g:GOSt) using Fisher's exact test and g:SCS multiple-testing correction, with all 17{,}046 orthologs as the background set \citep{Raudvere2019}. Gene Ontology terms, pathways, and phenotype categories were considered significant if their adjusted p-values after correction was $<0.05$.
 
 \subsection{Gene Prioritization Framework}
 To identify high-value candidates for follow-up investigation, we applied a Multi-Criteria Decision Analysis (MCDA) scoring system integrating four components: (1) selection strength (0--10 points; scaled $-\log_{10} P$), (2) biological relevance (0--3 points; involvement in domestication-related pathways), (3) experimental tractability (0--3 points; assay and model feasibility), and (4) literature support (0--4 points; prior associations and citation density). Total scores (0--20) were used to assign tiered priority classes for downstream interpretation.
@@ -95,7 +95,7 @@ Among the 430 candidate genes, 254 (59.1\%) showed extremely small \textit{p}-va
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/Figure3_SelectionResults.png}
-\caption{\textbf{Summary of branch-specific selection statistics.} For each gene, aBSREL estimates a gene-wide $\omega$ value (average across sites and branches) and reports a likelihood ratio test p-value for episodic positive selection on the dog branch. Genes were classified by significance thresholds (\textit{p} $<$ 10$^{-6}$, \textit{p} $<$ 10$^{-10}$, etc.) to assess strength of selection signals. \textbf{(A)} Volcano plot showing relationship between gene-wide $\omega$ (x-axis) and selection significance (y-axis, $-\log_{10}$ p-value). Most candidate genes cluster at low $\omega$ ($<$ 1) despite highly significant p-values, only a subset of sites experience $\omega > 1$ while gene averages remain constrained. \textbf{(B)} Density distribution of gene-wide $\omega$ values across all 17,046 genes, with candidate genes (red) showing median $\omega$ = 0.68. \textbf{(C)} Frequency distribution of genes across significance thresholds, showing 254/430 candidates (59.1\%) with extremely significant \textit{p} $<$ 10$^{-10}$.}
+\caption{\textbf{Summary of branch-specific selection statistics.} For each gene, aBSREL estimates a gene-wide $\omega$ value (average across sites and branches) and reports a likelihood ratio test p-value for episodic positive selection on the dog branch. Genes were classified by significance thresholds (\textit{p} $<$ 10$^{-6}$, \textit{p} $<$ 10$^{-10}$, etc.) to assess strength of selection signals. \textbf{(A)} Volcano plot showing relationship between gene-wide $\omega$ (x-axis) and selection significance (y-axis, $-\log_{10}$ p-value). \textbf{(B)} Density distribution of gene-wide $\omega$ values across all 17,046 genes, with candidate genes (red) showing median $\omega$ = 0.68. \textbf{(C)} Frequency distribution of genes across significance thresholds, showing 254/430 candidates (59.1\%) with extremely significant \textit{p} $<$ 10$^{-10}$.}
 \label{fig:selection}
 \end{figure}
 
