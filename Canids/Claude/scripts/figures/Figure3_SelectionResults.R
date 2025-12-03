@@ -81,36 +81,29 @@ p_volcano <- ggplot(selection_data, aes(x = dog_omega, y = log10p)) +
   scale_color_manual(values = c("Significant" = "#E74C3C",
                                   "Not significant" = "#95A5A6")) +
   scale_alpha_identity() +
-  # Bonferroni threshold line
+  # Bonferroni threshold line (no text annotation)
   geom_hline(yintercept = bonferroni_threshold,
              linetype = "dashed", color = "black", linewidth = 0.8) +
-  # Neutral selection line (ω=1)
+  # Neutral selection line (ω=1) - no text annotation
   geom_vline(xintercept = 1,
              linetype = "dashed", color = "grey30", linewidth = 1) +
-  # Threshold annotation
-  annotate("text", x = 0.8, y = bonferroni_threshold,
-           label = "Bonferroni threshold",
-           size = 3.5, fontface = "bold", hjust = 0, vjust = -0.5) +
-  # Neutral selection annotation
-  annotate("text", x = 1.05, y = 1.5,
-           label = "Neutral selection",
-           size = 3.5, fontface = "italic", hjust = 0, color = "grey30") +
-  # Label top 6 KNOWN genes with improved spacing
+  # Label top 6 KNOWN genes - push labels upward to white space
   geom_text_repel(
     data = subset(selection_data, gene_symbol %in% top_genes),
     aes(label = gene_symbol),
     size = 4,
     fontface = "bold.italic",
     max.overlaps = Inf,
-    box.padding = 1.0,        # Increased from 0.7
-    point.padding = 0.8,      # Increased from 0.6
+    box.padding = 1.2,
+    point.padding = 1.0,
     min.segment.length = 0,
     segment.color = "gray30",
     segment.size = 0.5,
-    force = 8,                # Increased repulsion
-    force_pull = 0.5,         # Pull toward points
+    force = 10,
+    force_pull = 0.3,         # Reduced pull to allow upward movement
     xlim = c(NA, NA),
-    ylim = c(NA, NA),
+    ylim = c(bonferroni_threshold + 2, NA),  # Force labels above threshold + buffer
+    direction = "y",          # Prefer vertical displacement
     seed = 42
   ) +
   # Axis labels
@@ -169,10 +162,8 @@ p_omega_dist <- ggplot(selection_data, aes(x = dog_omega)) +
   annotate("text", x = mean(selection_data$dog_omega), y = Inf,
            label = paste0("Mean = ", round(mean(selection_data$dog_omega), 2)),
            vjust = 3, hjust = -0.1, size = 3.5, fontface = "bold", color = "#C0392B") +
-  # Neutral evolution line
-  geom_vline(xintercept = 1, linetype = "solid", color = "black", linewidth = 0.5, alpha = 0.5) +
-  annotate("text", x = 1, y = 0, label = expression(omega*" = 1"),
-           vjust = -0.5, hjust = 1.1, size = 3, angle = 90, color = "gray20") +
+  # Neutral evolution line (ω=1) - dashed, no text annotation
+  geom_vline(xintercept = 1, linetype = "dashed", color = "grey30", linewidth = 1) +
   # Labels
   labs(
     x = expression(omega~"(d"[N]*"/d"[S]*" ratio)"),

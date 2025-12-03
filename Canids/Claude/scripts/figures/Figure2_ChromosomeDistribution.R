@@ -273,32 +273,31 @@ plot_karyotype <- results_chr_main %>%
 # Combine plots with panel labels A, B, C
 library(cowplot)
 
-# Create layout matrix: Panel A spans both rows on the left
-layout_matrix <- matrix(c(1, 2,
-                          1, 3),
-                       nrow = 2, byrow = TRUE)
+# Improved layout: Panel A (top, full width), B and C (bottom, side by side)
+top_row <- plot_chr_counts
+bottom_row <- plot_grid(plot_chr_proportion, plot_karyotype,
+                        ncol = 2, rel_widths = c(1, 1.3),
+                        labels = c("B", "C"), label_size = 20, label_fontface = "bold")
 
 combined_chr_labeled <- plot_grid(
-  plot_chr_counts,
-  plot_chr_proportion,
-  plot_karyotype,
-  ncol = 2,
+  top_row,
+  bottom_row,
+  ncol = 1,
   nrow = 2,
-  rel_heights = c(1, 1.2),
-  rel_widths = c(1.3, 1),
-  labels = c("A", "B", "C"),
+  rel_heights = c(1, 1.3),
+  labels = c("A", ""),
   label_size = 20,
   label_fontface = "bold"
 )
 
-# Save combined figure
+# Save combined figure with better dimensions
 ggsave(filename = file.path(out_dir, "Figure2_ChromosomeDistribution.pdf"),
       plot = combined_chr_labeled,
-      width = 14, height = 10, units = "in", dpi = 300)
+      width = 14, height = 11, units = "in", dpi = 300)
 
 ggsave(filename = file.path(out_dir, "Figure2_ChromosomeDistribution.png"),
       plot = combined_chr_labeled,
-      width = 14, height = 10, units = "in", dpi = 300)
+      width = 14, height = 11, units = "in", dpi = 300)
 
 cat("\nSaved Figure 2 (Chromosome Distribution) to:\n")
 cat(sprintf("  %s/Figure2_ChromosomeDistribution.pdf\n", out_dir))
