@@ -283,15 +283,16 @@ cat("\nFunctional theme summary:\n")
 print(functional_summary)
 
 # Create Panel C with improved layout and clear category separation
-# Add jitter to separate overlapping points while keeping position meaningful
-set.seed(42)
-functional_summary$omega_jitter <- functional_summary$median_omega +
-  c(0, 0.03, -0.02, -0.015, 0.02, 0.015)  # Manual jitter for 6 categories
-functional_summary$p_jitter <- functional_summary$median_log10p +
-  c(0, 0.5, -0.3, 0.8, -0.5, 0.2)
-
 # Reorder by gene_count (descending) so smaller points plot on top of larger ones
 functional_summary <- functional_summary %>% arrange(desc(gene_count))
+
+# Add jitter AFTER reordering to separate overlapping points
+# Order is now: Other, Molecular, Wnt, Neurotransmitter, Neural Crest, Craniofacial
+set.seed(42)
+functional_summary$omega_jitter <- functional_summary$median_omega +
+  c(0.015, 0.02, -0.02, 0, 0.03, -0.015)  # Jitter for reordered categories
+functional_summary$p_jitter <- functional_summary$median_log10p +
+  c(0.2, -0.5, -0.3, 0, 0.5, 0.8)  # Jitter for reordered categories
 
 panel_c <- ggplot(functional_summary, aes(x = omega_jitter, y = p_jitter)) +
   # Reference lines (no text labels to reduce clutter)
@@ -303,6 +304,7 @@ panel_c <- ggplot(functional_summary, aes(x = omega_jitter, y = p_jitter)) +
   geom_point(aes(size = gene_count, fill = category),
              shape = 21, color = "black", stroke = 1.5, alpha = 0.9) +
   # Smart labels with ggrepel to avoid overlap
+  # Let ggrepel auto-position Neural Crest label (plenty of space at top-right)
   geom_text_repel(
     aes(label = paste0(category, "\n(n=", gene_count, ")")),
     size = 3.8, fontface = "bold",
@@ -314,9 +316,8 @@ panel_c <- ggplot(functional_summary, aes(x = omega_jitter, y = p_jitter)) +
     max.overlaps = Inf,
     force = 15,
     force_pull = 2,
-    xlim = c(-Inf, Inf),
-    ylim = c(-Inf, Inf),
-    seed = 123
+    seed = 123,
+    direction = "both"
   ) +
   # Unified color scheme across all panels
   scale_fill_manual(
@@ -339,9 +340,9 @@ panel_c <- ggplot(functional_summary, aes(x = omega_jitter, y = p_jitter)) +
   scale_x_continuous(limits = c(0.35, 1.25), expand = c(0.02, 0.02),
                      breaks = c(0.4, 0.6, 0.8, 1.0, 1.2)) +
   scale_y_sqrt(
-    limits = c(0, 320),
+    limits = c(0, 340),
     breaks = c(5, 10, 50, 100, 200, 300),
-    expand = c(0.02, 0)
+    expand = c(0.02, 0.05)
   ) +
   theme_pub(base_size = 13) +
   theme(
