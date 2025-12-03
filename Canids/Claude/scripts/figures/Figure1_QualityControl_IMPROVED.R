@@ -176,11 +176,6 @@ plot_d <- ggplot(results_omega, aes(x = omega_display)) +
   geom_vline(xintercept = 1, linetype = "dashed", color = "blue", linewidth = 1.2) +
   geom_vline(xintercept = median_omega, linetype = "solid",
             color = "darkgreen", linewidth = 1.2) +
-  annotate("text", x = 1, y = Inf, label = "Neutral\n(ω=1)",
-          vjust = 1.3, hjust = -0.1, size = 4.5, color = "blue", fontface = "bold") +
-  annotate("text", x = median_omega, y = Inf,
-          label = sprintf("Median\n(ω=%.2f)", median_omega),
-          vjust = 1.3, hjust = 1.1, size = 4.5, color = "darkgreen", fontface = "bold") +
   labs(x = "ω (dN/dS)",
        y = "Number of genes") +
   theme_cowplot(font_size = 15) +
@@ -197,7 +192,7 @@ plot_d <- ggplot(results_omega, aes(x = omega_display)) +
 
 cat("\nCombining panels into Figure 1...\n")
 
-# Arrange panels in 2x2 grid with optimal spacing (no panel labels)
+# Arrange panels in 2x2 grid with panel labels
 combined_figure <- plot_grid(
   plot_a, plot_b,
   plot_c, plot_d,
@@ -206,7 +201,10 @@ combined_figure <- plot_grid(
   align = "hv",
   axis = "tblr",
   rel_widths = c(1, 1),
-  rel_heights = c(1, 1)
+  rel_heights = c(1, 1),
+  labels = c("A", "B", "C", "D"),
+  label_size = 20,
+  label_fontface = "bold"
 )
 
 # Save to both locations
