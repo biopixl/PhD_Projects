@@ -1,0 +1,35 @@
+gene_id	dog_selected	dog_pvalue	dog_omega	dingo_selected	dingo_pvalue	dingo_omega	fox_selected	fox_pvalue	fox_omega	gene_symbol	description	category
+Gene_00845007336	True	0	1.20083801571488	False	1	1	False	1	0	TFAP2B	transcription factor AP-2 beta	Neural Crest
+Gene_00845010270	True	0	1.50663043102115	False	1	1	False	1	0.174142644835533	ZFPM2	zinc finger protein, FOG family member 2	Neural Crest
+Gene_00845017173	True	0	0.597626915623844	False	1	0.554765249608262	False	0.124387600774265	0.21311864370909	ZNF598	zinc finger protein 598, E3 ubiquitin ligase	Neural Crest
+Gene_00845011634	True	0	0.555228186467874	False	1	1	False	1	0.0419412449557712	ZMIZ2	zinc finger MIZ-type containing 2	Neural Crest
+Gene_00845021144	True	0	7326562752.44467	False	1	4.45667273189907	False	1	0.118087902253283	ZNF662	zinc finger protein 662	Neural Crest
+Gene_00845010414	True	0	0.57055214429084	False	0.606221585795686	1e+10	False	1	0.340713657099648	ZNF692	zinc finger protein 692	Neural Crest
+Gene_00845023569	True	1.32061028779162e-13	0.518045452166252	False	1	1	False	1	0.116847580230439	PIKFYVE	phosphoinositide kinase, FYVE-type zinc finger containing	Neural Crest
+Gene_00845006815	True	1.29513066937648e-12	1.56131062428377	False	1	1	False	1	0.241859911549201	QSOX2	quiescin sulfhydryl oxidase 2	Neural Crest
+Gene_00845018282	True	3.33066907387547e-15	0.440645919725104	False	0.866260074209295	0.501604262074352	False	1	0	HOXC9	homeobox C9	Craniofacial
+Gene_00845019372	True	8.73934258294184e-12	0.42387012219368	False	0.567241118371216	1e+10	False	1	0	FGFR2	fibroblast growth factor receptor 2	Craniofacial
+Gene_00845001658	True	3.65614205577458e-11	0.483267063362615	False	1	1	False	1	0	FGF18	No description	Craniofacial
+Gene_00845012141	True	1.1449658343099e-06	0.470730078751868	False	0.714673880782932	1e+10	False	1	0	WIF1	WNT inhibitory factor 1	Craniofacial
+Gene_00845002964	True	0	0.663206503400655	False	1	0	False	1	0.339784823024887	PCDHB7	protocadherin beta 7	Pigmentation
+Gene_00845030039	True	0	0.715087705158154	False	1	1	False	1	0.152590053540905	GAR1	retinal pigment epithelium-derived rhodopsin homolog	Pigmentation
+Gene_00845017201	True	0	0.539033849287574	False	1	0	False	1	0.0205102087988725	PTPRF	protein tyrosine phosphatase receptor type F	Pigmentation
+Gene_00845025696	True	0	0.67808336028147	False	0.326951941374951	1e+10	False	1	0	GABRA3	gamma-aminobutyric acid type A receptor subunit alpha3	Pigmentation
+Gene_00845008523	True	1.22019061521428e-12	1.68884686855952	False	1	0	False	1	0.408196711668382	PROCA1	protein interacting with cyclin A1	Pigmentation
+Gene_00845006659	True	2.44603004517785e-10	0.32267190547933	False	0.668552498200124	1e+10	False	1	0.0622899704606267	GABRR1	gamma-aminobutyric acid type A receptor subunit rho2	Pigmentation
+Gene_00845005853	True	0	0.551397387732079	False	1	1	False	1	0.0705584569596429	HCRTR1	hypocretin receptor 1	Behavior/Temperament
+Gene_00845012358	True	0	1.12204327218632	False	1	1	False	1	0.0809352913716421	SLC6A4	solute carrier family 6 member 4	Behavior/Temperament
+Gene_00845022606	True	0	0.89784279689359	False	1	1	False	1	0.492489135720119	HTR2B	5-hydroxytryptamine receptor 2B	Behavior/Temperament
+Gene_00845002498	True	0	0	False	0.966482040005939	1e+10	False	1	0.87385778055584	CD34	CD34 molecule	Immune Function
+Gene_00845006193	True	0	0.663779140815772	False	1	1	False	1	0.149642546041531	LRIG2	leucine rich repeats and immunoglobulin like domains 2	Immune Function
+Gene_00845005361	True	0	1.20575351013169	False	1	1e+10	False	0.933732223250531	0.548062983418105	CCL21	C-C motif chemokine ligand 21	Immune Function
+Gene_00845022654	True	0	1.26037765002978	False	1	1	False	1	0.0872921779030417	PIBF1	progesterone immunomodulatory binding factor 1	Immune Function
+Gene_00845025120	True	0	0.647063223221997	False	1	1	False	1	0.140712936243867	C1R	complement C1r	Immune Function
+Gene_00845001289	True	4.49640324973188e-15	0.763442158644015	False	1	0	False	1	0.809595428522131	IL10	interleukin 10	Immune Function
+Gene_00845022899	True	6.16173778666962e-15	1.06230211090244	False	0.596596375869122	1e+10	False	1	0.119499193194324	IL20RB	interleukin 20 receptor subunit beta	Immune Function
+Gene_00845002450	True	2.862913506263e-08	1.09090944503495	False	1	1	False	1	0.860979333775817	CD3D	CD3 delta subunit of T-cell receptor complex	Immune Function
+Gene_00845021117	True	0	0.605159778587241	False	1	0	False	1	0.1350408314233	IGFBP6	insulin like growth factor binding protein 6	Metabolism/Growth
+Gene_00845019372	True	8.73934258294184e-12	0.42387012219368	False	0.567241118371216	1e+10	False	1	0	FGFR2	fibroblast growth factor receptor 2	Metabolism/Growth
+Gene_00845017668	True	2.47228781330433e-06	0.520132837377905	False	0.59939526433944	1e+10	False	1	0.640058233034164	UCMA	upper zone of growth plate and cartilage matrix associated	Metabolism/Growth
+Gene_00845004995	True	3.49720252756924e-15	0.957115404125352	False	1	1	False	1	0.131789934782016	SGK1	serum/glucocorticoid regulated kinase 1	Stress Response
+Gene_00845027774	True	0	0.989700691977388	False	1	1	False	1	0.138358117012599	EDNRB	endothelin receptor type B	Cardiovascular

@@ -1,0 +1,21 @@
+Status	Gene	P_value	Omega	Total_Score	Tier	Category	Biological_Function	Why_Missed	Action
+Original_Tier1	GABRA3	<1e-16	0.68	18.75	1	Neurotransmitter	GABA receptor subunit alpha-3; inhibitory neurotransmission	Correctly prioritized	Keep in Tier 1
+Original_Tier1	EDNRB	<1e-16	0.99	17.75	1	Cardiovascular	Endothelin receptor; neural crest, cardiovascular development	Correctly prioritized	Keep in Tier 1
+Original_Tier1	HTR2B	<1e-16	0.90	16.25	1	Neurotransmitter	Serotonin (5-HT) receptor 2B; mood, behavior	Correctly prioritized	Keep in Tier 1
+Original_Tier1	HCRTR1	<1e-16	0.55	16.25	1	Neurotransmitter	Orexin/hypocretin receptor 1; arousal, feeding	Correctly prioritized	Keep in Tier 1
+Original_Tier1	FZD3	<1e-16	0.67	16.25	1	Wnt_Receptor	Frizzled-3 Wnt receptor; developmental signaling	Correctly prioritized	Keep in Tier 1
+Original_Tier1	FZD4	7.1e-13	0.76	16.0	1	Wnt_Receptor	Frizzled-4 Wnt receptor; developmental signaling	Correctly prioritized	Keep in Tier 1
+MISSED_HighSig	TFAP2B	<1e-16	1.20	13.25	2	Neural_Crest	Transcription factor AP-2 beta; neural crest specification	Relevance score = 0.25 (not in predefined pathways)	Promote to Tier 1.5
+MISSED_HighSig	SLC6A4	<1e-16	1.12	14.0	2	Neurotransmitter	Serotonin transporter (5-HTT); anxiety, temperament	Lower tractability/relevance scores	Promote to Tier 1.5
+MISSED_HighSig	FGFR2	8.7e-12	0.42	15.25	2	Craniofacial	FGF receptor 2; craniosynostosis, skull morphology	Just missed Tier 1 cutoff (15.25 vs 16)	Promote to Tier 1.5
+MISSED_HighSig	LEF1	<1e-16	0.52	14.5	2	Wnt_Transcription	Lymphoid enhancer factor 1; Wnt/TCF transcription	Not in WNT enrichment list	Promote to Tier 1.5
+MISSED_ModSig	PORCN	<1e-16	0.69	11.0	3	Wnt_Secretion	Porcupine; Wnt ligand palmitoylation & secretion	Relevance score = 0.0 (not in pathway database)	Promote to Tier 2
+MISSED_ModSig	ZFPM2	<1e-16	1.51	NA	NA	Neural_Crest	Zinc finger FOG2; neural crest migration	Not in prioritization analysis	Add to Tier 2
+MISSED_ModSig	FGF18	3.7e-11	0.48	NA	NA	Craniofacial	Fibroblast growth factor 18; bone/cartilage development	Not in prioritization analysis	Add to Tier 2
+MISSED_ModSig	WIF1	1.1e-06	0.47	NA	NA	Wnt_Inhibitor	WNT inhibitory factor 1; Wnt pathway negative regulator	Not in WNT enrichment list	Add to Tier 2
+MISSED_ModSig	HOXC9	3.3e-15	0.44	NA	NA	Craniofacial	Homeobox C9; body patterning, skeletal development	Not in prioritization analysis	Add to Tier 2
+MISSED_ModSig	IL10	4.5e-15	0.76	NA	NA	Immune	Interleukin-10; anti-inflammatory cytokine	Not tested (immune hypothesis)	Add to Supplementary
+MISSED_ModSig	CD34	<1e-16	0.00	NA	NA	Immune	CD34 hematopoietic marker; stem cells	Not tested (immune hypothesis)	Add to Supplementary
+MISSED_ModSig	CCL21	<1e-16	1.21	NA	NA	Immune	Chemokine (C-C motif) ligand 21; lymphoid trafficking	Not tested (immune hypothesis)	Add to Supplementary
+Existing_Tier2	GABRR1	2.4e-10	0.32	15.75	2	Neurotransmitter	GABA receptor rho-1; inhibitory neurotransmission	Correctly placed	Keep in Tier 2
+Existing_Tier2	DVL3	3.5e-11	0.61	13.75	2	Wnt_Signaling	Dishevelled-3; Wnt signal transduction	Correctly placed	Keep in Tier 2

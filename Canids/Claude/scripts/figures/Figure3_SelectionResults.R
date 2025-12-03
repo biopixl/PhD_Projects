@@ -54,9 +54,11 @@ selection_data$log10p <- -log10(selection_data$dog_pvalue)
 n_tests <- 17046  # Total genes tested
 bonferroni_threshold <- -log10(0.05 / n_tests)
 
-# Label Tier 1 genes for consistency with Figure 4 Panel B
-# These are the top priority candidates highlighted in Figure 4
-top_genes <- c("GABRA3", "EDNRB", "HTR2B", "HCRTR1", "FZD3", "FZD4")
+# Label Tier 1 genes + high-significance alternative hypothesis genes
+# Tier 1: GABRA3, EDNRB, HTR2B, HCRTR1, FZD3, FZD4
+# High-significance discovered genes: SLC6A4, TFAP2B, FGFR2
+top_genes <- c("GABRA3", "EDNRB", "HTR2B", "HCRTR1", "FZD3", "FZD4",
+               "SLC6A4", "TFAP2B", "FGFR2")
 
 # Verify all genes exist in the data
 top_genes <- top_genes[top_genes %in% selection_data$gene_symbol]
