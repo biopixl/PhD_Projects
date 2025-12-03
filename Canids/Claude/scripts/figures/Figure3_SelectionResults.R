@@ -243,7 +243,9 @@ p_strength <- ggplot(strength_summary, aes(x = strength_category, y = count, fil
 
 figure3 <- p_volcano /
            (p_omega_dist | p_strength) +
-  plot_layout(heights = c(2, 1.5))
+  plot_layout(heights = c(2, 1.5)) +
+  plot_annotation(tag_levels = 'A') &
+  theme(plot.tag = element_text(size = 20, face = "bold"))
 
 # Save figure
 ggsave(

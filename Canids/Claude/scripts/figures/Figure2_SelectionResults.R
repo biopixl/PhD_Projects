@@ -13,10 +13,14 @@ output_dir <- "manuscript/figures"
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 # Load data
-data_file <- "results_3species_dog_only_ANNOTATED.tsv"
+data_file <- "data/selection_results/results_3species_dog_only_ANNOTATED.tsv"
 
 if (!file.exists(data_file)) {
-  stop("Data file not found: ", data_file)
+  # Try alternate location
+  data_file <- "results_3species_dog_only_ANNOTATED.tsv"
+  if (!file.exists(data_file)) {
+    stop("Data file not found. Please check path.")
+  }
 }
 
 selection_data <- read.delim(data_file, header = TRUE, stringsAsFactors = FALSE)
@@ -119,7 +123,6 @@ p_volcano <- ggplot(selection_data, aes(x = dog_omega, y = log10p)) +
   ) +
   # Axis labels with proper notation
   labs(
-    title = "A. Genome-Wide Selection Analysis",
     x = expression(paste(omega, " (d"[N], "/d"[S], " ratio)")),
     y = expression(-log[10](italic(p)*"-value")),
     color = ""
@@ -175,7 +178,6 @@ p_omega_dist <- ggplot(selection_data, aes(x = dog_omega)) +
            vjust = 3, hjust = 1, size = 3, fontface = "bold", color = "#2980B9") +
   # Labels
   labs(
-    title = expression(paste("B. Distribution of ", omega)),
     x = expression(paste(omega, " (d"[N], "/d"[S], " ratio)")),
     y = "Density"
   ) +
@@ -216,7 +218,6 @@ p_qq <- ggplot(qq_data, aes(x = expected, y = observed)) +
               color = "black", linewidth = 1) +
   # Labels
   labs(
-    title = "C. Q-Q Plot: p-value Distribution",
     x = expression(Expected~-log[10](italic(p))),
     y = expression(Observed~-log[10](italic(p)))
   ) +
@@ -242,17 +243,8 @@ p_qq <- ggplot(qq_data, aes(x = expected, y = observed)) +
 figure2 <- p_volcano /
            wrap_plots(p_omega_dist, p_qq, widths = c(1, 2)) +
   plot_layout(heights = c(2.5, 1.5)) +
-  plot_annotation(
-    title = "Figure 2: Positive Selection in Dog Domestication",
-    subtitle = paste0(nrow(selection_data), " genes under significant positive selection (Bonferroni-corrected, p < 2.93×10⁻⁶)"),
-    caption = "Known genes labeled in volcano plot. Unknown genes shown with reduced opacity. Full gene list in Supplementary Table S1.",
-    theme = theme(
-      plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
-      plot.subtitle = element_text(size = 11, hjust = 0.5),
-      plot.caption = element_text(size = 9, hjust = 1, face = "italic"),
-      plot.margin = margin(10, 10, 10, 10)
-    )
-  )
+  plot_annotation(tag_levels = 'A') &
+  theme(plot.tag = element_text(size = 20, face = "bold"))
 
 # Save figure (600 DPI to match Figure 1)
 ggsave(
