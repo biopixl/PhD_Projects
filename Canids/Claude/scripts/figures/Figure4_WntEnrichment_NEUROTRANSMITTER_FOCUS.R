@@ -283,15 +283,20 @@ cat("\nFunctional theme summary:\n")
 print(functional_summary)
 
 # Create Panel C with improved layout and clear category separation
-# Use sqrt transformation for y-axis to accommodate wide p-value range
-panel_c <- ggplot(functional_summary, aes(x = median_omega, y = median_log10p)) +
-  # Reference line for Bonferroni threshold
+# Add jitter to separate overlapping points while keeping position meaningful
+set.seed(42)
+functional_summary$omega_jitter <- functional_summary$median_omega +
+  c(0, 0.03, -0.02, -0.015, 0.02, 0.015)  # Manual jitter for 6 categories
+functional_summary$p_jitter <- functional_summary$median_log10p +
+  c(0, 0.5, -0.3, 0.8, -0.5, 0.2)
+
+panel_c <- ggplot(functional_summary, aes(x = omega_jitter, y = p_jitter)) +
+  # Reference lines (no text labels to reduce clutter)
   geom_hline(yintercept = -log10(2.93e-6), linetype = "dashed",
-             color = "#E03030", linewidth = 0.8, alpha = 0.6) +
-  # Reference line for neutral selection (ω=1)
+             color = "#E03030", linewidth = 0.8, alpha = 0.5) +
   geom_vline(xintercept = 1, linetype = "dashed",
-             color = "grey30", linewidth = 1, alpha = 0.6) +
-  # Points sized by gene count
+             color = "grey30", linewidth = 0.8, alpha = 0.5) +
+  # Points sized by gene count with jittered positions
   geom_point(aes(size = gene_count, fill = category),
              shape = 21, color = "black", stroke = 1.5, alpha = 0.9) +
   # Smart labels with ggrepel to avoid overlap
@@ -322,7 +327,7 @@ panel_c <- ggplot(functional_summary, aes(x = median_omega, y = median_log10p)) 
     ),
     name = "Category"
   ) +
-  scale_size_continuous(range = c(5, 20), name = "Genes") +
+  scale_size_continuous(range = c(6, 22), name = "Genes") +
   labs(
     title = "C",
     x = expression(bold("Median "*omega)),
@@ -342,13 +347,7 @@ panel_c <- ggplot(functional_summary, aes(x = median_omega, y = median_log10p)) 
     axis.title.x = element_text(size = 13),
     axis.title.y = element_text(size = 13),
     plot.margin = margin(5, 5, 5, 5)
-  ) +
-  annotate("text", x = 0.5, y = -log10(2.93e-6),
-           label = "Bonferroni threshold",
-           size = 3, vjust = -0.5, color = "#E03030", fontface = "italic") +
-  annotate("text", x = 1.0, y = 5,
-           label = "Neutral selection (ω=1)",
-           size = 3, hjust = 0.5, vjust = 1.2, color = "grey30", fontface = "italic")
+  )
 
 # ============================================================================
 # Combine All Panels - 3-panel layout
