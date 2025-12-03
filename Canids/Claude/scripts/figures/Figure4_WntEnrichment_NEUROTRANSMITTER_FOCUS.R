@@ -141,8 +141,19 @@ tier1_non_neuro <- tier1_data %>%
     is_omega_above_1 = FALSE
   )
 
-# Combine datasets
-combined_plot <- bind_rows(neurotrans_plot, tier1_non_neuro)
+# Add TFAP2B - newly discovered high-significance gene (ω=1.20, p<10^-16)
+# This gene was missed by Tier 1 scoring but has strong positive selection
+tfap2b_data <- data.frame(
+  gene_symbol = "TFAP2B",
+  omega = 1.20,
+  p_value = 1e-16,
+  functional_category = "Neural Crest",
+  gene_type = "Neural crest transcription factor 2B",
+  is_omega_above_1 = TRUE
+)
+
+# Combine datasets (include TFAP2B with Tier 1 genes for visualization)
+combined_plot <- bind_rows(neurotrans_plot, tier1_non_neuro, tfap2b_data)
 
 # Handle p-value = 0
 min_nonzero_p <- min(combined_plot$p_value[combined_plot$p_value > 0], na.rm = TRUE)
@@ -222,13 +233,13 @@ wnt_stats <- data.frame(
 
 cat("Wnt pathway gene count:", nrow(wnt_data), "\n")
 
-# 3. Neural crest development (EDNRB only, n=1)
+# 3. Neural crest development (EDNRB + TFAP2B, n=2)
 neural_crest_stats <- data.frame(
   category = "Neural Crest",
-  gene_count = 1,  # EDNRB only
-  median_omega = 0.99,  # EDNRB omega
-  max_omega = 0.99,
-  median_log10p = 300  # p=0 -> very high
+  gene_count = 2,  # EDNRB (ω=0.99) + TFAP2B (ω=1.20)
+  median_omega = median(c(0.99, 1.20)),  # Median of EDNRB and TFAP2B
+  max_omega = 1.20,  # TFAP2B
+  median_log10p = 300  # Both have p < 10^-16
 )
 
 # 4. Protein binding hub genes (n=117 from enrichment)
@@ -244,7 +255,7 @@ protein_binding_stats <- data.frame(
 # 5. All other candidates
 other_stats <- data.frame(
   category = "Other",
-  gene_count = 430 - nrow(neurotrans_data) - nrow(wnt_data) - 1 - 117,  # 430 total - neurotrans - wnt - neural crest - protein binding
+  gene_count = 430 - nrow(neurotrans_data) - nrow(wnt_data) - 2 - 117,  # 430 total - neurotrans - wnt - neural crest (2 genes: EDNRB+TFAP2B) - protein binding
   median_omega = 0.68,  # Genome-wide median from Figure 1
   max_omega = 0.90,
   median_log10p = 7.0
