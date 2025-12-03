@@ -282,35 +282,33 @@ functional_summary$category <- factor(
 cat("\nFunctional theme summary:\n")
 print(functional_summary)
 
-# Create Panel C with logarithmic-style y-axis transformation
-# Custom transformation to compress high values while keeping low values linear
-y_trans <- scales::trans_new(
-  "custom_log",
-  transform = function(x) {
-    ifelse(x <= 15, x, 15 + log10(x - 15 + 1) * 5)
-  },
-  inverse = function(x) {
-    ifelse(x <= 15, x, 10^((x - 15) / 5) - 1 + 15)
-  }
-)
-
+# Create Panel C with improved layout and clear category separation
+# Use sqrt transformation for y-axis to accommodate wide p-value range
 panel_c <- ggplot(functional_summary, aes(x = median_omega, y = median_log10p)) +
   # Reference line for Bonferroni threshold
   geom_hline(yintercept = -log10(2.93e-6), linetype = "dashed",
-             color = "#E03030", linewidth = 0.8) +
+             color = "#E03030", linewidth = 0.8, alpha = 0.6) +
   # Reference line for neutral selection (ω=1)
   geom_vline(xintercept = 1, linetype = "dashed",
-             color = "grey30", linewidth = 1) +
+             color = "grey30", linewidth = 1, alpha = 0.6) +
   # Points sized by gene count
   geom_point(aes(size = gene_count, fill = category),
-             shape = 21, color = "black", stroke = 1.2, alpha = 0.85) +
-  # Labels with smart positioning
+             shape = 21, color = "black", stroke = 1.5, alpha = 0.9) +
+  # Smart labels with ggrepel to avoid overlap
   geom_text_repel(
     aes(label = paste0(category, "\n(n=", gene_count, ")")),
-    size = 3.2, fontface = "bold",
-    box.padding = 1.2, point.padding = 0.6,
-    min.segment.length = 0.1, force = 5,
-    max.overlaps = 20, seed = 42
+    size = 3.8, fontface = "bold",
+    box.padding = 1.5,
+    point.padding = 0.8,
+    segment.size = 0.5,
+    segment.color = "grey50",
+    min.segment.length = 0,
+    max.overlaps = Inf,
+    force = 15,
+    force_pull = 2,
+    xlim = c(-Inf, Inf),
+    ylim = c(-Inf, Inf),
+    seed = 123
   ) +
   # Unified color scheme across all panels
   scale_fill_manual(
@@ -324,18 +322,18 @@ panel_c <- ggplot(functional_summary, aes(x = median_omega, y = median_log10p)) 
     ),
     name = "Category"
   ) +
-  scale_size_continuous(range = c(4, 18), name = "Genes") +
+  scale_size_continuous(range = c(5, 20), name = "Genes") +
   labs(
     title = "C",
     x = expression(bold("Median "*omega)),
     y = expression(bold("Median -log"[10]*"(p-value)"))
   ) +
-  scale_x_continuous(limits = c(0.58, 1.02), expand = c(0.02, 0.02),
-                     breaks = c(0.60, 0.70, 0.80, 0.90, 1.00)) +
-  scale_y_continuous(
-    trans = y_trans,
-    breaks = c(7, 10, 15, 300),
-    labels = c("7", "10", "15", "300")
+  scale_x_continuous(limits = c(0.35, 1.25), expand = c(0.02, 0.02),
+                     breaks = c(0.4, 0.6, 0.8, 1.0, 1.2)) +
+  scale_y_sqrt(
+    limits = c(0, 320),
+    breaks = c(5, 10, 50, 100, 200, 300),
+    expand = c(0.02, 0)
   ) +
   theme_pub(base_size = 13) +
   theme(
@@ -345,12 +343,12 @@ panel_c <- ggplot(functional_summary, aes(x = median_omega, y = median_log10p)) 
     axis.title.y = element_text(size = 13),
     plot.margin = margin(5, 5, 5, 5)
   ) +
-  annotate("text", x = 0.88, y = -log10(2.93e-6),
-           label = "Bonferroni",
-           size = 2.8, vjust = -0.5, color = "#E03030", fontface = "italic") +
-  annotate("text", x = 1.005, y = 8.5,
-           label = "Neutral\nselection\n(ω=1)",
-           size = 2.8, hjust = 0, color = "grey30", fontface = "italic")
+  annotate("text", x = 0.5, y = -log10(2.93e-6),
+           label = "Bonferroni threshold",
+           size = 3, vjust = -0.5, color = "#E03030", fontface = "italic") +
+  annotate("text", x = 1.0, y = 5,
+           label = "Neutral selection (ω=1)",
+           size = 3, hjust = 0.5, vjust = 1.2, color = "grey30", fontface = "italic")
 
 # ============================================================================
 # Combine All Panels - 3-panel layout
