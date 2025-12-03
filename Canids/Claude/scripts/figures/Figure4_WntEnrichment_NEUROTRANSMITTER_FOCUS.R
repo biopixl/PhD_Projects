@@ -73,11 +73,11 @@ panel_a <- ggplot(enrichment_data, aes(x = log10p, y = term_short)) +
   geom_text(aes(label = intersection_size), hjust = -0.3, size = 3.5, fontface = "bold") +
   scale_fill_manual(values = c(
     "Wnt Pathway" = "#E74C3C",
-    "Molecular" = "#F39C12",
-    "Molecular Function" = "#F39C12",
-    "Biological Process" = "#3498DB",
-    "Cellular Component" = "#8E44AD",
-    "Other" = "#95A5A6"
+    "Molecular" = "#95A5A6",
+    "Molecular Function" = "#95A5A6",
+    "Biological Process" = "#5DADE2",
+    "Cellular Component" = "#52BE80",
+    "Other" = "#BDC3C7"
   ), name = "Category") +
   labs(
     title = "A",
@@ -289,6 +289,9 @@ functional_summary$omega_jitter <- functional_summary$median_omega +
   c(0, 0.03, -0.02, -0.015, 0.02, 0.015)  # Manual jitter for 6 categories
 functional_summary$p_jitter <- functional_summary$median_log10p +
   c(0, 0.5, -0.3, 0.8, -0.5, 0.2)
+
+# Reorder by gene_count (descending) so smaller points plot on top of larger ones
+functional_summary <- functional_summary %>% arrange(desc(gene_count))
 
 panel_c <- ggplot(functional_summary, aes(x = omega_jitter, y = p_jitter)) +
   # Reference lines (no text labels to reduce clutter)
