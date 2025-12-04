@@ -1,0 +1,6 @@
+Evidence_Type,Metric,Pb_Value,Zn_Value,Cu_Value,Cr_Value,Interpretation
+Enrichment Factor,Median EF (UCC),6.9,10.2,4.6,0.9,EF>5 = significant anthropogenic
+Enrichment Factor,% Samples EF>2,100,100,97,23,Percentage with anthropogenic input
+Elemental Ratios,Source classification,1,1,2,NA,Samples matching source signature
+Mineral Association,Sulfate proxy r,-0.03,0.6,0.01,0.5,Anthropogenic metals: sulfate assoc.
+Metal Co-occurrence,Pb-Zn r,0.05,0.05,NA,NA,High r = common anthropogenic source

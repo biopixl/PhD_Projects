@@ -1,0 +1,6 @@
+Metal,R2_oob,RMSE_oob,Top_features
+Pb,-0.021,0.417,"Fe_index, Depth_670nm, Slope_NIR"
+Zn,0.025,0.431,"Fe_index, Depth_2300nm, Slope_VIS"
+Cu,0.001,0.31,"Depth_2300nm, Fe_index, Albedo_SWIR"
+Fe,-0.234,0.142,"Fe_index, Depth_670nm, Slope_NIR"
+Ca,0.238,0.132,"Fe_index, Depth_530nm, Depth_1900nm"

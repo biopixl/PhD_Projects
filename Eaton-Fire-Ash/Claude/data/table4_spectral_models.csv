@@ -1,0 +1,6 @@
+Metal,N_samples,N_components,R2_cal,R2_cv,RMSECV,Top_features
+Pb,21,1,0.212,-0.068,0.416,"Depth_670nm, Depth_1900nm, Albedo_VIS"
+Zn,21,2,0.486,0.131,0.397,"Albedo_SWIR, Overall_albedo, Char_index"
+Cu,21,1,0.219,0.003,0.302,"Depth_2300nm, Depth_1900nm, Depth_530nm"
+Fe,21,1,0.134,-0.129,0.132,"Depth_1900nm, Depth_670nm, Slope_NIR"
+Ca,21,1,0.505,0.365,0.117,"Fe_index, Slope_NIR, Depth_530nm"

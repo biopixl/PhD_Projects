@@ -1,0 +1,84 @@
+# R / RStudio
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+*.Rproj.user/
+
+# R package build
+*.tar.gz
+*.Rcheck/
+
+# Temporary files
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Large data files (keep processed, ignore raw)
+data/raw/
+*.zip
+*.7z
+
+# FTIR raw spectra (large binary files)
+*.SPA
+*.spa
+*.spc
+
+# ASD raw spectra
+*.asd
+*.ASD
+
+# Large raster files
+*.tif
+*.tiff
+*.img
+*.hdr
+*.bil
+*.bsq
+
+# QGIS temporary files
+qgis/*.qgz~
+qgis/*.qgs~
+qgis/.~lock.*
+
+# IDE settings
+.vscode/
+.idea/
+*.sublime-*
+
+# Log files
+*.log
+logs/
+
+# Temporary output
+temp/
+tmp/
+cache/
+
+# Sensitive data (if any)
+*credentials*
+*password*
+*.env
+
+# Large model objects
+*.rds
+!data/ftir_diagnostic_results.rds
+
+# Backup files
+*.bak
+*.backup
+
+# OS generated
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Python (if used)
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Keep these files even if they match patterns above
+!.gitkeep

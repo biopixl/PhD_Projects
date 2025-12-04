@@ -1,0 +1,8 @@
+Metal,N_samples,R2_adj,F_statistic,p_value,Significant_predictors
+Pb,36,0.625,10.73,0,"FeOx_proxy, Silicate_proxy, Phosphate_proxy"
+Zn,36,0.838,31.26,0,"FeOx_proxy, Silicate_proxy, Clay_proxy, Sulfate_proxy"
+Cu,36,0.195,2.41,0.0516,Carbonate_proxy
+As,36,0.054,1.33,0.2739,
+Cd,36,0.554,8.25,0,"Sulfate_proxy, Phosphate_proxy"
+Cr,36,0.782,21.92,0,"Carbonate_proxy, Silicate_proxy, Phosphate_proxy"
+Ni,36,0.688,13.87,0,"FeOx_proxy, Silicate_proxy, Clay_proxy, Sulfate_proxy, Phosphate_proxy"

@@ -1,0 +1,8 @@
+ASD_proxy,XRF_proxy,Expected,r,n,Validated
+Char_index,XRF_organic,positive,-0.06876601802849058,21,Weak
+Char_index,XRF_FeOx,negative,-0.16802612516500906,21,Weak
+Fe_index,XRF_FeOx,positive,0.5086027094664499,21,Yes
+Carbonate_index,XRF_carbonate,positive,0.12046615656580487,21,Weak
+Overall_albedo,XRF_organic,negative,0.0687660180284909,21,Weak
+Depth_1900nm,XRF_clay,positive,0.47593397248563496,21,Yes
+Depth_2200nm,XRF_carbonate,positive,0.09486906052895965,21,Weak
