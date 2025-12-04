@@ -2,11 +2,47 @@
 ## Eaton Fire Ash Geochemical Characterization
 
 **Date:** December 4, 2025
-**Status:** Final Framework (Post-Diagnostic Analysis)
+**Status:** Final Framework (Post-Corrections Applied)
 
 ---
 
-## Critical Update: Proxy Analysis Findings
+## CRITICAL CORRECTIONS APPLIED
+
+### 1. Metal Classification (CORRECTED)
+
+**Fire-Enriched Metals (WUI contamination indicators):**
+| Metal | CV (%) | Evidence |
+|-------|--------|----------|
+| Pb | 464% | High variability, spatial clustering, building materials |
+| Zn | 292% | High variability, spatial clustering, galvanized materials |
+| Cu | 284% | High variability, spatial clustering, wiring/pipes |
+
+**Geogenic Metals (background, NOT fire-enriched):**
+| Metal | CV (%) | Evidence |
+|-------|--------|----------|
+| As | 33% | Low variability, NO spatial clustering, consistent with CA background |
+| Cr | 91% | Geogenic, crustal abundance |
+| Ni | 143% | Geogenic, crustal abundance |
+
+### 2. UCC Reference (REMOVED)
+
+- **OLD**: Upper Continental Crust (UCC) used as enrichment factor reference
+- **NEW**: UCC REMOVED - not a certified reference material
+- **Recommendation**: Use local soil background (3 samples available: mean Pb=50, Zn=81, Cu=17, As=3.5 ppm)
+
+### 3. Arsenic Interpretation (CORRECTED)
+
+- **OLD**: As grouped with fire-enriched metals (Pb, Zn, Cu, As)
+- **NEW**: As correctly classified as GEOGENIC
+- **Evidence**:
+  - CV = 33% (vs Pb 464%, Zn 292%, Cu 284%)
+  - NO spatial clustering observed
+  - Mean 6.5 ppm consistent with CA soil background (5-10 ppm)
+- **NOTE**: 100% RSL exceedance reflects very low cancer-based RSL (0.68 ppm), NOT fire contamination
+
+---
+
+## Proxy Analysis Findings
 
 ### Diagnostic Analysis Summary
 
@@ -178,11 +214,12 @@ The original proxy analysis was compromised by:
 
 ### Abstract (250 words)
 - Eaton Fire WUI context
-- ICP-MS characterization: widespread RSL exceedances (Pb, Zn, Cu, As)
+- ICP-MS characterization: fire-enriched metals (Pb, Zn, Cu) show high variability and spatial clustering
+- CORRECTED: As concentrations reflect geogenic background (CV=33%), not fire contamination
 - XRF validation: strong correlation (r > 0.92), systematic offset (-92% to -120%)
 - Matrix effects: XRF_organic proxy predicts offset (r = 0.53-0.67)
 - Correction models improve accuracy by 40-96%
-- Implications for rapid field assessment
+- Implications for rapid field assessment of Pb, Zn, Cu
 
 ### 1. Introduction
 - WUI fire contamination risks

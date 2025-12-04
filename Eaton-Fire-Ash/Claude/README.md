@@ -16,10 +16,15 @@ This repository contains analysis code and outputs for characterizing trace meta
 
 ## Key Findings
 
-1. **Elevated Metal Concentrations**: WUI ash contains trace metals (Pb, Zn, Cu, As) exceeding EPA residential soil screening levels
-2. **XRF Validation**: Portable XRF correlates strongly with ICP-MS (r > 0.92) but shows systematic offset (-92% to -120%)
-3. **Matrix Effects**: XRF-derived organic proxy (100 - oxide sum) predicts offset magnitude (r = 0.53-0.67, p < 0.01)
-4. **Spectral Limitations**: FTIR and ASD proxies show weak correlations after outlier removal (r ≈ 0.26-0.28, ns)
+1. **Fire-Enriched Metals**: Pb, Zn, Cu show high variability (CV >200%) and spatial clustering, indicating WUI fire contamination
+2. **Geogenic Arsenic**: As concentrations (mean 6.5 ppm, CV=33%) are consistent with California geogenic background, NOT fire-enriched
+3. **XRF Validation**: Portable XRF correlates strongly with ICP-MS (r > 0.92) but shows systematic offset (-92% to -120%)
+4. **Matrix Effects**: XRF-derived organic proxy (100 - oxide sum) predicts offset magnitude (r = 0.53-0.67, p < 0.01)
+5. **Spectral Limitations**: FTIR and ASD proxies show weak correlations after outlier removal (r ≈ 0.26-0.28, ns)
+
+**Important Notes:**
+- RSL exceedances for As and Cr reflect very low cancer-based thresholds, not fire contamination
+- UCC (Upper Continental Crust) is not used as a reference - local soil background is more appropriate
 
 ## Repository Structure
 
