@@ -150,7 +150,7 @@ Community science participants were provided with standardized collection kits i
 \subsection{Laboratory Analysis}
 
 \subsubsection{Sample Preparation}
-We selected a subset of samples to continue analysis as the ICP-MS procedure was too time and resource intensive to analyze all ash samples. We picked a subset that spanned the region (including samples from within the burn scar, downwind to the south, and on the eastern and western flanks). After picking this subset, we split each sample into subsamples for downstream analyses. To obtain representative subsamples from the bulk ash and debris collections, we employed a coning and quartering method on a clean, aluminum-covered bench surface. Each sample was first poured gently onto a large, ceramic plate. Using sanitized plastic scrapers, the material was formed into a central cone, homogenized, and then flattened into a disc. The disc was divided into four equal quarters, and two opposite quarters were recombined, re-coned, and quartered again. This iterative process was repeated until an estimated 1-3g of ash was obtained for downstream processing by grinding and sieving, while the remaining sample fraction was preserved as collected in-situ for handheld light spectroscopy measurements. Hereafter, we describe the analysis on the subsample processed with grinding and sieving. 
+We selected a subset of samples to continue analysis as the ICP-MS procedure was too time and resource intensive to analyze all ash samples. We picked a subset that spanned the region (including samples from within the burn scar, downwind to the south, and on the eastern and western flanks). After picking this subset, we split each sample into subsamples for downstream analyses. To obtain representative subsamples from the bulk ash and debris collections, we employed a coning and quartering method on a clean, aluminum-covered bench surface. Each sample was first poured gently onto a large, ceramic plate. Using sanitized plastic scrapers, the material was formed into a central cone, homogenized, and then flattened into a disc. The disc was divided into four equal quarters, and two opposite quarters were recombined, re-coned, and quartered again. This iterative process was repeated until an estimated 1-3g of ash was obtained for downstream processing by grinding and sieving, while the remaining sample fraction was preserved as collected in-situ. Hereafter, we describe the analysis on the subsample processed with grinding and sieving. 
 
 The resulting subsample was transferred onto folded weighing paper and loaded into a clean, labeled microcentrifuge tube with a unique identifier. Each subsample was weighed in a designated clean weighing room using a precision balance, and the mass was recorded. Subsamples were then stored in a dry, dark environment at ambient temperature. 
 
@@ -263,16 +263,6 @@ We recommend the following protocol for XRF field screening of wildfire ash:
     \item Confirm borderline samples (XRF 1,200--2,500 ppm) with laboratory analysis
 \end{enumerate}
 
-\subsection{Remote Sensing Potential}
-
-The significant correlations between spectral properties and XRF bias suggest potential for remote sensing-informed correction of field measurements. Imaging spectrometers such as AVIRIS-NG can map char content and surface brightness at meter-scale resolution over large areas \citep{Green1998}. Integration of airborne spectral data with ground-based XRF screening could improve contamination mapping by:
-
-\begin{enumerate}
-    \item Providing spatially continuous estimates of matrix properties affecting XRF accuracy
-    \item Identifying high-char zones where XRF underestimation is expected
-    \item Enabling stratified sampling designs that account for spectral variability
-\end{enumerate}
-
 \subsection{Groundwater Vulnerability}
 
 The location of the Eaton Fire burn area over the Raymond Groundwater Basin raises concerns about potential metal transport to groundwater through post-fire runoff and infiltration. The spreading basins along Eaton Wash and the Arroyo Seco that provide primary recharge to the basin could receive contaminated sediment during winter storms. Given that the Raymond Basin supplies approximately one-third of Pasadena's water supply, monitoring of recharge water quality is warranted.
@@ -297,14 +287,14 @@ Analysis of 39 ash samples from the 2025 Eaton Fire reveals the following key fi
 
     \item \textbf{XRF correction}: Portable XRF systematically overestimates Pb in ash samples. The recommended correction is: $\text{Pb}_{\text{ICP-MS}} = (\text{Pb}_{\text{XRF}} - 104) / 3.9$. For field screening, use an XRF threshold of 1,662 ppm to identify samples likely exceeding the 400 ppm RSL.
 
-    \item \textbf{Matrix effects}: Char content introduces systematic bias in XRF measurements. Dark, char-rich samples show relative underestimation while bright samples show overestimation. These effects are detectable via spectral measurements (NIR albedo $\rho$ = +0.70, char index $\rho$ = -0.63).
+    \item \textbf{Matrix effects}: Sample properties including mineralogy and char content introduce systematic bias in XRF measurements. Visual assessment of sample brightness can inform interpretation of XRF results.
 
-    \item \textbf{Open-source predictors}: Fe\textsubscript{2}O\textsubscript{3}\% ($\rho$ = -0.63) and property density ($\rho$ = +0.51) are the strongest predictors of Pb contamination. Housing age (pre-1978 construction) is \textit{not} a significant predictor in this study area.
+    \item \textbf{Contamination predictors}: Housing density is positively correlated with Pb contamination, consistent with greater mass of combustible materials. Housing age (pre-1978 construction) is \textit{not} a significant predictor in this study area, possibly due to renovation history or non-paint lead sources.
 
     \item \textbf{Geogenic baseline}: Background Pb from San Gabriel Mountains-derived alluvium is 10--30 ppm. Median ash Pb (61 ppm) indicates widespread low-level anthropogenic enrichment.
 \end{enumerate}
 
-These findings demonstrate the complexity of post-fire contamination assessment and highlight opportunities for integrating field spectroscopy and open-source geospatial data with traditional sampling approaches to improve rapid response capabilities.
+These findings demonstrate the complexity of post-fire contamination assessment and the utility of combining rapid XRF screening with ICP-MS validation for effective field characterization of WUI fire ash.
 
 %==============================================================================
 % References
@@ -336,9 +326,9 @@ These findings demonstrate the complexity of post-fire contamination assessment 
 
 \begin{figure}[htbp]
     \centering
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[Figure 3: Predictor correlations]\vspace{3cm}}}
-    \caption{Correlations between Pb concentration and potential predictors. (A) Fe\textsubscript{2}O\textsubscript{3}\%. (B) Property density. (C) Pre-1978 housing percentage. (D) Correlation matrix heatmap.}
-    \label{fig:predictors}
+    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[Figure 3: Metal concentration distributions]\vspace{3cm}}}
+    \caption{Metal concentration distributions in Eaton Fire ash samples. (A) Histogram of Pb concentrations with EPA RSL threshold. (B) Box plots comparing major metals. (C) Spatial distribution of Pb concentrations across the study area. (D) Pb vs housing density.}
+    \label{fig:metal_distributions}
 \end{figure}
 
 \end{document}
