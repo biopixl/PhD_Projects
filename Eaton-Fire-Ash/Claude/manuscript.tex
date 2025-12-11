@@ -28,12 +28,12 @@
 \newcommand{\CITE}{\textcolor{blue}{[CITE]}}
 
 % Title
-\title{Metal Contamination in Wildfire Ash: Geochemical Characterization and Remote Sensing Proxies from the 2025 Eaton Fire, Los Angeles County, California}
+\title{Metal Contamination in Outdoor Ashes after the 2025 Eaton Fire}
 
 \author{
-Isaac D. Medina\textsuperscript{1,*} \\
-\textsuperscript{1}Department of Geography, University of California, Los Angeles \\
-\textsuperscript{*}Corresponding author: imedina@ucla.edu
+Isaac N. Aguilar\textsuperscript{1,*} \\
+\textsuperscript{1}Division of Geological & Planetary Sciences, California Institute of Technology, Pasadena, 91106 \\
+\textsuperscript{*}Corresponding author: iaguilar@caltech.edu
 }
 
 \date{Draft: December 2025}
@@ -46,9 +46,7 @@ Isaac D. Medina\textsuperscript{1,*} \\
 \begin{abstract}
 %==============================================================================
 
-Wildfire ash from burned structures in the wildland-urban interface (WUI) poses significant contamination risks due to the concentration of heavy metals from building materials, household products, and vehicles. The January 2025 Eaton Fire in Los Angeles County destroyed over 9,000 structures in the foothill communities of Altadena and Pasadena, generating widespread ash deposits overlying the Raymond Groundwater Basin. We characterized metal contamination in 39 ash samples using ICP-MS and portable XRF, evaluated spectral proxies from field spectroscopy (ASD), and integrated open-source geospatial data to identify contamination predictors. Lead concentrations ranged from 14 to 18,528 ppm (median: 61 ppm), with 15\% of samples exceeding the EPA residential soil screening level of 400 ppm. Portable XRF systematically overestimated Pb concentrations, requiring correction: $\text{Pb}_{\text{ICP-MS}} = (\text{Pb}_{\text{XRF}} - 104) / 3.9$ (R² = 0.26 after outlier removal). Residual analysis revealed that char content (spectral char index: $\rho$ = -0.63, p = 0.009) and sample brightness (NIR albedo: $\rho$ = +0.70, p = 0.003) significantly influenced XRF bias. Among open-source predictors, XRF-derived Fe\textsubscript{2}O\textsubscript{3}\% showed the strongest correlation with Pb ($\rho$ = -0.63, p < 0.001), while property density was positively correlated ($\rho$ = +0.51, p = 0.001). Contrary to expectations, pre-1978 housing age was not a significant predictor of Pb contamination in this study area. These findings demonstrate that (1) XRF field screening requires matrix-specific correction factors, (2) spectral properties can inform XRF bias estimation, and (3) open-source geospatial data provide useful but imperfect proxies for contamination risk assessment.
-
-\textbf{Keywords:} wildfire ash, lead contamination, XRF correction, spectral analysis, Raymond Basin, Eaton Fire
+Wildfire ash from the wildland-urban interface (WUI) poses significant contamination risks due to the concentration of heavy metals in building structures, electronic and construction products, and vehicles. The January 2025 Eaton Fire in Los Angeles County destroyed over 9,000 structures in the foothill communities near Altadena, generating widespread ash deposits overlying the Raymond Groundwater Basin and Greater Los Angeles metropolis. We characterized metal contamination in 39 ash samples using Inductively-Coupled Plasma Mass Spectrometry (ICP-MS) and X-ray Fluorescence (XRF). ICP-MS measured lead concentrations that ranged from 14 to 18,528 ppm (median: 61 ppm), with 15\% of samples exceeding the EPA residential soil screening level of 400 ppm and 2 samples exceeding the 1000 ppm screening level for hazardous waste. Other elements detected above regional screening levels in the ash include Cobalt (5), Copper (1), and Zinc (1).  XRF is sensitive to sample properties including ash particle size, packing density, surface uniformity, and x-ray re-absorption and -enhancement effects that introduce non-linear underestimation and scatter in measurement precision. 
 
 \end{abstract}
 
@@ -58,21 +56,21 @@ Wildfire ash from burned structures in the wildland-urban interface (WUI) poses 
 
 \subsection{Wildfire-Urban Interface Contamination}
 
-The increasing frequency and intensity of wildfires in California's wildland-urban interface (WUI) has created a growing environmental health crisis \citep{Radeloff2018}. When fires burn through residential and commercial areas, the combustion of building materials, household products, vehicles, and landscaping generates ash deposits containing elevated concentrations of heavy metals, asbestos, and organic contaminants \citep{Plumlee2007, Quarles2020}. Unlike wildland fire ash, which primarily reflects the geochemistry of burned vegetation and soils, structure fire ash can contain lead (Pb) from paint, pipes, and solder; arsenic (As) from treated wood; copper (Cu) and zinc (Zn) from electrical wiring and galvanized metals; cadmium (Cd) from batteries and plastics; and chromium (Cr) from chrome plating and pressure-treated lumber \citep{Neitzel2021}.
+The increasing frequency and intensity of wildfires in California's wildland-urban interface (WUI) has created a growing environmental health crisis \citep{Radeloff2018}. When fires burn through residential and commercial areas, the combustion of building materials, household products, vehicles, and landscaping generates ash deposits containing elevated concentrations of heavy metals, asbestos, and organic contaminants \citep{Plumlee2007, Quarles2020}. Unlike wildland fire ash, which primarily reflects the geochemistry of burned vegetation and soils, structure fire ash can contain lead (Pb) from paint, pipes, and solder; copper (Cu) and zinc (Zn) from electrical wiring and galvanized metals; and chromium (Cr) from chrome plating and pressure-treated lumber \citep{Neitzel2021}.
 
-The January 2025 Eaton Fire exemplifies the scale of this emerging hazard. Igniting in Eaton Canyon on January 7, 2025, during an extreme Santa Ana wind event, the fire rapidly burned through the foothill communities of Altadena and portions of Pasadena, ultimately destroying over 9,000 structures across approximately 14,000 acres (5,670 ha) before full containment on January 31, 2025 \CITE. The fire caused 19 confirmed fatalities and became the fifth deadliest and second most destructive wildfire in California history \CITE. The widespread distribution of potentially contaminated ash across residential neighborhoods, parks, and recharge zones for the Raymond Groundwater Basin created an urgent need for rapid assessment of contamination levels and spatial patterns.
+The January 2025 Eaton Fire ignited in a county park reserve on the evening of January 7, 2025 adjacent to the Southern San Gabriel Mountains and WUI communities of Altadena, Pasadena, Sierra Madre, and La Canada Flintridge. An extreme Santa Ana wind event occurring exacerbated the concurrent fire storm event with wind gusts up to 90 mph recorded at the Eaton Canyon site of ignition. The fire perimeter had exploded to 10,600+ acres by the next day with most of the catastrophic damage occurring in the first 36 hours. No progress on containment was reported until January 12 as the fire perimeter progressed northward into the San Gabriel Mountain wilderness preserves. For three weeks the fire remained below 100\% containment until January 31, destroying over 9,000 structures across approximately 14,000 acres (5,670 ha) before full containment on January 31, 2025 \CITE. The fire caused 19 confirmed fatalities and became the fifth deadliest and second most destructive wildfire in California history \CITE. The widespread distribution of potentially contaminated ash across residential neighborhoods, parks, and recharge zones for the Raymond Groundwater Basin created an urgent need for rapid assessment of contamination levels and spatial patterns.
 
-Current approaches to post-fire contamination assessment rely primarily on laboratory analysis of soil and ash samples, which is accurate but time-consuming and expensive. Portable X-ray fluorescence (XRF) instruments offer a rapid field screening alternative but are known to exhibit matrix-dependent biases in heterogeneous materials such as wildfire ash \citep{Kalnicky2001}. Understanding and correcting these biases is essential for effective rapid response.
+Current approaches to post-fire contamination assessment rely primarily on laboratory analysis of soil and ash samples, which is accurate but time-consuming and expensive.  X-ray fluorescence (XRF) instruments offer a rapid field screening alternative but are known to exhibit matrix-dependent biases in heterogeneous materials such as wildfire ash \citep{Kalnicky2001}. Understanding and correcting these biases is essential for effective rapid response.
 
 \subsection{Study Objectives}
 
 This study addresses four primary objectives:
 
 \begin{enumerate}
-    \item Characterize metal contamination levels in Eaton Fire ash and compare to regulatory thresholds
-    \item Evaluate portable XRF as a field screening tool and develop empirical correction factors
-    \item Identify spectral and open-source geospatial data proxies for contamination prediction
-    \item Establish the geogenic baseline for distinguishing anthropogenic enrichment
+    \item Characterize metal contamination levels in Eaton Fire ash with ICPMS
+    \item Evaluate XRF as a  screening tool and develop empirical correction factors
+    \item Assess the sources of metal contamination
+    \item Map the spatial distribution of metal contamination
 \end{enumerate}
 
 %==============================================================================
@@ -131,27 +129,11 @@ Adjudication year & 1944 & RBMB 2020 \\
 
 Understanding the natural geochemical background is critical for distinguishing anthropogenic contamination in wildfire ash. The granitic and gneissic source rocks of the San Gabriel Mountains typically contain lead (Pb) at 10--30 ppm (crustal average $\sim$14 ppm), copper (Cu) at 10--50 ppm, zinc (Zn) at 40--80 ppm, and arsenic (As) at <5 ppm \citep{Taylor1964, Reimann2018}. Alluvial soils derived from these sources are expected to have similar or slightly lower concentrations due to weathering and dilution.
 
-The Ca/Mg ratio in local sediments (typically 2--6) provides a geogenic signature useful for distinguishing natural from anthropogenic sources. Similarly, the Fe/Al ratio reflects the mineralogy of source rocks and can indicate the presence of iron-rich anthropogenic materials when elevated above background levels.
-
 \subsubsection{Anthropogenic Legacy}
 
 The study area has been continuously developed since the late 19th century, with most residential construction occurring between 1920 and 1970. This period corresponds to peak use of lead-based paints (phased out 1978), leaded gasoline emissions (phased out 1996), and lead water service lines (common pre-1950) \citep{Mielke1999}.
 
-The broader Los Angeles Basin has documented legacy lead contamination from multiple industrial sources. Most notably, the Exide Technologies battery recycling facility in Vernon---approximately 20 km south of the study area---contaminated over 4,800 properties requiring soil remediation, with atmospheric deposition affecting neighborhoods throughout southeastern Los Angeles County \citep{DTSC2020}. While the Eaton Fire study area lies north of the primary Exide impact zone, regional atmospheric deposition patterns may contribute to elevated baseline lead levels in urban soils throughout the region, complicating the assessment of fire-specific contamination.
-
-\subsection{Fire Characteristics}
-
-The Eaton Fire ignited on January 7, 2025, in Eaton Canyon during an extreme Santa Ana wind event characterized by sustained winds of 80--100 km/h with gusts exceeding 150 km/h. Key fire characteristics include:
-
-\begin{itemize}
-    \item \textbf{Duration}: 24 days (contained January 31, 2025)
-    \item \textbf{Area burned}: $\sim$14,000 acres (5,670 ha)
-    \item \textbf{Structures destroyed}: >9,000
-    \item \textbf{Fatalities}: 19 confirmed
-    \item \textbf{Burn severity}: Predominantly moderate to high in WUI areas
-\end{itemize}
-
-The fire burned through established residential neighborhoods with homes ranging from 1890s Victorian-era construction to modern builds, representing a diversity of building materials and potential contaminant sources. The extreme fire behavior---driven by dry fuels, low humidity, and high winds---resulted in complete combustion of many structures, concentrating non-volatile metals in the resulting ash.
+The broader Los Angeles Basin has documented legacy lead contamination from multiple industrial sources. Most notably, the Exide Technologies battery recycling facility in Vernon---approximately 20 km south of the study area---contaminated over 4,800 properties requiring soil remediation, with atmospheric deposition affecting neighborhoods throughout southeastern Los Angeles County \citep{DTSC2020}. While the Eaton Fire study area lies north of the primary Exide impact zone, regional atmospheric deposition patterns may contribute to elevated baseline lead levels in urban soils throughout the region, complicating the assessment of fire-specific contamination. The Exide facility was in operation for multiple decades and is responsible for lead contamination in residential soils at thresholds similar to the ash and contaminated soils from the Eaton fire. 
 
 %==============================================================================
 \section{Methods}
@@ -159,56 +141,33 @@ The fire burned through established residential neighborhoods with homes ranging
 
 \subsection{Sample Collection}
 
-A total of 39 ash samples and 3 reference soil samples were collected from the Eaton Fire burn area between January 15 and February 8, 2025. Sample locations were selected to represent the range of burn severities and structure types across the affected area. At each site, GPS coordinates were recorded and a composite sample was collected from the ash layer overlying the structure footprint, avoiding visible debris (e.g., metal fragments, glass) that could bias bulk geochemical analysis.
+A sampling campaign was initiated on January 16, 2025 to collect samples of the fallout ash. The vast majority of samples were collected by January 25th, 2025 (before the first post-fire rain), with a handful collected on February 3rd, 2025. Caltech and JPL teams initially sampled independently but coordinated efforts early in the campaign. A 1 × 1 mile grid overlay was developed for spatial planning, with each grid cell assigned a unique numeric ID. Using this map to guide a spatially even sampling approach, teams travelled from cell to cell collecting ash samples within the burn scar as well as along the western, southern, and eastern flanks of the Eaton fire’s edges. Within each grid cell, the specific sample sites were selected based on three criteria: (1) public accessibility, (2) presence of visible ash accumulation, and (3) minimal post-fire disturbance from cleanup activities.
 
-Samples were collected using stainless steel tools, placed in pre-cleaned polyethylene bags, and stored at ambient temperature prior to analysis. Field observations including structure type, apparent burn severity, and presence of specific materials (e.g., vehicles, outbuildings) were recorded for each site.
+A total of 169 physical samples were collected directly by the sample teams (95 by JPL and 74 by Caltech), supplemented by an additional 52 samples contributed from community scientists through Caltech. As the sampling began about two weeks after the ignition, ash had largely collected in small wind-traps on impervious surfaces (e.g., on sidewalks against a fence or within street gutters). At each sample site, we identified where ash was concentrated and collected 5-15 mL of ash. The JPL team used a small nylon-bristle paint brush and plastic laboratory weight boat and Caltech teams sampled using a wooden spoon and tweezers. For each sample, the teams collected both coarser ash flakes as well as fine soot and dust to achieve a representative sample. Note that while we attempted to only collect burned material, contamination with background dust was impossible to avoid. We also avoided locations where surfaces had been swept, washed, or otherwise altered following the fire event. In some grid cell locations where ash was plentiful, 2-3 samples were taken tens to a few hundred meters apart. Each sample was immediately transferred to a sample vial and the sample identifier, location, person sampling, date, and other miscellaneous notes. 
+
+Community science participants were provided with standardized collection kits including a sampling bag, spoon, and wipe for ash collection. Submitted samples were registered and visually assessed to qualify the sample quantity for appropriate experimental analysis in the lab.
 
 \subsection{Laboratory Analysis}
+
+\subsubsection{Sample Preparation}
+We selected a subset of samples to continue analysis as the ICP-MS procedure was too time and resource intensive to analyze all ash samples. We picked a subset that spanned the region (including samples from within the burn scar, downwind to the south, and on the eastern and western flanks). After picking this subset, we split each sample into subsamples for downstream analyses. To obtain representative subsamples from the bulk ash and debris collections, we employed a coning and quartering method on a clean, aluminum-covered bench surface. Each sample was first poured gently onto a large, ceramic plate. Using sanitized plastic scrapers, the material was formed into a central cone, homogenized, and then flattened into a disc. The disc was divided into four equal quarters, and two opposite quarters were recombined, re-coned, and quartered again. This iterative process was repeated until an estimated 1-3g of ash was obtained for downstream processing by grinding and sieving, while the remaining sample fraction was preserved as collected in-situ for handheld light spectroscopy measurements. Hereafter, we describe the analysis on the subsample processed with grinding and sieving. 
+
+The resulting subsample was transferred onto folded weighing paper and loaded into a clean, labeled microcentrifuge tube with a unique identifier. Each subsample was weighed in a designated clean weighing room using a precision balance, and the mass was recorded. Subsamples were then stored in a dry, dark environment at ambient temperature. 
+
+To standardize sample particle size and remove coarse debris, a second preparation step was carried out under a fume hood with appropriate personal protective equipment and clean lab practices. All tools and surfaces were pre-cleaned with 70\% ethanol, pressurized air, and lint-free wipes (Kimwipes) to minimize contamination. 
+
+The ash subsample was poured into a ceramic mortar and photographed to document particle size and color before processing. Using a ceramic pestle, the ash was ground along the interior surface of the mortar until reduced to a uniform fine powder. 
+
+Ground ash was transferred onto a folded square of weighing paper and returned to its labeled tube for sieving. A clean, square-cut mesh sieve (250 µm) was then mounted between the sample tube and a clean collection tube with two caps that had been punctured and glued together for containing all ash residue within the sample tubes. The sample was inverted and gently rotated to allow finer particles to pass through the mesh, separating the sample into two size fractions: (1) <250 µm, and (2) > 250 µm. Final masses for both fractions were recorded in the weighing room to assess recovery and particle distribution in the fractions. The <250 µm ash subsample was used for laboratory analysis with ICPMS and XRF to limit noise from large, refractory ash species and capture the contributions from the most mobile and bioaccessible ash species. 
+
 
 \subsubsection{ICP-MS Analysis}
 
 Samples were digested using EPA Method 3051A (microwave-assisted acid digestion) and analyzed by inductively coupled plasma mass spectrometry (ICP-MS) for a suite of 50+ elements including Pb, As, Cd, Cu, Zn, Cr, Ni, and rare earth elements (REEs). Detection limits were typically <0.1 ppm for most trace metals. Quality assurance included analysis of certified reference materials (CRMs), method blanks, and duplicate samples at a frequency of 10\%.
 
-\subsubsection{Portable XRF Analysis}
+\subsubsection{XRF Analysis}
 
-Field XRF measurements were made using a \TODO{instrument model} portable XRF analyzer operated in soil mode. Major element oxides (SiO\textsubscript{2}, Al\textsubscript{2}O\textsubscript{3}, Fe\textsubscript{2}O\textsubscript{3}, CaO, MgO, K\textsubscript{2}O, TiO\textsubscript{2}, etc.) and trace metals (Pb, Zn, Cu) were measured with typical integration times of 60 seconds per sample. XRF results for major oxides are reported in weight percent (wt\%), while trace metals reported by the instrument were converted from wt\% to ppm by multiplying by 10,000 for comparison with ICP-MS results.
-
-\subsection{Spectroscopic Measurements}
-
-\subsubsection{ASD Field Spectroscopy}
-
-Visible to shortwave infrared (VNIR-SWIR) reflectance spectra were measured for a subset of samples (n = 21) using an ASD FieldSpec 4 spectroradiometer (350--2500 nm). Spectra were collected under controlled illumination conditions using a contact probe. Multiple measurements (5--10) were averaged for each sample to reduce noise.
-
-Spectral indices were calculated from the reflectance data including:
-\begin{itemize}
-    \item \textbf{Fe index}: Ratio of reflectance at 870 nm to 650 nm, sensitive to iron oxide content
-    \item \textbf{Char index}: Overall reflectance darkness (1 - mean albedo), indicating carbonaceous material
-    \item \textbf{Carbonate index}: Depth of 2.3 \textmu m absorption feature
-    \item \textbf{Spectral slopes}: Slope of reflectance in VIS (450--700 nm) and NIR (700--1000 nm) regions
-\end{itemize}
-
-\subsubsection{FTIR Analysis}
-
-Fourier transform infrared (FTIR) spectra were measured on dried, ground samples to characterize organic functional groups and mineral phases. Spectra were collected in attenuated total reflectance (ATR) mode from 4000--400 cm\textsuperscript{-1}.
-
-\subsection{Open-Source Data Integration}
-
-\subsubsection{Property Age Data}
-
-Property construction dates were obtained from the Los Angeles County Assessor's database via the LA County Parcel API. For each sample location, parcels within a 250 m radius were queried and the percentage of structures built before 1978 (pre-lead paint ban era) was calculated. Mean construction year and total property count (as a proxy for housing density) were also recorded.
-
-\subsubsection{Census Data}
-
-Census tract identifiers were obtained for each sample location using the U.S. Census Bureau Geocoder API. Tract-level demographic and housing characteristics were extracted from the American Community Survey for potential correlation with contamination patterns.
-
-\subsubsection{Geogenic Ratios}
-
-Geogenic indicator ratios were calculated from XRF major element data:
-\begin{itemize}
-    \item Ca/Mg ratio: Indicator of calcium carbonate vs. dolomite influence
-    \item Fe/Al ratio: Indicator of iron enrichment relative to aluminosilicates
-    \item Si/Al ratio: Indicator of quartz content relative to clay minerals
-\end{itemize}
+ XRF measurements were made using a benchtop energy-dispersive X-ray Fluorescence (EDXRF) spectrometer (INAM Expert 3L, INAM Scientific, Iran). The instrument is equipped with a high-resolution Silicon Drift Detector (SDD) and an X-ray tube source (Rh anode, 50 kV max voltage, 1000 µA max current), enabling detection of elements from Na (Z=11) to U (Z=92). Measurements were performed under vacuum to enhance sensitivity for light elements. Spectra were acquired over a 10-minute live time per sample with automatic peak deconvolution and matrix correction via the instrument’s fundamental parameters (FP) software package. Calibration for lead quantification was evaluated using kaolinite clay reference materials doped with a lead nitrate salt solution. Quantitative results were reported in mass fraction (\%) as independent elemental abundances, with oxide equivalents calculated post-acquisition for reporting purposes.
 
 \subsection{Statistical Analysis}
 
@@ -242,7 +201,7 @@ Cr (ppm) & 22 & 43 & 55 & 332 & 120,000 & 0 \\
 
 \subsection{XRF-ICP-MS Correction Model}
 
-Comparison of portable XRF and ICP-MS measurements revealed systematic overestimation of Pb by XRF (Figure~\ref{fig:xrf_correction}). Using all data (n = 37), the linear relationship was:
+Comparison of  XRF and ICP-MS measurements revealed systematic overestimation of Pb by XRF (Figure~\ref{fig:xrf_correction}). Using all data (n = 37), the linear relationship was:
 
 \begin{equation}
 \text{Pb}_{\text{XRF}} = 1.71 \times \text{Pb}_{\text{ICP-MS}} + 337 \quad (R^2 = 0.98)
@@ -265,39 +224,6 @@ For field screening purposes, the XRF threshold corresponding to the EPA RSL of 
 \begin{equation}
 \text{Pb}_{\text{XRF, threshold}} = 3.90 \times 400 + 104 = 1,662 \text{ ppm}
 \end{equation}
-
-\subsection{Residual Analysis and Matrix Effects}
-
-Analysis of residuals from the XRF-ICP-MS regression revealed significant correlations with both spectral and matrix properties (Table~\ref{tab:residuals}). Among spectral features, NIR albedo showed the strongest correlation ($\rho$ = +0.70, p = 0.003), followed by visible spectral slope ($\rho$ = +0.67, p = 0.005) and char index ($\rho$ = -0.63, p = 0.009). The negative correlation with char index indicates that darker, more char-rich samples tend to show lower XRF values relative to ICP-MS (i.e., underestimation), while brighter samples show higher XRF values (overestimation).
-
-Among matrix properties derived from XRF major elements, MgO content showed a significant negative correlation with residuals ($\rho$ = -0.53, p = 0.014), suggesting that magnesium-rich matrices attenuate X-ray signals.
-
-\begin{table}[htbp]
-\centering
-\caption{Spearman correlations between XRF residuals and predictor variables (n = 16--21)}
-\label{tab:residuals}
-\begin{tabular}{llrrr}
-\toprule
-\textbf{Type} & \textbf{Variable} & \textbf{$\rho$} & \textbf{p-value} & \textbf{Significance} \\
-\midrule
-Spectral & Albedo\_NIR & +0.70 & 0.003 & ** \\
-Spectral & Slope\_VIS & +0.67 & 0.004 & ** \\
-Spectral & Char\_index & -0.63 & 0.009 & ** \\
-Spectral & Albedo\_VIS & +0.30 & 0.264 & \\
-Matrix & MgO\% & -0.58 & 0.018 & * \\
-Matrix & Fe\textsubscript{2}O\textsubscript{3}\% & -0.07 & 0.795 & \\
-Matrix & CaO\% & -0.16 & 0.564 & \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Open-Source Predictors of Contamination}
-
-Among open-source data sources evaluated as potential predictors of Pb contamination, XRF-derived Fe\textsubscript{2}O\textsubscript{3}\% showed the strongest correlation ($\rho$ = -0.63, p < 0.001), indicating that lower iron content is associated with higher Pb (Figure~\ref{fig:predictors}). Property density (count within 250 m) was positively correlated with Pb ($\rho$ = +0.51, p = 0.001), consistent with the expectation that denser development corresponds to more potential contamination sources.
-
-Notably, the percentage of pre-1978 housing---hypothesized to predict lead contamination due to lead-based paint---was \textit{not} significantly correlated with Pb ($\rho$ = -0.12, p = 0.49). However, pre-1978 housing percentage was significantly correlated with nickel (Ni) concentrations ($\rho$ = +0.48, p = 0.003), suggesting different source attribution for these metals.
-
-The geogenic Ca/Mg ratio showed moderate positive correlation with Zn ($\rho$ = +0.49, p = 0.002) but not with Pb, suggesting potential geochemical controls on Zn distribution independent of anthropogenic sources.
 
 %==============================================================================
 \section{Discussion}
