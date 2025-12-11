@@ -155,21 +155,24 @@ Lead (Pb) concentrations in ash samples ranged from 14 to 18,528 ppm with a medi
 
 \begin{table}[htbp]
 \centering
-\caption{Summary statistics for metal concentrations in Eaton Fire ash (n=39)}
+\caption{Summary statistics for metal concentrations in Eaton Fire ash (n=39). CV = coefficient of variation. RSL = EPA Regional Screening Level for residential soil. CA SL = California residential screening level.}
 \label{tab:metal_summary}
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lrrrrrrr}
 \toprule
-\textbf{Metal} & \textbf{Min} & \textbf{Median} & \textbf{Mean} & \textbf{Max} & \textbf{RSL} & \textbf{\% >RSL} \\
+\textbf{Metal} & \textbf{Min} & \textbf{Median} & \textbf{Mean} & \textbf{Max} & \textbf{CV\%} & \textbf{RSL} & \textbf{n >RSL} \\
 \midrule
-Pb (ppm) & 14 & 61 & 638 & 18,528 & 400 & 15 \\
-As (ppm) & 3.0 & 6.1 & 6.5 & 12.2 & 0.68 & 100 \\
-Cu (ppm) & 14 & 61 & 207 & 3,650 & 3,100 & 3 \\
-Zn (ppm) & 100 & 333 & 1,310 & 23,829 & 23,000 & 3 \\
-Cd (ppm) & 0.1 & 0.3 & 0.5 & 1.5 & 70 & 0 \\
-Cr (ppm) & 22 & 43 & 55 & 332 & 120,000 & 0 \\
+Pb (ppm) & 13.8 & 61.1 & 637.6 & 18,528 & 464 & 400 & 6 \\
+Zn (ppm) & 100.4 & 332.7 & 1,310 & 23,829 & 292 & 23,000 & 1 \\
+Cu (ppm) & 14.2 & 61.0 & 207.2 & 3,650 & 284 & 3,100 & 1 \\
+As (ppm) & 3.0 & 6.1 & 6.5 & 12.2 & 33 & 0.68 & 39 \\
+Cr (ppm) & 21.6 & 42.8 & 55.1 & 331.5 & 91 & 120,000 & 0 \\
+Ni (ppm) & 16.6 & 26.5 & 46.0 & 372.0 & 143 & 1,600 & 0 \\
+Co (ppm) & -- & 14.2 & -- & 215.7 & -- & 23 & 5 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+Using California's more protective 80 mg/kg residential screening level for Pb, 11 samples (28\%) exceeded this threshold. Seven samples (18\%) exceeded the 155 ppm level used in the Exide facility cleanup, and 6 samples (15\%) exceeded the EPA RSL of 400 ppm (Figure~\ref{fig:metal_concentrations}).
 
 \subsection{XRF-ICP-MS Correction Model}
 
@@ -284,23 +287,51 @@ These findings demonstrate the complexity of post-fire contamination assessment 
 
 \begin{figure}[htbp]
     \centering
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[Figure 1: Study area map]\vspace{3cm}}}
-    \caption{Study area showing sample locations, Raymond Basin extent, Raymond Fault, and major drainages. Inset shows location within Los Angeles County.}
+    \includegraphics[width=0.9\textwidth]{figures/Fig1_study_area.pdf}
+    \caption{Study area showing sample locations within the Eaton Fire burn perimeter, Raymond Basin extent, and major drainages. Inset shows location within Los Angeles County.}
     \label{fig:study_area}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[Figure 2: XRF correction plots]\vspace{3cm}}}
-    \caption{XRF vs ICP-MS Pb concentrations. (A) All data showing regression line and outliers. (B) Data with outliers removed showing higher scatter. (C) Residual distribution. (D) Corrected XRF values vs true ICP-MS values.}
+    \includegraphics[width=0.9\textwidth]{figures/Fig2_concentrations_clean.pdf}
+    \caption{Metal concentrations in Eaton Fire ash samples (n=39). Box plots show median, interquartile range, and outliers. Horizontal lines indicate EPA Regional Screening Levels (RSL) for residential soil. Lead, zinc, and copper show extreme outliers indicating localized contamination hotspots.}
+    \label{fig:metal_concentrations}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Fig3_spatial_clean.pdf}
+    \caption{Spatial distribution of lead concentrations across the Eaton Fire study area. Symbol size is proportional to Pb concentration. Samples exceeding California's 80 mg/kg screening level are shown in red; samples exceeding EPA's 400 mg/kg RSL are shown in dark red.}
+    \label{fig:spatial_distribution}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Fig4_element_variability.pdf}
+    \caption{Coefficient of variation (CV) for metal concentrations in Eaton Fire ash. High CV values for Pb (464\%), Zn (292\%), and Cu (284\%) indicate heterogeneous contamination from anthropogenic sources. Lower CV for As, Cr, Fe, and Al suggests geogenic control.}
+    \label{fig:element_variability}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Fig5_xrf_validation.pdf}
+    \caption{XRF vs ICP-MS comparison for Pb, Zn, and Cu. (A) Pb shows strong correlation (r=0.99) but systematic overestimation by XRF. (B) Zn shows excellent agreement (r=0.996). (C) Cu shows good correlation (r=0.92) with more scatter at low concentrations.}
     \label{fig:xrf_correction}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[Figure 3: Metal concentration distributions]\vspace{3cm}}}
-    \caption{Metal concentration distributions in Eaton Fire ash samples. (A) Histogram of Pb concentrations with EPA RSL threshold. (B) Box plots comparing major metals. (C) Spatial distribution of Pb concentrations across the study area. (D) Pb vs housing density.}
-    \label{fig:metal_distributions}
+    \includegraphics[width=0.9\textwidth]{figures/Fig6_correlations_clean.pdf}
+    \caption{Correlation matrix for metal concentrations in Eaton Fire ash. Strong positive correlations between Pb, Zn, and Cu suggest common anthropogenic sources. Cr-Ni correlation reflects shared geogenic origin from ultramafic lithologies.}
+    \label{fig:correlations}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Fig_screening_comparison.pdf}
+    \caption{Comparison of Eaton Fire ash Pb concentrations to regulatory screening levels. Dashed lines show California (80 ppm), Exide cleanup (155 ppm), and EPA RSL (400 ppm) thresholds. Twenty-eight percent of samples exceed California's residential screening level.}
+    \label{fig:screening_comparison}
 \end{figure}
 
 \end{document}
