@@ -1,0 +1,107 @@
+% ACS Environmental Science & Technology - Supporting Information
+% Separate file submitted alongside main manuscript
+
+\documentclass[journal=esthag,manuscript=suppinfo]{achemso}
+
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\graphicspath{{Data/}}
+
+% ============================================================================
+% TITLE AND AUTHORS (must match main manuscript)
+% ============================================================================
+
+\author{Isaac A. Author}
+\affiliation{Department of Earth System Science, University of California, Irvine, CA 92697, United States}
+
+\author{Second Author}
+\affiliation{NASA Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA 91109, United States}
+
+\title{Supporting Information: Metal Contamination in Wildfire Ash from the 2025 Eaton Fire: Field-Portable XRF Calibration for Rapid Screening}
+
+\begin{document}
+
+% ============================================================================
+% TABLE OF CONTENTS FOR SI
+% ============================================================================
+
+\section*{Contents}
+
+\begin{itemize}
+  \item Figure S1. Spatial distribution of Pb concentrations
+  \item Figure S2. Spatial distribution of Zn concentrations
+  \item Figure S3. Spatial distribution of Cu concentrations
+  \item Figure S4. Element correlation matrix
+  \item Table S1. Complete ICP-MS results for all elements
+  \item Table S2. Sample locations and metadata
+  \item Table S3. XRF emission line intensities
+\end{itemize}
+
+\newpage
+
+% ============================================================================
+% SUPPLEMENTARY FIGURES
+% ============================================================================
+
+\section*{Supplementary Figures}
+
+\begin{figure}[htbp]
+\centering
+% \includegraphics[width=0.8\textwidth]{Fig_S1_Pb_spatial.png}
+\caption{Spatial distribution of Pb concentrations (ppm) in Eaton Fire ash samples. Points scaled by concentration; color indicates exceedance of EPA RSL (400 ppm).}
+\label{fig:s1_pb_spatial}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+% \includegraphics[width=0.8\textwidth]{Fig_S2_Zn_spatial.png}
+\caption{Spatial distribution of Zn concentrations (ppm) in Eaton Fire ash samples.}
+\label{fig:s2_zn_spatial}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+% \includegraphics[width=0.8\textwidth]{Fig_S3_Cu_spatial.png}
+\caption{Spatial distribution of Cu concentrations (ppm) in Eaton Fire ash samples.}
+\label{fig:s3_cu_spatial}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+% \includegraphics[width=0.8\textwidth]{Fig_S4_correlation_matrix.png}
+\caption{Pearson correlation matrix for trace metals of toxicological concern. Only significant correlations ($p$ < 0.05) shown.}
+\label{fig:s4_correlations}
+\end{figure}
+
+\newpage
+
+% ============================================================================
+% SUPPLEMENTARY TABLES
+% ============================================================================
+
+\section*{Supplementary Tables}
+
+\begin{table}[htbp]
+\caption{Sample locations and collection metadata.}
+\label{tab:s2_metadata}
+\centering
+\small
+\begin{tabular}{lrrll}
+\toprule
+Sample ID & Latitude & Longitude & Collection Date & Sample Type \\
+\midrule
+1590 & 34.1399 & -118.0888 & 2025-01-15 & Ash \\
+1620 & 34.1719 & -118.1235 & 2025-01-15 & Ash \\
+GPS03 & 34.1300 & -118.1440 & 2025-01-16 & Ash \\
+% ... additional rows ...
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Note: Complete datasets provided as separate Excel/CSV files
+
+\end{document}

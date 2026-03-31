@@ -1,0 +1,17 @@
+Threshold,Model,Sensitivity,Specificity,Accuracy,FP,FN
+80 ppm,La1 (calibrated),54.5,95.8,82.9,1,5
+80 ppm,Lb (calibrated),63.6,95.8,85.7,1,4
+80 ppm,FP (calibrated),63.6,83.3,77.1,4,4
+80 ppm,FP (uncalibrated),90.9,0,28.6,24,1
+200 ppm,La1 (calibrated),71.4,100,94.3,0,2
+200 ppm,Lb (calibrated),85.7,100,97.1,0,1
+200 ppm,FP (calibrated),71.4,100,94.3,0,2
+200 ppm,FP (uncalibrated),85.7,21.4,34.3,22,1
+400 ppm,La1 (calibrated),83.3,100,97.1,0,1
+400 ppm,Lb (calibrated),100,100,100,0,0
+400 ppm,FP (calibrated),83.3,100,97.1,0,1
+400 ppm,FP (uncalibrated),83.3,62.1,65.7,11,1
+1000 ppm,La1 (calibrated),100,97,97.1,1,0
+1000 ppm,Lb (calibrated),100,97,97.1,1,0
+1000 ppm,FP (calibrated),100,97,97.1,1,0
+1000 ppm,FP (uncalibrated),100,90.9,91.4,3,0

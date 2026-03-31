@@ -1,0 +1,13 @@
+Threshold (ppm),Model,Sensitivity (%),Specificity (%),False Positives,False Negatives
+80,Lb1+Lb2,64,96,1,4
+80,La1,55,96,1,5
+80,FP (wt%),64,83,4,4
+200,Lb1+Lb2,86,100,0,1
+200,La1,71,100,0,2
+200,FP (wt%),71,100,0,2
+400,Lb1+Lb2,100,100,0,0
+400,La1,83,100,0,1
+400,FP (wt%),83,100,0,1
+1000,Lb1+Lb2,100,97,1,0
+1000,La1,100,97,1,0
+1000,FP (wt%),100,97,1,0
