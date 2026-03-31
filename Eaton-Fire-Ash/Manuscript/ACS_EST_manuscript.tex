@@ -22,9 +22,9 @@
 % AUTHOR INFORMATION
 % ============================================================================
 
-\author{Isaac A. Author}
-\affiliation{Department of Earth System Science, University of California, Irvine, CA 92697, United States}
-\email{author@uci.edu}
+\author{Isaac N. Aguilar}
+\affiliation{Division of Geological and Planetary Sciences, California Institute of Technology, Pasadena, CA 91109,  United States}
+\email{iaguilar@caltech.edu}
 
 \author{Second Author}
 \affiliation{NASA Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA 91109, United States}
@@ -33,15 +33,14 @@
 % TITLE
 % ============================================================================
 
-\title{Metal Contamination in Wildfire Ash from the 2025 Eaton Fire: Field-Portable XRF Calibration for Rapid Screening}
+\title{Rapid detection of metal contamination in ash on outdoor surfaces after fires in the Wildland Urban Interface}
 
 % ============================================================================
 % ABSTRACT (150-200 words)
 % ============================================================================
 
 \begin{abstract}
-Wildfire ash from urban-wildland interface fires contains elevated concentrations of toxic metals that pose risks to human health and ecosystems during post-fire recovery. We characterized metal concentrations in 39 ash samples collected from the 2025 Eaton Fire burn perimeter using ICP-MS and evaluated field-portable XRF as a rapid screening tool. Lead (Pb) concentrations ranged from 14 to 18,528 ppm (mean 638 ppm), with zinc (100--23,829 ppm) and copper (14--3,650 ppm) similarly elevated. Spatial heterogeneity was pronounced, with coefficients of variation exceeding 280\% for Pb, Zn, and Cu. We developed empirical calibrations for XRF using cumulative Pb L-line intensities, achieving $R^2$ = 0.994 and RMSE = 230 ppm against ICP-MS. Classification performance for regulatory screening thresholds reached 100\% sensitivity at 1000 ppm and 86\% sensitivity at 200 ppm, with no false positives. These results demonstrate that field-portable XRF with site-specific calibration enables rapid identification of highly contaminated areas during emergency response, supporting prioritization of remediation efforts.
-\end{abstract}
+Wildland–Urban Interface (WUI) fires combust a heterogeneous mix of vegetation and urban materials, generating ash that can contain elevated concentrations of toxic metals, posing potential post-fire exposure risks. Despite increasing frequency and severity of WUI fires, metal contamination in coarse outdoor ash remains poorly characterized, and rapid screening tools suitable for appropriate emergency response are limited. Here, we quantified the concentration and spatial variability of metals in ash collected from outdoor impervious surfaces following the 2025 Eaton Fire in Los Angeles County, California, and evaluated X‑ray fluorescence (XRF) spectroscopy for rapid field screening of lead (Pb). Thirty‑nine ash samples were analyzed by inductively coupled plasma mass spectrometry (ICP‑MS), and paired subsamples were used to develop site‑specific XRF calibration models using both manufacturer‑reported fundamental parameter outputs and raw Pb L‑line intensities. Lead concentrations ranged from 14 to 18,528 ppm and exhibited extreme spatial heterogeneity (coefficient of variation = 464\%), with the highest concentrations from samples collected within the urban burn perimeter. Zinc and copper showed similarly high variability, whereas major geogenic elements exhibited lower relative variability. Empirical calibration using cumulative Pb L‑line intensities produced a strong linear relationship with ICP‑MS measurements (R² = 0.994; RMSE = 230 ppm), outperforming fundamental-parameter derived concentrations. When evaluated against soil screening thresholds, the calibrated XRF model achieved 100\% sensitivity and specificity at 400 ppm Pb and higher, with declining sensitivity at lower concentrations. These results demonstrate that site‑specific XRF calibration enables reliable identification of ash samples exceeding moderate‑to‑high Pb screening thresholds and supports the use of portable XRF as a rapid decision‑support tool following WUI fires. As WUI fire impacts expand, integrating calibrated field screening with targeted laboratory analysis may improve post‑fire exposure assessment and emergency response.\end{abstract}
 
 % ============================================================================
 % SYNOPSIS STATEMENT (Required by ES&T, ~20 words, after abstract)
@@ -72,13 +71,13 @@ Wildfire ash from urban-wildland interface fires contains elevated concentration
 % Introduction should establish context, identify knowledge gaps, and state objectives
 % Typically 3-5 paragraphs, ~500-800 words
 
-Wildfire activity in the western United States has intensified in recent decades, with increasing encroachment into urban-wildland interface (WUI) zones where residential structures intermix with combustible vegetation. The combustion of anthropogenic materials in WUI fires releases a complex mixture of contaminants distinct from wildland fires, including heavy metals from building materials, electronics, batteries, vehicles, and household products.
+The Wildland-Urban Interface (WUI) is the transition zone between wildland vegetation and the urban build environment, characterized by a complex mosaic of land cover and land use\textsuperscript{1}. Fires in the WUI are fueled by a heterogeneous pre‑fire mosaic that includes vegetation (e.g., evergreen forest and chaparral) as well as manufactured materials from housing, vehicles, and urban infrastructure. In contrast to non‑WUI wildfires, which are fueled predominantly by vegetation, WUI fires involve the partial or complete combustion of anthropogenic materials such as structures and vehicles, resulting in the release of toxic compounds, including heavy metals\textsuperscript{2–10}. Despite their increasing frequency and severity, the environmental impacts of WUI wildfires remain poorly constrained, as highlighted by a recent U.S. National Academies report\textsuperscript{11}. Metals present in pre‑fire WUI landscapes can volatilize at high combustion temperatures and subsequently condense onto ash particle surfaces during cooling\textsuperscript{12}. The contamination potential of wildfire ash is influenced by burn severity, fuel type, ash load, post‑fire climatic conditions, surface hydrology, and ash physical properties\textsuperscript{13}. Trace metal concentration in ash is highly dependent on the metal content and composition of the combusted materials \textsuperscript{5,8,14,15}. For example, legacy lead‑based paint in pre‑1978 structures increases both the magnitude and spatial extent of lead emissions during WUI fires\textsuperscript{16}. Few studies have focused on metal concentrations in outdoor ash from WUI fires which often burn older structures.
 
-Lead contamination is of particular concern given its neurotoxic effects, especially for children, and the absence of a safe exposure threshold. Zinc, copper, and other metals released during structure combustion can further contribute to ecological toxicity in receiving waters during post-fire runoff. Rapid characterization of metal contamination is essential for emergency response, but laboratory analysis by inductively coupled plasma mass spectrometry (ICP-MS) requires days to weeks, delaying remediation decisions.
+The 2025 Eaton Fire, a WUI fire in Los Angeles County, was the second most destructive fire in California’s history destroying over 9,000 structures in the foothill communities of the San Gabriel Mountains including Altadena, Kinneloa Mesa, and Sierra Madre. The fire ignited on January 7, 2025, and expanded to over 10,600 within 24 hours, with most of the catastrophic damage occurring gin the first 36 hours\textsuperscript{17}. An unusually extreme Santa Ana wind event forecasted by the National Weather Society realized sustained winds above 90 MPH and wind gusts over 110 MPH descending from the canyons\textsuperscript{18}. No progress on containment was reported until January 12 as the fire perimeter expanded northward into the San Gabriel Mountains. The Eaton Fire lasted 24 days (January 7-31, 2025) and burned an area larger than 14,000 acres leading to an estimated \$27.5 billion USD in damages. 
 
-Field-portable X-ray fluorescence (XRF) spectrometry offers a potential solution for rapid on-site screening. However, matrix effects in heterogeneous ash samples and potential spectral interferences (e.g., As K$\alpha$ overlap with Pb L$\alpha$) may compromise quantitative accuracy. Site-specific calibration against laboratory standards is therefore necessary to establish reliable screening thresholds.
+The smoke plume from the Eaton Fire travelled South-West and deposited coarse, residual ashes for miles over the western coastline. Similar WUI fires have been studied to understand the post-fire environmental contamination of ash and soil with toxic concentrations of metals \textsuperscript{3,4}. During the 2025 Los Angeles Fires, air quality monitors positioned miles away from the Eaton fire recorded a 110-fold increase in the hourly lead (Pb) concentrations of particulate matter particles <2.5 um (PM2.5) compared to pre-fire days \textsuperscript{19}. This collaborative effort emerged to respond to a gap in our knowledge about the composition and distribution of metals in the coarse ash fraction remaining on outdoor surfaces of the post-fire landscape. 
 
-The objectives of this study were to: (1) characterize metal concentrations and spatial variability in ash from the 2025 Eaton Fire, (2) develop and validate empirical XRF calibration models against ICP-MS, and (3) evaluate classification performance for regulatory screening thresholds relevant to residential exposure scenarios.
+We conducted extensive, systematic sampling of outdoor ash accumulated on impervious surfaces (e.g., sidewalk, curbs) both within the burn perimeter and downwind areas where no structures were destroyed. We hypothesized that the ash samples collected within the burn perimeter would contain higher concentrations of Pb and other metals due to proximity to combusted urban infrastructure. The friable nature of ash samples in the field necessitated rapid sampling to avoid areas impacted by cleanup activities and prior to rainfall. This study of the 2025 Eaton Fire provides a framework for assessing potential outdoor environmental exposure to ash from WUI fires. This study addresses three objectives: (1) quantify the concentration and spatial variability of metals in outdoor ash following the 2025 Eaton Fire; (2) develop and evaluate site-specific X-ray fluorescence (XRF) calibration models for Pb; and (3) assess the utility of calibrated XRF measurements for rapid screening against regulatory Pb thresholds. 
 
 % ============================================================================
 % MATERIALS AND METHODS
@@ -86,39 +85,28 @@ The objectives of this study were to: (1) characterize metal concentrations and 
 
 \section{Materials and Methods}
 
-\subsection{Study Area and Sample Collection}
+The sampling campaign was initiated on January 16, 2025, with most samples collected prior to the first post-fire rainfall. Sampling was conducted by teams from Caltech and JPL, which initially sampled independently but coordinated efforts early in the campaign. A 1 × 1 mile grid overlay was developed to guide spatial sampling, with each grid cell assigned a unique numeric identifier. Using this grid to guide a spatially even sampling approach, teams traveled between grid cells collecting ash samples within the burn scar as well as along the western, southern, and eastern flanks of the Eaton Fire perimeter. Within each grid cell, the specific sample sites were selected based on three criteria: (1) public accessibility, (2) presence of visible ash accumulation, and (3) minimal post-fire disturbance from cleanup activities. 
 
-The Eaton Fire ignited on January 7, 2025, in Altadena and Pasadena, California, burning approximately 14,000 acres and destroying over 7,000 structures. Ash samples (n = 39) were collected from residential properties within the burn perimeter between January 15--25, 2025. Sample locations were recorded using handheld GPS (Garmin GPSMAP 67i; $\pm$3 m accuracy). At each site, composite samples were collected from the top 5 cm of ash deposits, homogenized in the field, and stored in polyethylene bags for transport.
+A total of 169 physical samples were collected directly by field teams (95 by JPL and 74 by Caltech), supplemented by an additional 52 samples contributed from Caltech community volunteers. Because sampling began approximately two weeks after ignition, ash had largely accumulated in small wind-traps on impervious surfaces (e.g., on sidewalks against a fence or along street gutters). At each site, areas of concentrated ash deposition were identified, and approximately 5-15 mL of ash was collected. Ash was collected using small, non-metallic tools to minimize contamination (Figure 2A). For each sample, both coarse ash fragments and fine soot or dust were collected to obtain a representative composite sample (Figure 2B). Although efforts were made to collect only post-fire ash material, some mixing with background dust was unavoidable.
 
-\subsection{ICP-MS Analysis}
+Thirty-nine ash samples were selected for their spatial distribution and temporal representativeness (pre-rainfall) for elemental analysis by Inductively Coupled Plasma Mass Spectrometry (ICP-MS). Bulk ash samples were pulverized by mortar and pestle to homogenize particle sizes <250 µm (Figure 2C). Paired subsamples were aliquoted for parallel Pb content analysis with a benchtop energy-dispersive X-ray Fluorescence (XRF) spectrometer (INAM Expert 3L, RPE Institute of Analytical Control Methods, LLC). The instrument is equipped with a high-resolution Silica Drift Detector and an X-ray source tube (Rh anode, 50kv max voltage, 1000 µA max current). To minimize grain-size effects on XRF spectra, ash subsamples were homogenized by grinding and sieving to a <106 µm, mixed with cellulose binder, and pressed into 13-mm pellets (Figure 2D). XRF spectra from each sample pellet were acquired over 60 seconds of exposure with automatic peak deconvolution and matrix correction via the instrument’s fundamental parameters software that reported semi-quantitative results in mass fraction percentage (mf. \%). Given known limitations of fundamental parameters models for heterogeneous ash matrices, we prioritized empirical calibration using raw L-line intensities. We report XRF data in units of counts per second (cts/s) as the cumulative x-ray photons detected from the Pb L-alpha and L-beta energy lines because of their minimal interference with other elements.
 
-Samples were digested using EPA Method 3051A (microwave-assisted acid digestion with HNO$_3$/HCl) and analyzed by ICP-MS (Agilent 7900) for 54 elements following EPA Method 6020B. Quality control included method blanks, laboratory control samples, and certified reference materials (NIST SRM 2710a Montana Soil). Recoveries for target analytes ranged from 85--115\%.
-
-\subsection{XRF Analysis}
-
-Field-portable XRF measurements were performed using a Thermo Scientific Niton XL3t GOLDD+ analyzer in Mining Cu/Zn mode (60 s measurement time). Each sample was analyzed in triplicate on pressed pellets. The instrument reports concentrations derived from fundamental parameters (FP) algorithms based on Pb L$\alpha$ emission, as well as raw emission line intensities (counts/s) for individual L-lines.
-
-\subsection{Calibration Approach}
-
-Two calibration models were compared:
-\begin{enumerate}
-  \item \textbf{FP model}: ICP-MS Pb (ppm) regressed against XRF-reported mass fraction (\%)
-  \item \textbf{L-line model}: ICP-MS Pb (ppm) regressed against cumulative L-line intensity (L$\alpha$ + L$\beta$ counts/s)
-\end{enumerate}
-
-Model performance was evaluated by $R^2$, root mean square error (RMSE), and Akaike Information Criterion (AIC). Classification performance was assessed at regulatory screening thresholds of 80, 200, 400, and 1000 ppm Pb.
 
 % ============================================================================
 % RESULTS AND DISCUSSION
 % ============================================================================
 
-\section{Results and Discussion}
+\section{Results}
 
-\subsection{Metal Concentrations in Wildfire Ash}
+ICP-MS analysis quantified concentrations of more than 50 elements in the 39 analyzed ash samples, including major elements from biomass combustion residue (Table 1A). The elemental concentrations and between-sample variability is summarized in Figure 3. Calcium was the most abundant element (mean 52,728 ppm), followed by iron (36,577 ppm) and aluminum (36,613 ppm) at comparable concentrations (Table 1). Potassium, magnesium, and sodium ranged from 13,000–19,000 ppm. Titanium (6,138 ppm) and manganese (962 ppm) were present at lower concentrations. Among major elements, calcium and magnesium exhibited the highest variability (CV = 116\% and 125\%, respectively), whereas potassium was the most uniformly distributed (CV = 31\%). 
 
-ICP-MS analysis quantified 54 elements in 39 ash samples collected within the Eaton Fire burn perimeter. Calcium dominated ash composition (mean 52,728 ppm; range 10,148--322,441 ppm), followed by aluminum (36,613 ppm), iron (36,577 ppm), potassium (18,858 ppm), magnesium (13,947 ppm), and sodium (13,271 ppm) (Table~\ref{tab:major_elements}).
+ICP-MS analysis also quantified concentrations of hazardous metals including lead, zinc, copper, and cobalt (Table 1B). Zinc concentrations ranged from 100 to 23,829 ppm (mean 1,310 ppm), while lead ranged from 14 to 18,528 ppm (mean 638 ppm). Copper concentrations spanned 14–3,650 ppm (mean 207 ppm). Vanadium, chromium, nickel, and cobalt were present at mean concentrations ranging from 22–85 ppm, while antimony averaged 9.1 ppm and arsenic and cadmium remained below 7 ppm and 1 ppm respectively, across all samples. Lead, zinc, and copper exhibited pronounced spatial heterogeneity (CV = 464\%, 292\%, and 284\%), with maximum concentrations exceeding mean values by one to two orders of magnitude. 
 
-Lead, zinc, and copper were the dominant trace contaminants. Zinc concentrations ranged from 100 to 23,829 ppm (mean 1,310 ppm), while lead ranged from 14 to 18,528 ppm (mean 638 ppm). Copper concentrations spanned 14--3,650 ppm (mean 207 ppm). These metals exhibited pronounced spatial heterogeneity, with coefficients of variation exceeding 280\% (Table~\ref{tab:trace_metals}).
+Linear regression models were developed to calibrate XRF measurements against ICP-MS Pb concentrations using 35 paired ash subsamples (Table 2). Two calibration approaches were compared: (1) manufacturer-reported mass fraction (m.f. \%) values derived from the instrument's fundamental parameters (FP) algorithm, and (2) cumulative raw X-ray emission intensities from Pb L-lines. The FP-derived model yielded R² = 0.980 with RMSE = 431 ppm, whereas the cumulative Pb L-line intensity model produced a stronger linear relationship with ICPMS measurements (R² = 0.994, RMSE = 230 ppm). Regression fits and residual analyses for the Pb calibration models are shown in Figure 4. 
+
+Calibrated XRF regression models were evaluated for their ability to classify ash samples exceeding soil Pb screening thresholds including 80, 200, 400, and 1000 ppm (Table 4). Based on ICP-MS, 11 (31\%), 7 (20\%), 6 (17\%), and 2 (6\%) of 35 samples exceeded these thresholds, respectively. Sensitivity (true positive rate) measures the proportion of contaminated samples correctly identified, while specificity (true negative rate) measures the proportion of uncontaminated samples correctly classified. Classification performance improved with increasing threshold concentration. Both models achieved 100\% sensitivity at 1000 ppm (1 false positive each; specificity = 97\%) and 83\% sensitivity at 400 ppm with no false positives (specificity = 100\%). The cumulative L-line model outperformed the FP model at 200 ppm (86\% vs. 71\% sensitivity), with both maintaining 100\% specificity. At the 80 ppm threshold, sensitivity declined to 64\% for both models, reflecting increased uncertainty at concentrations approaching the calibration intercept. Alternative calibrations excluding high-concentration samples (>400 or >1000 ppm) did not improve overall performance. 
+
+
 
 % Insert Table 1 here
 \begin{table}[htbp]
@@ -162,10 +150,6 @@ V & 85 & 82 & 20--143 & 31 \\
 \end{tabular}
 \end{table}
 
-\subsection{XRF Calibration Performance}
-
-Linear regression models calibrating XRF against ICP-MS Pb concentrations demonstrated strong agreement (Table~\ref{tab:xrf_calibration}, Figure~\ref{fig:xrf_calibration}). The cumulative L-line model ($R^2$ = 0.994, RMSE = 230 ppm) outperformed the FP model ($R^2$ = 0.980, RMSE = 431 ppm), with substantial support from model comparison ($\Delta$AIC = 44).
-
 % Insert Table 3 here
 \begin{table}[htbp]
 \caption{Linear regression models for XRF calibration of Pb against ICP-MS (n = 35).}
@@ -188,10 +172,6 @@ FP m.f.\% & 0.980 & 431 & 5,732 (141) & 44.2 \\
 \label{fig:xrf_calibration}
 \end{figure}
 
-\subsection{Screening Threshold Classification}
-
-Classification performance improved with increasing threshold concentration (Table~\ref{tab:threshold_classification}). The cumulative L-line model achieved 100\% sensitivity at 1000 ppm, 83\% at 400 ppm, and 86\% at 200 ppm, with 100\% specificity (no false positives) at thresholds $\geq$200 ppm. At the 80 ppm threshold, sensitivity declined to 64\%, reflecting increased uncertainty at concentrations approaching the calibration intercept.
-
 % Insert Table 4 here
 \begin{table}[htbp]
 \caption{Classification performance of calibrated XRF models for Pb screening thresholds (n = 35).}
@@ -212,18 +192,23 @@ Threshold & Model & Sens. & Spec. & FP & FN \\
 \end{tabular}
 \end{table}
 
-\subsection{Implications for Emergency Response}
+\section{Discussion}
 
-These results demonstrate that field-portable XRF with site-specific calibration can reliably identify samples exceeding moderate-to-high regulatory thresholds ($\geq$200 ppm) but may underestimate contamination at lower screening levels. The absence of false positives at thresholds $\geq$200 ppm is particularly important for emergency response, as it prevents unnecessary evacuation or remediation of uncontaminated areas while ensuring that highly contaminated sites are identified for priority action.
+The metals of concern, namely Pb, Zn, Cu, and Co, were more concentrated in the ashes collected from within the urban burn perimeter compared to ashes collected beyond the burned perimeter, reflecting the spatial effect of pre-fire urban land cover on metal composition in ash. Metal elements with the highest concentrations across all ashes (Al, Fe, Ti, etc.) reflect the geological regime of native rocks and minerals from the surrounding landscape. These geogenic elements have low variability and are present in relatively the same amount across all the ashes. Pyrogenic elements are enriched in post-fire areas where a mosaic of materials from the built environment are combusted can enhance metal contamination and variation in ash composition. Among the elements detected, the highest variation in concentration across all ash samples included Pb, Zn, Cu, and Co. This is consistent with the extreme heterogeneity of post-fire metal contamination of residential soils studied in previous WUI fires where a mosaic of point-source metal emissions in addition to vegetation is combusted \textsuperscript{3,4,6,8}. Pre-fire WUI regions can be very dissimilar, and thus the wildfire events that occur in the WUI can be highly variable. The unique source of combusted material likely affects the composition and distribution of fire-related contaminants. 
+
+WUI fires are complex disasters that contaminate multiple environmental media including the air, land, and water with ashes. Presently, wildfire evacuation guidelines do not consider the additional pathways of wildfire ash exposure on risk assessment. Furthermore, there exists no uniform emergency response framework that addresses post-fire habitability and reoccupancy based on environmental exposure. Lead (Pb) is a toxic metal that can cause damage to almost all organs and organ systems with even very low levels of lead exposure \textsuperscript{20–22}. The rapid detection of a spike in suspended Pb aerosols \textsuperscript{19} preceded our parallel discovery of high concentrations of Pb in ashes on outdoor urban surfaces, including two samples from within the burned perimeter that exceed the State of California’s Total Toxicity Threshold Limit of 1000 ppm. Notably, ash samples down-wind from the urban fire perimeter also exceeded Pb concentration thresholds for Regional Screening Levels (RSLs) usually applied to soils contaminated by industrial metal processing plants. The South-west prevailing wind direction during the fire suggests the aeolian transport of WUI ash contaminated with metals from a dense pre-fire concentration of combustible urban materials including housing and business structures, electronic wiring and infrastructure, and other metals-rich manufactured goods and products like electric vehicles (EVs). The following conclusion is dedicated to the application of X-Ray Fluorescence (XRF) spectroscopy for the purpose of rapid WUI ash assessment in the field and delineation of toxic ash zones.
+
+XRF spectroscopy quantifies elemental composition by measuring characteristic X-ray emissions induced by primary X-ray excitation of a sample. The technique is widely used for environmental screening due to its non-destructive nature, rapid analysis time, and portability. Commercially available instruments range from handheld field-portable devices to benchtop laboratory systems, with varying excitation sources (tube vs. radioisotope), detector technologies (Si-PIN, SDD, proportional counter), and quantification algorithms. These differences influence detection limits, spectral resolution, and matrix correction capabilities. XRF analysis of heterogeneous environmental matrices such as wildfire ash requires careful sample preparation and analysis. Physical matrix effects arise from variations in sample density, particle size, surface roughness, and moisture content, which influence X-ray penetration depth and fluorescence yield. Chemical matrix effects occur when major element composition affects X-ray absorption and secondary fluorescence, requiring empirical or fundamental parameters corrections that may not be optimized for all sample types \textsuperscript{23}. 
+
+Empirical calibration using cumulative L-line intensities improved both quantitative accuracy and threshold classification performance. The L-line model achieved 100\% sensitivity at the 1000 ppm threshold, 83\% sensitivity at 400 ppm, and 86\% sensitivity at 200 ppm, with 100\% specificity at all three thresholds (i.e., no false positives). Classification performance declined at the 80 ppm threshold (64\% sensitivity, 96\% specificity), reflecting increased uncertainty at concentrations approaching the calibration intercept. These results indicate that field-portable XRF with site-specific calibration can reliably identify samples exceeding moderate-to-high regulatory thresholds (≥200 ppm) but may not precisely quantify contamination at lower screening levels.
+
+Based on these findings, we recommend the following practices for similar analyses of WUI ash: (1) develop site-specific calibration models with paired XRF and ICP-MS measurements spanning the expected concentration range; (2) report raw emission line intensities alongside any instrument-derived concentrations to enable cross-instrument recalibration; (3) consider screening thresholds (e.g., 200 ppm) for field sampling with portable XRF in a post-fire WUI; and (4) confirm threshold exceedances and borderline samples with laboratory ICP-MS analysis.
 
 % ============================================================================
 % ASSOCIATED CONTENT
 % ============================================================================
 
 \begin{suppinfo}
-
-Supporting Information is available free of charge on the ACS Publications website.
-
 \begin{itemize}
   \item Additional figures showing spatial distribution of metal concentrations (PDF)
   \item Complete ICP-MS dataset for all 54 elements (XLSX)
@@ -237,7 +222,7 @@ Supporting Information is available free of charge on the ACS Publications websi
 % ============================================================================
 
 \begin{acknowledgement}
-This work was supported by [funding source]. We thank [acknowledgments].
+This work was generously supported by the Division of Geological and Planetary Sciences 2025 Eaton Fire Support Fund.
 \end{acknowledgement}
 
 % ============================================================================
