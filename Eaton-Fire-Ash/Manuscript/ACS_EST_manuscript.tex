@@ -79,7 +79,7 @@ The 2025 Eaton Fire, a WUI fire in Los Angeles County, was the second most destr
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\columnwidth]{Fig-1-samples.png}
-\caption{Study area and sample collection. (E) Fire progression and ash type classification showing urban fire ash (red), wildland fire ash (green), and outside perimeter ash (blue) sample locations. Fire progression dates and wind direction indicated. (F) Pre-fire land cover classification.}
+\caption{Map of the 2025 Eaton Fire study area. Outdoor ash sampling locations (points) are symbolized by their spatial relationship to the urban and wildland fire perimeters. The outline of the Eaton Fire is shaded with the fire perimeter progression and max wind speed between January 7-10, 2025. Arrows show prevailing wind direction. }
 \label{fig:study_area}
 \end{figure}
 
@@ -103,7 +103,7 @@ Thirty-nine ash samples were selected for their spatial distribution and tempora
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\columnwidth]{Fig-2-prep.png}
-\caption{Sample preparation workflow. (a) Field collection of ash samples. (b) Samples in glass vials. (c) ICP-MS preparation: grinding and sieving to <250 $\mu$m. (d) XRF preparation: sieving to <106 $\mu$m, grinding, and hydraulic pressing into pellets.}
+\caption{Ash collection and preparation. \textbf{(a) }Field sampling with non-metallic tools were used to collect and \textbf{(b)} store 5-15 mL of ashes. \textbf{(c) }Homogenization with grinding and sieving were performed before ICP-MS analysis. \textbf{(d) }XRF subsample preparation included grinding, sieving, and hydraulic pressing into a pellet. }
 \label{fig:sample_prep}
 \end{figure}
 
@@ -121,7 +121,7 @@ ICP-MS analysis also quantified concentrations of hazardous metals including lea
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\columnwidth]{Fig-3_icpms.png}
-\caption{ICP-MS element summary for Eaton Fire ash (n = 39). (A) Element concentrations (ppm) on log scale. (B) Coefficient of variation (CV) for each element. Dashed line indicates CV = 100\%. Pb, Zn, and Cu exhibit the highest spatial variability.}
+\caption{Rank-order box plot of the \textbf{(a)} elements with the highest average concentration across all ashes and \textbf{(b) }coefficient of variation among samples. Geogenic elements have high concentrations and low variability while pyrogenic elements have mid- to high concentrations and extremely high variability.}
 \label{fig:icpms_summary}
 \end{figure}
 
@@ -137,7 +137,7 @@ Calibrated XRF regression models were evaluated for their ability to classify as
 \label{tab:major_elements}
 \begin{tabular}{lrrrr}
 \toprule
-Element & Mean & Median & Range & CV (\%) \\
+& Mean & Median & Range & CV (\%) \\
 \midrule
 Ca & 52,728 & 33,378 & 10,148--322,441 & 116 \\
 Fe & 36,577 & 38,332 & 8,336--64,081 & 37 \\
@@ -157,7 +157,7 @@ Mn & 962 & 898 & 273--2,742 & 48 \\
 \label{tab:trace_metals}
 \begin{tabular}{lrrrr}
 \toprule
-Element & Mean & Median & Range & CV (\%) \\
+& Mean & Median & Range & CV (\%) \\
 \midrule
 Pb & 638 & 61 & 14--18,528 & 464 \\
 Zn & 1,310 & 333 & 100--23,829 & 292 \\
@@ -175,14 +175,14 @@ V & 85 & 82 & 20--143 & 31 \\
 
 % Insert Table 3 here
 \begin{table}[htbp]
-\caption{Linear regression models for XRF calibration of Pb against ICP-MS (n = 35).}
+\caption{Linear regression models for XRF calibration}
 \label{tab:xrf_calibration}
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrrr}
 \toprule
-Model & $R^2$ & RMSE (ppm) & Slope (SE) & $\Delta$AIC \\
+Model & $R^2$ & RMSE (ppm) & Slope (SE) \\
 \midrule
-Cumulative L-lines & 0.994 & 230 & 0.817 (0.011) & 0 \\
-FP m.f.\% & 0.980 & 431 & 5,732 (141) & 44.2 \\
+L-lines& 0.994 & 230 & 0.817 (0.011) \\
+FP m.f.\% & 0.980 & 431 & 5,732 (141) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -191,26 +191,26 @@ FP m.f.\% & 0.980 & 431 & 5,732 (141) & 44.2 \\
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=\textwidth]{Fig-4_XRF_calibration_final.png}
-\caption{XRF calibration models for Pb quantification against ICP-MS (n = 35). Log-log scale. (A) Fundamental parameters model using manufacturer-reported m.f.\%. (B) Cumulative L-line intensity model (L$\alpha$ + L$\beta$). (C) Residual distributions for each calibration approach.}
+\caption{Figure 4. Linear regression in XRF calibration models with ICPMS subsamples including both results from (A) instrument FP and (B) Pb L-lines emission intensity. (C) Boxplot with model residuals show the median, 25th, and 75th percentile of spread in the data with slight horizontal scatter for visualization.}
 \label{fig:xrf_calibration}
 \end{figure*}
 
 % Insert Table 4 here
 \begin{table}[htbp]
-\caption{Classification performance of calibrated XRF models for Pb screening thresholds (n = 35).}
+\caption{Classification performance for XRF Pb thresholds}
 \label{tab:threshold_classification}
 \begin{tabular}{llrrrr}
 \toprule
 Threshold & Model & Sens. & Spec. & FP & FN \\
 \midrule
 80 ppm & L-lines & 64\% & 96\% & 1 & 4 \\
- & FP (m.f.\%) & 64\% & 83\% & 4 & 4 \\
+ & FP& 64\% & 83\% & 4 & 4 \\
 200 ppm & L-lines & 86\% & 100\% & 0 & 1 \\
- & FP (m.f.\%) & 71\% & 100\% & 0 & 2 \\
+ & FP& 71\% & 100\% & 0 & 2 \\
 400 ppm & L-lines & 83\% & 100\% & 0 & 1 \\
- & FP (m.f.\%) & 83\% & 100\% & 0 & 1 \\
+ & FP& 83\% & 100\% & 0 & 1 \\
 1000 ppm & L-lines & 100\% & 97\% & 1 & 0 \\
- & FP (m.f.\%) & 100\% & 97\% & 1 & 0 \\
+ & FP& 100\% & 97\% & 1 & 0 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -223,7 +223,7 @@ The metals of concern, namely Pb, Zn, Cu, and Co, were more concentrated in the 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\columnwidth]{Fig-5-map.png}
-\caption{Spatial distribution of metal concentrations in Eaton Fire ash. Points colored by Pb concentration threshold: <80 ppm (green), 80--200 ppm (yellow), 200--1000 ppm (orange), >1000 ppm (red). Circles indicate co-occurrence of elevated Co, Cu, or Zn. Dashed line shows fire perimeter.}
+\caption{Map of metal contaminants in ash measured with ICPMS. Points are symbolized with colors representing screening thresholds for concentrations of lead, cobalt, copper, and zinc. Spatial distribution of metals shows highest concertation in the urban pre-fire land cover and downwind}
 \label{fig:spatial_map}
 \end{figure}
 
@@ -234,19 +234,6 @@ XRF spectroscopy quantifies elemental composition by measuring characteristic X-
 Empirical calibration using cumulative L-line intensities improved both quantitative accuracy and threshold classification performance. The L-line model achieved 100\% sensitivity at the 1000 ppm threshold, 83\% sensitivity at 400 ppm, and 86\% sensitivity at 200 ppm, with 100\% specificity at all three thresholds (i.e., no false positives). Classification performance declined at the 80 ppm threshold (64\% sensitivity, 96\% specificity), reflecting increased uncertainty at concentrations approaching the calibration intercept. These results indicate that field-portable XRF with site-specific calibration can reliably identify samples exceeding moderate-to-high regulatory thresholds (≥200 ppm) but may not precisely quantify contamination at lower screening levels.
 
 Based on these findings, we recommend the following practices for similar analyses of WUI ash: (1) develop site-specific calibration models with paired XRF and ICP-MS measurements spanning the expected concentration range; (2) report raw emission line intensities alongside any instrument-derived concentrations to enable cross-instrument recalibration; (3) consider screening thresholds (e.g., 200 ppm) for field sampling with portable XRF in a post-fire WUI; and (4) confirm threshold exceedances and borderline samples with laboratory ICP-MS analysis.
-
-% ============================================================================
-% ASSOCIATED CONTENT
-% ============================================================================
-
-\begin{suppinfo}
-\begin{itemize}
-  \item Additional figures showing spatial distribution of metal concentrations (PDF)
-  \item Complete ICP-MS dataset for all 54 elements (XLSX)
-  \item XRF emission line intensity data (CSV)
-\end{itemize}
-
-\end{suppinfo}
 
 % ============================================================================
 % AUTHOR INFORMATION
