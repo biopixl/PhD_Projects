@@ -1,0 +1,802 @@
+\documentclass[11pt,letterpaper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{natbib}
+\usepackage{lineno}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{pdflscape}
+
+% Page setup
+\geometry{margin=1in}
+\onehalfspacing
+\linenumbers
+
+% Custom colors
+\definecolor{complete}{RGB}{107,203,119}
+\definecolor{inprogress}{RGB}{255,217,61}
+\definecolor{pending}{RGB}{255,107,107}
+\definecolor{high}{RGB}{46,125,50}
+\definecolor{moderate}{RGB}{255,152,0}
+\definecolor{low}{RGB}{198,40,40}
+
+% Custom commands
+\newcommand{\status}[1]{\textcolor{#1}{\textbullet}}
+\newcommand{\HIGH}{\textcolor{high}{\textbf{HIGH}}}
+\newcommand{\MODERATE}{\textcolor{moderate}{\textbf{MODERATE}}}
+\newcommand{\LOW}{\textcolor{low}{\textbf{LOW}}}
+\newcommand{\variable}[1]{\texttt{#1}}
+\newcommand{\unit}[1]{\ensuremath{\mathrm{#1}}}
+
+% Title
+\title{%
+\textbf{Master Planning Document}\\[0.5em]
+\Large Remote Sensing Detection of Flood-Buried Forest Deposits:\\
+A Framework for Quantifying Cryptic Carbon Reservoirs\\
+in Amazonian Floodplains\\[1em]
+\large CICRA Pilot Study, Madre de Dios, Peru
+}
+
+\author{%
+[Authors for Expert Revision]\\
+\textit{Draft Version 1.0}
+}
+
+\date{April 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This master planning document consolidates the research framework, variable definitions, data product comparisons, and prediction model alternatives for detecting and quantifying flood-buried forest carbon deposits using remote sensing. The project addresses critical knowledge gaps identified by the NASA Earth Science Decadal Survey (2017--2027) and National Academies regarding terrestrial carbon stocks and residence times. We present a multi-platform approach comparing digital elevation models, spaceborne lidar, synthetic aperture radar, and hyperspectral imagery for terrace scarp detection and buried wood identification in the Madre de Dios River basin, Peru.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%==============================================================================
+\section{Motivation and Knowledge Gaps}
+\label{sec:motivation}
+%==============================================================================
+
+\subsection{The Cryptic Carbon Problem}
+
+Global carbon cycle models struggle to balance terrestrial carbon budgets, with significant ``missing sinks'' partially attributable to unquantified burial pathways. The terrestrial carbon cycle remains the \textbf{least constrained component} of the global carbon budget:
+
+\begin{itemize}[noitemsep]
+    \item Terrestrial CO$_2$ uptake varies from a net \SI{4.1}{Pg~C~yr^{-1}} sink to a \SI{0.4}{Pg~C~yr^{-1}} source
+    \item This variability accounts for the majority of interannual atmospheric CO$_2$ growth fluctuations
+    \item Large uncertainties stem from poor understanding of carbon allocation, stocks, and residence times
+\end{itemize}
+
+\subsection{NASA Decadal Survey Alignment (2017--2027)}
+
+The project directly addresses priorities from ``Thriving on Our Changing Planet'':
+
+\begin{table}[h]
+\centering
+\caption{Alignment with NASA Decadal Survey Priority Science Questions}
+\label{tab:decadal_alignment}
+\begin{tabular}{p{5cm}p{6cm}c}
+\toprule
+\textbf{Decadal Survey Question} & \textbf{Project Contribution} & \textbf{Priority} \\
+\midrule
+What are the structure, function, and biodiversity of Earth's ecosystems? & Maps terrace morphology indicating buried forest structure & \HIGH \\
+\addlinespace
+How is the water cycle changing? & Documents historical forest burial by flooding events & \MODERATE \\
+\addlinespace
+How do ecosystems respond to human actions? & Quantifies cryptic carbon not in current budgets & \HIGH \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{National Academies Research Priorities}
+
+From the \textit{Negative Emissions Technologies and Reliable Sequestration} report (2019):
+
+\begin{enumerate}[noitemsep]
+    \item Terrestrial carbon sequestration = increase/maintenance of organic C in biological stocks over \textbf{multidecadal timescales}
+    \item Stocks of interest: woody biomass, coarse woody debris, soil organic matter
+    \item Global wood burial potential: \SI{10 \pm 5}{Gt~C~yr^{-1}}
+    \item Tropical forests have largest potential: \SI{4.2}{Gt~C~yr^{-1}}
+    \item Currently $\sim$\SI{65}{Gt~C} on forest floors as coarse woody debris globally
+\end{enumerate}
+
+\subsection{Key Knowledge Gaps Addressed}
+
+\begin{table}[h]
+\centering
+\caption{Knowledge Gaps and Project Contributions}
+\label{tab:knowledge_gaps}
+\begin{tabular}{p{3.5cm}p{5cm}p{4cm}}
+\toprule
+\textbf{Knowledge Gap} & \textbf{Description} & \textbf{Project Response} \\
+\midrule
+Subsurface carbon stocks & Most evidence focused on above-ground biomass and top \SI{1}{m} soil & Focus on meters-deep burial deposits \\
+\addlinespace
+Carbon residence times & Poor understanding of long-term storage & Wood burial extends residence to centuries--millennia \\
+\addlinespace
+Floodplain carbon storage & Poorly quantified & Remote sensing framework for mapping \\
+\addlinespace
+Episodic burial events & Megafloods not in disturbance models & Links scarp morphology to burial events \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==============================================================================
+\section{Study Area and Sampling Design}
+\label{sec:study_area}
+%==============================================================================
+
+\subsection{Madre de Dios River, Peru}
+
+\begin{table}[h]
+\centering
+\caption{Study Area Characteristics}
+\label{tab:study_area}
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\
+\midrule
+Location & \ang{12.57}S, \ang{70.10}W \\
+Elevation range & \SIrange{200}{310}{m} asl \\
+Annual precipitation & $\sim$\SI{2500}{mm} \\
+Mean river discharge & $\sim$\SI{3000}{m^3~s^{-1}} \\
+Geomorphic setting & Andean foreland basin \\
+Primary study area & \SI{8 x 6}{km} (CICRA station) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Sampling Locations}
+
+\begin{table}[h]
+\centering
+\caption{Ground Truth Sampling Sites}
+\label{tab:sampling_sites}
+\begin{tabular}{lrrp{4cm}}
+\toprule
+\textbf{Site} & \textbf{Longitude} & \textbf{Latitude} & \textbf{Description} \\
+\midrule
+COLUMNA\_1\_CICRA & \ang{-70.1049} & \ang{-12.5653} & CICRA terrace exposure \\
+COLUMNA\_4\_CICRA & \ang{-70.1019} & \ang{-12.5690} & CICRA terrace exposure \\
+COLUMNA\_5\_LOS\_AMIGOS & \ang{-70.0906} & \ang{-12.5572} & Los Amigos confluence \\
+TOBA\_PATRICE\_PM & \ang{-69.2053} & \ang{-12.5711} & Puerto Maldonado area \\
+TRONCOS\_PM & \ang{-69.1900} & \ang{-12.5786} & Fossil logs exposure \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==============================================================================
+\section{Variables of Interest}
+\label{sec:variables}
+%==============================================================================
+
+\subsection{Primary Response Variables}
+
+\begin{table}[h]
+\centering
+\caption{Primary Response Variables}
+\label{tab:response_vars}
+\begin{tabular}{p{3cm}lllp{3.5cm}}
+\toprule
+\textbf{Variable} & \textbf{Symbol} & \textbf{Units} & \textbf{Range} & \textbf{Source} \\
+\midrule
+Scarp probability & $P_{scarp}$ & -- & 0--1 & DEM derivatives \\
+Wood presence & $P_{wood}$ & -- & 0--1 & Spectral + field \\
+Carbon stock & $C_{stock}$ & \unit{Mg~C} & TBD & Integrated model \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Terrain Predictor Variables}
+
+\begin{table}[h]
+\centering
+\caption{Terrain-Derived Predictor Variables}
+\label{tab:terrain_vars}
+\begin{tabular}{p{3.5cm}llll}
+\toprule
+\textbf{Variable} & \textbf{Symbol} & \textbf{Units} & \textbf{Range} & \textbf{Method} \\
+\midrule
+Slope & $\theta$ & degrees & 0--35 & Horn's algorithm \\
+Aspect & $\alpha$ & degrees & 0--360 & 8-neighbor \\
+Topographic Position Index & $TPI_r$ & m & $\pm$15 & Multi-scale ($r$ = 3,5,10,15 cells) \\
+Profile curvature & $\kappa_p$ & \unit{m^{-1}} & $\pm$0.05 & 2nd derivative \\
+Plan curvature & $\kappa_c$ & \unit{m^{-1}} & $\pm$0.05 & 2nd derivative \\
+Terrain Ruggedness Index & $TRI$ & m & 0--10 & Riley et al. \\
+Edge magnitude & $E_{mag}$ & -- & 0--1 & Sobel filter \\
+TPI variance & $\sigma^2_{TPI}$ & \unit{m^2} & 0--50 & Multi-scale \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Spectral Predictor Variables}
+
+\begin{table}[h]
+\centering
+\caption{Spectral Index Variables}
+\label{tab:spectral_vars}
+\begin{tabular}{p{4cm}lll}
+\toprule
+\textbf{Index} & \textbf{Formula} & \textbf{Range} & \textbf{Purpose} \\
+\midrule
+NDVI & $\frac{NIR - Red}{NIR + Red}$ & $-1$ to $+1$ & Vegetation density \\
+\addlinespace
+NDWI & $\frac{Green - NIR}{Green + NIR}$ & $-1$ to $+1$ & Moisture content \\
+\addlinespace
+NBR & $\frac{NIR - SWIR_2}{NIR + SWIR_2}$ & $-1$ to $+1$ & Bare/burned surface \\
+\addlinespace
+SOCI & $\frac{Red - Blue}{Red + Blue}$ & $-1$ to $+1$ & Soil organic carbon \\
+\addlinespace
+BSI & $\frac{(SWIR + Red) - (NIR + Blue)}{(SWIR + Red) + (NIR + Blue)}$ & $-1$ to $+1$ & Bare soil \\
+\addlinespace
+Cellulose Index & Absorption at \SI{2100}{nm} & 0--1 & Wood detection \\
+\addlinespace
+Lignin Index & Absorption at \SI{2270}{nm} & 0--1 & Organic matter \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Lidar-Derived Variables}
+
+\begin{table}[h]
+\centering
+\caption{Lidar-Derived Variables}
+\label{tab:lidar_vars}
+\begin{tabular}{p{3.5cm}llll}
+\toprule
+\textbf{Variable} & \textbf{Symbol} & \textbf{Units} & \textbf{Accuracy} & \textbf{Source} \\
+\midrule
+Ground elevation & $z_{ground}$ & m & $\pm$\SI{1}{m} & GEDI L2A \\
+Canopy height (RH100) & $h_{canopy}$ & m & $\pm$\SI{4}{m} & GEDI L2A \\
+Aboveground biomass density & $AGBD$ & \unit{Mg~ha^{-1}} & $\pm$20\% & GEDI L4A \\
+Scarp height & $H_{scarp}$ & m & $\pm$\SI{2}{m} & GEDI + DEM \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Carbon Estimation Parameters}
+
+\begin{table}[h]
+\centering
+\caption{Carbon Quantification Parameters}
+\label{tab:carbon_params}
+\begin{tabular}{p{4cm}lllp{3cm}}
+\toprule
+\textbf{Parameter} & \textbf{Symbol} & \textbf{Units} & \textbf{Value/Range} & \textbf{Source} \\
+\midrule
+Total scarp length & $L_{total}$ & km & TBD & DEM vectorization \\
+Mean scarp height & $H_{mean}$ & m & 5--15 & GEDI + field \\
+Volume per meter & $V_{m}$ & \unit{m^3~m^{-1}} & 0.5--2.0 & Field measurement \\
+Wood density (subfossil) & $\rho_{wood}$ & \unit{kg~m^{-3}} & 400--700 & Lab analysis \\
+Carbon fraction & $f_C$ & -- & 0.47 & Literature \\
+Preservation factor & $f_{pres}$ & -- & 0.50--0.97 & Lab analysis \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Carbon Stock Equation}
+
+The total carbon stock is estimated as:
+
+\begin{equation}
+\label{eq:carbon_stock}
+C_{stock} = L_{total} \times P_{wood} \times V_m \times \rho_{wood} \times f_C \times f_{pres}
+\end{equation}
+
+With uncertainty propagation:
+
+\begin{equation}
+\label{eq:uncertainty}
+\frac{\sigma_C^2}{C^2} = \left(\frac{\sigma_L}{L}\right)^2 + \left(\frac{\sigma_P}{P}\right)^2 + \left(\frac{\sigma_V}{V}\right)^2 + \left(\frac{\sigma_\rho}{\rho}\right)^2 + \left(\frac{\sigma_f}{f}\right)^2
+\end{equation}
+
+%==============================================================================
+\section{Data Products and Platform Comparison}
+\label{sec:platforms}
+%==============================================================================
+
+\subsection{Digital Elevation Models}
+
+\begin{table}[h]
+\centering
+\caption{DEM Product Comparison for Scarp Detection}
+\label{tab:dem_comparison}
+\small
+\begin{tabular}{p{2.5cm}cccccc}
+\toprule
+\textbf{Product} & \textbf{Resolution} & \textbf{Vert. Acc.} & \textbf{Forest Perf.} & \textbf{Access} & \textbf{Scarp Det.} & \textbf{Priority} \\
+\midrule
+SRTM v3 & \SI{30}{m} & $\pm$\SI{9}{m} & Poor & Free & $\star\star$ & Low \\
+NASADEM & \SI{30}{m} & $\pm$\SI{5}{m} & Moderate & Free & $\star\star\star$ & Medium \\
+Copernicus GLO-30 & \SI{30}{m} & $\pm$\SI{4}{m} & Moderate & Free & $\star\star\star$ & Medium \\
+\rowcolor{complete!30}
+FABDEM & \SI{30}{m} & $\pm$\SI{2-3}{m} & \textbf{Excellent} & Free & $\star\star\star\star$ & \textbf{HIGH} \\
+TanDEM-X/WorldDEM & \SI{12}{m} & $\pm$\SI{2}{m} & Moderate & Commercial & $\star\star\star\star$ & Low \\
+WorldDEM DTM & \SI{12}{m} & $\pm$\SI{2}{m} & Good & Commercial & $\star\star\star\star\star$ & Low \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key Finding:} FABDEM removes forest canopy bias, roughly halving vertical error in forested regions compared to Copernicus GLO-30.
+
+\subsection{Spaceborne Lidar}
+
+\begin{table}[h]
+\centering
+\caption{Spaceborne Lidar Comparison}
+\label{tab:lidar_comparison}
+\begin{tabular}{p{2.5cm}ccccc}
+\toprule
+\textbf{Product} & \textbf{Footprint} & \textbf{Ground Acc.} & \textbf{Canopy Acc.} & \textbf{Coverage} & \textbf{Status} \\
+\midrule
+GEDI L2A & \SI{25}{m} & $\pm$\SI{1}{m} & $\pm$\SI{4-5}{m} & $\pm$\ang{51.6} lat & Active \\
+GEDI L4A AGB & \SI{25}{m} & N/A & AGB & $\pm$\ang{51.6} lat & Active \\
+ICESat-2 ATL08 & \SI{11 x 100}{m} & $\pm$\SI{0.5-0.7}{m} & $\pm$\SI{1.4-4}{m} & Global & Active \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Tropical Forest Note:} GEDI preferred for dense tropical canopy; ICESat-2 struggles with multi-layered canopy (NRMSE 67\%).
+
+\subsection{Synthetic Aperture Radar}
+
+\begin{table}[h]
+\centering
+\caption{SAR Mission Comparison for Forest Structure}
+\label{tab:sar_comparison}
+\begin{tabular}{p{2.5cm}ccccc}
+\toprule
+\textbf{Mission} & \textbf{Band} & \textbf{Resolution} & \textbf{Biomass Sens.} & \textbf{Access} & \textbf{Status} \\
+\midrule
+Sentinel-1 & C-band & \SI{10-20}{m} & $<$\SI{50}{Mg~ha^{-1}} & Free & Active \\
+ALOS-2 PALSAR-2 & L-band & \SI{25}{m} & $<$\SI{100}{Mg~ha^{-1}} & Free & Active \\
+\rowcolor{inprogress!30}
+NISAR & L+S-band & \SI{12}{m} & $<$\SI{150}{Mg~ha^{-1}} & Free & July 2025 \\
+\rowcolor{complete!30}
+ESA BIOMASS & P-band & \SI{50-200}{m} & $>$\SI{300}{Mg~ha^{-1}} & Free & \textbf{Launched} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key Finding:} ESA BIOMASS P-band (\SI{70}{cm} wavelength) penetrates canopy to trunks and large branches---directly relevant for buried wood structure detection. Data expected January 2026.
+
+\subsection{Hyperspectral Imagery}
+
+\begin{table}[h]
+\centering
+\caption{Hyperspectral Mission Comparison}
+\label{tab:hyperspectral_comparison}
+\begin{tabular}{p{2.5cm}ccccc}
+\toprule
+\textbf{Mission} & \textbf{Resolution} & \textbf{Bands} & \textbf{Wood Det.} & \textbf{Access} & \textbf{Status} \\
+\midrule
+EMIT & \SI{60}{m} & 285 & Moderate & Free & Active \\
+PRISMA & \SI{30}{m} & 239 & Moderate & Free & Active \\
+EnMAP & \SI{30}{m} & 224 & Moderate & Free & Active \\
+\rowcolor{inprogress!30}
+NASA SBG & \SI{30}{m} & $\sim$200+ & \textbf{High} & Free & 2027 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{High-Resolution Optical}
+
+\begin{table}[h]
+\centering
+\caption{Optical Imagery Comparison}
+\label{tab:optical_comparison}
+\begin{tabular}{p{2.5cm}ccccc}
+\toprule
+\textbf{Product} & \textbf{Resolution} & \textbf{Bands} & \textbf{Revisit} & \textbf{Access} & \textbf{Priority} \\
+\midrule
+Sentinel-2 & \SI{10-20}{m} & 13 & 5 days & Free & Medium \\
+Landsat 8/9 & \SI{30}{m} & 11 & 16 days & Free & Low \\
+\rowcolor{complete!30}
+Planet NICFI & \SI{4.77}{m} & 4 & Monthly & \textbf{Free} & \textbf{HIGH} \\
+Planet SuperDove & \SI{3}{m} & 8 & Daily & Commercial & Low \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key Finding:} Planet NICFI provides \textbf{free} \SI{4.77}{m} imagery for all tropical forests---6$\times$ improvement over Sentinel-2 for detailed scarp mapping.
+
+%==============================================================================
+\section{Prediction Models by Platform}
+\label{sec:models}
+%==============================================================================
+
+\subsection{Model 1: Terrain-Based Scarp Probability (DEM)}
+
+\subsubsection{Input Variables}
+\begin{itemize}[noitemsep]
+    \item Slope ($\theta$), normalized to 0--1
+    \item TPI gradient ($\nabla TPI$), normalized
+    \item Edge magnitude ($E_{mag}$), normalized
+    \item Multi-scale TPI variance ($\sigma^2_{TPI}$), normalized
+    \item Terrain roughness ($TRI$), normalized
+\end{itemize}
+
+\subsubsection{Model Formulation}
+
+\begin{equation}
+\label{eq:scarp_prob}
+P_{scarp} = w_1 \cdot \theta_{norm} + w_2 \cdot \nabla TPI_{norm} + w_3 \cdot E_{mag} + w_4 \cdot \sigma^2_{TPI,norm} + w_5 \cdot TRI_{norm}
+\end{equation}
+
+\textbf{Default weights:} $w_1 = 0.30$, $w_2 = 0.25$, $w_3 = 0.20$, $w_4 = 0.15$, $w_5 = 0.10$
+
+\subsubsection{Alternative DEM Products}
+
+\begin{table}[h]
+\centering
+\caption{Expected Model Performance by DEM Product}
+\label{tab:dem_model_performance}
+\begin{tabular}{lccc}
+\toprule
+\textbf{DEM Product} & \textbf{Expected Precision} & \textbf{Expected Recall} & \textbf{Notes} \\
+\midrule
+NASADEM & 0.65--0.75 & 0.70--0.80 & Baseline \\
+Copernicus & 0.65--0.75 & 0.70--0.80 & Similar to NASADEM \\
+\textbf{FABDEM} & \textbf{0.75--0.85} & \textbf{0.80--0.90} & Canopy removal improves \\
+WorldDEM DTM & 0.80--0.90 & 0.85--0.95 & Best but commercial \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Model 2: Lidar-Based Height Validation (GEDI/ICESat-2)}
+
+\subsubsection{Input Variables}
+\begin{itemize}[noitemsep]
+    \item Ground elevation from GEDI L2A ($z_{ground}$)
+    \item Canopy height ($h_{canopy}$)
+    \item Quality flag filtering (quality\_flag = 1, degrade\_flag = 0)
+\end{itemize}
+
+\subsubsection{Model Formulation}
+
+Scarp height validation:
+\begin{equation}
+H_{scarp,lidar} = z_{terrace} - z_{floodplain}
+\end{equation}
+
+Cross-validation with DEM:
+\begin{equation}
+\Delta H = H_{scarp,DEM} - H_{scarp,lidar}
+\end{equation}
+
+\subsubsection{Platform Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Lidar Platform Performance for Height Estimation}
+\label{tab:lidar_model_performance}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Platform} & \textbf{Height RMSE} & \textbf{Tropical Perf.} & \textbf{Coverage} & \textbf{Recommendation} \\
+\midrule
+GEDI L2A & $\pm$\SI{1-2}{m} & Good & Sampling & \textbf{Primary} \\
+ICESat-2 ATL08 & $\pm$\SI{2-4}{m} & Poor (NRMSE 67\%) & Sampling & Validation only \\
+GEDI + ICESat-2 & $\pm$\SI{1.5}{m} & Moderate & Better & Combined approach \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Model 3: Spectral Wood Detection (EMIT/Sentinel-2)}
+
+\subsubsection{Input Variables}
+\begin{itemize}[noitemsep]
+    \item Cellulose absorption depth at \SI{2100}{nm}
+    \item Lignin absorption depth at \SI{2270}{nm}
+    \item NDVI anomaly (deviation from surrounding vegetation)
+    \item Bare soil index (BSI)
+\end{itemize}
+
+\subsubsection{Model Formulation}
+
+Cellulose Detection Index:
+\begin{equation}
+CDI = 1 - \frac{R_{2100}}{R_{continuum}}
+\end{equation}
+
+Combined spectral score:
+\begin{equation}
+S_{wood} = w_1 \cdot CDI + w_2 \cdot LDI + w_3 \cdot (1 - NDVI) + w_4 \cdot BSI
+\end{equation}
+
+\subsubsection{Platform Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Spectral Platform Performance for Wood Detection}
+\label{tab:spectral_model_performance}
+\begin{tabular}{lcccl}
+\toprule
+\textbf{Platform} & \textbf{Resolution} & \textbf{Wood Detection} & \textbf{Limitation} & \textbf{Use Case} \\
+\midrule
+EMIT & \SI{60}{m} & Moderate & Mixed pixels & Regional screening \\
+PRISMA/EnMAP & \SI{30}{m} & Moderate & Limited coverage & Targeted analysis \\
+Sentinel-2 & \SI{10-20}{m} & Low & No SWIR detail & Vegetation gaps only \\
+\textbf{SBG (2027)} & \SI{30}{m} & High & Not yet available & Future primary \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Model 4: SAR Structure Detection (BIOMASS/NISAR)}
+
+\subsubsection{Input Variables}
+\begin{itemize}[noitemsep]
+    \item P-band backscatter (ESA BIOMASS)
+    \item L-band backscatter (NISAR, ALOS-2)
+    \item Polarimetric decomposition parameters
+    \item InSAR coherence
+\end{itemize}
+
+\subsubsection{Model Formulation}
+
+Biomass estimation (NISAR):
+\begin{equation}
+AGB = a \cdot \sigma^0_{HV,L} + b \cdot \sigma^0_{HV,S} + c
+\end{equation}
+
+Expected performance: $R^2 > 0.75$, RMSE \SIrange{15}{22}{Mg~ha^{-1}}
+
+\subsubsection{Platform Comparison}
+
+\begin{table}[h]
+\centering
+\caption{SAR Platform Performance for Structure Detection}
+\label{tab:sar_model_performance}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Platform} & \textbf{Wavelength} & \textbf{Penetration} & \textbf{Biomass Sat.} & \textbf{Status} \\
+\midrule
+Sentinel-1 (C-band) & \SI{5.6}{cm} & Canopy top & \SI{50}{Mg~ha^{-1}} & Active \\
+ALOS-2 (L-band) & \SI{24}{cm} & Mid-canopy & \SI{100}{Mg~ha^{-1}} & Active \\
+NISAR (L+S) & \SI{24}{cm} + \SI{10}{cm} & Mid + upper & \SI{150}{Mg~ha^{-1}} & July 2025 \\
+\textbf{BIOMASS (P-band)} & \SI{70}{cm} & \textbf{Trunks} & $>$\SI{300}{Mg~ha^{-1}} & \textbf{Data 2026} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Model 5: Integrated Multi-Platform Prediction}
+
+\subsubsection{Ensemble Approach}
+
+\begin{equation}
+P_{final} = \alpha \cdot P_{terrain} + \beta \cdot P_{lidar} + \gamma \cdot P_{spectral} + \delta \cdot P_{SAR}
+\end{equation}
+
+Where weights $\alpha, \beta, \gamma, \delta$ are determined by:
+\begin{enumerate}[noitemsep]
+    \item Individual platform accuracy (from validation)
+    \item Data availability at location
+    \item Uncertainty of each prediction
+\end{enumerate}
+
+\subsubsection{Decision Framework}
+
+\begin{table}[h]
+\centering
+\caption{Multi-Platform Decision Matrix}
+\label{tab:decision_matrix}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Scenario} & \textbf{DEM} & \textbf{GEDI} & \textbf{EMIT} & \textbf{SAR} & \textbf{Confidence} \\
+\midrule
+All agree high & High & High & High & High & Very High \\
+Terrain only & High & Gap & Low & Low & Moderate \\
+Terrain + lidar & High & High & Gap & Low & High \\
+Spectral anomaly & Low & Gap & High & Mod & Moderate \\
+SAR structure & Mod & Gap & Gap & High & Moderate \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==============================================================================
+\section{Science Traceability Matrix}
+\label{sec:stm}
+%==============================================================================
+
+\begin{landscape}
+\begin{table}[p]
+\centering
+\caption{Full Science Traceability Matrix}
+\label{tab:stm_full}
+\small
+\begin{tabular}{p{1.5cm}p{4cm}p{2.5cm}p{2.5cm}p{3cm}p{2cm}c}
+\toprule
+\textbf{ID} & \textbf{Science Question} & \textbf{Measurement} & \textbf{Data Product} & \textbf{Variable} & \textbf{Validation} & \textbf{Feasibility} \\
+\midrule
+\multicolumn{7}{l}{\textbf{Scarp Detection}} \\
+STM-1.1 & Where are terrace scarps? & Location & NASADEM, FABDEM & Slope $>$\ang{15} & GPS survey & \HIGH \\
+STM-1.2 & Where are terrace scarps? & Location & DEM & TPI gradient & GPS survey & \HIGH \\
+STM-1.3 & Where are terrace scarps? & Location & DEM & Edge magnitude & Field mapping & \HIGH \\
+STM-1.4 & What is scarp probability? & Probability (0--1) & Derived & Composite score & Confusion matrix & \HIGH \\
+\midrule
+\multicolumn{7}{l}{\textbf{Geometry Measurement}} \\
+STM-2.1 & What is scarp height? & Height (m) & GEDI L2A, DEM & Ground elevation & Rangefinder & \HIGH \\
+STM-2.2 & What is scarp length? & Length (m) & Scarp vectors & Centerline & Field measure & \HIGH \\
+STM-2.3 & What is scarp orientation? & Azimuth (\ang{}) & Scarp vectors & Direction & Compass & \HIGH \\
+\midrule
+\multicolumn{7}{l}{\textbf{Wood Detection}} \\
+STM-3.1 & Is wood spectrally detectable? & Reflectance & EMIT L2A & Cellulose \SI{2100}{nm} & Spectrometer & \MODERATE \\
+STM-3.2 & Is organic matter elevated? & Index & EMIT L2A & Lignin \SI{2270}{nm} & Lab chemistry & \MODERATE \\
+STM-3.3 & Are vegetation gaps present? & NDVI & Sentinel-2, NICFI & NDVI anomaly & Visual & \MODERATE \\
+STM-3.4 & Is wood structure detectable? & Backscatter & ESA BIOMASS & P-band $\sigma^0$ & TBD & \MODERATE \\
+\midrule
+\multicolumn{7}{l}{\textbf{Carbon Quantification}} \\
+STM-4.1 & What is wood volume? & \unit{m^3~m^{-1}} & Field data & Cross-section & Excavation & \LOW \\
+STM-4.2 & What is wood density? & \unit{kg~m^{-3}} & Lab analysis & Dry weight/vol & Standard & \LOW \\
+STM-4.3 & What is carbon fraction? & \% & Lab analysis & Elemental C & CHN analyzer & \LOW \\
+STM-4.4 & What is preservation state? & \% & Lab analysis & Mass loss & Reference & \LOW \\
+STM-4.5 & What is burial age? & ka BP & Lab analysis & $^{14}$C / OSL & AMS dating & \LOW \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{landscape}
+
+%==============================================================================
+\section{Data Product Status and Tracking}
+\label{sec:tracking}
+%==============================================================================
+
+\subsection{Current Acquisition Status}
+
+\begin{table}[h]
+\centering
+\caption{Data Product Acquisition Status}
+\label{tab:status}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Product} & \textbf{Source} & \textbf{Status} & \textbf{Priority} & \textbf{Action} \\
+\midrule
+\multicolumn{5}{l}{\textit{Complete}} \\
+NASADEM & NASA EarthData & \status{complete} Complete & -- & -- \\
+Copernicus DEM & AWS/ESA & \status{complete} Complete & -- & -- \\
+Terrain derivatives & Derived & \status{complete} Complete & -- & -- \\
+\midrule
+\multicolumn{5}{l}{\textit{In Progress}} \\
+GEDI L4A & NASA LP DAAC & \status{inprogress} Downloading & HIGH & Monitor \\
+EMIT L2A & NASA LP DAAC & \status{inprogress} Downloading & HIGH & Monitor \\
+\midrule
+\multicolumn{5}{l}{\textit{Priority Pending}} \\
+\textbf{FABDEM} & OpenTopography & \status{pending} Pending & \textbf{HIGH} & Download now \\
+\textbf{Planet NICFI} & Planet & \status{pending} Pending & \textbf{HIGH} & Register \\
+ALOS-2 PALSAR & JAXA/GEE & \status{pending} Pending & Medium & Download \\
+\midrule
+\multicolumn{5}{l}{\textit{Future Missions}} \\
+NISAR & NASA/ISRO & \status{pending} July 2025 & HIGH & Monitor \\
+ESA BIOMASS data & ESA & \status{pending} Jan 2026 & HIGH & Monitor \\
+NASA SBG & NASA & \status{pending} 2027 & Medium & Monitor \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==============================================================================
+\section{Validation Plan}
+\label{sec:validation}
+%==============================================================================
+
+\subsection{Validation Hierarchy}
+
+\begin{enumerate}
+    \item \textbf{V1: Internal consistency} -- DEM product inter-comparison
+    \item \textbf{V2: Geometric accuracy} -- GEDI + GPS for scarp location/height
+    \item \textbf{V3: Thematic accuracy} -- Field verification of scarp detection
+    \item \textbf{V4: Biophysical validation} -- Wood presence at detected scarps
+    \item \textbf{V5: Quantitative validation} -- Carbon estimates vs. lab analysis
+\end{enumerate}
+
+\subsection{Performance Metrics}
+
+\begin{table}[h]
+\centering
+\caption{Validation Metrics and Targets}
+\label{tab:validation_metrics}
+\begin{tabular}{llcc}
+\toprule
+\textbf{Metric} & \textbf{Formula} & \textbf{Target} & \textbf{Current} \\
+\midrule
+Detection accuracy & $(TP + TN) / (TP + TN + FP + FN)$ & $>$80\% & TBD \\
+Precision & $TP / (TP + FP)$ & $>$70\% & TBD \\
+Recall & $TP / (TP + FN)$ & $>$80\% & TBD \\
+Height RMSE & $\sqrt{\sum(h_{pred} - h_{obs})^2 / n}$ & $<$\SI{3}{m} & TBD \\
+Carbon error & $|C_{pred} - C_{obs}| / C_{obs}$ & $<$50\% & TBD \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==============================================================================
+\section{Timeline and Milestones}
+\label{sec:timeline}
+%==============================================================================
+
+\begin{table}[h]
+\centering
+\caption{Project Milestones}
+\label{tab:milestones}
+\begin{tabular}{lll}
+\toprule
+\textbf{Phase} & \textbf{Activities} & \textbf{Deliverables} \\
+\midrule
+\textbf{Phase 1: Data Acquisition} & & \\
+\quad Current & GEDI, EMIT downloading & Raw data archive \\
+\quad Immediate & FABDEM, Planet NICFI & Enhanced DEM, high-res optical \\
+\quad Near-term & Sentinel-2, ALOS-2 & Spectral indices, SAR data \\
+\midrule
+\textbf{Phase 2: Analysis} & & \\
+\quad Processing & Multi-platform terrain analysis & Scarp probability maps \\
+\quad Integration & Cross-platform validation & Ensemble predictions \\
+\quad Comparison & Platform performance metrics & Model evaluation report \\
+\midrule
+\textbf{Phase 3: Field Campaign} & & \\
+\quad Verification & Stratified site visits (n=30+) & Validation dataset \\
+\quad Sampling & Wood/sediment collection & Lab samples \\
+\midrule
+\textbf{Phase 4: Publication} & & \\
+\quad Analysis & Carbon estimation, uncertainty & Final estimates \\
+\quad Writing & Manuscript preparation & Submitted paper \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==============================================================================
+\section{Expert Review Notes}
+\label{sec:review}
+%==============================================================================
+
+\textit{[This section reserved for expert comments and revisions]}
+
+\vspace{2cm}
+
+\noindent\textbf{Reviewer Comments:}
+
+\vspace{5cm}
+
+\noindent\textbf{Action Items:}
+
+\vspace{3cm}
+
+%==============================================================================
+% REFERENCES
+%==============================================================================
+
+\section*{References}
+\addcontentsline{toc}{section}{References}
+
+\begin{enumerate}[label={[\arabic*]}, leftmargin=*]
+    \item National Academies of Sciences, Engineering, and Medicine. (2019). \textit{Negative Emissions Technologies and Reliable Sequestration: A Research Agenda}. Washington, DC: The National Academies Press. \url{https://doi.org/10.17226/25259}
+
+    \item National Academies of Sciences, Engineering, and Medicine. (2018). \textit{Thriving on Our Changing Planet: A Decadal Strategy for Earth Observation from Space}. Washington, DC: The National Academies Press.
+
+    \item Zeng, N. (2008). Carbon sequestration via wood burial. \textit{Carbon Balance and Management}, 3:1. \url{https://doi.org/10.1186/1750-0680-3-1}
+
+    \item Hawker, L., et al. (2022). A 30 m global map of elevation with forests and buildings removed. \textit{Environmental Research Letters}, 17(2), 024016.
+
+    \item Dubayah, R., et al. (2020). The Global Ecosystem Dynamics Investigation: High-resolution laser ranging of the Earth's forests and topography. \textit{Science of Remote Sensing}, 1, 100002.
+
+    \item Le Toan, T., et al. (2011). The BIOMASS mission: Mapping global forest biomass to better understand the terrestrial carbon cycle. \textit{Remote Sensing of Environment}, 115(11), 2850-2860.
+
+    \item Rosen, P.A., et al. (2017). The NASA-ISRO SAR (NISAR) mission dual-band radar instrument preliminary design. \textit{IEEE International Geoscience and Remote Sensing Symposium}, 3832-3835.
+\end{enumerate}
+
+\end{document}

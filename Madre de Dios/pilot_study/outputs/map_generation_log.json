@@ -1,0 +1,167 @@
+{
+  "generated": "2026-04-15T11:22:41.822659",
+  "total_maps": 20,
+  "successful": 20,
+  "entries": [
+    {
+      "timestamp": "2026-04-15T11:22:37.468784",
+      "category": "dem",
+      "name": "DEM: COPERNICUS",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/dem/Map_DEM_copernicus.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:37.681864",
+      "category": "dem",
+      "name": "DEM: NASADEM",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/dem/Map_DEM_nasadem.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:37.893519",
+      "category": "terrain",
+      "name": "Slope (degrees)",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_slope.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:38.115966",
+      "category": "terrain",
+      "name": "Aspect (degrees)",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_aspect.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:38.341916",
+      "category": "terrain",
+      "name": "Hillshade",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_hillshade.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:38.570786",
+      "category": "terrain",
+      "name": "Topographic Position Index",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_tpi.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:38.791511",
+      "category": "terrain",
+      "name": "Terrain Ruggedness Index",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_tri.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:39.018134",
+      "category": "terrain",
+      "name": "Profile Curvature",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_profile_curvature.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:39.241171",
+      "category": "terrain",
+      "name": "Plan Curvature",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_plan_curvature.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:39.491349",
+      "category": "terrain",
+      "name": "Landform Classification",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_landform.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:39.748051",
+      "category": "terrain",
+      "name": "Enhanced Slope",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_slope_enhanced_enhanced.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:39.996319",
+      "category": "terrain",
+      "name": "Multi-scale TPI",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_tpi_multiscale_enhanced.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:40.237087",
+      "category": "terrain",
+      "name": "TPI Variance",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_tpi_variance_enhanced.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:40.463745",
+      "category": "terrain",
+      "name": "Edge Magnitude",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_edge_magnitude_enhanced.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:40.690555",
+      "category": "terrain",
+      "name": "Terrain Range",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_terrain_range_enhanced.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:40.917866",
+      "category": "terrain",
+      "name": "Multi-directional Hillshade",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/terrain/Map_terrain_hillshade_multidirectional_enhanced.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:41.149438",
+      "category": "scarp",
+      "name": "Scarp Probability (Basic)",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/scarp/Map_scarp_probability.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:41.379089",
+      "category": "scarp",
+      "name": "Scarp Probability (Enhanced)",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/scarp/Map_scarp_probability_enhanced.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:41.682183",
+      "category": "comparison",
+      "name": "DEM Comparison",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/comparison/Map_DEM_comparison.png",
+      "status": "success",
+      "notes": ""
+    },
+    {
+      "timestamp": "2026-04-15T11:22:41.822518",
+      "category": "summary",
+      "name": "Processing Status",
+      "filepath": "/Users/isaac/Documents/GitHub/PhD_Projects/Madre de Dios/pilot_study/outputs/maps/Map_processing_status.png",
+      "status": "success",
+      "notes": ""
+    }
+  ]
+}

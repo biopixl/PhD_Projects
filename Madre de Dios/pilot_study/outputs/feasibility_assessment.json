@@ -1,0 +1,489 @@
+{
+  "generated": "2026-04-15T11:37:56.419220",
+  "overall": {
+    "data_products": {
+      "complete": 11,
+      "downloading": 3,
+      "pending": 3,
+      "total": 17,
+      "percent_complete": 64.7
+    },
+    "objectives": {
+      "complete": 5,
+      "in_progress": 6,
+      "pending": 2,
+      "total": 13,
+      "percent_complete": 38.5
+    },
+    "carbon_parameters": {
+      "complete": 1,
+      "in_progress": 1,
+      "pending": 5,
+      "total": 7,
+      "percent_complete": 14.3
+    },
+    "feasibility_distribution": {
+      "HIGH": 7,
+      "MODERATE": 4,
+      "LOW": 2
+    },
+    "overall_assessment": "MODERATE-HIGH - Core methodology established"
+  },
+  "objectives": [
+    {
+      "id": "L1.1",
+      "level": 1,
+      "description": "Quantify buried forest carbon stocks in Amazonian river terraces",
+      "data_products": [
+        "All"
+      ],
+      "variables": [
+        "Carbon stock (Mg C)"
+      ],
+      "validation": "Full methodology",
+      "feasibility": "MODERATE",
+      "status": "in_progress",
+      "notes": "Primary research objective"
+    },
+    {
+      "id": "L2.1",
+      "level": 2,
+      "description": "Map spatial distribution of terrace scarps",
+      "data_products": [
+        "NASADEM",
+        "Copernicus",
+        "GEDI"
+      ],
+      "variables": [
+        "Slope",
+        "TPI",
+        "Edge magnitude"
+      ],
+      "validation": "GPS survey",
+      "feasibility": "HIGH",
+      "status": "complete",
+      "notes": ""
+    },
+    {
+      "id": "L2.2",
+      "level": 2,
+      "description": "Estimate scarp geometry (height, length, orientation)",
+      "data_products": [
+        "GEDI L2A",
+        "DEM"
+      ],
+      "variables": [
+        "Height (m)",
+        "Length (m)",
+        "Azimuth (\u00b0)"
+      ],
+      "validation": "Laser rangefinder",
+      "feasibility": "HIGH",
+      "status": "in_progress",
+      "notes": ""
+    },
+    {
+      "id": "L2.3",
+      "level": 2,
+      "description": "Identify locations with buried wood potential",
+      "data_products": [
+        "EMIT L2A",
+        "Sentinel-2"
+      ],
+      "variables": [
+        "Cellulose index",
+        "NDVI anomaly"
+      ],
+      "validation": "Visual inspection",
+      "feasibility": "MODERATE",
+      "status": "in_progress",
+      "notes": ""
+    },
+    {
+      "id": "L2.4",
+      "level": 2,
+      "description": "Quantify wood volume at exposed scarps",
+      "data_products": [
+        "Field data",
+        "TLS"
+      ],
+      "variables": [
+        "Cross-section area",
+        "Volume (m\u00b3/m)"
+      ],
+      "validation": "Pit excavation",
+      "feasibility": "LOW",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": "L2.5",
+      "level": 2,
+      "description": "Estimate carbon density per unit scarp length",
+      "data_products": [
+        "Lab analysis"
+      ],
+      "variables": [
+        "Density (kg/m\u00b3)",
+        "C fraction"
+      ],
+      "validation": "CHN analyzer",
+      "feasibility": "LOW",
+      "status": "pending",
+      "notes": ""
+    },
+    {
+      "id": "STM-1.1",
+      "level": 3,
+      "description": "Detect slope breaks >15\u00b0",
+      "data_products": [
+        "NASADEM",
+        "Copernicus"
+      ],
+      "variables": [
+        "Slope (degrees)"
+      ],
+      "validation": "GPS + visual",
+      "feasibility": "HIGH",
+      "status": "complete",
+      "notes": ""
+    },
+    {
+      "id": "STM-1.2",
+      "level": 3,
+      "description": "Map terrace/floodplain transitions via TPI",
+      "data_products": [
+        "DEM"
+      ],
+      "variables": [
+        "TPI multi-scale"
+      ],
+      "validation": "GPS survey",
+      "feasibility": "HIGH",
+      "status": "complete",
+      "notes": ""
+    },
+    {
+      "id": "STM-1.3",
+      "level": 3,
+      "description": "Identify linear scarp features",
+      "data_products": [
+        "DEM"
+      ],
+      "variables": [
+        "Edge magnitude"
+      ],
+      "validation": "Field mapping",
+      "feasibility": "HIGH",
+      "status": "complete",
+      "notes": ""
+    },
+    {
+      "id": "STM-1.4",
+      "level": 3,
+      "description": "Calculate composite scarp probability",
+      "data_products": [
+        "Derived"
+      ],
+      "variables": [
+        "Probability (0-1)"
+      ],
+      "validation": "Confusion matrix",
+      "feasibility": "HIGH",
+      "status": "complete",
+      "notes": ""
+    },
+    {
+      "id": "STM-2.1",
+      "level": 3,
+      "description": "Measure scarp height from lidar",
+      "data_products": [
+        "GEDI L2A"
+      ],
+      "variables": [
+        "Ground elevation (m)"
+      ],
+      "validation": "Laser rangefinder",
+      "feasibility": "HIGH",
+      "status": "in_progress",
+      "notes": ""
+    },
+    {
+      "id": "STM-3.1",
+      "level": 3,
+      "description": "Detect wood via cellulose absorption",
+      "data_products": [
+        "EMIT L2A"
+      ],
+      "variables": [
+        "Cellulose 2100nm"
+      ],
+      "validation": "ASD spectrometer",
+      "feasibility": "MODERATE",
+      "status": "in_progress",
+      "notes": ""
+    },
+    {
+      "id": "STM-3.2",
+      "level": 3,
+      "description": "Detect organic matter via lignin absorption",
+      "data_products": [
+        "EMIT L2A"
+      ],
+      "variables": [
+        "Lignin 2270nm"
+      ],
+      "validation": "Lab chemistry",
+      "feasibility": "MODERATE",
+      "status": "in_progress",
+      "notes": ""
+    }
+  ],
+  "carbon_parameters": [
+    {
+      "name": "Total scarp length",
+      "symbol": "L_total",
+      "value_range": "TBD km",
+      "source": "DEM vectorization",
+      "status": "in_progress",
+      "uncertainty": "\u00b110%",
+      "current_value": null
+    },
+    {
+      "name": "Mean scarp height",
+      "symbol": "H_mean",
+      "value_range": "5-15 m",
+      "source": "GEDI + DEM",
+      "status": "pending",
+      "uncertainty": "\u00b12 m",
+      "current_value": null
+    },
+    {
+      "name": "Wood presence probability",
+      "symbol": "P_wood",
+      "value_range": "0.3-0.8",
+      "source": "EMIT + Field",
+      "status": "pending",
+      "uncertainty": "\u00b10.2",
+      "current_value": null
+    },
+    {
+      "name": "Volume per meter",
+      "symbol": "V_per_m",
+      "value_range": "0.5-2.0 m\u00b3/m",
+      "source": "Field measurement",
+      "status": "pending",
+      "uncertainty": "\u00b150%",
+      "current_value": null
+    },
+    {
+      "name": "Wood density (subfossil)",
+      "symbol": "\u03c1_wood",
+      "value_range": "400-700 kg/m\u00b3",
+      "source": "Lab analysis",
+      "status": "pending",
+      "uncertainty": "\u00b1100 kg/m\u00b3",
+      "current_value": null
+    },
+    {
+      "name": "Carbon fraction",
+      "symbol": "f_C",
+      "value_range": "0.47",
+      "source": "Literature",
+      "status": "complete",
+      "uncertainty": "\u00b10.02",
+      "current_value": 0.47
+    },
+    {
+      "name": "Preservation factor",
+      "symbol": "f_pres",
+      "value_range": "0.50-0.97",
+      "source": "Lab analysis",
+      "status": "pending",
+      "uncertainty": "\u00b10.15",
+      "current_value": null
+    }
+  ],
+  "product_assessments": {
+    "nasadem": {
+      "scores": [
+        {
+          "criterion": "Spatial resolution",
+          "score": 4,
+          "max_score": 5,
+          "evidence": "30m resolves >50m scarps"
+        },
+        {
+          "criterion": "Vertical accuracy",
+          "score": 4,
+          "max_score": 5,
+          "evidence": "\u00b15m absolute"
+        },
+        {
+          "criterion": "Coverage",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "Global"
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "Free, NASA EarthData"
+        },
+        {
+          "criterion": "Scarp detection",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "Excellent via derivatives"
+        }
+      ],
+      "overall": "HIGH",
+      "recommendation": "Primary DEM source"
+    },
+    "copernicus": {
+      "scores": [
+        {
+          "criterion": "Spatial resolution",
+          "score": 4,
+          "max_score": 5,
+          "evidence": "30m resolves >50m scarps"
+        },
+        {
+          "criterion": "Vertical accuracy",
+          "score": 4,
+          "max_score": 5,
+          "evidence": "\u00b14m absolute"
+        },
+        {
+          "criterion": "Coverage",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "Global"
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "Free, AWS"
+        },
+        {
+          "criterion": "Scarp detection",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "Excellent, less noise"
+        }
+      ],
+      "overall": "HIGH",
+      "recommendation": "Validation/comparison DEM"
+    },
+    "gedi_l4a": {
+      "scores": [
+        {
+          "criterion": "Spatial resolution",
+          "score": 3,
+          "max_score": 5,
+          "evidence": "25m footprint, point sampling"
+        },
+        {
+          "criterion": "Elevation accuracy",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "\u00b11m ground elevation"
+        },
+        {
+          "criterion": "Coverage",
+          "score": 3,
+          "max_score": 5,
+          "evidence": "\u00b151.6\u00b0 lat, not wall-to-wall"
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "Free, NASA LP DAAC"
+        },
+        {
+          "criterion": "Scarp detection",
+          "score": 4,
+          "max_score": 5,
+          "evidence": "Good for height validation"
+        }
+      ],
+      "overall": "MODERATE-HIGH",
+      "recommendation": "Height validation"
+    },
+    "emit_l2a": {
+      "scores": [
+        {
+          "criterion": "Spatial resolution",
+          "score": 2,
+          "max_score": 5,
+          "evidence": "60m - coarse for outcrops"
+        },
+        {
+          "criterion": "Spectral resolution",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "285 bands, full VSWIR"
+        },
+        {
+          "criterion": "Coverage",
+          "score": 3,
+          "max_score": 5,
+          "evidence": "ISS orbit, variable"
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "Free, NASA LP DAAC"
+        },
+        {
+          "criterion": "Wood detection",
+          "score": 3,
+          "max_score": 5,
+          "evidence": "Theoretical potential"
+        }
+      ],
+      "overall": "MODERATE",
+      "recommendation": "Exploratory spectral analysis"
+    },
+    "sentinel2": {
+      "scores": [
+        {
+          "criterion": "Spatial resolution",
+          "score": 4,
+          "max_score": 5,
+          "evidence": "10-20m"
+        },
+        {
+          "criterion": "Spectral bands",
+          "score": 3,
+          "max_score": 5,
+          "evidence": "13 bands, limited SWIR"
+        },
+        {
+          "criterion": "Temporal coverage",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "5-day revisit"
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 5,
+          "max_score": 5,
+          "evidence": "Free, Copernicus"
+        },
+        {
+          "criterion": "Scarp detection",
+          "score": 3,
+          "max_score": 5,
+          "evidence": "Indirect via NDVI gaps"
+        }
+      ],
+      "overall": "MODERATE",
+      "recommendation": "Vegetation context mapping"
+    }
+  }
+}

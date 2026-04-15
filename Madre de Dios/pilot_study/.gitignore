@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Data files (too large for git)
+data/dem/*.hgt
+data/dem/*.hgt.zip
+data/dem/*.zip
+data/dem/*.tif
+data/emit/*.nc
+NASA EarthData/
+
+# Output rasters (regenerable)
+outputs/geotiffs/*.tif
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# LaTeX auxiliary
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.synctex.gz
