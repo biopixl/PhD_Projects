@@ -46,10 +46,10 @@ cal      <- read_csv(file.path(ROOT, "data/calibration/PBP_calibration_table.csv
                      show_col_types = FALSE)
 arms     <- read_csv(file.path(ROOT, "data/calibration/calibration_models_4arms.csv"),
                      show_col_types = FALSE)
-elements <- read_csv(file.path(ROOT, "data/cleaned/XRF_elements_clean.csv"),
-                     show_col_types = FALSE)
-pb_lines <- read_csv(file.path(ROOT, "data/cleaned/XRF-Pb_clean.csv"),
-                     show_col_types = FALSE)
+elements <- read_csv(file.path(ROOT, "data/cleaned/xrf_concentrations.csv"),
+                     show_col_types = FALSE, na = "NA")
+pb_lines <- read_csv(file.path(ROOT, "data/cleaned/xrf_intensities.csv"),
+                     show_col_types = FALSE, na = "NA")
 icpms    <- read_csv(file.path(REPO, "ICPMS/EFA_ICPMS_PPM.csv"),
                      show_col_types = FALSE) %>%
   select(sample_id = EFA.ID, Pb_icpms = Pb)
@@ -77,8 +77,8 @@ ash_intens <- pb_lines %>%
   filter(!str_starts(sample_id, "PBP"),
          line_symbol %in% c("Pb_Lb1", "Pb_Lb2", "Pb_Lb3", "Pb_Lb4")) %>%
   group_by(sample_id, method, line_symbol) %>%
-  summarise(cts_per_s = mean(cts_per_s, na.rm = TRUE), .groups = "drop") %>%
-  pivot_wider(names_from = line_symbol, values_from = cts_per_s,
+  summarise(intensity_cps = mean(intensity_cps, na.rm = TRUE), .groups = "drop") %>%
+  pivot_wider(names_from = line_symbol, values_from = intensity_cps,
               names_glue = "{line_symbol}_cps")
 
 ash <- ash_fp %>% full_join(ash_intens, by = c("sample_id", "method"))

@@ -7,8 +7,8 @@
 # sweep needs (FP-derived ppm + each clean Pb Lβ line intensity).
 #
 # Inputs (from data/cleaned/):
-#   - XRF_elements_clean.csv  (FP-derived element concentrations)
-#   - XRF-Pb_clean.csv        (per-line Pb intensities)
+#   - xrf_concentrations.csv  (FP-derived element concentrations, long)
+#   - xrf_intensities.csv     (per-line Pb intensities, long)
 #
 # Output:
 #   - data/calibration/PBP_calibration_table.csv
@@ -26,10 +26,10 @@ ROOT <- "/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/D2D/XRF"
 # Known Pb concentration of each PBP clay calibration series.
 PBP_KNOWN_PPM <- c(PBP01 = 100, PBP02 = 500, PBP03 = 1000, PBP04 = 0)
 
-elements <- read_csv(file.path(ROOT, "data/cleaned/XRF_elements_clean.csv"),
-                     show_col_types = FALSE)
-pb_lines <- read_csv(file.path(ROOT, "data/cleaned/XRF-Pb_clean.csv"),
-                     show_col_types = FALSE)
+elements <- read_csv(file.path(ROOT, "data/cleaned/xrf_concentrations.csv"),
+                     show_col_types = FALSE, na = "NA")
+pb_lines <- read_csv(file.path(ROOT, "data/cleaned/xrf_intensities.csv"),
+                     show_col_types = FALSE, na = "NA")
 
 # FP-derived Pb concentration per PBP sample×method, in ppm.
 # unit can be "%" or "ppm"; convert "%" -> ppm. Also normalize "wt_%" -> "%".
@@ -56,14 +56,14 @@ fp <- elements %>%
 intensities <- pb_lines %>%
   filter(str_starts(sample_id, "PBP"),
          line_symbol %in% c("Pb_La1", "Pb_Lb1", "Pb_Lb2", "Pb_Lb3", "Pb_Lb4")) %>%
-  select(sample_id, method, line_symbol, cts_per_s, error) %>%
+  select(sample_id, method, line_symbol, intensity_cps, intensity_err_cps) %>%
   pivot_wider(
     names_from  = line_symbol,
-    values_from = c(cts_per_s, error),
+    values_from = c(intensity_cps, intensity_err_cps),
     names_glue  = "{line_symbol}_{.value}"
   ) %>%
-  rename_with(~ str_replace(.x, "_cts_per_s$", "_cps")) %>%
-  rename_with(~ str_replace(.x, "_error$", "_err"))
+  rename_with(~ str_replace(.x, "_intensity_cps$",     "_cps")) %>%
+  rename_with(~ str_replace(.x, "_intensity_err_cps$", "_err"))
 
 # Series label and known concentration come from the sample_id stem.
 calibration_table <- fp %>%
