@@ -9,19 +9,17 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 
-\graphicspath{{Data/}}
+\graphicspath{{Data/final-figs/}{Data/}}
 
 % ============================================================================
 % TITLE AND AUTHORS (must match main manuscript)
 % ============================================================================
 
-\author{Isaac A. Author}
-\affiliation{Department of Earth System Science, University of California, Irvine, CA 92697, United States}
+\author{Isaac N. Aguilar}
+\affiliation{Division of Geological and Planetary Sciences, California Institute of Technology, Pasadena, California, 91125}
+\email{iaguilar@caltech.edu}
 
-\author{Second Author}
-\affiliation{NASA Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA 91109, United States}
-
-\title{Supporting Information: Metal Contamination in Wildfire Ash from the 2025 Eaton Fire: Field-Portable XRF Calibration for Rapid Screening}
+\title{Supporting Information: Rapid detection of metal contamination in ash on outdoor surfaces after the 2025 Eaton Fire in a Wildland-Urban Interface}
 
 \begin{document}
 
@@ -32,76 +30,271 @@
 \section*{Contents}
 
 \begin{itemize}
-  \item Figure S1. Spatial distribution of Pb concentrations
-  \item Figure S2. Spatial distribution of Zn concentrations
-  \item Figure S3. Spatial distribution of Cu concentrations
-  \item Figure S4. Element correlation matrix
-  \item Table S1. Complete ICP-MS results for all elements
-  \item Table S2. Sample locations and metadata
-  \item Table S3. XRF emission line intensities
+  \item \S 1. Two-stage XRF calibration: details of clay-pellet calibration and line-selection sweep
+  \begin{itemize}
+    \item Figure S1. Clay calibration on PBP standards (4 arms)
+    \item Table S1. PBP clay reference series composition
+    \item Table S2. Stage A clay-calibration coefficients and LOOCV
+    \item Table S3. Empirical line-selection sweep (full pipeline, 22 candidates)
+  \end{itemize}
+  \item \S 2. Ash-matrix correction and outlier handling
+  \begin{itemize}
+    \item Table S4. Ash-matrix correction slopes and LOOCV stability
+    \item Table S5. Outlier-handling sensitivity analysis (7 strategies $\times$ 4 arms)
+    \item Table S6. Validation strategy comparison (LOOCV vs.\ holdout vs.\ 5-fold)
+  \end{itemize}
+  \item \S 3. Spatial distribution of metals
+  \begin{itemize}
+    \item Figure S2. Spatial distribution of Pb, Zn, Cu, and Co
+    \item Figure S3. Pearson correlation matrix for trace metals
+  \end{itemize}
+  \item \S 4. Sample metadata and complete datasets
+  \begin{itemize}
+    \item Table S7. Sample locations and collection metadata
+    \item Complete ICP-MS, XRF, and validation datasets are provided as
+      separate machine-readable files (CSV) and are reproducible from the
+      analysis pipeline at \texttt{D2D/XRF/scripts/run\_all.R}.
+  \end{itemize}
 \end{itemize}
 
 \newpage
 
 % ============================================================================
-% SUPPLEMENTARY FIGURES
+% S1. TWO-STAGE XRF CALIBRATION
 % ============================================================================
 
-\section*{Supplementary Figures}
+\section*{S1. Two-stage XRF calibration: clay-pellet calibration and line selection}
+
+\subsection*{Clay reference standards}
+
+We used the PBP01--PBP04 clay reference series for instrument calibration. Each series is a kaolinite-based clay matrix doped with certified Pb concentrations of 100, 500, 1000, and 0~ppm respectively (PBP04 is the blank). Three replicate preparations were made per series for each preparation method (pellet pressing and loose powder), yielding 12 pellet and 12 powder calibration points; one powder replicate (PBP04\_powder\_1) returned no detectable Pb peak and was excluded, leaving $n=11$ for powder calibrations. Replicate-level standard deviations within a series are well below the inter-series differences, supporting the use of all replicates as independent calibration points.
+
+\begin{table}[htbp]
+\caption{PBP clay reference series.}
+\label{tab:pbp_series}
+\centering
+\begin{tabular}{lrr}
+\toprule
+Series & Known Pb (ppm) & Replicates per prep method \\
+\midrule
+PBP01 & 100  & 3 \\
+PBP02 & 500  & 3 \\
+PBP03 & 1000 & 3 \\
+PBP04 & 0 (blank) & 3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Stage A clay calibration: 4-arm performance}
+
+For each preparation method, we fit a linear calibration of the form
+$\widehat{\text{Pb}}_{\text{ppm}} = a + b \cdot \text{response}$
+on the PBP standards. The fundamental-parameters (FP)-derived concentration was used as the response for the FP arms; the empirically selected line-intensity model (see Line Selection Sweep below) was used for the intensity arms. Pellet-intensity uses the multi-predictor Pb~L$\beta_1$+L$\beta_2$ model; powder-intensity uses Pb~L$\beta_1$+L$\beta_3$.
+
+\begin{table}[htbp]
+\caption{Stage A clay-calibration coefficients on PBP standards. LOOCV RMSE is the leave-one-out cross-validated prediction RMSE on the calibration set itself.}
+\label{tab:stage_a_calibration}
+\centering
+\small
+\begin{tabular}{llrrrr}
+\toprule
+Arm & Response & $n$ & Cal $R^2$ & Cal RMSE (ppm) & LOOCV RMSE (ppm) \\
+\midrule
+pellet$_{\mathrm{FP}}$         & FP-derived ppm                         & 12 & 0.995 & 27.6 & 32.7  \\
+pellet$_{\mathrm{intensity}}$  & Pb~L$\beta_1$ + L$\beta_2$ (multi)      & 12 & 0.999 & 14.4 & 19.5  \\
+powder$_{\mathrm{FP}}$         & FP-derived ppm                         & 11 & 0.913 & 116  & 138   \\
+powder$_{\mathrm{intensity}}$  & Pb~L$\beta_1$ + L$\beta_3$ (multi)      & 11 & 0.937 & 97.9 & 361   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The notable LOOCV inflation for the powder-intensity arm (97.9 $\to$ 361~ppm) reflects sensitivity of the multi-predictor fit to leaving any single PBP point out at $n = 11$; this is a calibration-sample-size limitation, not an instrument or response problem. Stage A coefficients for all four arms are visualized in Figure~S1.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{Fig_calibration_4panel.png}
+\caption{Stage A clay calibration on PBP01--PBP04 reference standards. Each panel shows known Pb concentration (x-axis) vs.\ predicted Pb concentration (y-axis) under the indicated calibration arm. Solid blue lines are the fitted regressions; the four PBP series are color-coded. Pellet preparations (top row) are tighter than powder (bottom row); intensity-based responses (right column) outperform fundamental-parameters concentration for both prep methods.}
+\label{fig:calibration_4panel}
+\end{figure*}
+
+\subsection*{Line selection: empirical sweep of 22 candidate responses}
+
+Pb has multiple L-shell emission lines available for analytical use; we screened them for spectral overlap with elements abundant in the ash matrix and validated the selection empirically. The a~priori interference assessment is summarized below; lines marked \textsc{exclude} were not carried into the multi-predictor sweep.
+
+\begin{table}[htbp]
+\caption{A priori spectral interference assessment for Pb L-lines in the ash matrix. As, Rb, Sr, and Y were detected in the ICP-MS reference data at concentrations sufficient to produce overlapping K-shell emission in XRF.}
+\label{tab:line_interferences}
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+Pb line (energy, keV) & Overlapping element line & Decision \\
+\midrule
+L$\alpha_1$ (10.55) & As K$\alpha$ (10.54) & exclude (As 4--35~ppm in samples) \\
+L$\alpha_2$ (10.45) & As K$\alpha$ (10.54) & exclude \\
+L$\ell$ (9.18)      & Ge/W/Au L-lines, low SNR & exclude \\
+L$\beta_1$ (12.61)  & clear region & retain \\
+L$\beta_2$ (12.62)  & clear region & retain \\
+L$\beta_3$ (12.79)  & Th L$\alpha$ (12.97) -- minor & retain \\
+L$\beta_4$ (12.31)  & clear region & retain \\
+L$\gamma_1$ (14.76) & Rb K$\beta$, Y K$\alpha$, Sr K$\beta$ & exclude (Sr $\ge$~400~ppm) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We then ran a 22-candidate empirical sweep through the full prediction pipeline (clay calibration $\to$ ash-matrix correction with Cook's $D$ filtering $\to$ validation against ICP-MS), ranking responses by validation RMSE rather than calibration $R^2$ to avoid favoring overfit multi-predictor models.
+
+\begin{table}[htbp]
+\caption{Top response variables per preparation method, ranked by validation RMSE against ICP-MS through the full two-stage pipeline. The L$\beta$ multi-predictor models win for both prep methods. Pb~L$\alpha_1$ — the traditional choice — is the second-best response for pellet but collapses for powder due to amplified As~K$\alpha$ interference. The complete 22-candidate sweep is in \texttt{response\_sweep\_validation.csv}.}
+\label{tab:line_sweep}
+\centering
+\small
+\begin{tabular}{llrrrrr}
+\toprule
+Method & Response & Cal $R^2$ & Val $r$ & Val RMSE & BA bias & BA LOA range \\
+       &          &            &          & (ppm)    & (ppm)   & (ppm)        \\
+\midrule
+pellet & Pb~L$\beta_1$+L$\beta_2$ (multi)  & 0.999 & 0.999 &  478 & $+59$  & 1890 \\
+pellet & Pb~L$\alpha_1$ (single)           & 0.998 & 0.991 & 1080 & $-121$ & 4276 \\
+pellet & Pb~L$\beta_4$ (single)            & 0.998 & 0.989 & 1150 & $-131$ & 4552 \\
+pellet & Pb~L$\beta_1$ (single)            & 0.998 & 0.988 & 1169 & $-128$ & 4626 \\
+pellet & FP-derived concentration          & 0.995 & 0.931 & 1826 & $-119$ & 7258 \\
+\midrule
+powder & Pb~L$\beta_1$+L$\beta_3$ (multi)  & 0.937 & 0.996 &  748 & $+103$ & 2947 \\
+powder & Pb~L$\beta_4$ (single)            & 0.904 & 0.941 & 1877 & $-183$ & 7456 \\
+powder & Pb~L$\beta_1$ (single)            & 0.904 & 0.940 & 1888 & $-183$ & 7500 \\
+powder & FP-derived concentration          & 0.913 & 0.866 & 1959 & $+89$  & 7782 \\
+powder & Pb~L$\alpha_1$ (single)           & 0.905 & 0.354 & 3102 & $+56$  & 12358 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+(Note: validation RMSE values in Table~S3 are derived from all-sample LOOCV without Cook's distance filtering, used here for an apples-to-apples comparison of response variables. With the Cook's distance filter applied — the configuration used in the main-text validation — the pellet-intensity Val RMSE drops to 155~ppm. See Tables S4 and S5.)
+
+\newpage
+
+% ============================================================================
+% S2. ASH-MATRIX CORRECTION AND OUTLIER HANDLING
+% ============================================================================
+
+\section*{S2. Ash-matrix correction and outlier handling}
+
+\subsection*{Matrix-correction slopes (Stage B)}
+
+For each calibration arm we fit a proportional regression
+$\widehat{\text{Pb}}_{\text{ICP-MS}} = m_{\text{arm}} \cdot \widehat{\text{Pb}}_{\text{clay-pred}}$
+on paired ash samples eligible for inclusion (i.e., excluding samples flagged by Cook's $D > 4/n$). The slope $m_{\text{arm}}$ absorbs the systematic clay-to-ash transfer bias arising from differing mass-attenuation coefficients of the two matrices.
+
+\begin{table}[htbp]
+\caption{Ash-matrix correction slopes and LOOCV stability. Eligible samples are those passing the Cook's $D > 4/n$ filter; excluded samples are still predicted (using the eligible-set full-fit slope) and contribute to the validation summary in main-text Table~3.}
+\label{tab:matrix_correction}
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Arm & $n$ eligible & $n$ excluded & Excluded samples & Full-fit slope & LOOCV slope SD \\
+\midrule
+pellet$_{\mathrm{FP}}$         & 29 & 3 & XPAH28, JPL73, XPAH20 & 1.130 & 0.056 \\
+pellet$_{\mathrm{intensity}}$  & 31 & 2 & XPAH28, JPL73         & 2.711 & 0.092 \\
+powder$_{\mathrm{FP}}$         & 33 & 3 & XPAH28, JPL73, XPAH20 & 0.334 & 0.023 \\
+powder$_{\mathrm{intensity}}$  & 33 & 2 & XPAH28, JPL73         & 0.704 & 0.021 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+XPAH28 (ICP-MS Pb~$=$~18,528~ppm — an order of magnitude higher than the next-highest sample at 1,933~ppm) had Cook's $D$ values of 360--600 across the four arms, two orders of magnitude above any other sample. Its product of leverage ($h_i = x_i^2 / \sum x_j^2 \approx 1$) and squared residual was sufficient to dominate the proportional-regression denominator $\sum x^2$. JPL73 (804~ppm) was also flagged in every arm; XPAH20 (1,933~ppm) was flagged in the FP arms.
+
+\subsection*{Outlier-handling sensitivity analysis}
+
+We compared seven strategies for managing high-leverage samples in the matrix-correction step: no exclusion (all-sample LOOCV); concentration-based exclusion at fixed cutoffs (drop XPAH28 only, drop top-2, drop top-3, cap at 1000~ppm, cap at 500~ppm); and Cook's distance--based exclusion at the conventional $4/n$ threshold. All strategies validated on the complete paired set; only the slope-fitting subset varied. Cook's distance--filtered fitting yielded the lowest validation RMSE, smallest BA bias, and tightest LOA for the intensity arms, while preserving threshold sensitivity. Naive concentration-based dropping degraded performance.
+
+\begin{table}[htbp]
+\caption{Outlier-handling sensitivity for the pellet-intensity arm (the headline arm). All strategies validate on the complete paired set ($n=33$). The Cook's $D$ strategy, used in the main-text analysis, is highlighted. The complete table for all four arms is in \texttt{Table\_outlier\_strategy\_comparison.csv}.}
+\label{tab:outlier_sensitivity}
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Strategy & $n$ training & Val RMSE (ppm) & BA bias (ppm) & LOA range (ppm) \\
+\midrule
+S1: All samples (LOOCV)        & 33 & 478  & $+59$  & 1890 \\
+S2: Drop XPAH28 only           & 32 & 492  & $+93$  & 1925 \\
+S3: Drop top-2 (XPAH28, XPAH20)& 31 & 1104 & $+232$ & 4295 \\
+S4: Drop top-3 (S3 + JPL73)    & 30 &  617 & $+118$ & 2409 \\
+S5: Cap ICP-MS $\le$ 1000~ppm  & 31 & 1104 & $+232$ & 4295 \\
+S6: Cap ICP-MS $\le$ 500~ppm   & 28 & 1203 & $+256$ & 4679 \\
+\textbf{S7: Cook's $D > 4/n$ (used)} & \textbf{31} & \textbf{157} & \textbf{$-1.6$} & \textbf{625} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Validation strategy comparison}
+
+We considered three approaches to validating the matrix-correction step: leave-one-out cross-validation (LOOCV; the default), single 67/33 holdout repeated 100 times with random seeds, and 5-fold cross-validation also repeated 100 times. The intensity-arm RMSE estimates from the three strategies span similar central ranges, but the holdout estimates have standard deviations comparable to their means because XPAH28's leverage dominates whichever partition contains it. With $n \le 36$ paired samples, LOOCV is the most reliable estimator.
+
+\begin{table}[htbp]
+\caption{Validation-strategy comparison for the matrix correction step (pellet-intensity arm, $n = 33$). Holdout and 5-fold values are mean $\pm$ SD across 100 random seeds.}
+\label{tab:validation_strategy}
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Strategy & RMSE (ppm) & Pearson $r$ & LOA range (ppm) \\
+\midrule
+LOOCV (default)             & 478              & 0.999 & 1890 \\
+67/33 holdout, 100 seeds    & 321 $\pm$ 472    & 0.966 & 1247 \\
+5-fold CV, 100 seeds        & 546 $\pm$ 322    & 0.998 & 2243 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+
+% ============================================================================
+% S3. SPATIAL DISTRIBUTION
+% ============================================================================
+
+\section*{S3. Spatial distribution of metals}
 
 \begin{figure}[htbp]
 \centering
-% \includegraphics[width=0.8\textwidth]{Fig_S1_Pb_spatial.png}
-\caption{Spatial distribution of Pb concentrations (ppm) in Eaton Fire ash samples. Points scaled by concentration; color indicates exceedance of EPA RSL (400 ppm).}
-\label{fig:s1_pb_spatial}
+% \includegraphics[width=0.8\textwidth]{Fig_S2_metal_spatial.png}
+\caption{Spatial distribution of Pb, Zn, Cu, and Co concentrations (ppm) in Eaton Fire ash samples. Points scaled by concentration; color indicates exceedance of the 320~ppm screening threshold for Pb (or analogous regulatory thresholds for Zn, Cu, Co).}
+\label{fig:s2_spatial}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-% \includegraphics[width=0.8\textwidth]{Fig_S2_Zn_spatial.png}
-\caption{Spatial distribution of Zn concentrations (ppm) in Eaton Fire ash samples.}
-\label{fig:s2_zn_spatial}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-% \includegraphics[width=0.8\textwidth]{Fig_S3_Cu_spatial.png}
-\caption{Spatial distribution of Cu concentrations (ppm) in Eaton Fire ash samples.}
-\label{fig:s3_cu_spatial}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-% \includegraphics[width=0.8\textwidth]{Fig_S4_correlation_matrix.png}
-\caption{Pearson correlation matrix for trace metals of toxicological concern. Only significant correlations ($p$ < 0.05) shown.}
-\label{fig:s4_correlations}
+% \includegraphics[width=0.8\textwidth]{Fig_S3_correlation_matrix.png}
+\caption{Pearson correlation matrix for trace metals of toxicological concern. Only significant correlations ($p < 0.05$) shown.}
+\label{fig:s3_correlations}
 \end{figure}
 
 \newpage
 
 % ============================================================================
-% SUPPLEMENTARY TABLES
+% S4. SAMPLE METADATA
 % ============================================================================
 
-\section*{Supplementary Tables}
+\section*{S4. Sample metadata}
 
 \begin{table}[htbp]
-\caption{Sample locations and collection metadata.}
-\label{tab:s2_metadata}
+\caption{Sample locations and collection metadata (excerpt; complete metadata in \texttt{sample\_id\_harmonization.csv}).}
+\label{tab:s7_metadata}
 \centering
 \small
 \begin{tabular}{lrrll}
 \toprule
 Sample ID & Latitude & Longitude & Collection Date & Sample Type \\
 \midrule
-1590 & 34.1399 & -118.0888 & 2025-01-15 & Ash \\
-1620 & 34.1719 & -118.1235 & 2025-01-15 & Ash \\
+1590  & 34.1399 & -118.0888 & 2025-01-15 & Ash \\
+1620  & 34.1719 & -118.1235 & 2025-01-15 & Ash \\
 GPS03 & 34.1300 & -118.1440 & 2025-01-16 & Ash \\
 % ... additional rows ...
 \bottomrule
 \end{tabular}
 \end{table}
 
-% Note: Complete datasets provided as separate Excel/CSV files
+\textit{Note.} Complete ICP-MS, XRF (cleaned and per-line intensities), PBP calibration, and validation paired datasets are provided as separate machine-readable CSV files. The full prediction pipeline — sample data cleaning, two-stage calibration, ash-matrix correction, validation, and figure/table generation — is reproducible from \texttt{D2D/XRF/scripts/run\_all.R}.
 
 \end{document}
