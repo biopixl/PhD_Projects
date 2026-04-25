@@ -1,0 +1,12 @@
+Metric,Pellet,Powder
+N samples,11,12
+Known Pb range,0-1000 ppm,0-1000 ppm
+FP Slope,3.04,1.18
+FP Intercept,100.2,90.0
+FP R²,0.995,0.920
+Intensity Slope,1.99 cts/s/ppm,0.66 cts/s/ppm
+Intensity Intercept,52.2 cts/s,70.0 cts/s
+Intensity R²,0.998,0.913
+LOD (3σ),7.8 ppm,14.8 ppm
+LOQ (10σ),25.9 ppm,49.3 ppm
+Blank SD,5.2 cts/s,3.3 cts/s

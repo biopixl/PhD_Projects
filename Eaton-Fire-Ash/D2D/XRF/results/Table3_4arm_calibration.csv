@@ -1,0 +1,5 @@
+Arm,Preparation,Response type,Response,n_cal,Cal R²,Cal RMSE (ppm),LOOCV RMSE,n_val,Val r,Val RMSE (ppm),Val MAE (ppm),BA bias (ppm),BA LOA lo,BA LOA hi,BA LOA range,BA geom ratio
+pellet_FP,pellet,FP,FP_concentration,12,0.995,27.6,32.7,34,0.99,1719,357.8,303,-3063,3670,6733,1.219
+pellet_intensity,pellet,Intensity,"Pb_Lb1,Lb2 (multi)",12,0.999,14.4,19.5,34,0.999,155,69.3,-1,-309,308,616,1.12
+powder_FP,powder,FP,FP_concentration,11,0.913,115.6,137.8,36,0.983,1799,362.5,293,-3235,3821,7056,1.105
+powder_intensity,powder,Intensity,"Pb_Lb1,Lb3 (multi)",11,0.937,97.9,361.3,36,0.998,271,111.1,36,-498,569,1067,1.63

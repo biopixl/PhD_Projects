@@ -1,0 +1,5 @@
+"Model","Preparation","Response","Cal_R2","Cal_LOD_ppm","Precision_CV","Val_r","Val_RMSE_ppm","Val_Bias_ppm","Recovery_pct","Sensitivity","Specificity","Accuracy","Rank"
+"Pellet + FP","Pellet","FP Concentration",0.9947,6.3,7.5,0.991,1880,-354,70.8,83.3,100,97.1,2
+"Pellet + Intensity","Pellet","Emission Intensity",0.9979,7.8,7.5,0.998,213,54,83.2,100,100,100,1
+"Powder + FP","Powder","FP Concentration",0.92,40.4,9.3,0.992,1493,552,275.3,100,100,100,4
+"Powder + Intensity","Powder","Emission Intensity",0.9129,14.8,9.3,0.929,1470,394,39.2,100,100,100,3

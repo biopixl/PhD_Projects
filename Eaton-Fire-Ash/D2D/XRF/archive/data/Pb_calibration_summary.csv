@@ -1,0 +1,13 @@
+Parameter,Pellet,Powder
+Calibration_Matrix,Ash,Ash
+N_samples,32,24
+Pb_Range_ppm,14-804,14-557
+Slope,1.13,0.94
+Intercept,6.02,23.55
+R_squared,0.886,0.714
+LOD_ppm,197,242
+LOQ_ppm,657,807
+CV_RMSE_ppm,101,177
+CV_MAE_ppm,46,71
+Mean_Recovery_pct,106,97
+Correlation_vs_ICPMS,0.998,0.929

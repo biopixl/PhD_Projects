@@ -1,0 +1,9 @@
+Threshold,Threshold_ppm,Method,Correction,TP,TN,FP,FN,Accuracy,Sensitivity,Specificity
+EPA RSL Residential,400,Pellet,Uncorrected,3,28,0,3,91.17647058823529,50.0,100.0
+EPA RSL Residential,400,Pellet,Corrected,6,28,0,0,100.0,100.0,100.0
+EPA RSL Residential,400,Powder,Uncorrected,4,22,0,0,100.0,100.0,100.0
+EPA RSL Residential,400,Powder,Corrected,4,22,0,0,100.0,100.0,100.0
+EPA RSL Industrial,800,Pellet,Uncorrected,1,31,0,2,94.11764705882352,33.33333333333333,100.0
+EPA RSL Industrial,800,Pellet,Corrected,3,30,1,0,97.05882352941177,100.0,96.7741935483871
+EPA RSL Industrial,800,Powder,Uncorrected,2,23,1,0,96.15384615384616,100.0,95.83333333333334
+EPA RSL Industrial,800,Powder,Corrected,2,22,2,0,92.3076923076923,100.0,91.66666666666666

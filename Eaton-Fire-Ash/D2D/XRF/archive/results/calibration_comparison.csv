@@ -1,0 +1,5 @@
+Preparation,Response,N,Slope,Intercept,R2,LOD_ppm,CV_pct
+Pellet,FP Concentration,11,3.0353,100.2,0.9947,6.3,7.5
+Pellet,Emission Intensity,11,1.9918,52.2,0.9979,7.8,7.5
+Powder,FP Concentration,12,1.1763,90.0,0.92,40.4,9.3
+Powder,Emission Intensity,12,0.6617,70.0,0.9129,14.8,9.3

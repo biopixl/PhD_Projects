@@ -1,0 +1,11 @@
+Metric,Value
+Samples analyzed,18
+Mean bias (ppm),-85.8
+95% LOA (ppm),"[-703.6, 532.0]"
+Mean bias (%),43.9%
+95% LOA (%),"[-106.7%, 194.5%]"
+Geometric mean ratio,1.675
+95% LOA (ratio),"[0.300, 9.359]"
+Proportional bias,Not significant
+Model R² (all samples),0.9941
+Model R² (excluding max),0.8857

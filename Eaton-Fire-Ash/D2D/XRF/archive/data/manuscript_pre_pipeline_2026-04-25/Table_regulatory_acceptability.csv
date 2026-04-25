@@ -1,0 +1,5 @@
+threshold_name,threshold_ppm,n_above_true,n_below_true,TP,TN,FP,FN,sensitivity,specificity,min_sens_required,min_spec_required,sens_criterion_met,spec_criterion_met,n_near_threshold,acceptable_error,near_bias,near_rmse,near_max_error,pct_within_acceptable,error_criterion_met,overall_acceptable
+CA Residential RSL,80,10,8,7,7,1,3,0.7,0.875,0.8,0.8,FALSE,TRUE,11,40,34.59262185977219,54.79559290687356,95.0600498723794,27.27272727272727,FALSE,FALSE
+EPA Residential (2024),200,7,11,6,11,0,1,0.8571428571428571,1,0.9,0.85,FALSE,TRUE,1,100,34.96673506194867,34.96673506194867,34.96673506194867,100,TRUE,FALSE
+EPA Play Area Hazard,400,6,12,6,12,0,0,1,1,0.9,0.9,TRUE,TRUE,4,200,-149.13923642447213,275.4862883943532,530.2522021412724,75,FALSE,TRUE
+CA TTLC,1000,2,16,2,15,1,0,1,0.9375,0.95,0.9,TRUE,TRUE,4,500,-409.40064198779515,604.7864723090285,1129.917801321605,75,FALSE,TRUE

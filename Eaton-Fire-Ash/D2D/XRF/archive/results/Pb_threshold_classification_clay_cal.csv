@@ -1,0 +1,9 @@
+Threshold,Threshold_ppm,Method,TP,TN,FP,FN,Accuracy,Sensitivity,Specificity
+EPA RSL Residential,400,Pellet FP,5,28,0,1,97.1,83.3,100.0
+EPA RSL Residential,400,Pellet Intensity,3,28,0,3,91.2,50.0,100.0
+EPA RSL Residential,400,Powder FP,4,22,0,0,100.0,100.0,100.0
+EPA RSL Residential,400,Powder Intensity,4,22,0,0,100.0,100.0,100.0
+EPA RSL Industrial,800,Pellet FP,3,31,0,0,100.0,100.0,100.0
+EPA RSL Industrial,800,Pellet Intensity,1,31,0,2,94.1,33.3,100.0
+EPA RSL Industrial,800,Powder FP,2,22,2,0,92.3,100.0,91.7
+EPA RSL Industrial,800,Powder Intensity,2,23,1,0,96.2,100.0,95.8

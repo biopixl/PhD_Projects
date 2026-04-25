@@ -1,0 +1,5 @@
+Method,Model,N,r,R2,Slope,Intercept,RMSE_ppm,MAE_ppm,Bias_ppm,Recovery_pct
+Pellet,FP Concentration,34,0.991,0.9821,1.252,312.3,1066.9,503.8,494.6,359.7
+Pellet,Emission Intensity,34,0.9978,0.9956,0.299,16.1,2240.6,491.3,-491.3,24.7
+Powder,FP Concentration,26,0.9917,0.9834,1.587,378.0,2383.5,893.8,893.8,481.3
+Powder,Emission Intensity,26,0.9289,0.8628,0.269,105.7,2676.6,606.7,-536.2,10.5

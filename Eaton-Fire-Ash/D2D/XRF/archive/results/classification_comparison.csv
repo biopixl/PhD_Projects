@@ -1,0 +1,5 @@
+Preparation,Response,Corrected,N,TP,TN,FP,FN,Accuracy,Sensitivity,Specificity
+Pellet,FP,No,34,5,28,0,1,97.1,83.3,100.0
+Pellet,Intensity,Yes,34,6,28,0,0,100.0,100.0,100.0
+Powder,FP,No,26,4,22,0,0,100.0,100.0,100.0
+Powder,Intensity,Yes,26,4,22,0,0,100.0,100.0,100.0

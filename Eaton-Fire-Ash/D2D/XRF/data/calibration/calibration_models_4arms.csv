@@ -1,0 +1,5 @@
+arm,method,response_type,response,formula_rhs,is_multi,n,intercept,slope,r_squared,RMSE_ppm
+pellet_FP,pellet,FP,FP_concentration,I(FP_value_ppm),FALSE,12,-27.197323152963552,0.3263539519885131,0.9950812730712122,27.611640189639612
+pellet_intensity,pellet,Intensity,"Pb_Lb1,Lb2 (multi)",Pb_Lb1_cps + Pb_Lb2_cps,TRUE,12,-16.407595201463938,NA,0.9986592331036944,14.415924144062679
+powder_FP,powder,FP,FP_concentration,I(FP_value_ppm),FALSE,11,-47.67325198305653,0.7916154879294709,0.9127745013355479,115.60694112675708
+powder_intensity,powder,Intensity,"Pb_Lb1,Lb3 (multi)",Pb_Lb1_cps + Pb_Lb3_cps,TRUE,11,-61.71767512188337,NA,0.9374980465989997,97.86084808148591
