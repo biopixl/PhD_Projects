@@ -318,7 +318,7 @@ def main():
     df = extract_all_raw_counts()
 
     # Save to CSV
-    output_path = "/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/Manuscript/Data/xrf_raw_counts_all.csv"
+    output_path = "/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/D2D/XRF/data/raw/parser_outputs/xrf_raw_counts_all.csv"
     df.to_csv(output_path, index=False)
     print(f"\n   Saved {len(df)} samples to: {output_path}")
 

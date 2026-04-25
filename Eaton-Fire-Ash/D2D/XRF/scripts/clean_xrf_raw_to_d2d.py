@@ -3,8 +3,8 @@
 Clean and publish XRF concentrations and intensities tables.
 
 Source files (raw instrument exports, hand-concatenated, dirty):
-    Manuscript/Data/2_XRF-concentrations-raw.csv
-    Manuscript/Data/3_XRF-intensities-raw.csv
+    D2D/XRF/data/raw/2_XRF-concentrations-raw.csv
+    D2D/XRF/data/raw/3_XRF-intensities-raw.csv
 
 Outputs (D2D/XRF/data/cleaned/):
     xrf_concentrations.csv         long format, every (sample, method, element)
@@ -44,8 +44,8 @@ from collections import defaultdict
 from pathlib import Path
 
 REPO = Path("/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash")
-SRC_CONC = REPO / "Manuscript/Data/2_XRF-concentrations-raw.csv"
-SRC_INT  = REPO / "Manuscript/Data/3_XRF-intensities-raw.csv"
+SRC_CONC = REPO / "D2D/XRF/data/raw/2_XRF-concentrations-raw.csv"
+SRC_INT  = REPO / "D2D/XRF/data/raw/3_XRF-intensities-raw.csv"
 
 CLEANED = REPO / "D2D/XRF/data/cleaned"
 DST_CONC_LONG = CLEANED / "xrf_concentrations.csv"
