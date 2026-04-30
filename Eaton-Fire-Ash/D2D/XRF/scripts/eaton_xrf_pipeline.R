@@ -1,0 +1,273 @@
+#!/usr/bin/env Rscript
+# =============================================================================
+# Eaton Fire WUI Ash — XRF Pb prediction pipeline (single file)
+# =============================================================================
+# Reads the Zenodo deposit and produces the manuscript figures and tables.
+#
+# Inputs (D2D/XRF/data/zenodo/):
+#   EFA_XRF_Clay_Metadata.csv   PBP01–PBP04 calibration standards
+#   EFA_XRF_Ash.csv             ash XRF measurements (intensities + FP)
+#   EFA_ICPMS_PPM.csv           ICP-MS Pb reference for validation
+#
+# Outputs (D2D/XRF/results/ and figures/):
+#   Table3_calibration_validation.csv   4-arm: clay calibration + ash matrix
+#                                       correction + ICP-MS validation +
+#                                       Bland-Altman bias and LOA
+#   Table4_threshold_classification.csv 4 arms × 6 RSL thresholds × sens/spec/acc
+#   Fig_calibration_4panel.{pdf,png}    PBP standards × 4 arms
+#   Fig_validation_4panel.{pdf,png}     ash predicted vs ICP-MS, with thresholds
+#   Fig_BlandAltman_4panel.{pdf,png}    method-agreement plots per arm
+#
+# Methodology (configured below; see manuscript SI for derivation):
+#   – Pellet-intensity:  Pb_Lb1_cps + Pb_Lb2_cps      (multi-predictor)
+#   – Powder-intensity:  Pb_Lb1_cps + Pb_Lb3_cps      (multi-predictor)
+#   – FP arms:           use the instrument's FP-derived Pb concentration
+#   – Matrix correction: proportional regression Pb_icpms = m · Pb_clay_pred
+#                        on paired ash, with Cook's distance > 4/n filtered
+#                        and per-sample LOOCV slope.
+#   – Thresholds:        80, 200, 320, 500, 800, 1000 ppm
+# =============================================================================
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(patchwork)
+})
+
+ROOT       <- "/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/D2D/XRF"
+ZEN        <- file.path(ROOT, "data/zenodo")
+RESULTS    <- file.path(ROOT, "results")
+FIGURES    <- file.path(ROOT, "figures")
+THRESHOLDS <- c(80, 200, 320, 500, 800, 1000)
+
+dir.create(RESULTS, showWarnings = FALSE, recursive = TRUE)
+dir.create(FIGURES, showWarnings = FALSE, recursive = TRUE)
+
+# -----------------------------------------------------------------------------
+# 0. Inputs
+# -----------------------------------------------------------------------------
+
+clay <- read_csv(file.path(ZEN, "EFA_XRF_Clay_Metadata.csv"),
+                 show_col_types = FALSE) %>%
+  rename(ID = 1)                                              # drop UTF-8 BOM
+ash  <- read_csv(file.path(ZEN, "EFA_XRF_Ash.csv"),
+                 show_col_types = FALSE) %>%
+  rename(ID = 1) %>%
+  select(-any_of(c("Pb_prediction", ""))) %>%                # we recompute it
+  mutate(FP_value_ppm = Pb_FP_ppm)
+icpms <- read_csv(file.path(ZEN, "EFA_ICPMS_PPM.csv"),
+                  show_col_types = FALSE) %>%
+  select(ID = EFA.ID, alq.type, Lat, Lon, Pb_icpms = Pb)
+
+# Canonical 4 arms
+arms <- tribble(
+  ~arm,                ~method,  ~response_type, ~formula_rhs,
+  "pellet_FP",         "pellet", "FP",           "FP_value_ppm",
+  "pellet_intensity",  "pellet", "Intensity",    "Pb_Lb1_cps + Pb_Lb2_cps",
+  "powder_FP",         "powder", "FP",           "FP_value_ppm",
+  "powder_intensity",  "powder", "Intensity",    "Pb_Lb1_cps + Pb_Lb3_cps"
+)
+
+# -----------------------------------------------------------------------------
+# 1. Helpers
+# -----------------------------------------------------------------------------
+
+# Proportional regression slope (no intercept): y = m · x
+prop_slope <- function(x, y) sum(x * y, na.rm = TRUE) / sum(x * x, na.rm = TRUE)
+
+# Cook's distance for proportional regression y = b·x.
+cooks_d_prop <- function(x, y) {
+  b   <- prop_slope(x, y)
+  r   <- y - b * x
+  h   <- x^2 / sum(x^2)
+  s2  <- sum(r^2) / max(length(r) - 1, 1)
+  (r^2 * h) / ((1 - h)^2 * s2)
+}
+
+# Sensitivity / specificity / accuracy at one threshold
+class_metrics <- function(truth, pred, thr) {
+  t <- truth > thr; p <- pred > thr
+  TP <- sum(t & p, na.rm = TRUE);  TN <- sum(!t & !p, na.rm = TRUE)
+  FP <- sum(!t & p, na.rm = TRUE); FN <- sum(t & !p, na.rm = TRUE)
+  list(sens = if (TP+FN>0) TP/(TP+FN) else NA_real_,
+       spec = if (TN+FP>0) TN/(TN+FP) else NA_real_,
+       acc  = (TP+TN) / max(TP+TN+FP+FN, 1))
+}
+
+# -----------------------------------------------------------------------------
+# 2. Per-arm pipeline: calibrate → predict → matrix-correct (LOOCV) → validate
+# -----------------------------------------------------------------------------
+
+run_arm <- function(arm_row) {
+  meth <- arm_row$method
+
+  # Stage A — clay calibration on PBP standards
+  clay_m  <- clay %>% filter(method == meth) %>% drop_na(Known_Pb_ppm)
+  fmla    <- as.formula(paste("Known_Pb_ppm ~", arm_row$formula_rhs))
+  cal_fit <- lm(fmla, data = clay_m)
+  cal_R2  <- summary(cal_fit)$r.squared
+  cal_RMSE <- sqrt(mean(residuals(cal_fit)^2))
+
+  # Stage B — apply clay calibration to ash → naive matrix-naive prediction
+  ash_m         <- ash %>% filter(method == meth)
+  ash_m$Pb_clay <- predict(cal_fit, newdata = ash_m)
+
+  # Pair with ICP-MS truth for matrix correction + validation
+  pair <- ash_m %>% inner_join(icpms %>% select(ID, Pb_icpms), by = "ID") %>%
+    filter(!is.na(Pb_icpms), !is.na(Pb_clay), Pb_clay > 0)
+
+  # Cook's D-filtered eligible set; then LOOCV slope per eligible row
+  pair$cooks_D <- cooks_d_prop(pair$Pb_clay, pair$Pb_icpms)
+  pair$elig    <- pair$cooks_D <= 4 / nrow(pair)
+  full_slope <- prop_slope(pair$Pb_clay[pair$elig], pair$Pb_icpms[pair$elig])
+  pair$slope <- full_slope
+  for (i in which(pair$elig)) {
+    others <- which(pair$elig); others <- others[others != i]
+    pair$slope[i] <- prop_slope(pair$Pb_clay[others], pair$Pb_icpms[others])
+  }
+  pair$Pb_pred <- pair$Pb_clay * pair$slope
+
+  # Stage C — validation metrics on the full paired set
+  resid   <- pair$Pb_pred - pair$Pb_icpms
+  ba_diff <- pair$Pb_icpms - pair$Pb_pred
+  pearson <- cor(pair$Pb_pred, pair$Pb_icpms)
+  rmse    <- sqrt(mean(resid^2))
+  mae     <- mean(abs(resid))
+  ba_bias <- mean(ba_diff); ba_sd <- sd(ba_diff)
+  loa_lo  <- ba_bias - 1.96 * ba_sd
+  loa_hi  <- ba_bias + 1.96 * ba_sd
+
+  list(
+    arm  = arm_row$arm,
+    pair = pair %>% mutate(arm = arm_row$arm),
+    clay = tibble(arm = arm_row$arm,
+                  Series = clay_m$Series,
+                  Known  = clay_m$Known_Pb_ppm,
+                  Pred   = predict(cal_fit, newdata = clay_m)),
+    summary = tibble(
+      arm                 = arm_row$arm,
+      method              = meth,
+      response_type       = arm_row$response_type,
+      response            = arm_row$formula_rhs,
+      n_clay              = nrow(clay_m),
+      cal_R2              = cal_R2,
+      cal_RMSE_ppm        = cal_RMSE,
+      n_excluded_outliers = sum(!pair$elig),
+      matrix_slope        = full_slope,
+      n_val               = nrow(pair),
+      val_pearson_r       = pearson,
+      val_R2              = pearson^2,
+      val_RMSE_ppm        = rmse,
+      val_MAE_ppm         = mae,
+      BA_bias_ppm         = ba_bias,
+      BA_LOA_lo_ppm       = loa_lo,
+      BA_LOA_hi_ppm       = loa_hi,
+      BA_LOA_range_ppm    = loa_hi - loa_lo
+    )
+  )
+}
+
+per_arm <- map(seq_len(nrow(arms)), ~ run_arm(arms[.x, ]))
+
+# Stitch the per-arm results
+summary_4arms <- map_dfr(per_arm, "summary")
+clay_long     <- map_dfr(per_arm, "clay")
+val_long      <- map_dfr(per_arm, "pair")
+
+# -----------------------------------------------------------------------------
+# 3. Threshold classification table (4 arms × 6 thresholds)
+# -----------------------------------------------------------------------------
+
+threshold_table <- map_dfr(THRESHOLDS, function(t) {
+  val_long %>% group_by(arm) %>% summarise(
+    threshold = t,
+    sens = class_metrics(Pb_icpms, Pb_pred, t)$sens,
+    spec = class_metrics(Pb_icpms, Pb_pred, t)$spec,
+    acc  = class_metrics(Pb_icpms, Pb_pred, t)$acc,
+    .groups = "drop"
+  )
+})
+
+write_csv(summary_4arms,
+          file.path(RESULTS, "Table3_calibration_validation.csv"))
+write_csv(threshold_table %>% arrange(arm, threshold),
+          file.path(RESULTS, "Table4_threshold_classification.csv"))
+
+# -----------------------------------------------------------------------------
+# 4. Figures (4 panels each)
+# -----------------------------------------------------------------------------
+
+# 4a. Calibration: known vs predicted Pb on PBP standards
+fig_cal <- clay_long %>% mutate(arm = factor(arm, levels = arms$arm)) %>%
+  ggplot(aes(Known, Pred, colour = Series)) +
+  geom_abline(slope = 1, linetype = "dotted", colour = "grey50") +
+  geom_smooth(method = "lm", se = FALSE, colour = "steelblue", linewidth = 0.6) +
+  geom_point(size = 2.4) +
+  facet_wrap(~ arm, ncol = 2, scales = "free") +
+  labs(x = "Known Pb in PBP clay (ppm)", y = "Calibrated Pb prediction (ppm)",
+       title = "Stage A: clay calibration on PBP01–PBP04 standards") +
+  theme_bw(base_size = 11)
+ggsave(file.path(FIGURES, "Fig_calibration_4panel.pdf"), fig_cal, width = 11, height = 9)
+ggsave(file.path(FIGURES, "Fig_calibration_4panel.png"), fig_cal, width = 11, height = 9, dpi = 300)
+
+# 4b. Validation: predicted vs ICP-MS (log-log) with regulatory thresholds
+fig_val <- val_long %>% mutate(arm = factor(arm, levels = arms$arm)) %>%
+  ggplot(aes(Pb_icpms, Pb_pred)) +
+  geom_abline(slope = 1, linetype = "dotted", colour = "grey50") +
+  geom_vline(xintercept = THRESHOLDS, colour = "tomato",
+             linetype = "dashed", alpha = 0.4) +
+  geom_hline(yintercept = THRESHOLDS, colour = "tomato",
+             linetype = "dashed", alpha = 0.4) +
+  geom_point(alpha = 0.75) +
+  scale_x_log10() + scale_y_log10() +
+  facet_wrap(~ arm, ncol = 2) +
+  labs(x = "ICP-MS Pb (ppm, log)", y = "XRF-predicted Pb (ppm, log)",
+       title = "Stage C: validation against ICP-MS gold standard") +
+  theme_bw(base_size = 11)
+ggsave(file.path(FIGURES, "Fig_validation_4panel.pdf"), fig_val, width = 11, height = 9)
+ggsave(file.path(FIGURES, "Fig_validation_4panel.png"), fig_val, width = 11, height = 9, dpi = 300)
+
+# 4c. Bland-Altman: bias + 95% LOA per arm
+fig_ba <- val_long %>%
+  mutate(arm = factor(arm, levels = arms$arm),
+         ba_mean = (Pb_icpms + Pb_pred) / 2,
+         ba_diff = Pb_icpms - Pb_pred) %>%
+  left_join(summary_4arms %>% select(arm, BA_bias_ppm, BA_LOA_lo_ppm, BA_LOA_hi_ppm),
+            by = "arm") %>%
+  ggplot(aes(ba_mean, ba_diff)) +
+  geom_hline(yintercept = 0, linetype = "dotted", colour = "grey40") +
+  geom_hline(aes(yintercept = BA_bias_ppm),  colour = "steelblue") +
+  geom_hline(aes(yintercept = BA_LOA_lo_ppm), colour = "tomato", linetype = "dashed") +
+  geom_hline(aes(yintercept = BA_LOA_hi_ppm), colour = "tomato", linetype = "dashed") +
+  geom_point(alpha = 0.75) +
+  facet_wrap(~ arm, ncol = 2, scales = "free") +
+  labs(x = "Mean of ICP-MS and XRF-predicted (ppm)",
+       y = "ICP-MS − XRF-predicted (ppm)",
+       title = "Bland-Altman method agreement") +
+  theme_bw(base_size = 11)
+ggsave(file.path(FIGURES, "Fig_BlandAltman_4panel.pdf"), fig_ba, width = 11, height = 9)
+ggsave(file.path(FIGURES, "Fig_BlandAltman_4panel.png"), fig_ba, width = 11, height = 9, dpi = 300)
+
+# -----------------------------------------------------------------------------
+# 5. Console summary
+# -----------------------------------------------------------------------------
+
+cat("=== Eaton Fire XRF pipeline complete ===\n\n")
+cat("Calibration + validation summary (4 arms):\n")
+print(summary_4arms %>% select(arm, n_val, cal_R2, cal_RMSE_ppm,
+                               matrix_slope, val_pearson_r, val_RMSE_ppm,
+                               BA_bias_ppm, BA_LOA_range_ppm) %>%
+        mutate(across(where(is.numeric), ~ round(.x, 2))))
+cat("\nThreshold classification (4 arms × 6 thresholds):\n")
+print(threshold_table %>%
+        pivot_wider(names_from = threshold,
+                    values_from = c(sens, spec, acc),
+                    names_glue = "{.value}_{threshold}") %>%
+        select(arm, sens_320, spec_320, sens_800, spec_800,
+               sens_1000, spec_1000) %>%
+        mutate(across(where(is.numeric), ~ round(.x, 2))))
+cat("\nWritten:\n")
+cat("  ", file.path(RESULTS, "Table3_calibration_validation.csv"), "\n")
+cat("  ", file.path(RESULTS, "Table4_threshold_classification.csv"), "\n")
+cat("  ", file.path(FIGURES, "Fig_calibration_4panel.{pdf,png}"), "\n")
+cat("  ", file.path(FIGURES, "Fig_validation_4panel.{pdf,png}"), "\n")
+cat("  ", file.path(FIGURES, "Fig_BlandAltman_4panel.{pdf,png}"), "\n")

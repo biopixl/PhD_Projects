@@ -57,26 +57,29 @@ PBP01–PBP04 kaolinite-clay calibration standards:
 
 ## Reproducibility
 
-These five files are the deposit-ready outputs of the analysis pipeline at
-`D2D/XRF/scripts/run_all.R` (R) and the helper Python scripts in
-`D2D/XRF/scripts/`. The empty `Pb_prediction` column in
-`EFA_XRF_Ash.csv` and the `Pred_Pb_ppm`/`Error` columns in
-`EFA_XRF_Clay_Metadata.csv` are filled by `D2D/XRF/scripts/fill_zenodo_predictions.py`
-from the pipeline's validation and LOOCV outputs.
+The full statistical pipeline — clay calibration on the PBP standards,
+ash-matrix correction with Cook's-distance outlier handling and LOOCV
+slope, validation against ICP-MS, Bland-Altman agreement, and the
+six-threshold classification matrix — runs end-to-end from the four
+files in this folder via a single R script:
 
-The full statistical pipeline (clay calibration, ash-matrix correction,
-Cook's-distance outlier handling, Bland-Altman agreement, threshold
-classification) is reproducible from the cleaned long-format input files
-in `D2D/XRF/data/cleaned/`:
+```
+Rscript D2D/XRF/scripts/eaton_xrf_pipeline.R
+```
 
-- `xrf_concentrations.csv` — long-format FP element concentrations (all 50+
-  elements; ash + clay)
-- `xrf_intensities.csv` — long-format Pb L-line intensities
+The script writes Tables~3 and~4 to `D2D/XRF/results/` and the
+calibration / validation / Bland-Altman 4-panel figures to
+`D2D/XRF/figures/`. No intermediate files are produced. The same script
+recomputes the `Pb_prediction` column in `EFA_XRF_Ash.csv` and the
+`Pred_Pb_ppm` / `Error` columns in `EFA_XRF_Clay_Metadata.csv` so the
+deposit stays in sync with the analysis.
 
-The wide-format Pb-only deposit files in this folder are derived from those
-long-format sources for publication compactness; readers wanting the full
-multi-element data should use the long-format files in
-`D2D/XRF/data/cleaned/`.
+For the full multi-element ICP-MS data and per-line XRF intensities
+beyond Pb, use the long-format inputs in `D2D/XRF/data/cleaned/` —
+those are the working files the helper Python scripts in
+`D2D/XRF/scripts/` produce from the raw instrument exports
+(`parse_xrf_data.py`, `extract_xrf_raw_counts.py`,
+`clean_xrf_raw_to_d2d.py`, `build_xrf_metadata.py`).
 
 ## Contact
 
