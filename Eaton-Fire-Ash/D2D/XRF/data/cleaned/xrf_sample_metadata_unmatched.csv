@@ -1,0 +1,25 @@
+xrf_sample_id,xrf_method,xrf_subfolder,xrf_filename,xrf_date
+1619_bkB.S,powder,,1619.prf,2025-03-10
+1630_bkB.S,powder,,1630.prf,2025-03-10
+Sample 1630 Ungrinded Unsieved,powder,,1630_bkA.L.prf,2025-02-25
+1630_bkA,powder,,1630_bkA.prf,2025-02-19
+Sample 1630 Ungrinded Sieved,powder,,1630_bkA.s.prf,2025-02-25
+1630_bkB.L,powder,,1630_bkB.L.prf,2025-02-19
+1630_bkB.S,powder,,1630_bkB.S.prf,2025-02-19
+1638_bkA.LL,powder,,1638_bkA.L.prf,2025-03-14
+1638_bkA.LH,powder,,1638_bkA.LH.prf,2025-03-14
+1666,powder,,1666.prf,2025-03-25
+1679_bkB,powder,,1679.prf,2025-03-25
+1680_bkB,powder,,1680.prf,2025-03-25
+1682_bkB,powder,,1682.prf,2025-03-25
+1683_bkB,powder,,1683.prf,2025-03-25
+1685_bkB,powder,,1685.prf,2025-03-25
+1689_bkB,powder,,1689.prf,2025-03-25
+1694_bkB,powder,,1694.prf,2025-03-25
+1696_bkB,powder,,1696.prf,2025-03-25
+GPS15_A.S,powder,,GPS15_A.S_1.prf,2025-04-14
+GPS15_A.S_2,powder,,GPS15_A.S_2.prf,2025-04-14
+GPS15_A.S_3,powder,,GPS15_A.S_3.prf,2025-04-14
+XPAH51_bkB.S,powder,,XPAH51.prf,2025-03-14
+XPAH53_bkB.S,powder,,XPAH53.prf,2025-03-14
+XPAH56_bkB.S,powder,,XPAH56.prf,2025-03-14
