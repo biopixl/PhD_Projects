@@ -36,7 +36,7 @@
     \item Figure S1. Clay calibration on PBP standards (4 arms)
     \item Table S1. PBP clay reference series composition
     \item Table S2. Stage A clay-calibration coefficients and LOOCV
-    \item Table S3. Empirical line-selection sweep (full pipeline, 22 candidates)
+    \item Table S3. Pb~L-line sweep (12 candidate models per prep method built from the 6 deposited Pb~L-line intensities)
   \end{itemize}
   \item \S 2. Ash-matrix correction and outlier handling
   \begin{itemize}
@@ -132,9 +132,9 @@ The notable LOOCV inflation for the powder-intensity arm (97.9 $\to$ 361~ppm) re
 \label{fig:calibration_4panel}
 \end{figure*}
 
-\subsection*{Line selection: empirical sweep of 22 candidate responses}
+\subsection*{Pb~L-line sweep: candidate calibration models built from the 6 deposited lines}
 
-Pb has multiple L-shell emission lines available for analytical use; we screened them for spectral overlap with elements abundant in the ash matrix and validated the selection empirically. The a~priori interference assessment is summarized below; lines marked \textsc{exclude} were not carried into the multi-predictor sweep.
+The Zenodo deposit contains six Pb~L-line intensities (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$\beta_4$). For each preparation method (pellet, powder), we fit candidate calibration models built from these lines as single-line, sum, and multi-predictor responses, ran each through the full prediction pipeline (clay calibration, ash-matrix correction with Cook's $D$ filtering, validation against ICP-MS), and ranked candidates by validation RMSE (Table~\ref{tab:line_sweep}). The a~priori interference assessment for context:
 
 \begin{table}[htbp]
 \caption{A priori spectral interference assessment for Pb L-lines in the ash matrix. As, Rb, Sr, and Y were detected in the ICP-MS reference data at concentrations sufficient to produce overlapping K-shell emission in XRF.}
@@ -145,46 +145,46 @@ Pb has multiple L-shell emission lines available for analytical use; we screened
 \toprule
 Pb line (energy, keV) & Overlapping element line & Decision \\
 \midrule
-L$\alpha_1$ (10.55) & As K$\alpha$ (10.54) & exclude (As 4--35~ppm in samples) \\
-L$\alpha_2$ (10.45) & As K$\alpha$ (10.54) & exclude \\
-L$\ell$ (9.18)      & Ge/W/Au L-lines, low SNR & exclude \\
-L$\beta_1$ (12.61)  & clear region & retain \\
-L$\beta_2$ (12.62)  & clear region & retain \\
-L$\beta_3$ (12.79)  & Th L$\alpha$ (12.97) -- minor & retain \\
-L$\beta_4$ (12.31)  & clear region & retain \\
-L$\gamma_1$ (14.76) & Rb K$\beta$, Y K$\alpha$, Sr K$\beta$ & exclude (Sr $\ge$~400~ppm) \\
+L$\alpha_1$ (10.55) & As K$\alpha$ (10.54)            & swept (As Kα interference) \\
+L$\alpha_2$ (10.45) & As K$\alpha$ (10.54)            & swept (As Kα interference) \\
+L$\beta_1$ (12.61)  & clear region                    & swept \\
+L$\beta_2$ (12.62)  & clear region                    & swept \\
+L$\beta_3$ (12.79)  & Th L$\alpha$ (12.97) -- minor  & swept \\
+L$\beta_4$ (12.31)  & clear region                    & swept \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-We then ran a 22-candidate empirical sweep through the full prediction pipeline (clay calibration $\to$ ash-matrix correction with Cook's $D$ filtering $\to$ validation against ICP-MS), ranking responses by validation RMSE rather than calibration $R^2$ to avoid favoring overfit multi-predictor models.
+For each prep method, twelve candidate response variables were tested: six single-line responses (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$\beta_4$), four sum responses (L$\alpha_1$+L$\alpha_2$, L$\beta_1$+L$\beta_2$, L$\beta_1$+L$\beta_3$, L$\beta_1$+L$\beta_2$+L$\beta_3$+L$\beta_4$), and two multi-predictor responses (L$\beta_1$,L$\beta_2$ and L$\beta_1$,L$\beta_3$). Candidates were ranked by validation RMSE against ICP-MS rather than calibration $R^2$, and the best response per prep method was carried into the headline 4-arm validation in the main text. The complete 24-row sweep is in \texttt{Table\_S3\_pb\_line\_sweep.csv}; the top entries per method are summarized below.
 
 \begin{table}[htbp]
-\caption{Top response variables per preparation method, ranked by validation RMSE against ICP-MS through the full two-stage pipeline. The L$\beta$ multi-predictor models win for both prep methods. Pb~L$\alpha_1$ — the traditional choice — is the second-best response for pellet but collapses for powder due to amplified As~K$\alpha$ interference. The complete 22-candidate sweep is in \texttt{response\_sweep\_validation.csv}.}
+\caption{Top candidate Pb~L-line response variables per preparation method, ranked by validation RMSE against ICP-MS through the full two-stage pipeline. The L$\beta_1$,L$\beta_2$ multi-predictor wins for pellet; the L$\beta_1$,L$\beta_3$ multi-predictor wins for powder. Single-line and sum responses are 4--7$\times$ worse on validation RMSE for pellet, and the L$\beta_1$,L$\beta_2$ multi-predictor collapses on powder, motivating the per-arm choice of multi-predictor composition.}
 \label{tab:line_sweep}
 \centering
 \small
-\begin{tabular}{llrrrrr}
+\begin{tabular}{llrrrrrr}
 \toprule
-Method & Response & Cal $R^2$ & Val $r$ & Val RMSE & BA bias & BA LOA range \\
-       &          &            &          & (ppm)    & (ppm)   & (ppm)        \\
+Method & Response & $n_{\mathrm{val}}$ & Cal $R^2$ & Val $r$ & Val RMSE & BA bias & BA LOA range \\
+       &          &                     &           &          & (ppm)    & (ppm)   & (ppm)        \\
 \midrule
-pellet & Pb~L$\beta_1$+L$\beta_2$ (multi)  & 0.999 & 0.999 &  478 & $+59$  & 1890 \\
-pellet & Pb~L$\alpha_1$ (single)           & 0.998 & 0.991 & 1080 & $-121$ & 4276 \\
-pellet & Pb~L$\beta_4$ (single)            & 0.998 & 0.989 & 1150 & $-131$ & 4552 \\
-pellet & Pb~L$\beta_1$ (single)            & 0.998 & 0.988 & 1169 & $-128$ & 4626 \\
-pellet & FP-derived concentration          & 0.995 & 0.931 & 1826 & $-119$ & 7258 \\
+pellet & \textbf{Pb~L$\beta_1$, L$\beta_2$ (multi)} & 33 & 0.999 & 0.999 &  157 &  $-2$ &   625 \\
+pellet & Pb~L$\alpha_1$ (single)                    & 32 & 0.998 & 0.998 &  741 & $+125$ & 2908 \\
+pellet & Pb~L$\alpha_2$ (single)                    & 31 & 0.998 & 0.998 &  748 & $+128$ & 2938 \\
+pellet & Pb~L$\alpha_1$+L$\alpha_2$ (sum)           & 31 & 0.998 & 0.998 &  753 & $+129$ & 2955 \\
+pellet & Pb~L$\beta_4$ (single)                     & 32 & 0.998 & 0.998 &  811 & $+142$ & 3182 \\
+pellet & Pb~L$\beta_1$, L$\beta_3$ (multi)          & 31 & 0.998 & 0.998 &  822 & $+147$ & 3222 \\
 \midrule
-powder & Pb~L$\beta_1$+L$\beta_3$ (multi)  & 0.937 & 0.996 &  748 & $+103$ & 2947 \\
-powder & Pb~L$\beta_4$ (single)            & 0.904 & 0.941 & 1877 & $-183$ & 7456 \\
-powder & Pb~L$\beta_1$ (single)            & 0.904 & 0.940 & 1888 & $-183$ & 7500 \\
-powder & FP-derived concentration          & 0.913 & 0.866 & 1959 & $+89$  & 7782 \\
-powder & Pb~L$\alpha_1$ (single)           & 0.905 & 0.354 & 3102 & $+56$  & 12358 \\
+powder & \textbf{Pb~L$\beta_1$, L$\beta_3$ (multi)} & 35 & 0.937 & 0.998 &  274 &  $+36$ &  1082 \\
+powder & Pb~L$\alpha_2$ (single)                    & 30 & 0.904 & 0.990 & 1686 & $+324$ &  6596 \\
+powder & Pb~L$\beta_4$ (single)                     & 28 & 0.904 & 0.989 & 1814 & $+355$ &  7099 \\
+powder & Pb~L$\beta_1$ (single)                     & 28 & 0.904 & 0.989 & 1824 & $+357$ &  7141 \\
+powder & Pb~L$\beta_1$+L$\beta_3$ (sum)             & 28 & 0.904 & 0.989 & 1825 & $+357$ &  7143 \\
+powder & Pb~L$\beta_1$, L$\beta_2$ (multi)          & 31 & 0.928 & 0.917 & 2764 & $+536$ & 10806 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-(Note: validation RMSE values in Table~S3 are derived from all-sample LOOCV without Cook's distance filtering, used here for an apples-to-apples comparison of response variables. With the Cook's distance filter applied — the configuration used in the main-text validation — the pellet-intensity Val RMSE drops to 155~ppm. See Tables S4 and S5.)
+The headline 4-arm validation in the main text (Table~3) carries forward the best response per prep method: \textbf{pellet$_{\mathrm{intensity}}$ = Pb~L$\beta_1$, L$\beta_2$ (multi)} and \textbf{powder$_{\mathrm{intensity}}$ = Pb~L$\beta_1$, L$\beta_3$ (multi)}. Notably the pellet- and powder-best multi-predictor compositions are not interchangeable: the L$\beta_1$,L$\beta_2$ pair that wins for pellet has the worst validation RMSE for powder (2,764~ppm vs.\ 274~ppm for L$\beta_1$,L$\beta_3$), reflecting that grain-size and density variability of unpressed powder couples differently to adjacent Pb~L$\beta$ peaks than to the more separated L$\beta_1$/L$\beta_3$ pair.
 
 \newpage
 
