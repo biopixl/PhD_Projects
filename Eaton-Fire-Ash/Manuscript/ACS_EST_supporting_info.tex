@@ -245,7 +245,7 @@ S6: Cap ICP-MS $\le$ 500~ppm   & 27 & 1203 & $+256$ & 4679 \\
 
 \subsection*{Validation strategy comparison}
 
-We considered three approaches to validating the matrix-correction step: leave-one-out cross-validation (LOOCV; the default), single 67/33 holdout repeated 100 times with random seeds, and 5-fold cross-validation also repeated 100 times. The intensity-arm RMSE estimates from the three strategies span similar central ranges, but the holdout estimates have standard deviations comparable to their means because XPAH28's leverage dominates whichever partition contains it. With $n \le 36$ paired samples, LOOCV is the most reliable estimator.
+We considered three approaches to validating the matrix-correction step: leave-one-out cross-validation (LOOCV; the default), single 67/33 holdout repeated 100 times with random seeds, and 5-fold cross-validation also repeated 100 times. The intensity-arm RMSE estimates from the three strategies span similar central ranges, but the holdout estimates have standard deviations comparable to their means because XPAH28's leverage dominates whichever partition contains it. With $n = 33$ fully paired samples, LOOCV is the most reliable estimator.
 
 \begin{table}[htbp]
 \caption{Validation-strategy comparison for the matrix correction step (pellet-intensity arm, $n = 32$ on the fully paired set). Holdout and 5-fold values are mean $\pm$ SD across 100 random seeds.}
