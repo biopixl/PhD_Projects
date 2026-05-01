@@ -16,7 +16,7 @@
 #   Table4_threshold_classification.csv 4 arms × 6 RSL thresholds × sens/spec/acc
 #   Fig_calibration_4panel.{pdf,png}    PBP standards × 4 arms
 #   Fig_validation_4panel.{pdf,png}     ash predicted vs ICP-MS, with thresholds
-#   Fig_BlandAltman_4panel.{pdf,png}    method-agreement plots per arm
+#   Fig_AgreementRatio_4panel.{pdf,png} XRF/ICP-MS ratio vs ICP-MS (log x)
 #
 # Methodology (configured below; see manuscript SI for derivation):
 #   – Pellet-intensity:  Pb_Lb1_cps + Pb_Lb2_cps      (multi-predictor)
@@ -277,43 +277,50 @@ fig_cal <- clay_long %>% mutate(arm = factor(arm, levels = arms$arm)) %>%
 ggsave(file.path(FIGURES, "Fig_calibration_4panel.pdf"), fig_cal, width = 11, height = 9)
 ggsave(file.path(FIGURES, "Fig_calibration_4panel.png"), fig_cal, width = 11, height = 9, dpi = 300)
 
-# 4b. Validation: predicted vs ICP-MS (log-log) with regulatory thresholds
-fig_val <- val_long %>% mutate(arm = factor(arm, levels = arms$arm)) %>%
-  ggplot(aes(Pb_icpms, Pb_pred)) +
+# Pellet vs powder colour palette used in Figs 4 and 5
+prep_palette <- c(Pellet = "#7E3FA8", Powder = "#E07A1F")
+
+# 4b. Validation: predicted vs ICP-MS (log-log). Coloured by preparation
+# (pellet purple / powder orange); regulatory threshold reference lines
+# omitted to keep the panel uncluttered (thresholds are reported in Table 4).
+fig_val <- val_long %>%
+  mutate(arm = factor(arm, levels = arms$arm),
+         Preparation = ifelse(grepl("pellet", arm), "Pellet", "Powder")) %>%
+  ggplot(aes(Pb_icpms, Pb_pred, colour = Preparation)) +
   geom_abline(slope = 1, linetype = "dotted", colour = "grey50") +
-  geom_vline(xintercept = THRESHOLDS, colour = "tomato",
-             linetype = "dashed", alpha = 0.4) +
-  geom_hline(yintercept = THRESHOLDS, colour = "tomato",
-             linetype = "dashed", alpha = 0.4) +
-  geom_point(alpha = 0.75) +
+  geom_point(alpha = 0.85, size = 2) +
+  scale_colour_manual(values = prep_palette) +
   scale_x_log10() + scale_y_log10() +
   facet_wrap(~ arm, ncol = 2) +
   labs(x = "ICP-MS Pb (ppm, log)", y = "XRF-predicted Pb (ppm, log)",
        title = "Stage C: validation against ICP-MS gold standard") +
-  theme_bw(base_size = 11)
+  theme_bw(base_size = 11) +
+  theme(legend.position = "bottom")
 ggsave(file.path(FIGURES, "Fig_validation_4panel.pdf"), fig_val, width = 11, height = 9)
 ggsave(file.path(FIGURES, "Fig_validation_4panel.png"), fig_val, width = 11, height = 9, dpi = 300)
 
-# 4c. Bland-Altman: bias + 95% LOA per arm
-fig_ba <- val_long %>%
+# 4c. Method-agreement ratio plot: XRF-predicted / ICP-MS vs ICP-MS (log x).
+# Reference line at ratio = 1 (perfect agreement). Replaces the Bland-Altman
+# difference-vs-mean plot for easier visual reading across the
+# 14-18,528 ppm dynamic range. Below-calibration samples whose Pb_pred was
+# floor-clipped at 0 plot at ratio = 0.
+fig_agr <- val_long %>%
   mutate(arm = factor(arm, levels = arms$arm),
-         ba_mean = (Pb_icpms + Pb_pred) / 2,
-         ba_diff = Pb_icpms - Pb_pred) %>%
-  left_join(summary_4arms %>% select(arm, BA_bias_ppm, BA_LOA_lo_ppm, BA_LOA_hi_ppm),
-            by = "arm") %>%
-  ggplot(aes(ba_mean, ba_diff)) +
-  geom_hline(yintercept = 0, linetype = "dotted", colour = "grey40") +
-  geom_hline(aes(yintercept = BA_bias_ppm),  colour = "steelblue") +
-  geom_hline(aes(yintercept = BA_LOA_lo_ppm), colour = "tomato", linetype = "dashed") +
-  geom_hline(aes(yintercept = BA_LOA_hi_ppm), colour = "tomato", linetype = "dashed") +
-  geom_point(alpha = 0.75) +
-  facet_wrap(~ arm, ncol = 2, scales = "free") +
-  labs(x = "Mean of ICP-MS and XRF-predicted (ppm)",
-       y = "ICP-MS − XRF-predicted (ppm)",
-       title = "Bland-Altman method agreement") +
-  theme_bw(base_size = 11)
-ggsave(file.path(FIGURES, "Fig_BlandAltman_4panel.pdf"), fig_ba, width = 11, height = 9)
-ggsave(file.path(FIGURES, "Fig_BlandAltman_4panel.png"), fig_ba, width = 11, height = 9, dpi = 300)
+         Preparation = ifelse(grepl("pellet", arm), "Pellet", "Powder"),
+         ratio = Pb_pred / Pb_icpms) %>%
+  ggplot(aes(Pb_icpms, ratio, colour = Preparation)) +
+  geom_hline(yintercept = 1, linetype = "dotted", colour = "grey40") +
+  geom_point(alpha = 0.85, size = 2) +
+  scale_colour_manual(values = prep_palette) +
+  scale_x_log10() +
+  facet_wrap(~ arm, ncol = 2, scales = "free_y") +
+  labs(x = "ICP-MS Pb (ppm, log)",
+       y = "XRF-predicted / ICP-MS (ratio)",
+       title = "Method agreement: XRF/ICP-MS ratio vs ICP-MS reference") +
+  theme_bw(base_size = 11) +
+  theme(legend.position = "bottom")
+ggsave(file.path(FIGURES, "Fig_AgreementRatio_4panel.pdf"), fig_agr, width = 11, height = 9)
+ggsave(file.path(FIGURES, "Fig_AgreementRatio_4panel.png"), fig_agr, width = 11, height = 9, dpi = 300)
 
 # -----------------------------------------------------------------------------
 # 5. Console summary
@@ -343,4 +350,4 @@ cat("  ", file.path(RESULTS, "Table4_threshold_classification.csv"), "\n")
 cat("  ", file.path(RESULTS, "Table5_method_summary.csv"), "\n")
 cat("  ", file.path(FIGURES, "Fig_calibration_4panel.{pdf,png}"), "\n")
 cat("  ", file.path(FIGURES, "Fig_validation_4panel.{pdf,png}"), "\n")
-cat("  ", file.path(FIGURES, "Fig_BlandAltman_4panel.{pdf,png}"), "\n")
+cat("  ", file.path(FIGURES, "Fig_AgreementRatio_4panel.{pdf,png}"), "\n")
