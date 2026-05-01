@@ -155,7 +155,7 @@ Ashes from within and southwest of the urban burn perimeter showed high concentr
 
 Four calibration approaches (pellet/powder $\times$ L-line intensity / FP concentration) were compared on the 33 fully paired ash samples (Table~\ref{tab:xrf_validation}). The \textit{pellet L-line intensity model} emerged as the best Pb predictor ($R^2 = 0.998$, RMSE = 151~ppm), followed by powder L-line intensity ($R^2 = 0.997$, RMSE = 282~ppm) which trades precision for field portability. Both fundamental-parameters concentration models showed high correlation ($R^2 \geq 0.97$) but $\sim$10$\times$ wider Bland-Altman agreement intervals (Figure~\ref{fig:bland_altman}) and persistent under-prediction bias, disqualifying them from quantitative use at lower regulatory thresholds. Full performance statistics, residual analyses, the line-selection sweep, and outlier-handling sensitivity are in the Supporting Information.
 
-Both intensity models classified ash samples against the regulatory Pb thresholds with high accuracy (Table~\ref{tab:threshold_classification}): perfect classification at the 320~ppm threshold for both preparations (sensitivity and specificity = 1.00, Wilson 95\% CIs [0.61--1.00] and [0.88--1.00]) and $\geq$97\% accuracy with no false negatives at the 800 and 1000~ppm thresholds. The pellet intensity model retained 91\% sensitivity at the lowest 80~ppm threshold (Wilson CI [0.62--0.98]; vs.\ 82\% for powder intensity and 73--91\% for the FP models), making it the recommended primary screening tool, with powder as a field-portable alternative that maintains decision-grade performance at the 320 and 800~ppm thresholds. Confidence intervals widen at higher thresholds because the number of true positives is small ($n_+ = 2$--6 at 320--1000~ppm); the point estimates should be interpreted alongside the per-arm confusion matrices in Table~\ref{tab:threshold_classification}.
+Both intensity models classified ash samples against the regulatory Pb thresholds with high accuracy (Table~\ref{tab:threshold_classification}): perfect classification at the 320~ppm threshold for both preparations (sensitivity and specificity = 1.00, Wilson 95\% CIs [0.61--1.00] and [0.88--1.00]) and $\geq$97\% accuracy with no false negatives at the 800 and 1000~ppm thresholds. The pellet intensity model retained 91\% sensitivity at the lowest 80~ppm threshold (Wilson CI [0.62--0.98]; vs.\ 82\% for powder intensity and 73--91\% for the FP models), making it the recommended primary screening tool, with powder as a field-portable alternative that maintains decision-grade performance at the 320 and 800~ppm thresholds. Confidence intervals widen at higher thresholds because the number of true positives is small ($n_+ = 2$--6 at 320--1000~ppm); the point estimates should be interpreted alongside the per-arm confusion matrices in Table~\ref{tab:threshold_classification}. Pooled across all 6 thresholds (Table~\ref{tab:method_summary}), the pellet-intensity arm achieves the highest cumulative sensitivity (0.91, 95\% CI [0.77, 0.97]) with only 3 false negatives in 34 above-threshold tests, and the highest specificity (0.98, [0.94, 0.99]) with only 4 false positives in 164 below-threshold tests --- the most decisive of the four arms over the full regulatory range.
 % Insert Table 1 here
 \begin{table}[htbp]
 \caption{Major element concentrations (ppm) ash, ranked by order of mean concentration}
@@ -268,6 +268,23 @@ Threshold & Arm & TP & FN & FP & TN & Sensitivity (95\% CI) & Specificity (95\% 
                       & pellet$_{\mathrm{intensity}}$ & 2 & 0 & 1 & 30 & 1.00 [0.34, 1.00] & 0.97 [0.84, 0.99] & 0.97 \\
                       & powder$_{\mathrm{FP}}$        & 2 & 0 & 1 & 30 & 1.00 [0.34, 1.00] & 0.97 [0.84, 0.99] & 0.97 \\
                       & powder$_{\mathrm{intensity}}$ & 2 & 0 & 1 & 30 & 1.00 [0.34, 1.00] & 0.97 [0.84, 0.99] & 0.97 \\
+\bottomrule
+\end{tabular}
+\end{table}
+% Insert Table 5 here — per-method cumulative classification across the regulatory range
+\begin{table}[htbp]
+\caption{Cumulative classification performance of the four calibration arms across the full regulatory range (six Pb thresholds: 80, 200, 320, 500, 800, and 1000~ppm). For each arm, the confusion matrix is pooled over all 33~samples~$\times$~6~thresholds = 198 binary-classification tests, with sample-level positive count $n_+ = 34$ (pooled across thresholds) and negative count $n_- = 164$. Wilson 95\% confidence intervals on sensitivity and specificity reflect the larger pooled denominators. The pellet-intensity arm has the highest pooled sensitivity (0.91) and the lowest false-negative count (3 of 34), making it the recommended primary screening tool; powder-intensity is the best field-portable alternative.}
+\label{tab:method_summary}
+\centering
+\small
+\begin{tabular}{l c c c c c c c}
+\toprule
+Arm & TP & FN & FP & TN & Sensitivity (95\% CI) & Specificity (95\% CI) & Acc \\
+\midrule
+pellet$_{\mathrm{FP}}$         & 28 & 6 & 3 & 161 & 0.82 [0.67, 0.92] & 0.98 [0.95, 0.99] & 0.95 \\
+pellet$_{\mathrm{intensity}}$  & 31 & 3 & 4 & 160 & 0.91 [0.77, 0.97] & 0.98 [0.94, 0.99] & 0.96 \\
+powder$_{\mathrm{FP}}$         & 29 & 5 & 8 & 156 & 0.85 [0.70, 0.94] & 0.95 [0.91, 0.98] & 0.93 \\
+powder$_{\mathrm{intensity}}$  & 29 & 5 & 6 & 158 & 0.85 [0.70, 0.94] & 0.96 [0.92, 0.98] & 0.94 \\
 \bottomrule
 \end{tabular}
 \end{table}

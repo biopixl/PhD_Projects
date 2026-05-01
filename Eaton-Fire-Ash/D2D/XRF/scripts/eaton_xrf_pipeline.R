@@ -233,6 +233,32 @@ write_csv(summary_4arms,
 write_csv(threshold_table,
           file.path(RESULTS, "Table4_threshold_classification.csv"))
 
+# Cumulative per-arm classification across all 6 thresholds (pooled confusion
+# matrix; one row per arm). Useful for a one-glance "how does each method
+# classify across the regulatory range" summary alongside Table 3 / Table 4.
+threshold_summary <- threshold_table %>%
+  group_by(arm) %>%
+  summarise(n_thresholds = n(),
+            TP = sum(TP), FN = sum(FN), FP = sum(FP), TN = sum(TN),
+            n_pos = sum(n_pos), n_neg = sum(n_neg),
+            n_total = TP + FN + FP + TN,
+            .groups = "drop") %>%
+  rowwise() %>%
+  mutate(sens = TP / n_pos,
+         sens_lo = wilson_ci(TP, n_pos)["lo"],
+         sens_hi = wilson_ci(TP, n_pos)["hi"],
+         spec = TN / n_neg,
+         spec_lo = wilson_ci(TN, n_neg)["lo"],
+         spec_hi = wilson_ci(TN, n_neg)["hi"],
+         acc  = (TP + TN) / n_total,
+         acc_lo = wilson_ci(TP + TN, n_total)["lo"],
+         acc_hi = wilson_ci(TP + TN, n_total)["hi"]) %>%
+  ungroup() %>%
+  arrange(factor(arm, levels = arms$arm))
+
+write_csv(threshold_summary,
+          file.path(RESULTS, "Table5_method_summary.csv"))
+
 # -----------------------------------------------------------------------------
 # 4. Figures (4 panels each)
 # -----------------------------------------------------------------------------
@@ -304,9 +330,16 @@ print(threshold_table %>%
         select(threshold, arm, TP, FN, FP, TN,
                sens, sens_lo, sens_hi, spec, spec_lo, spec_hi) %>%
         mutate(across(where(is.numeric), ~ round(.x, 2))))
+cat("\nMethod summary (pooled across 6 thresholds, Wilson 95% CIs):\n")
+print(threshold_summary %>%
+        select(arm, TP, FN, FP, TN, sens, sens_lo, sens_hi,
+               spec, spec_lo, spec_hi, acc) %>%
+        mutate(across(where(is.numeric), ~ round(.x, 3))))
+
 cat("\nWritten:\n")
 cat("  ", file.path(RESULTS, "Table3_calibration_validation.csv"), "\n")
 cat("  ", file.path(RESULTS, "Table4_threshold_classification.csv"), "\n")
+cat("  ", file.path(RESULTS, "Table5_method_summary.csv"), "\n")
 cat("  ", file.path(FIGURES, "Fig_calibration_4panel.{pdf,png}"), "\n")
 cat("  ", file.path(FIGURES, "Fig_validation_4panel.{pdf,png}"), "\n")
 cat("  ", file.path(FIGURES, "Fig_BlandAltman_4panel.{pdf,png}"), "\n")
