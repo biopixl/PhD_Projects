@@ -71,13 +71,14 @@ fully_paired  <- Reduce(intersect, list(icpms$ID, pellet_ids, powder_ids))
 ash           <- ash   %>% filter(ID %in% fully_paired)
 icpms         <- icpms %>% filter(ID %in% fully_paired)
 
-# Canonical 4 arms
+# Canonical 4 arms — ordered best-to-worst (pellet/powder intensity first,
+# FP arms last) so all downstream tables and figures share a consistent order.
 arms <- tribble(
   ~arm,                ~method,  ~response_type, ~formula_rhs,
-  "pellet_FP",         "pellet", "FP",           "FP_value_ppm",
   "pellet_intensity",  "pellet", "Intensity",    "Pb_Lb1_cps + Pb_Lb2_cps",
-  "powder_FP",         "powder", "FP",           "FP_value_ppm",
-  "powder_intensity",  "powder", "Intensity",    "Pb_Lb1_cps + Pb_Lb3_cps"
+  "powder_intensity",  "powder", "Intensity",    "Pb_Lb1_cps + Pb_Lb3_cps",
+  "pellet_FP",         "pellet", "FP",           "FP_value_ppm",
+  "powder_FP",         "powder", "FP",           "FP_value_ppm"
 )
 
 # -----------------------------------------------------------------------------
