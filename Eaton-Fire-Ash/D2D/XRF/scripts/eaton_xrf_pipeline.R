@@ -96,14 +96,34 @@ cooks_d_prop <- function(x, y) {
   (r^2 * h) / ((1 - h)^2 * s2)
 }
 
-# Sensitivity / specificity / accuracy at one threshold
+# Wilson 95% confidence interval for a binomial proportion (k successes / n)
+wilson_ci <- function(k, n, conf = 0.95) {
+  if (is.na(n) || n == 0) return(c(lo = NA_real_, hi = NA_real_))
+  z  <- qnorm(1 - (1 - conf) / 2)
+  p  <- k / n
+  d  <- 1 + z^2 / n
+  ctr <- (p + z^2 / (2 * n)) / d
+  hw  <- z * sqrt(p * (1 - p) / n + z^2 / (4 * n^2)) / d
+  c(lo = max(0, ctr - hw), hi = min(1, ctr + hw))
+}
+
+# Threshold confusion matrix + sens/spec/acc + Wilson 95% CIs
 class_metrics <- function(truth, pred, thr) {
   t <- truth > thr; p <- pred > thr
   TP <- sum(t & p, na.rm = TRUE);  TN <- sum(!t & !p, na.rm = TRUE)
   FP <- sum(!t & p, na.rm = TRUE); FN <- sum(t & !p, na.rm = TRUE)
-  list(sens = if (TP+FN>0) TP/(TP+FN) else NA_real_,
-       spec = if (TN+FP>0) TN/(TN+FP) else NA_real_,
-       acc  = (TP+TN) / max(TP+TN+FP+FN, 1))
+  n_pos <- TP + FN; n_neg <- TN + FP; n_all <- TP + TN + FP + FN
+  sens_ci <- wilson_ci(TP, n_pos)
+  spec_ci <- wilson_ci(TN, n_neg)
+  acc_ci  <- wilson_ci(TP + TN, n_all)
+  list(TP = TP, TN = TN, FP = FP, FN = FN,
+       n_pos = n_pos, n_neg = n_neg,
+       sens = if (n_pos > 0) TP / n_pos else NA_real_,
+       sens_lo = sens_ci["lo"], sens_hi = sens_ci["hi"],
+       spec = if (n_neg > 0) TN / n_neg else NA_real_,
+       spec_lo = spec_ci["lo"], spec_hi = spec_ci["hi"],
+       acc  = (TP + TN) / max(n_all, 1),
+       acc_lo = acc_ci["lo"], acc_hi = acc_ci["hi"])
 }
 
 # -----------------------------------------------------------------------------
@@ -197,18 +217,20 @@ val_long      <- map_dfr(per_arm, "pair")
 # -----------------------------------------------------------------------------
 
 threshold_table <- map_dfr(THRESHOLDS, function(t) {
-  val_long %>% group_by(arm) %>% summarise(
-    threshold = t,
-    sens = class_metrics(Pb_icpms, Pb_pred, t)$sens,
-    spec = class_metrics(Pb_icpms, Pb_pred, t)$spec,
-    acc  = class_metrics(Pb_icpms, Pb_pred, t)$acc,
-    .groups = "drop"
-  )
-})
+  val_long %>% group_by(arm) %>% group_modify(~ {
+    m <- class_metrics(.x$Pb_icpms, .x$Pb_pred, t)
+    tibble(threshold = t,
+           TP = m$TP, FN = m$FN, FP = m$FP, TN = m$TN,
+           n_pos = m$n_pos, n_neg = m$n_neg,
+           sens = m$sens, sens_lo = m$sens_lo, sens_hi = m$sens_hi,
+           spec = m$spec, spec_lo = m$spec_lo, spec_hi = m$spec_hi,
+           acc  = m$acc,  acc_lo  = m$acc_lo,  acc_hi  = m$acc_hi)
+  }) %>% ungroup()
+}) %>% arrange(threshold, factor(arm, levels = arms$arm))
 
 write_csv(summary_4arms,
           file.path(RESULTS, "Table3_calibration_validation.csv"))
-write_csv(threshold_table %>% arrange(arm, threshold),
+write_csv(threshold_table,
           file.path(RESULTS, "Table4_threshold_classification.csv"))
 
 # -----------------------------------------------------------------------------
@@ -276,13 +298,11 @@ print(summary_4arms %>% select(arm, n_val, cal_R2, cal_RMSE_ppm,
                                matrix_slope, val_pearson_r, val_RMSE_ppm,
                                BA_bias_ppm, BA_LOA_range_ppm) %>%
         mutate(across(where(is.numeric), ~ round(.x, 2))))
-cat("\nThreshold classification (4 arms × 6 thresholds):\n")
+cat("\nThreshold classification at 320, 800, 1000 ppm (point + Wilson 95% CI):\n")
 print(threshold_table %>%
-        pivot_wider(names_from = threshold,
-                    values_from = c(sens, spec, acc),
-                    names_glue = "{.value}_{threshold}") %>%
-        select(arm, sens_320, spec_320, sens_800, spec_800,
-               sens_1000, spec_1000) %>%
+        filter(threshold %in% c(320, 800, 1000)) %>%
+        select(threshold, arm, TP, FN, FP, TN,
+               sens, sens_lo, sens_hi, spec, spec_lo, spec_hi) %>%
         mutate(across(where(is.numeric), ~ round(.x, 2))))
 cat("\nWritten:\n")
 cat("  ", file.path(RESULTS, "Table3_calibration_validation.csv"), "\n")
