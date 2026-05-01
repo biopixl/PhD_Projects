@@ -33,6 +33,13 @@ icpms <- read_csv(file.path(ZEN, "EFA_ICPMS_PPM.csv"),
                   show_col_types = FALSE) %>%
   select(ID = EFA.ID, Pb_icpms = Pb)
 
+# Restrict to IDs with all three measurements (ICP-MS + pellet + powder)
+# to keep the line-sweep validation set identical to the main-text pipeline.
+pellet_ids   <- ash %>% filter(method == "pellet") %>% pull(ID) %>% unique()
+powder_ids   <- ash %>% filter(method == "powder") %>% pull(ID) %>% unique()
+fully_paired <- Reduce(intersect, list(icpms$ID, pellet_ids, powder_ids))
+ash <- ash %>% filter(ID %in% fully_paired)
+
 # Candidate response variables built from the 6 Pb L-lines in the deposit.
 # Each entry has a label and an R formula RHS.
 candidates <- tribble(

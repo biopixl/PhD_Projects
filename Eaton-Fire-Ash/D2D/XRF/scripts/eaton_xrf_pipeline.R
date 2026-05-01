@@ -58,6 +58,19 @@ icpms <- read_csv(file.path(ZEN, "EFA_ICPMS_PPM.csv"),
                   show_col_types = FALSE) %>%
   select(ID = EFA.ID, alq.type, Lat, Lon, Pb_icpms = Pb)
 
+# Restrict the validation pipeline to IDs with all three measurements
+# (ICP-MS + XRF pellet + XRF powder). Samples missing any one preparation are
+# reported as opportunistic in the SI but not used to estimate calibration
+# performance. The intersection includes one site (XPAH55) whose ICP-MS
+# aliquot is labelled SOIL while its XRF pellet/powder were prepared from the
+# co-located ash collection — both represent the same physical site and the
+# same Pb concentration anchor at the low end of the calibration range.
+pellet_ids    <- ash   %>% filter(method == "pellet") %>% pull(ID) %>% unique()
+powder_ids    <- ash   %>% filter(method == "powder") %>% pull(ID) %>% unique()
+fully_paired  <- Reduce(intersect, list(icpms$ID, pellet_ids, powder_ids))
+ash           <- ash   %>% filter(ID %in% fully_paired)
+icpms         <- icpms %>% filter(ID %in% fully_paired)
+
 # Canonical 4 arms
 arms <- tribble(
   ~arm,                ~method,  ~response_type, ~formula_rhs,
