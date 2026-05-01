@@ -78,7 +78,8 @@ run_one <- function(meth, label, rhs, kind) {
   ash_m$Pb_clay <- predict(cal_fit, newdata = ash_m)
 
   pair <- ash_m %>% inner_join(icpms, by = "ID") %>%
-    filter(!is.na(Pb_icpms), !is.na(Pb_clay), Pb_clay > 0)
+    filter(!is.na(Pb_icpms), !is.na(Pb_clay)) %>%
+    mutate(Pb_clay = pmax(Pb_clay, 0))
   if (nrow(pair) < 5) return(NULL)
 
   pair$cooks_D <- cooks_d_prop(pair$Pb_clay, pair$Pb_icpms)

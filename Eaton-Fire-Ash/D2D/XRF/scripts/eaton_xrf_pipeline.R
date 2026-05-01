@@ -124,9 +124,15 @@ run_arm <- function(arm_row) {
   ash_m         <- ash %>% filter(method == meth)
   ash_m$Pb_clay <- predict(cal_fit, newdata = ash_m)
 
-  # Pair with ICP-MS truth for matrix correction + validation
+  # Pair with ICP-MS truth for matrix correction + validation. The clay
+  # calibration's slight negative y-intercept can extrapolate to Pb_clay < 0
+  # for ash samples below the PBP01 (100 ppm) calibration anchor; we floor-
+  # clip those at 0 rather than drop the sample, so every arm reports on the
+  # full 33-sample paired set with a transparent treatment of the
+  # below-calibration range.
   pair <- ash_m %>% inner_join(icpms %>% select(ID, Pb_icpms), by = "ID") %>%
-    filter(!is.na(Pb_icpms), !is.na(Pb_clay), Pb_clay > 0)
+    filter(!is.na(Pb_icpms), !is.na(Pb_clay)) %>%
+    mutate(Pb_clay = pmax(Pb_clay, 0))
 
   # Cook's D-filtered eligible set; then LOOCV slope per eligible row
   pair$cooks_D <- cooks_d_prop(pair$Pb_clay, pair$Pb_icpms)

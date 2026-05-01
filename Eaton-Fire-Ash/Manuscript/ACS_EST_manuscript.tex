@@ -125,7 +125,7 @@ Thirty-eight ash samples (collected 16--25 January 2025) were selected for their
 
 The 33 fully paired ash samples were aliquoted for parallel Pb analysis with a benchtop energy-dispersive X-ray fluorescence (XRF) spectrometer (INAM Expert 3L, RPE Institute of Analytical Control Methods, LLC) in two preparations: a homogenized loose powder mounted in a polymer film cup, and a pressed pellet. To minimize grain-size effects on XRF spectra, pellet subsamples were homogenized by grinding and sieving to $<$106~µm, mixed with cellulose binder, and pressed into 13-mm diameter pellets (Figure~2D). XRF spectra from each preparation were acquired over 60~s with automatic peak deconvolution and matrix correction via the instrument's fundamental parameters (FP) software, which reported semi-quantitative concentrations in mass fraction percent (m.f.\%). For each measurement we additionally retained the per-line emission intensities (counts~s$^{-1}$) for the six Pb~L-lines reported by the instrument (L$\alpha_{1}$, L$\alpha_{2}$, L$\beta_{1}$, L$\beta_{2}$, L$\beta_{3}$, L$\beta_{4}$), excluding lines that overlap matrix elements (e.g., the As~K$\alpha$/Pb~L$\alpha_{1}$ overlap at $\sim$10.55~keV). An empirical sweep over single-line, summed-line, and multi-predictor combinations of these six lines was used to identify the response with the lowest matrix-corrected validation RMSE for each preparation (full sweep in Supporting Information): the L$\beta_{1}$+L$\beta_{2}$ multi-predictor was best for pellets and the L$\beta_{1}$+L$\beta_{3}$ multi-predictor was best for powders. This yields four candidate models to predict Pb in ash: pellet best-line intensity, pellet FP concentration, powder best-line intensity, and powder FP concentration. Given known limitations of fundamental-parameters models for heterogeneous ash matrices,\cite{ravansari2020pxrf} external calibration standards were prepared with known concentrations of Pb in kaolinite clay, for which a detailed protocol is included in the Supporting Information.
 
-Each of the four candidate models was validated against ICP-MS Pb on the 33 fully paired ash samples. Model performance is reported by Pearson $r$ and root-mean-square error (RMSE) for linearity and prediction error, by Bland-Altmans bias and 95\% limits of agreement for method interchangeability,\cite{bland1986statistical,giavarina2015understanding} and by sensitivity, specificity, and accuracy at six soil-Pb regulatory thresholds: 80~ppm (DTSC residential), 200~ppm (EPA residential), 320~ppm (California CHHSL industrial), 500~ppm (DTSC industrial), 800~ppm (EPA industrial), and 1000~ppm (California TTLC).\cite{epa2024residential,dtsc2024ttlc} The proportional ash-matrix correction slope (clay-to-ash transfer) was leave-one-out cross-validated to keep extreme-leverage samples from dominating the fit; the empirical line-selection sweep, Cook's distance--based outlier handling for the matrix-correction step,\cite{cook1977detection} and validation-strategy comparisons are reported in the Supporting Information.
+Each of the four candidate models was validated against ICP-MS Pb on the 33 fully paired ash samples. Model performance is reported by Pearson $r$ and root-mean-square error (RMSE) for linearity and prediction error, by Bland-Altman bias and 95\% limits of agreement for method interchangeability,\cite{bland1986statistical,giavarina2015understanding} and by sensitivity, specificity, and accuracy at six soil-Pb regulatory thresholds: 80~ppm (DTSC residential), 200~ppm (EPA residential), 320~ppm (California CHHSL industrial), 500~ppm (DTSC industrial), 800~ppm (EPA industrial), and 1000~ppm (California TTLC).\cite{epa2024residential,dtsc2024ttlc} The proportional ash-matrix correction slope (clay-to-ash transfer) was leave-one-out cross-validated to keep extreme-leverage samples from dominating the fit. Predicted concentrations from the clay calibration that extrapolated below zero --- a model artifact for ash samples whose XRF response sat below the PBP01 (100~ppm) calibration anchor --- were floor-clipped at 0 to retain the full 33-sample paired set in every arm. The empirical line-selection sweep, Cook's distance--based outlier handling for the matrix-correction step,\cite{cook1977detection} and validation-strategy comparisons are reported in the Supporting Information.
 
 % Figure 2: Sample preparation workflow
 \begin{figure}[htbp]
@@ -153,7 +153,7 @@ Ashes from within and southwest of the urban burn perimeter showed high concentr
 \label{fig:icpms_summary}
 \end{figure}
 
-Four calibration approaches (pellet/powder $\times$ L-line intensity / FP concentration) were compared on the 33 fully paired ash samples (Table~\ref{tab:xrf_validation}). The \textit{pellet L-line intensity model} emerged as the best Pb predictor ($R^2 = 0.998$, RMSE = 153~ppm), followed by powder L-line intensity ($R^2 = 0.997$, RMSE = 286~ppm) which trades precision for field portability. Both fundamental-parameters concentration models showed high correlation ($R^2 \geq 0.97$) but $\sim$10$\times$ wider Bland-Altman agreement intervals (Figure~\ref{fig:bland_altman}) and persistent under-prediction bias, disqualifying them from quantitative use at lower regulatory thresholds. Full performance statistics, residual analyses, the line-selection sweep, and outlier-handling sensitivity are in the Supporting Information.
+Four calibration approaches (pellet/powder $\times$ L-line intensity / FP concentration) were compared on the 33 fully paired ash samples (Table~\ref{tab:xrf_validation}). The \textit{pellet L-line intensity model} emerged as the best Pb predictor ($R^2 = 0.998$, RMSE = 151~ppm), followed by powder L-line intensity ($R^2 = 0.997$, RMSE = 282~ppm) which trades precision for field portability. Both fundamental-parameters concentration models showed high correlation ($R^2 \geq 0.97$) but $\sim$10$\times$ wider Bland-Altman agreement intervals (Figure~\ref{fig:bland_altman}) and persistent under-prediction bias, disqualifying them from quantitative use at lower regulatory thresholds. Full performance statistics, residual analyses, the line-selection sweep, and outlier-handling sensitivity are in the Supporting Information.
 
 Both intensity models classified ash samples against the regulatory Pb thresholds with high accuracy (Table~\ref{tab:threshold_classification}): 100\% sensitivity, specificity, and accuracy at the 320~ppm threshold for both preparations, and $\geq$97\% accuracy with no false negatives at the 800 and 1000~ppm thresholds. The pellet intensity model retained 91\% sensitivity at the lowest 80~ppm threshold (vs.\ 82\% for powder and 80--91\% for the FP models), making it the recommended primary screening tool, with powder as a field-portable alternative that maintains decision-grade performance at the 320 and 800~ppm thresholds. The number of samples exceeding each threshold and the per-arm classification matrix are reported in Table~\ref{tab:threshold_classification}.
 % Insert Table 1 here
@@ -198,7 +198,7 @@ V & 84 & 82 & 20--140 & 30 \\
 \end{table}
 % Insert Table 3 here — 4-arm validation with Bland-Altman agreement
 \begin{table}[htbp]
-\caption{Validation of the four calibration arms against ICP-MS, after the two-stage clay calibration (Stage A; SI \S 1) and ash-matrix correction (Stage B). All metrics are computed on the complete paired set with leave-one-out cross-validation of the matrix-correction slope.}
+\caption{Validation of the four calibration arms against ICP-MS, after the two-stage clay calibration (Stage A; SI \S 1) and ash-matrix correction (Stage B). All metrics are computed on the 33 fully paired ash samples with leave-one-out cross-validation of the matrix-correction slope; predicted concentrations from the clay-calibration extrapolation below the PBP01 (100~ppm) anchor are floor-clipped at 0 to retain the full paired set in every arm.}
 \label{tab:xrf_validation}
 \centering
 \small
@@ -207,10 +207,10 @@ V & 84 & 82 & 20--140 & 30 \\
 Arm & $n$ & $r$ & RMSE & MAE & BA bias & BA LOA & LOA range \\
     &     &     & (ppm) & (ppm) & (ppm) & (ppm) & (ppm) \\
 \midrule
-pellet$_{\mathrm{FP}}$         & 31 & 0.991 & 1780 & 379 & $+321$ & $[-3168, +3810]$ & 6978 \\
-pellet$_{\mathrm{intensity}}$  & 32 & 0.999 &  153 &  66 & $-2$   & $[-308, +303]$   &  611 \\
+pellet$_{\mathrm{FP}}$         & 33 & 0.990 & 1726 & 363 & $+308$ & $[-3072, +3689]$ & 6760 \\
+pellet$_{\mathrm{intensity}}$  & 33 & 0.999 &  151 &  64 & $-2$   & $[-302, +299]$   &  601 \\
 powder$_{\mathrm{FP}}$         & 33 & 0.983 & 1880 & 394 & $+319$ & $[-3370, +4007]$ & 7377 \\
-powder$_{\mathrm{intensity}}$  & 32 & 0.998 &  286 & 120 & $+36$  & $[-529, +602]$   & 1131 \\
+powder$_{\mathrm{intensity}}$  & 33 & 0.998 &  282 & 117 & $+36$  & $[-521, +593]$   & 1114 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -230,7 +230,7 @@ powder$_{\mathrm{intensity}}$  & 32 & 0.998 &  286 & 120 & $+36$  & $[-529, +602
 \end{figure*}
 % Insert Table 4 here — 4-arm × 6-threshold classification matrix
 \begin{table}[htbp]
-\caption{Threshold classification performance (sensitivity~/~specificity~/~accuracy) at six regulatory and screening Pb concentrations. Computed on the 33 fully paired ash samples ($n_{\mathrm{val}} = 31$--33 per arm after exclusion of XRF measurements with non-positive predicted concentration). Of the 33 paired samples, 11 (33\%), 7 (21\%), 6 (18\%), 5 (15\%), 3 (9\%), and 2 (6\%) exceeded the 80, 200, 320, 500, 800, and 1000~ppm thresholds, respectively. Sensitivity is the true-positive rate (correctly identified samples that exceed); specificity is the true-negative rate (correctly identified samples below).}
+\caption{Threshold classification performance (sensitivity~/~specificity~/~accuracy) at six regulatory and screening Pb concentrations. Computed on the 33 fully paired ash samples ($n_{\mathrm{val}} = 33$ per arm with below-calibration predictions floor-clipped at 0). Of the 33 paired samples, 11 (33\%), 7 (21\%), 6 (18\%), 5 (15\%), 3 (9\%), and 2 (6\%) exceeded the 80, 200, 320, 500, 800, and 1000~ppm thresholds, respectively. Sensitivity is the true-positive rate (correctly identified samples that exceed); specificity is the true-negative rate (correctly identified samples below).}
 \label{tab:threshold_classification}
 \centering
 \small
@@ -238,10 +238,10 @@ powder$_{\mathrm{intensity}}$  & 32 & 0.998 &  286 & 120 & $+36$  & $[-529, +602
 \toprule
 Arm & 80 ppm & 200 ppm & 320 ppm & 500 ppm & 800 ppm & 1000 ppm \\
 \midrule
-pellet$_{\mathrm{FP}}$        & 0.80~/~0.95~/~0.90 & 1.00~/~1.00~/~1.00 & 1.00~/~1.00~/~1.00 & 0.60~/~0.96~/~0.90 & 1.00~/~1.00~/~1.00 & 1.00~/~0.97~/~0.97 \\
+pellet$_{\mathrm{FP}}$        & 0.73~/~0.95~/~0.88 & 0.86~/~1.00~/~0.97 & 1.00~/~1.00~/~1.00 & 0.60~/~0.96~/~0.91 & 1.00~/~1.00~/~1.00 & 1.00~/~0.97~/~0.97 \\
 pellet$_{\mathrm{intensity}}$ & 0.91~/~0.95~/~0.94 & 0.86~/~1.00~/~0.97 & 1.00~/~1.00~/~1.00 & 0.80~/~0.96~/~0.94 & 1.00~/~0.97~/~0.97 & 1.00~/~0.97~/~0.97 \\
 powder$_{\mathrm{FP}}$        & 0.91~/~0.77~/~0.82 & 0.86~/~1.00~/~0.97 & 0.83~/~1.00~/~0.97 & 0.60~/~0.96~/~0.91 & 1.00~/~0.97~/~0.97 & 1.00~/~0.97~/~0.97 \\
-powder$_{\mathrm{intensity}}$ & 0.82~/~0.86~/~0.84 & 0.86~/~1.00~/~0.97 & 1.00~/~1.00~/~1.00 & 0.60~/~0.96~/~0.91 & 1.00~/~0.97~/~0.97 & 1.00~/~0.97~/~0.97 \\
+powder$_{\mathrm{intensity}}$ & 0.82~/~0.86~/~0.85 & 0.86~/~1.00~/~0.97 & 1.00~/~1.00~/~1.00 & 0.60~/~0.96~/~0.91 & 1.00~/~0.97~/~0.97 & 1.00~/~0.97~/~0.97 \\
 \bottomrule
 \end{tabular}
 \end{table}

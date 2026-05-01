@@ -167,24 +167,24 @@ For each prep method, twelve candidate response variables were tested: six singl
 Method & Response & $n_{\mathrm{val}}$ & Cal $R^2$ & Val $r$ & Val RMSE & BA bias & BA LOA range \\
        &          &                     &           &          & (ppm)    & (ppm)   & (ppm)        \\
 \midrule
-pellet & \textbf{Pb~L$\beta_1$, L$\beta_2$ (multi)} & 32 & 0.999 & 0.999 &  153 &  $-2$  &   611 \\
-pellet & Pb~L$\alpha_1$ (single)                    & 31 & 0.998 & 0.998 &  742 & $+129$ & 2910 \\
-pellet & Pb~L$\alpha_2$ (single)                    & 30 & 0.998 & 0.998 &  749 & $+133$ & 2941 \\
-pellet & Pb~L$\alpha_1$+L$\alpha_2$ (sum)           & 30 & 0.998 & 0.998 &  754 & $+133$ & 2958 \\
-pellet & Pb~L$\beta_4$ (single)                     & 31 & 0.998 & 0.998 &  814 & $+147$ & 3189 \\
-pellet & Pb~L$\beta_1$, L$\beta_3$ (multi)          & 30 & 0.998 & 0.998 &  826 & $+152$ & 3236 \\
+pellet & \textbf{Pb~L$\beta_1$, L$\beta_2$ (multi)} & 33 & 0.999 & 0.999 &  151 &  $-2$  &   601 \\
+pellet & Pb~L$\alpha_1$ (single)                    & 33 & 0.998 & 0.998 &  719 & $+125$ & 2819 \\
+pellet & Pb~L$\alpha_2$ (single)                    & 32 & 0.998 & 0.998 &  726 & $+127$ & 2846 \\
+pellet & Pb~L$\alpha_1$+L$\alpha_2$ (sum)           & 32 & 0.998 & 0.998 &  730 & $+128$ & 2862 \\
+pellet & Pb~L$\beta_1$, L$\beta_3$ (multi)          & 33 & 0.998 & 0.998 &  787 & $+142$ & 3084 \\
+pellet & Pb~L$\beta_4$ (single)                     & 33 & 0.998 & 0.998 &  789 & $+139$ & 3090 \\
 \midrule
-powder & \textbf{Pb~L$\beta_1$, L$\beta_3$ (multi)} & 32 & 0.937 & 0.998 &  286 &  $+36$ &  1131 \\
-powder & Pb~L$\alpha_2$ (single)                    & 28 & 0.904 & 0.990 & 1746 & $+345$ &  6831 \\
-powder & Pb~L$\beta_4$ (single)                     & 26 & 0.904 & 0.989 & 1883 & $+380$ &  7371 \\
-powder & Pb~L$\beta_2$ (single)                     & 26 & 0.904 & 0.989 & 1888 & $+381$ &  7393 \\
-powder & Pb~L$\beta_1$+L$\beta_2$ (sum)             & 26 & 0.904 & 0.989 & 1892 & $+382$ &  7407 \\
-powder & Pb~L$\beta_1$, L$\beta_2$ (multi)          & 29 & 0.928 & 0.913 & 2744 & $+529$ & 10742 \\
+powder & \textbf{Pb~L$\beta_1$, L$\beta_3$ (multi)} & 33 & 0.937 & 0.998 &  282 &  $+36$ &  1114 \\
+powder & Pb~L$\alpha_2$ (single)                    & 32 & 0.904 & 0.990 & 1633 & $+308$ &  6387 \\
+powder & Pb~L$\beta_4$ (single)                     & 33 & 0.904 & 0.989 & 1671 & $+311$ &  6537 \\
+powder & Pb~L$\beta_2$ (single)                     & 33 & 0.904 & 0.989 & 1676 & $+311$ &  6556 \\
+powder & Pb~L$\beta_1$+L$\beta_2$ (sum)             & 33 & 0.904 & 0.989 & 1679 & $+312$ &  6569 \\
+powder & Pb~L$\beta_1$, L$\beta_2$ (multi)          & 33 & 0.928 & 0.913 & 2572 & $+471$ & 10067 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The headline 4-arm validation in the main text (Table~3) carries forward the best response per prep method: \textbf{pellet$_{\mathrm{intensity}}$ = Pb~L$\beta_1$, L$\beta_2$ (multi)} and \textbf{powder$_{\mathrm{intensity}}$ = Pb~L$\beta_1$, L$\beta_3$ (multi)}. Notably the pellet- and powder-best multi-predictor compositions are not interchangeable: the L$\beta_1$,L$\beta_2$ pair that wins for pellet has the worst validation RMSE for powder (2{,}744~ppm vs.\ 286~ppm for L$\beta_1$,L$\beta_3$), reflecting that grain-size and density variability of unpressed powder couples differently to adjacent Pb~L$\beta$ peaks than to the more separated L$\beta_1$/L$\beta_3$ pair.
+The headline 4-arm validation in the main text (Table~3) carries forward the best response per prep method: \textbf{pellet$_{\mathrm{intensity}}$ = Pb~L$\beta_1$, L$\beta_2$ (multi)} and \textbf{powder$_{\mathrm{intensity}}$ = Pb~L$\beta_1$, L$\beta_3$ (multi)}. Notably the pellet- and powder-best multi-predictor compositions are not interchangeable: the L$\beta_1$,L$\beta_2$ pair that wins for pellet has the worst validation RMSE for powder (2{,}572~ppm vs.\ 282~ppm for L$\beta_1$,L$\beta_3$), reflecting that grain-size and density variability of unpressed powder couples differently to adjacent Pb~L$\beta$ peaks than to the more separated L$\beta_1$/L$\beta_3$ pair.
 
 \newpage
 
@@ -209,10 +209,10 @@ on paired ash samples eligible for inclusion (i.e., excluding samples flagged by
 \toprule
 Arm & $n$ eligible & $n$ excluded & Excluded samples & Full-fit slope & LOOCV slope SD \\
 \midrule
-pellet$_{\mathrm{FP}}$         & 28 & 3 & XPAH28, JPL73, XPAH20 & 1.144 & 0.056 \\
-pellet$_{\mathrm{intensity}}$  & 30 & 2 & XPAH28, JPL73         & 2.723 & 0.092 \\
+pellet$_{\mathrm{FP}}$         & 30 & 3 & XPAH28, JPL73, XPAH20 & 1.144 & 0.056 \\
+pellet$_{\mathrm{intensity}}$  & 31 & 2 & XPAH28, JPL73         & 2.723 & 0.092 \\
 powder$_{\mathrm{FP}}$         & 30 & 3 & XPAH28, JPL73, XPAH20 & 0.334 & 0.023 \\
-powder$_{\mathrm{intensity}}$  & 30 & 2 & XPAH28, JPL73         & 0.705 & 0.021 \\
+powder$_{\mathrm{intensity}}$  & 31 & 2 & XPAH28, JPL73         & 0.705 & 0.021 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -232,13 +232,13 @@ We compared seven strategies for managing high-leverage samples in the matrix-co
 \toprule
 Strategy & $n$ training & Val RMSE (ppm) & BA bias (ppm) & LOA range (ppm) \\
 \midrule
-S1: All samples (LOOCV)        & 32 & 478  & $+59$  & 1890 \\
-S2: Drop XPAH28 only           & 31 & 492  & $+93$  & 1925 \\
-S3: Drop top-2 (XPAH28, XPAH20)& 30 & 1104 & $+232$ & 4295 \\
-S4: Drop top-3 (S3 + JPL73)    & 29 &  617 & $+118$ & 2409 \\
-S5: Cap ICP-MS $\le$ 1000~ppm  & 30 & 1104 & $+232$ & 4295 \\
-S6: Cap ICP-MS $\le$ 500~ppm   & 27 & 1203 & $+256$ & 4679 \\
-\textbf{S7: Cook's $D > 4/n$ (used)} & \textbf{30} & \textbf{153} & \textbf{$-2$} & \textbf{611} \\
+S1: All samples (LOOCV)        & 33 & 478  & $+59$  & 1890 \\
+S2: Drop XPAH28 only           & 32 & 492  & $+93$  & 1925 \\
+S3: Drop top-2 (XPAH28, XPAH20)& 31 & 1104 & $+232$ & 4295 \\
+S4: Drop top-3 (S3 + JPL73)    & 30 &  617 & $+118$ & 2409 \\
+S5: Cap ICP-MS $\le$ 1000~ppm  & 31 & 1104 & $+232$ & 4295 \\
+S6: Cap ICP-MS $\le$ 500~ppm   & 28 & 1203 & $+256$ & 4679 \\
+\textbf{S7: Cook's $D > 4/n$ (used)} & \textbf{31} & \textbf{151} & \textbf{$-2$} & \textbf{601} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -248,7 +248,7 @@ S6: Cap ICP-MS $\le$ 500~ppm   & 27 & 1203 & $+256$ & 4679 \\
 We considered three approaches to validating the matrix-correction step: leave-one-out cross-validation (LOOCV; the default), single 67/33 holdout repeated 100 times with random seeds, and 5-fold cross-validation also repeated 100 times. The intensity-arm RMSE estimates from the three strategies span similar central ranges, but the holdout estimates have standard deviations comparable to their means because XPAH28's leverage dominates whichever partition contains it. With $n = 33$ fully paired samples, LOOCV is the most reliable estimator.
 
 \begin{table}[htbp]
-\caption{Validation-strategy comparison for the matrix correction step (pellet-intensity arm, $n = 32$ on the fully paired set). Holdout and 5-fold values are mean $\pm$ SD across 100 random seeds.}
+\caption{Validation-strategy comparison for the matrix correction step (pellet-intensity arm, $n = 33$ on the fully paired set with floor-clipping). Holdout and 5-fold values are mean $\pm$ SD across 100 random seeds.}
 \label{tab:validation_strategy}
 \centering
 \small
