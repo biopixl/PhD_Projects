@@ -38,20 +38,28 @@
     \item Table S2. Stage A clay-calibration coefficients and LOOCV
     \item Table S3. Pb~L-line sweep (12 candidate models per prep method built from the 6 deposited Pb~L-line intensities)
   \end{itemize}
-  \item \S 2. Ash-matrix correction and outlier handling
+  \item \S 2. Alternative calibration approaches and validation
   \begin{itemize}
-    \item Table S4. Ash-matrix correction slopes and LOOCV stability
-    \item Table S5. Outlier-handling sensitivity analysis (7 strategies $\times$ 4 arms)
-    \item Table S6. Validation strategy comparison (LOOCV vs.\ holdout vs.\ 5-fold)
+    \item Table S4. Full 4-arm validation metrics against ICP-MS (pellet/powder $\times$ intensity/FP)
+    \item Figure S3. XRF-predicted vs.\ ICP-MS Pb (4-panel comparison)
+    \item Figure S4. Method-agreement ratio plots (4-panel comparison)
+    \item Table S5. Full 24-row threshold classification (4 arms $\times$ 6 thresholds)
+    \item Table S6. Cumulative classification performance across all methods
   \end{itemize}
-  \item \S 3. Spatial distribution of metals
+  \item \S 3. Ash-matrix correction and outlier handling
   \begin{itemize}
-    \item Figure S2. Spatial distribution of Pb, Zn, Cu, and Co
-    \item Figure S3. Pearson correlation matrix for trace metals
+    \item Table S7. Ash-matrix correction slopes and LOOCV stability
+    \item Table S8. Outlier-handling sensitivity analysis (7 strategies $\times$ 4 arms)
+    \item Table S9. Validation strategy comparison (LOOCV vs.\ holdout vs.\ 5-fold)
   \end{itemize}
-  \item \S 4. Sample metadata and complete datasets
+  \item \S 4. Spatial distribution of metals
   \begin{itemize}
-    \item Table S7. Sample locations and collection metadata
+    \item Figure S5. Spatial distribution of Pb, Zn, Cu, and Co
+    \item Figure S6. Pearson correlation matrix for trace metals
+  \end{itemize}
+  \item \S 5. Sample metadata and complete datasets
+  \begin{itemize}
+    \item Table S10. Sample locations and collection metadata
     \item Complete ICP-MS, XRF, and validation datasets are provided as
       separate machine-readable files (CSV) and are reproducible from the
       analysis pipeline at \texttt{D2D/XRF/scripts/eaton\_xrf\_pipeline.R}.
@@ -184,15 +192,127 @@ powder & Pb~L$\beta_1$, L$\beta_2$ (multi)          & 33 & 0.928 & 0.913 & 2572 
 \end{tabular}
 \end{table}
 
-The headline 4-arm validation in the main text (Table~3) carries forward the best response per prep method: \textbf{pellet$_{\mathrm{intensity}}$ = Pb~L$\beta_1$, L$\beta_2$ (multi)} and \textbf{powder$_{\mathrm{intensity}}$ = Pb~L$\beta_1$, L$\beta_3$ (multi)}. Notably the pellet- and powder-best multi-predictor compositions are not interchangeable: the L$\beta_1$,L$\beta_2$ pair that wins for pellet has the worst validation RMSE for powder (2{,}572~ppm vs.\ 282~ppm for L$\beta_1$,L$\beta_3$), reflecting that grain-size and density variability of unpressed powder couples differently to adjacent Pb~L$\beta$ peaks than to the more separated L$\beta_1$/L$\beta_3$ pair.
+The headline validation in the main text (Table~3) carries forward the best response for the recommended screening approach: \textbf{pellet$_{\mathrm{intensity}}$ = Pb~L$\beta_1$, L$\beta_2$ (multi)}. Notably the pellet- and powder-best multi-predictor compositions are not interchangeable: the L$\beta_1$,L$\beta_2$ pair that wins for pellet has the worst validation RMSE for powder (2{,}572~ppm vs.\ 282~ppm for L$\beta_1$,L$\beta_3$), reflecting that grain-size and density variability of unpressed powder couples differently to adjacent Pb~L$\beta$ peaks than to the more separated L$\beta_1$/L$\beta_3$ pair.
 
 \newpage
 
 % ============================================================================
-% S2. ASH-MATRIX CORRECTION AND OUTLIER HANDLING
+% S2. ALTERNATIVE CALIBRATION APPROACHES AND VALIDATION
 % ============================================================================
 
-\section*{S2. Ash-matrix correction and outlier handling}
+\section*{S2. Alternative calibration approaches and validation}
+
+This section provides full validation metrics for all four calibration approaches (pellet/powder $\times$ intensity/FP) for readers interested in technical comparison. The main text reports only the recommended pellet L$\beta_1$+L$\beta_2$ intensity model.
+
+\subsection*{Full 4-arm validation against ICP-MS}
+
+\begin{table}[htbp]
+\caption{Validation of all four calibration arms against ICP-MS, after the two-stage clay calibration (Stage A; \S 1) and ash-matrix correction (Stage B; \S 3). All metrics are computed on the 33 fully paired ash samples with leave-one-out cross-validation of the matrix-correction slope; predicted concentrations from the clay-calibration extrapolation below the PBP01 (100~ppm) anchor are floor-clipped at 0 to retain the full paired set in every arm.}
+\label{tab:s4_full_validation}
+\centering
+\small
+\begin{tabular}{lrrrrrrr}
+\toprule
+Method & $n$ & $r$ & RMSE & MAE & BA bias & BA LOA & LOA range \\
+    &     &     & (ppm) & (ppm) & (ppm) & (ppm) & (ppm) \\
+\midrule
+pellet$_{\mathrm{intensity}}$  & 33 & 0.999 &  151 &  64 & $-2$   & $[-302, +299]$   &  601 \\
+powder$_{\mathrm{intensity}}$  & 33 & 0.998 &  282 & 117 & $+36$  & $[-521, +593]$   & 1114 \\
+pellet$_{\mathrm{FP}}$         & 33 & 0.990 & 1726 & 363 & $+308$ & $[-3072, +3689]$ & 6760 \\
+powder$_{\mathrm{FP}}$         & 33 & 0.983 & 1880 & 394 & $+319$ & $[-3370, +4007]$ & 7377 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The pellet-intensity arm achieves 10$\times$ narrower Bland-Altman limits of agreement than the fundamental-parameters (FP) approaches, despite all four arms showing high Pearson correlation ($r > 0.98$). The FP arms exhibit systematic positive bias (+308 to +319~ppm) reflecting the instrument's matrix correction assumptions, which are calibrated for homogeneous geological samples rather than heterogeneous wildfire ash.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{Fig_validation_4panel.png}
+\caption{XRF-predicted Pb concentration vs.\ ICP-MS measured Pb (log-log scale) for the four calibration arms (panels ordered best-to-worst). Pellet preparations are coloured purple; powder preparations orange. Dotted grey diagonal is the 1:1 line.}
+\label{fig:s3_validation_4panel}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{Fig_AgreementRatio_4panel.png}
+\caption{Method-agreement ratio plots: XRF-predicted Pb divided by ICP-MS Pb (linear y-axis) versus ICP-MS Pb (log~x-axis) for the four calibration arms. The dotted grey reference line at ratio = 1 marks perfect agreement; values $<$1 indicate XRF under-prediction and $>$1 over-prediction. The pellet-intensity arm clusters tightly around 1.0 across the calibration range; the FP arms exhibit large ratio departures, especially for low-Pb samples.}
+\label{fig:s4_ratio_4panel}
+\end{figure*}
+
+\subsection*{Full threshold classification (4 arms $\times$ 6 thresholds)}
+
+\begin{table}[htbp]
+\caption{Threshold classification performance on the 33 fully paired ash samples. For each Pb regulatory threshold and calibration arm we report the confusion matrix (TP, FN, FP, TN) and the Wilson 95\% binomial confidence intervals on sensitivity and specificity. Of the 33 paired samples, 11, 7, 6, 5, 3, and 2 exceeded the 80, 200, 320, 500, 800, and 1000~ppm thresholds, respectively.}
+\label{tab:s5_threshold_classification}
+\centering
+\footnotesize
+\begin{tabular}{l l c c c c c c c}
+\toprule
+Threshold & Method & TP & FN & FP & TN & Sensitivity (95\% CI) & Specificity (95\% CI) & Acc \\
+(ppm)     &        &    &    &    &    &                       &                       &     \\
+\midrule
+\multirow{4}{*}{80}   & pellet$_{\mathrm{intensity}}$ & 10 & 1 & 1 & 21 & 0.91 [0.62, 0.98] & 0.95 [0.78, 0.99] & 0.94 \\
+                      & powder$_{\mathrm{intensity}}$ & 9  & 2 & 3 & 19 & 0.82 [0.52, 0.95] & 0.86 [0.67, 0.95] & 0.85 \\
+                      & pellet$_{\mathrm{FP}}$        & 8  & 3 & 1 & 21 & 0.73 [0.43, 0.90] & 0.95 [0.78, 0.99] & 0.88 \\
+                      & powder$_{\mathrm{FP}}$        & 10 & 1 & 5 & 17 & 0.91 [0.62, 0.98] & 0.77 [0.57, 0.90] & 0.82 \\
+\midrule
+\multirow{4}{*}{200}  & pellet$_{\mathrm{intensity}}$ & 6 & 1 & 0 & 26 & 0.86 [0.49, 0.97] & 1.00 [0.87, 1.00] & 0.97 \\
+                      & powder$_{\mathrm{intensity}}$ & 6 & 1 & 0 & 26 & 0.86 [0.49, 0.97] & 1.00 [0.87, 1.00] & 0.97 \\
+                      & pellet$_{\mathrm{FP}}$        & 6 & 1 & 0 & 26 & 0.86 [0.49, 0.97] & 1.00 [0.87, 1.00] & 0.97 \\
+                      & powder$_{\mathrm{FP}}$        & 6 & 1 & 0 & 26 & 0.86 [0.49, 0.97] & 1.00 [0.87, 1.00] & 0.97 \\
+\midrule
+\multirow{4}{*}{320}  & pellet$_{\mathrm{intensity}}$ & 6 & 0 & 0 & 27 & 1.00 [0.61, 1.00] & 1.00 [0.88, 1.00] & 1.00 \\
+                      & powder$_{\mathrm{intensity}}$ & 6 & 0 & 0 & 27 & 1.00 [0.61, 1.00] & 1.00 [0.88, 1.00] & 1.00 \\
+                      & pellet$_{\mathrm{FP}}$        & 6 & 0 & 0 & 27 & 1.00 [0.61, 1.00] & 1.00 [0.88, 1.00] & 1.00 \\
+                      & powder$_{\mathrm{FP}}$        & 5 & 1 & 0 & 27 & 0.83 [0.44, 0.97] & 1.00 [0.88, 1.00] & 0.97 \\
+\midrule
+\multirow{4}{*}{500}  & pellet$_{\mathrm{intensity}}$ & 4 & 1 & 1 & 27 & 0.80 [0.38, 0.96] & 0.96 [0.82, 0.99] & 0.94 \\
+                      & powder$_{\mathrm{intensity}}$ & 3 & 2 & 1 & 27 & 0.60 [0.23, 0.88] & 0.96 [0.82, 0.99] & 0.91 \\
+                      & pellet$_{\mathrm{FP}}$        & 3 & 2 & 1 & 27 & 0.60 [0.23, 0.88] & 0.96 [0.82, 0.99] & 0.91 \\
+                      & powder$_{\mathrm{FP}}$        & 3 & 2 & 1 & 27 & 0.60 [0.23, 0.88] & 0.96 [0.82, 0.99] & 0.91 \\
+\midrule
+\multirow{4}{*}{800}  & pellet$_{\mathrm{intensity}}$ & 3 & 0 & 1 & 29 & 1.00 [0.44, 1.00] & 0.97 [0.83, 0.99] & 0.97 \\
+                      & powder$_{\mathrm{intensity}}$ & 3 & 0 & 1 & 29 & 1.00 [0.44, 1.00] & 0.97 [0.83, 0.99] & 0.97 \\
+                      & pellet$_{\mathrm{FP}}$        & 3 & 0 & 0 & 30 & 1.00 [0.44, 1.00] & 1.00 [0.89, 1.00] & 1.00 \\
+                      & powder$_{\mathrm{FP}}$        & 3 & 0 & 1 & 29 & 1.00 [0.44, 1.00] & 0.97 [0.83, 0.99] & 0.97 \\
+\midrule
+\multirow{4}{*}{1000} & pellet$_{\mathrm{intensity}}$ & 2 & 0 & 1 & 30 & 1.00 [0.34, 1.00] & 0.97 [0.84, 0.99] & 0.97 \\
+                      & powder$_{\mathrm{intensity}}$ & 2 & 0 & 1 & 30 & 1.00 [0.34, 1.00] & 0.97 [0.84, 0.99] & 0.97 \\
+                      & pellet$_{\mathrm{FP}}$        & 2 & 0 & 1 & 30 & 1.00 [0.34, 1.00] & 0.97 [0.84, 0.99] & 0.97 \\
+                      & powder$_{\mathrm{FP}}$        & 2 & 0 & 1 & 30 & 1.00 [0.34, 1.00] & 0.97 [0.84, 0.99] & 0.97 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Cumulative classification performance across methods}
+
+\begin{table}[htbp]
+\caption{Cumulative classification performance of the four calibration arms across the full regulatory range (six Pb thresholds: 80, 200, 320, 500, 800, and 1000~ppm). For each arm, the confusion matrix is pooled over all 33~samples~$\times$~6~thresholds = 198 binary-classification tests, with sample-level positive count $n_+ = 34$ (pooled across thresholds) and negative count $n_- = 164$. Wilson 95\% confidence intervals on sensitivity and specificity reflect the larger pooled denominators.}
+\label{tab:s6_method_summary}
+\centering
+\small
+\begin{tabular}{l c c c c c c c}
+\toprule
+Method & TP & FN & FP & TN & Sensitivity (95\% CI) & Specificity (95\% CI) & Acc \\
+\midrule
+pellet$_{\mathrm{intensity}}$  & 31 & 3 & 4 & 160 & 0.91 [0.77, 0.97] & 0.98 [0.94, 0.99] & 0.96 \\
+powder$_{\mathrm{intensity}}$  & 29 & 5 & 6 & 158 & 0.85 [0.70, 0.94] & 0.96 [0.92, 0.98] & 0.94 \\
+pellet$_{\mathrm{FP}}$         & 28 & 6 & 3 & 161 & 0.82 [0.67, 0.92] & 0.98 [0.95, 0.99] & 0.95 \\
+powder$_{\mathrm{FP}}$         & 29 & 5 & 8 & 156 & 0.85 [0.70, 0.94] & 0.95 [0.91, 0.98] & 0.93 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The pellet-intensity arm has the highest pooled sensitivity (0.91) and the lowest false-negative count (3 of 34), making it the recommended primary screening tool. The powder-intensity arm is the best field-portable alternative, with 0.85 pooled sensitivity and comparable specificity (0.96). The FP arms have lower cumulative sensitivity despite high specificity, reflecting the systematic positive bias that inflates predicted values and causes false negatives at lower thresholds.
+
+\newpage
+
+% ============================================================================
+% S3. ASH-MATRIX CORRECTION AND OUTLIER HANDLING
+% ============================================================================
+
+\section*{S3. Ash-matrix correction and outlier handling}
 
 \subsection*{Matrix-correction slopes (Stage B)}
 
@@ -202,7 +322,7 @@ on paired ash samples eligible for inclusion (i.e., excluding samples flagged by
 
 \begin{table}[htbp]
 \caption{Ash-matrix correction slopes and LOOCV stability. Eligible samples are those passing the Cook's $D > 4/n$ filter; excluded samples are still predicted (using the eligible-set full-fit slope) and contribute to the validation summary in main-text Table~3.}
-\label{tab:matrix_correction}
+\label{tab:s7_matrix_correction}
 \centering
 \small
 \begin{tabular}{lrrrrr}
@@ -225,7 +345,7 @@ We compared seven strategies for managing high-leverage samples in the matrix-co
 
 \begin{table}[htbp]
 \caption{Outlier-handling sensitivity for the pellet-intensity arm (the headline arm) on the 33-sample fully paired validation set. The Cook's $D$ strategy, used in the main-text analysis, is highlighted. The complete table for all four arms is in \texttt{Table\_outlier\_strategy\_comparison.csv}.}
-\label{tab:outlier_sensitivity}
+\label{tab:s8_outlier_sensitivity}
 \centering
 \small
 \begin{tabular}{lrrrr}
@@ -249,7 +369,7 @@ We considered three approaches to validating the matrix-correction step: leave-o
 
 \begin{table}[htbp]
 \caption{Validation-strategy comparison for the matrix correction step (pellet-intensity arm, $n = 33$ on the fully paired set with floor-clipping). Holdout and 5-fold values are mean $\pm$ SD across 100 random seeds.}
-\label{tab:validation_strategy}
+\label{tab:s9_validation_strategy}
 \centering
 \small
 \begin{tabular}{lrrr}
@@ -266,36 +386,36 @@ LOOCV (default)             & 478              & 0.999 & 1890 \\
 \newpage
 
 % ============================================================================
-% S3. SPATIAL DISTRIBUTION
+% S4. SPATIAL DISTRIBUTION
 % ============================================================================
 
-\section*{S3. Spatial distribution of metals}
+\section*{S4. Spatial distribution of metals}
 
 \begin{figure}[htbp]
 \centering
-% \includegraphics[width=0.8\textwidth]{Fig_S2_metal_spatial.png}
+% \includegraphics[width=0.8\textwidth]{Fig_S5_metal_spatial.png}
 \caption{Spatial distribution of Pb, Zn, Cu, and Co concentrations (ppm) in Eaton Fire ash samples. Points scaled by concentration; color indicates exceedance of the 320~ppm screening threshold for Pb (or analogous regulatory thresholds for Zn, Cu, Co).}
-\label{fig:s2_spatial}
+\label{fig:s5_spatial}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-% \includegraphics[width=0.8\textwidth]{Fig_S3_correlation_matrix.png}
+% \includegraphics[width=0.8\textwidth]{Fig_S6_correlation_matrix.png}
 \caption{Pearson correlation matrix for trace metals of toxicological concern. Only significant correlations ($p < 0.05$) shown.}
-\label{fig:s3_correlations}
+\label{fig:s6_correlations}
 \end{figure}
 
 \newpage
 
 % ============================================================================
-% S4. SAMPLE METADATA
+% S5. SAMPLE METADATA
 % ============================================================================
 
-\section*{S4. Sample metadata}
+\section*{S5. Sample metadata}
 
 \begin{table}[htbp]
 \caption{Sample locations and collection metadata (excerpt; complete metadata in \texttt{sample\_id\_harmonization.csv}).}
-\label{tab:s7_metadata}
+\label{tab:s10_metadata}
 \centering
 \small
 \begin{tabular}{lrrll}
