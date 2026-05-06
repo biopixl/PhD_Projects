@@ -30,39 +30,31 @@
 \section*{Contents}
 
 \begin{itemize}
-  \item \S 1. Two-stage XRF calibration: kaolinite-clay standard preparation, clay-pellet calibration, and line-selection sweep
+  \item \S 1. Two-stage XRF calibration
   \begin{itemize}
     \item Kaolinite-clay calibration standard preparation protocol
-    \item Figure S1. Clay calibration on PBP standards (4 arms)
-    \item Table S1. PBP clay reference series composition
-    \item Table S2. Stage A clay-calibration coefficients and LOOCV
-    \item Table S3. Pb~L-line sweep (12 candidate models per prep method built from the 6 deposited Pb~L-line intensities)
+    \item Table S1. PBP clay reference series
+    \item Table S2. Stage A clay-calibration coefficients
+    \item Figure S1. Clay calibration curves (4 arms)
+    \item Table S3. Pb~L-line sweep results
   \end{itemize}
-  \item \S 2. Alternative calibration approaches and validation
+  \item \S 2. Alternative calibration approaches
   \begin{itemize}
-    \item Table S4. Full 4-arm validation metrics against ICP-MS (pellet/powder $\times$ intensity/FP)
-    \item Figure S3. XRF-predicted vs.\ ICP-MS Pb (4-panel comparison)
-    \item Figure S4. Method-agreement ratio plots (4-panel comparison)
-    \item Table S5. Full 24-row threshold classification (4 arms $\times$ 6 thresholds)
-    \item Table S6. Cumulative classification performance across all methods
+    \item Table S4. Full 4-arm validation metrics
+    \item Figure S2. XRF vs.\ ICP-MS validation (4 panels)
+    \item Figure S3. Method-agreement ratio plots (4 panels)
+    \item Table S5. Threshold classification (4 arms $\times$ 6 thresholds)
+    \item Table S6. Cumulative classification summary
   \end{itemize}
   \item \S 3. Ash-matrix correction and outlier handling
   \begin{itemize}
-    \item Table S7. Ash-matrix correction slopes and LOOCV stability
-    \item Table S8. Outlier-handling sensitivity analysis (7 strategies $\times$ 4 arms)
-    \item Table S9. Validation strategy comparison (LOOCV vs.\ holdout vs.\ 5-fold)
+    \item Table S7. Matrix-correction slopes
+    \item Table S8. Outlier-handling sensitivity
   \end{itemize}
-  \item \S 4. Spatial distribution of metals
+  \item \S 4. Sample metadata
   \begin{itemize}
-    \item Figure S5. Spatial distribution of Pb, Zn, Cu, and Co
-    \item Figure S6. Pearson correlation matrix for trace metals
-  \end{itemize}
-  \item \S 5. Sample metadata and complete datasets
-  \begin{itemize}
-    \item Table S10. Sample locations and collection metadata
-    \item Complete ICP-MS, XRF, and validation datasets are provided as
-      separate machine-readable files (CSV) and are reproducible from the
-      analysis pipeline at \texttt{D2D/XRF/scripts/eaton\_xrf\_pipeline.R}.
+    \item Table S9. Sample locations and collection metadata
+    \item Machine-readable datasets (CSV) available at Zenodo
   \end{itemize}
 \end{itemize}
 
@@ -131,7 +123,7 @@ powder$_{\mathrm{FP}}$         & FP-derived ppm                         & 11 & 0
 \end{tabular}
 \end{table}
 
-The notable LOOCV inflation for the powder-intensity arm (97.9 $\to$ 361~ppm) reflects sensitivity of the multi-predictor fit to leaving any single PBP point out at $n = 11$; this is a calibration-sample-size limitation, not an instrument or response problem. Stage A coefficients for all four arms are visualized in Figure~S1.
+Stage A coefficients for all four arms are visualized in Figure~S1.
 
 \begin{figure*}[htbp]
 \centering
@@ -230,14 +222,14 @@ The pellet-intensity arm achieves 10$\times$ narrower Bland-Altman limits of agr
 \centering
 \includegraphics[width=\textwidth]{Fig_validation_4panel.png}
 \caption{XRF-predicted Pb concentration vs.\ ICP-MS measured Pb (log-log scale) for the four calibration arms (panels ordered best-to-worst). Pellet preparations are coloured purple; powder preparations orange. Dotted grey diagonal is the 1:1 line.}
-\label{fig:s3_validation_4panel}
+\label{fig:s2_validation_4panel}
 \end{figure*}
 
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=\textwidth]{Fig_AgreementRatio_4panel.png}
 \caption{Method-agreement ratio plots: XRF-predicted Pb divided by ICP-MS Pb (linear y-axis) versus ICP-MS Pb (log~x-axis) for the four calibration arms. The dotted grey reference line at ratio = 1 marks perfect agreement; values $<$1 indicate XRF under-prediction and $>$1 over-prediction. The pellet-intensity arm clusters tightly around 1.0 across the calibration range; the FP arms exhibit large ratio departures, especially for low-Pb samples.}
-\label{fig:s4_ratio_4panel}
+\label{fig:s3_ratio_4panel}
 \end{figure*}
 
 \subsection*{Full threshold classification (4 arms $\times$ 6 thresholds)}
@@ -337,14 +329,14 @@ powder$_{\mathrm{FP}}$         & 30 & 3 & XPAH28, JPL73, XPAH20 & 0.334 & 0.023 
 \end{tabular}
 \end{table}
 
-XPAH28 (ICP-MS Pb~$=$~18,528~ppm — an order of magnitude higher than the next-highest sample at 1,933~ppm) had Cook's $D$ values of 360--600 across the four arms, two orders of magnitude above any other sample. Its product of leverage ($h_i = x_i^2 / \sum x_j^2 \approx 1$) and squared residual was sufficient to dominate the proportional-regression denominator $\sum x^2$. JPL73 (804~ppm) was also flagged in every arm; XPAH20 (1,933~ppm) was flagged in the FP arms.
+Sample XPAH28 (ICP-MS Pb = 18,528~ppm) had extreme leverage in the proportional regression and was excluded from slope fitting in all arms; JPL73 (804~ppm) was also flagged. Excluded samples were still predicted using the eligible-set slope and contribute to validation metrics.
 
-\subsection*{Outlier-handling sensitivity analysis}
+\subsection*{Outlier-handling sensitivity}
 
-We compared seven strategies for managing high-leverage samples in the matrix-correction step: no exclusion (all-sample LOOCV); concentration-based exclusion at fixed cutoffs (drop XPAH28 only, drop top-2, drop top-3, cap at 1000~ppm, cap at 500~ppm); and Cook's distance--based exclusion at the conventional $4/n$ threshold. All strategies validated on the complete paired set; only the slope-fitting subset varied. Cook's distance--filtered fitting yielded the lowest validation RMSE, smallest BA bias, and tightest LOA for the intensity arms, while preserving threshold sensitivity. Naive concentration-based dropping degraded performance.
+We compared three approaches for managing high-leverage samples: no exclusion, concentration-based exclusion, and Cook's distance--based exclusion. Cook's $D > 4/n$ filtering yielded the lowest validation RMSE and tightest agreement intervals (Table~\ref{tab:s8_outlier_sensitivity}).
 
 \begin{table}[htbp]
-\caption{Outlier-handling sensitivity for the pellet-intensity arm (the headline arm) on the 33-sample fully paired validation set. The Cook's $D$ strategy, used in the main-text analysis, is highlighted. The complete table for all four arms is in \texttt{Table\_outlier\_strategy\_comparison.csv}.}
+\caption{Outlier-handling sensitivity for the pellet-intensity arm. All strategies validated on the complete 33-sample set; only the slope-fitting subset varied.}
 \label{tab:s8_outlier_sensitivity}
 \centering
 \small
@@ -352,33 +344,9 @@ We compared seven strategies for managing high-leverage samples in the matrix-co
 \toprule
 Strategy & $n$ training & Val RMSE (ppm) & BA bias (ppm) & LOA range (ppm) \\
 \midrule
-S1: All samples (LOOCV)        & 33 & 478  & $+59$  & 1890 \\
-S2: Drop XPAH28 only           & 32 & 492  & $+93$  & 1925 \\
-S3: Drop top-2 (XPAH28, XPAH20)& 31 & 1104 & $+232$ & 4295 \\
-S4: Drop top-3 (S3 + JPL73)    & 30 &  617 & $+118$ & 2409 \\
-S5: Cap ICP-MS $\le$ 1000~ppm  & 31 & 1104 & $+232$ & 4295 \\
-S6: Cap ICP-MS $\le$ 500~ppm   & 28 & 1203 & $+256$ & 4679 \\
-\textbf{S7: Cook's $D > 4/n$ (used)} & \textbf{31} & \textbf{151} & \textbf{$-2$} & \textbf{601} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection*{Validation strategy comparison}
-
-We considered three approaches to validating the matrix-correction step: leave-one-out cross-validation (LOOCV; the default), single 67/33 holdout repeated 100 times with random seeds, and 5-fold cross-validation also repeated 100 times. The intensity-arm RMSE estimates from the three strategies span similar central ranges, but the holdout estimates have standard deviations comparable to their means because XPAH28's leverage dominates whichever partition contains it. With $n = 33$ fully paired samples, LOOCV is the most reliable estimator.
-
-\begin{table}[htbp]
-\caption{Validation-strategy comparison for the matrix correction step (pellet-intensity arm, $n = 33$ on the fully paired set with floor-clipping). Holdout and 5-fold values are mean $\pm$ SD across 100 random seeds.}
-\label{tab:s9_validation_strategy}
-\centering
-\small
-\begin{tabular}{lrrr}
-\toprule
-Strategy & RMSE (ppm) & Pearson $r$ & LOA range (ppm) \\
-\midrule
-LOOCV (default)             & 478              & 0.999 & 1890 \\
-67/33 holdout, 100 seeds    & 321 $\pm$ 472    & 0.966 & 1247 \\
-5-fold CV, 100 seeds        & 546 $\pm$ 322    & 0.998 & 2243 \\
+All samples (no exclusion)        & 33 & 478  & $+59$  & 1890 \\
+Drop highest sample (XPAH28)      & 32 & 492  & $+93$  & 1925 \\
+\textbf{Cook's $D > 4/n$ (used)}  & \textbf{31} & \textbf{151} & \textbf{$-2$} & \textbf{601} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -386,36 +354,14 @@ LOOCV (default)             & 478              & 0.999 & 1890 \\
 \newpage
 
 % ============================================================================
-% S4. SPATIAL DISTRIBUTION
+% S4. SAMPLE METADATA (renumbered from S5)
 % ============================================================================
 
-\section*{S4. Spatial distribution of metals}
-
-\begin{figure}[htbp]
-\centering
-% \includegraphics[width=0.8\textwidth]{Fig_S5_metal_spatial.png}
-\caption{Spatial distribution of Pb, Zn, Cu, and Co concentrations (ppm) in Eaton Fire ash samples. Points scaled by concentration; color indicates exceedance of the 320~ppm screening threshold for Pb (or analogous regulatory thresholds for Zn, Cu, Co).}
-\label{fig:s5_spatial}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-% \includegraphics[width=0.8\textwidth]{Fig_S6_correlation_matrix.png}
-\caption{Pearson correlation matrix for trace metals of toxicological concern. Only significant correlations ($p < 0.05$) shown.}
-\label{fig:s6_correlations}
-\end{figure}
-
-\newpage
-
-% ============================================================================
-% S5. SAMPLE METADATA
-% ============================================================================
-
-\section*{S5. Sample metadata}
+\section*{S4. Sample metadata}
 
 \begin{table}[htbp]
 \caption{Sample locations and collection metadata (excerpt; complete metadata in \texttt{sample\_id\_harmonization.csv}).}
-\label{tab:s10_metadata}
+\label{tab:s9_metadata}
 \centering
 \small
 \begin{tabular}{lrrll}
