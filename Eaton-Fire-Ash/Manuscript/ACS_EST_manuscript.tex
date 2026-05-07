@@ -143,9 +143,17 @@ ICP-MS analysis quantified more than 50 elements in the 38 analyzed ash samples 
 
 Ashes from within and southwest of the urban burn perimeter showed the highest concentrations of Pb and other hazardous metals (Cu, Zn, Co; Figure~\ref{fig:spatial_map}).
 
+% Figure 3: Spatial distribution map (moved here from Discussion)
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{Fig-5-map.png}
+\caption{Spatial distribution of metal contaminants in ash measured by ICP-MS. Points are colored by concentration relative to screening thresholds for Pb, Co, Cu, and Zn. Highest concentrations occur within the urban burn perimeter and in downwind areas to the southwest.}
+\label{fig:spatial_map}
+\end{figure}
+
 % Figure 3 (ICP-MS element summary) moved to Supporting Information Figure S4
 
-The pressed-pellet L$\beta_{1}$+L$\beta_{2}$ intensity model showed strong correlation with ICP-MS Pb across the 33 fully paired ash samples (Table~\ref{tab:xrf_validation}): $r = 0.999$, RMSE = 151~ppm, Bland-Altman bias of $-$2~ppm, and 95\% limits of agreement (LOA) from $-$302 to +299~ppm (LOA range = 601~ppm). The predicted-vs-measured relationship is shown in Figure~\ref{fig:xrf_validation} and the method-agreement ratio in Figure~\ref{fig:agreement_ratio}. Alternative calibration approaches (powder preparation, fundamental-parameters concentration) are documented in Supporting Information \S 2.
+The pressed-pellet L$\beta_{1}$+L$\beta_{2}$ intensity model showed strong correlation with ICP-MS Pb across the 33 fully paired ash samples (Table~\ref{tab:xrf_validation}): $r = 0.999$, RMSE = 151~ppm, Bland-Altman bias of $-$2~ppm, and 95\% limits of agreement (LOA) from $-$302 to +299~ppm (LOA range = 601~ppm). Validation plots comparing all calibration approaches are provided in Supporting Information Figures~S2--S3.
 
 Threshold classification performance is summarized in Table~\ref{tab:threshold_classification}. At the 320~ppm threshold, the pellet intensity model achieved sensitivity = 1.00 [0.61--1.00] and specificity = 1.00 [0.88--1.00] with no misclassifications. At the 80~ppm threshold, sensitivity was 0.91 [0.62--0.98] with 1 false negative and 1 false positive. Across all six thresholds, the model produced 3 false negatives in 34 above-threshold tests (pooled sensitivity = 0.91 [0.77--0.97]) and 4 false positives in 164 below-threshold tests (pooled specificity = 0.98 [0.94--0.99]). Comparison with alternative calibration approaches is provided in Supporting Information \S 2.
 % Table 1 (major elements) moved to Supporting Information Table S10
@@ -185,22 +193,8 @@ pellet (L$\beta_{1}$+L$\beta_{2}$)  & 33 & 0.999 &  151 &  64 & $-2$   & $[-302,
 \bottomrule
 \end{tabular}
 \end{table}
-% Figure 4: Validation — predicted vs ICP-MS (pellet intensity only; full 4-arm comparison in SI)
-\begin{figure}[htbp]
-\centering
-% NOTE: Replace with single-panel pellet-intensity figure; full 4-panel comparison is SI Figure S2
-\includegraphics[width=\columnwidth]{Fig_validation_4panel.png}
-\caption{XRF-predicted Pb concentration vs.\ ICP-MS measured Pb (log-log scale) for the pellet L$\beta_{1}$+L$\beta_{2}$ intensity model. The dotted grey diagonal is the 1:1 line. Comparison with alternative calibration approaches (powder preparation, fundamental-parameters concentration) is in Supporting Information Figure~S2.}
-\label{fig:xrf_validation}
-\end{figure}
-% Figure 5: Method-agreement ratio plot (pellet intensity only; full 4-arm comparison in SI)
-\begin{figure}[htbp]
-\centering
-% NOTE: Replace with single-panel pellet-intensity figure; full 4-panel comparison is SI Figure S3
-\includegraphics[width=\columnwidth]{Fig_AgreementRatio_4panel.png}
-\caption{Method-agreement ratio plot: XRF-predicted Pb divided by ICP-MS Pb (linear y-axis) versus ICP-MS Pb (log~x-axis) for the pellet L$\beta_{1}$+L$\beta_{2}$ intensity model. The dotted grey reference line at ratio = 1 marks perfect agreement. Comparison with alternative calibration approaches is in Supporting Information Figure~S3.}
-\label{fig:agreement_ratio}
-\end{figure}
+% Figures 4-5 (XRF validation plots) consolidated in Supporting Information Figures S2-S3
+% Main text references SI figures to avoid redundancy with 4-panel comparison figures
 % Insert Table 4 here — threshold classification for pellet intensity model with Wilson 95% CIs
 \begin{table}[htbp]
 \caption{Threshold classification performance of the pellet L$\beta_{1}$+L$\beta_{2}$ intensity model on the 33 fully paired ash samples. For each Pb regulatory threshold we report the confusion matrix (TP, FN, FP, TN) and Wilson 95\% binomial confidence intervals on sensitivity and specificity. Of the 33 paired samples, 11, 7, 6, 5, 3, and 2 exceeded the 80, 200, 320, 500, 800, and 1000~ppm thresholds, respectively. CIs are necessarily wide at the higher thresholds where $n_+ \leq 6$. Full classification results for all calibration approaches are in Supporting Information Table~S5.}
@@ -227,14 +221,6 @@ Threshold & TP & FN & FP & TN & Sensitivity (95\% CI) & Specificity (95\% CI) & 
 WUI fires produce ash with a hybrid geochemical signature distinct from vegetation-only wildfires.\cite{pereira2010heavymetals,etiegni1991woodash,sanchezgarcia2023ashchemistry} The Eaton Fire ashes exhibit uniform geogenic elements (Al, Fe, Ti; CV~=~31--56\%) consistent with the granitoid bedrock of the San Gabriel Mountains, but extreme variability in pyrogenic metals (Pb, Zn, Cu; CV~$>$~280\%). This uniformity of lithogenic elements rules out pre-fire soil heterogeneity as the source of metal variability, confirming combustion of built-environment materials as the dominant contamination driver. Pb exceeded the California TTLC (1000~ppm) within the burn perimeter and exceeded the EPA residential threshold (200~ppm) in downwind areas where no structures burned, demonstrating aeolian transport of contaminated ash beyond the fire footprint.
 
 The pellet L$\beta_{1}$+L$\beta_{2}$ intensity model achieved a Bland-Altman 95\% LOA range of 601~ppm with negligible bias ($-$2~ppm), indicating that XRF and ICP-MS measurements are interchangeable for Pb screening purposes. Alternative calibration approaches showed 10$\times$ wider agreement intervals (Supporting Information \S 2), supporting the pellet intensity method as the preferred screening protocol.
-
-% Figure 6: Spatial distribution map
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\columnwidth]{Fig-5-map.png}
-\caption{Map of metal contaminants in ash measured with ICP-MS. Points are symbolized with colors representing screening thresholds for concentrations of lead, cobalt, copper, and zinc. Spatial distribution of metals shows highest concentration in the urban pre-fire land cover and downwind.}
-\label{fig:spatial_map}
-\end{figure}
 
 This study advances three capabilities relative to previous WUI ash work, which has characterized post-fire metal contamination primarily in soil after the 2021 Marshall Fire,\cite{jech2024marshall} bioaccessible metals in indoor structure ash from earlier WUI events,\cite{villarruel2024bioaccessible} and metal mobility in mineral soil from forest wildfires.\cite{pereira2010heavymetals,abraham2017postfire,fernandezmarcos2022toxics} First, we report systematic spatial sampling of \textit{outdoor ash on impervious surfaces} --- sidewalks, driveways, and street gutters --- the matrix most directly accessible to residents during the post-fire re-entry window. Second, we anchor characterization to regulatory decision thresholds rather than statistical summaries: the six classification levels (80, 200, 320, 500, 800, and 1000~ppm) span the DTSC, EPA, and CHHSL residential--industrial--hazardous-waste frameworks that govern California post-fire clearance decisions.\cite{epa2024residential,dtsc2024ttlc} Third, we provide an empirically validated XRF screening protocol calibrated against ICP-MS that achieves 100\% sensitivity and specificity at the 320~ppm threshold for both pellet- and powder-intensity models, 100\% sensitivity with 97\% specificity at the 800 and 1000~ppm thresholds, and $\geq$97\% accuracy across the 200--1000~ppm operating range for both preparations. Together these advances move beyond demonstrating that WUI ash is contaminated to enabling \textit{rapid hazard delineation} suitable for operational emergency response.
 
