@@ -51,10 +51,16 @@
     \item Table S7. Correction factors
     \item Table S8. Outlier sensitivity
   \end{itemize}
-  \item \S 4. Sample metadata
+  \item \S 4. Sampling protocol and metadata
   \begin{itemize}
+    \item Sampling campaign logistics
     \item Table S9. Sample locations
     \item Datasets available at Zenodo
+  \end{itemize}
+  \item \S 5. ICP-MS characterization
+  \begin{itemize}
+    \item Table S10. Major element concentrations
+    \item Figure S4. Element concentration and variability
   \end{itemize}
 \end{itemize}
 
@@ -303,7 +309,11 @@ Drop highest only          & 492  & $+93$  & 1925 \\
 % S4. SAMPLE METADATA (renumbered from S5)
 % ============================================================================
 
-\section*{S4. Sample metadata}
+\section*{S4. Sampling Protocol and Metadata}
+
+\subsection*{Sampling campaign logistics}
+
+The sampling campaign was coordinated between Caltech and NASA JPL field teams beginning January 16, 2025. Using a 1~$\times$~1~mile grid to guide spatially even coverage, teams collected ash samples within the burn scar and along the western, southern, and eastern flanks of the fire perimeter. A total of 169 samples were collected directly by field teams (95 by JPL, 74 by Caltech), supplemented by 52 samples from trained community volunteers using standardized sampling kits. Within each grid cell, sites were selected based on: (1) public accessibility, (2) visible ash accumulation, and (3) absence of debris removal activities. As sampling began approximately two weeks post-ignition, ash had accumulated in wind-traps on impervious surfaces (sidewalks against fences, street gutters). Both coarse ash fragments and fine soot were collected to obtain representative composite samples.
 
 \begin{table}[htbp]
 \caption{Sample locations and collection metadata (excerpt; complete metadata in \texttt{sample\_id\_harmonization.csv}).}
@@ -323,5 +333,48 @@ GPS03 & 34.1300 & -118.1440 & 2025-01-16 & Ash \\
 \end{table}
 
 \textit{Note.} Complete ICP-MS, XRF (cleaned and per-line intensities), PBP calibration, and validation paired datasets are provided as separate machine-readable CSV files. The full prediction pipeline — sample data cleaning, two-stage calibration, ash-matrix correction, validation, and figure/table generation — is reproducible from \texttt{D2D/XRF/scripts/eaton\_xrf\_pipeline.R}.
+
+\newpage
+
+% ============================================================================
+% S5. ICP-MS CHARACTERIZATION
+% ============================================================================
+
+\section*{S5. ICP-MS Characterization}
+
+This section provides the full ICP-MS element characterization summarized in the main text.
+
+\subsection*{Major element concentrations}
+
+\begin{table}[htbp]
+\caption{Major element concentrations (ppm) in ash ($n$ = 38), ranked by mean concentration.}
+\label{tab:s10_major_elements}
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+Element & Mean & Median & Range & CV (\%) \\
+\midrule
+Ca & 53,575 & 34,114 & 10,148--322,441 & 115 \\
+Fe & 35,854 & 38,324 & 8,336--63,303 & 36 \\
+Al & 36,358 & 43,046 & 1,912--56,585 & 45 \\
+K  & 18,898 & 19,578 & 3,101--35,972 & 31 \\
+Mg & 14,023 & 11,878 & 1,089--117,363 & 126 \\
+Na & 13,100 & 14,333 & 3,731--22,361 & 37 \\
+Ti & 6,160  & 5,199  & 3,171--19,222 & 56 \\
+Mn & 968    & 902    & 273--2,742 & 48 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Major elements (Ca, Fe, Al, K, Mg, Na, Ti, Mn) showed relatively low coefficients of variation (CV = 31--126\%), consistent with geogenic contributions from the granitoid bedrock of the San Gabriel Mountains. The uniformity of these lithogenic elements across sampling locations rules out pre-fire soil heterogeneity as the source of metal variability observed in hazardous trace metals.
+
+\subsection*{Element concentration and variability}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{Fig-3_icpms.png}
+\caption{Rank-order summary of ICP-MS element characterization. \textbf{(a)} Elements ranked by mean concentration across all ash samples. \textbf{(b)} Elements ranked by coefficient of variation (CV). Geogenic elements (Al, Fe, Ti, K) show high concentrations but low variability, while pyrogenic elements (Pb, Zn, Cu) show moderate concentrations but extreme variability (CV $>$ 280\%), consistent with point-source contamination from combusted urban infrastructure.}
+\label{fig:s4_icpms_summary}
+\end{figure*}
 
 \end{document}
