@@ -30,36 +30,35 @@
 \section*{Contents}
 
 \begin{itemize}
-  \item \S 1. XRF calibration procedure
+  \item \S 1. XRF calibration and response selection
   \begin{itemize}
     \item Clay standard preparation
     \item Table S1. Clay reference series
-    \item Table S2. Calibration performance
+    \item Table S2. Response variable comparison
     \item Figure S1. Calibration curves
-    \item Table S3. Pb L-line selection
   \end{itemize}
-  \item \S 2. Alternative calibration methods
+  \item \S 2. Validation results
   \begin{itemize}
-    \item Table S4. Validation metrics (all methods)
+    \item Table S3. Validation metrics
     \item Figure S2. XRF vs.\ ICP-MS comparison
     \item Figure S3. Method agreement
-    \item Table S5. Classification by threshold
-    \item Table S6. Overall classification summary
+    \item Table S4. Classification by threshold
+    \item Table S5. Overall classification summary
   \end{itemize}
   \item \S 3. Matrix correction
   \begin{itemize}
-    \item Table S7. Correction factors
-    \item Table S8. Outlier sensitivity
+    \item Table S6. Correction factors
+    \item Table S7. Outlier sensitivity
   \end{itemize}
   \item \S 4. Sampling protocol and metadata
   \begin{itemize}
     \item Sampling campaign logistics
-    \item Table S9. Sample locations
+    \item Table S8. Sample locations
     \item Datasets available at Zenodo
   \end{itemize}
   \item \S 5. ICP-MS characterization
   \begin{itemize}
-    \item Table S10. Major element concentrations
+    \item Table S9. Major element concentrations
     \item Figure S4. Element concentration and variability
   \end{itemize}
 \end{itemize}
@@ -67,10 +66,10 @@
 \newpage
 
 % ============================================================================
-% S1. TWO-STAGE XRF CALIBRATION
+% S1. XRF CALIBRATION AND RESPONSE SELECTION
 % ============================================================================
 
-\section*{S1. XRF Calibration Procedure}
+\section*{S1. XRF Calibration and Response Selection}
 
 \subsection*{Clay standard preparation}
 
@@ -106,43 +105,15 @@ PBP04 & 0 (blank) & 3 \\
 \end{tabular}
 \end{table}
 
-\subsection*{Clay calibration}
+\subsection*{Response variable selection}
 
-Linear calibrations were fit on the clay standards for each combination of sample preparation (pellet or powder) and XRF response variable (L-line intensity or fundamental-parameters concentration). Table~\ref{tab:stage_a_calibration} summarizes calibration performance.
+We evaluated two classes of XRF response variables for Pb quantification: (1) empirical L-line intensities and (2) the instrument's built-in fundamental-parameters (FP) algorithm. For L-line intensities, six Pb L-lines (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$\beta_4$) were tested as single lines, summed-intensity combinations, and multi-predictor regressions. The L$\alpha$ lines overlap with As K$\alpha$ emission at 10.5~keV, which can bias Pb quantification in arsenic-bearing samples; L$\beta$ lines were therefore preferred.
 
-\begin{table}[htbp]
-\caption{Clay calibration performance. LOOCV = leave-one-out cross-validation.}
-\label{tab:stage_a_calibration}
-\centering
-\small
-\begin{tabular}{llrrrr}
-\toprule
-Preparation & Response & $n$ & $R^2$ & RMSE (ppm) & LOOCV RMSE (ppm) \\
-\midrule
-Pellet  & L$\beta_1$ + L$\beta_2$ intensity & 12 & 0.999 & 14 & 20  \\
-Powder  & L$\beta_1$ + L$\beta_3$ intensity & 11 & 0.937 & 98 & 361   \\
-Pellet  & Fundamental parameters            & 12 & 0.995 & 28 & 33  \\
-Powder  & Fundamental parameters            & 11 & 0.913 & 116  & 138   \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Calibration curves are shown in Figure~S1.
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=\textwidth]{Fig_calibration_4panel.png}
-\caption{Clay calibration curves for each preparation method and response variable. Solid lines are fitted regressions; points are color-coded by Pb concentration level.}
-\label{fig:calibration_4panel}
-\end{figure*}
-
-\subsection*{Pb L-line selection}
-
-Six Pb L-lines (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$\beta_4$) were evaluated as potential calibration responses. The L$\alpha$ lines overlap with As K$\alpha$ emission at 10.5~keV, which can bias Pb quantification in arsenic-bearing samples; therefore, L$\beta$ lines were preferred. We tested each single line, summed-intensity combinations, and multi-predictor regressions, ranking each by validation RMSE against ICP-MS (Table~\ref{tab:line_sweep}). For pellets, the L$\beta_1$+L$\beta_2$ multi-predictor model performed best (RMSE = 151~ppm); for powders, L$\beta_1$+L$\beta_3$ was optimal (RMSE = 282~ppm).
+Table~\ref{tab:response_comparison} ranks all candidate responses by validation RMSE against ICP-MS. The pellet L$\beta_1$+L$\beta_2$ multi-predictor model achieved the lowest RMSE (151~ppm) and negligible bias ($-$2~ppm). The fundamental-parameters approach showed RMSE values 10$\times$ higher (1726--1880~ppm) with systematic positive bias (+308 to +319~ppm), likely because the instrument's built-in matrix corrections are optimized for homogeneous geological samples rather than heterogeneous ash. Calibration curves for the four primary methods (pellet/powder $\times$ intensity/FP) are shown in Figure~S1.
 
 \begin{table}[htbp]
-\caption{Pb L-line selection results, ranked by validation RMSE within each preparation method. Bold rows indicate the selected response. Single = individual line intensity; sum = summed intensities in one predictor; multi = separate predictors in multiple regression.}
-\label{tab:line_sweep}
+\caption{Response variable comparison ranked by validation RMSE. Bold rows indicate the selected response for each preparation method. Type: single = individual line; sum = summed intensities; multi = multi-predictor regression; FP = fundamental parameters.}
+\label{tab:response_comparison}
 \centering
 \small
 \begin{tabular}{lllrrr}
@@ -150,41 +121,43 @@ Six Pb L-lines (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$
 Prep & Response & Type & $n$ & RMSE (ppm) & Bias (ppm) \\
 \midrule
 Pellet & \textbf{L$\beta_1$ + L$\beta_2$} & \textbf{multi} & 33 & \textbf{151} & $-2$ \\
-Pellet & L$\alpha_1$           & single & 33 &  719 & $+125$ \\
-Pellet & L$\alpha_2$           & single & 32 &  726 & $+127$ \\
-Pellet & L$\alpha_1$ + L$\alpha_2$ & sum & 32 &  730 & $+128$ \\
-Pellet & L$\beta_4$            & single & 33 &  789 & $+139$ \\
-Pellet & L$\beta_2$            & single & 33 &  811 & $+141$ \\
-Pellet & L$\beta_1$            & single & 33 &  818 & $+142$ \\
-Pellet & L$\beta_3$            & single & 33 &  836 & $+142$ \\
+Pellet & L$\alpha_1$              & single & 33 &  719 & $+125$ \\
+Pellet & L$\alpha_2$              & single & 32 &  726 & $+127$ \\
+Pellet & L$\beta_4$               & single & 33 &  789 & $+139$ \\
+Pellet & L$\beta_1$               & single & 33 &  818 & $+142$ \\
+Pellet & Fundamental parameters   & FP     & 33 & 1726 & $+308$ \\
 \midrule
 Powder & \textbf{L$\beta_1$ + L$\beta_3$} & \textbf{multi} & 33 & \textbf{282} & $+36$ \\
-Powder & L$\alpha_2$           & single & 32 & 1633 & $+308$ \\
-Powder & L$\beta_4$            & single & 33 & 1671 & $+311$ \\
-Powder & L$\beta_2$            & single & 33 & 1676 & $+312$ \\
-Powder & L$\beta_1$            & single & 33 & 1681 & $+312$ \\
-Powder & L$\beta_3$            & single & 33 & 1686 & $+313$ \\
-Powder & L$\beta_1$ + L$\beta_2$ & multi & 33 & 2572 & $+471$ \\
-Powder & L$\alpha_1$           & single & 33 & 2659 & $+483$ \\
+Powder & L$\alpha_2$              & single & 32 & 1633 & $+308$ \\
+Powder & L$\beta_4$               & single & 33 & 1671 & $+311$ \\
+Powder & L$\beta_1$               & single & 33 & 1681 & $+312$ \\
+Powder & Fundamental parameters   & FP     & 33 & 1880 & $+319$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{Fig_calibration_4panel.png}
+\caption{Clay calibration curves for the four primary methods (pellet/powder $\times$ L$\beta$ intensity/fundamental parameters). Solid lines are fitted regressions; points are color-coded by Pb concentration level.}
+\label{fig:calibration_4panel}
+\end{figure*}
+
 \newpage
 
 % ============================================================================
-% S2. ALTERNATIVE CALIBRATION APPROACHES AND VALIDATION
+% S2. VALIDATION RESULTS
 % ============================================================================
 
-\section*{S2. Alternative Calibration Methods}
+\section*{S2. Validation Results}
 
-This section compares all four calibration methods. The main text reports only the recommended method (pellet with L$\beta_1$+L$\beta_2$ intensity).
+This section presents detailed validation metrics for the four primary methods (pellet/powder $\times$ L$\beta$ intensity/fundamental parameters). The main text reports only the recommended method (pellet L$\beta_1$+L$\beta_2$ intensity).
 
 \subsection*{Validation against ICP-MS}
 
 \begin{table}[htbp]
-\caption{Validation of all calibration methods against ICP-MS ($n$ = 33 ash samples). BA = Bland-Altman; LOA = 95\% limits of agreement.}
-\label{tab:s4_full_validation}
+\caption{Validation metrics for all methods against ICP-MS ($n$ = 33 ash samples). BA = Bland-Altman; LOA = 95\% limits of agreement.}
+\label{tab:s3_full_validation}
 \centering
 \small
 \begin{tabular}{llrrrrrr}
@@ -200,12 +173,12 @@ Powder  & Fund.\ param.      & 0.983 & 1880 & 394 & $+319$ & $[-3370, +4007]$ & 
 \end{tabular}
 \end{table}
 
-The pellet L$\beta$ intensity method achieved 10$\times$ narrower limits of agreement than the fundamental-parameters methods. The fundamental-parameters approach showed systematic positive bias (+308 to +319~ppm), likely because the instrument's built-in matrix corrections are optimized for homogeneous geological samples rather than heterogeneous ash.
+The pellet L$\beta$ intensity method achieved 10$\times$ narrower limits of agreement than the fundamental-parameters methods (601 vs.\ 6760--7377~ppm).
 
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=\textwidth]{Fig_validation_4panel.png}
-\caption{XRF-predicted vs.\ ICP-MS Pb concentration for all calibration methods. Dashed line = 1:1 agreement.}
+\caption{XRF-predicted vs.\ ICP-MS Pb concentration for all methods. Dashed line = 1:1 agreement.}
 \label{fig:s2_validation_4panel}
 \end{figure*}
 
@@ -219,8 +192,8 @@ The pellet L$\beta$ intensity method achieved 10$\times$ narrower limits of agre
 \subsection*{Threshold classification}
 
 \begin{table}[htbp]
-\caption{Classification performance at each regulatory threshold ($n$ = 33 samples). TP = true positive, FN = false negative, FP = false positive, TN = true negative. Wilson 95\% confidence intervals shown.}
-\label{tab:s5_threshold_classification}
+\caption{Classification performance at each regulatory threshold ($n$ = 33 samples). TP = true positive, FN = false negative, FP = false positive, TN = true negative.}
+\label{tab:s4_threshold_classification}
 \centering
 \footnotesize
 \begin{tabular}{l l c c c c c c c}
@@ -249,7 +222,7 @@ Threshold & Method & TP & FN & FP & TN & Sensitivity & Specificity & Accuracy \\
 
 \begin{table}[htbp]
 \caption{Classification performance pooled across all six thresholds (198 tests per method).}
-\label{tab:s6_method_summary}
+\label{tab:s5_method_summary}
 \centering
 \small
 \begin{tabular}{l l c c c c}
@@ -278,7 +251,7 @@ Because XRF response differs between clay standards and ash samples due to matri
 
 \begin{table}[htbp]
 \caption{Matrix correction factors by method. Excluded samples were identified by Cook's distance ($D > 4/n$).}
-\label{tab:s7_matrix_correction}
+\label{tab:s6_matrix_correction}
 \centering
 \small
 \begin{tabular}{llrrr}
@@ -299,7 +272,7 @@ Excluding high-leverage samples using Cook's distance substantially improved mod
 
 \begin{table}[htbp]
 \caption{Effect of outlier handling on pellet L$\beta$ intensity method performance.}
-\label{tab:s8_outlier_sensitivity}
+\label{tab:s7_outlier_sensitivity}
 \centering
 \small
 \begin{tabular}{lrrr}
@@ -327,7 +300,7 @@ The sampling campaign was coordinated between Caltech and NASA JPL field teams b
 
 \begin{table}[htbp]
 \caption{Sample locations and collection metadata (excerpt; complete metadata in \texttt{sample\_id\_harmonization.csv}).}
-\label{tab:s9_metadata}
+\label{tab:s8_metadata}
 \centering
 \small
 \begin{tabular}{lrrll}
@@ -358,7 +331,7 @@ This section provides the full ICP-MS element characterization summarized in the
 
 \begin{table}[htbp]
 \caption{Major element concentrations (ppm) in ash ($n$ = 38), ranked by mean concentration.}
-\label{tab:s10_major_elements}
+\label{tab:s9_major_elements}
 \centering
 \begin{tabular}{lrrrr}
 \toprule
