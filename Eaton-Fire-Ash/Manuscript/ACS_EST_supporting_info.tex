@@ -173,7 +173,7 @@ Powder & Fundamental parameters   & FP     & 33 & 1880 & $+319$ \\
 
 \section*{S2. Validation Results}
 
-This section presents detailed validation metrics for the four primary methods (pellet/powder $\times$ L$\beta$ intensity/fundamental parameters). The main text reports only the recommended method (pellet L$\beta_1$+L$\beta_2$ intensity).
+This section presents detailed validation metrics for the four primary methods. Based on the L-line selection in \S 1, the intensity-based models use L$\beta_1$+L$\beta_2$ for pellets and L$\beta_1$+L$\beta_3$ for powders, each as a multi-predictor regression with independent coefficients. The main text reports only the recommended method (pellet L$\beta_1$+L$\beta_2$ intensity).
 
 \subsection*{Validation against ICP-MS}
 
@@ -187,15 +187,15 @@ This section presents detailed validation metrics for the four primary methods (
 Preparation & Response & $r$ & RMSE & MAE & Bias & 95\% LOA & LOA range \\
     &     &     & (ppm) & (ppm) & (ppm) & (ppm) & (ppm) \\
 \midrule
-Pellet  & L$\beta$ intensity & 0.999 &  151 &  64 & $-2$   & $[-302, +299]$   &  601 \\
-Powder  & L$\beta$ intensity & 0.998 &  282 & 117 & $+36$  & $[-521, +593]$   & 1114 \\
-Pellet  & Fund.\ param.      & 0.990 & 1726 & 363 & $+308$ & $[-3072, +3689]$ & 6760 \\
-Powder  & Fund.\ param.      & 0.983 & 1880 & 394 & $+319$ & $[-3370, +4007]$ & 7377 \\
+Pellet  & L$\beta_1$+L$\beta_2$ & 0.999 &  151 &  64 & $-2$   & $[-302, +299]$   &  601 \\
+Powder  & L$\beta_1$+L$\beta_3$ & 0.998 &  282 & 117 & $+36$  & $[-521, +593]$   & 1114 \\
+Pellet  & Fund.\ param.         & 0.990 & 1726 & 363 & $+308$ & $[-3072, +3689]$ & 6760 \\
+Powder  & Fund.\ param.         & 0.983 & 1880 & 394 & $+319$ & $[-3370, +4007]$ & 7377 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The pellet L$\beta$ intensity method achieved 10$\times$ narrower limits of agreement than the fundamental-parameters methods (601 vs.\ 6760--7377~ppm).
+The pellet L$\beta_1$+L$\beta_2$ method achieved 10$\times$ narrower limits of agreement than the fundamental-parameters methods (601 vs.\ 6760--7377~ppm).
 
 \begin{figure*}[htbp]
 \centering
@@ -222,20 +222,20 @@ The pellet L$\beta$ intensity method achieved 10$\times$ narrower limits of agre
 \toprule
 Threshold & Method & TP & FN & FP & TN & Sensitivity & Specificity & Accuracy \\
 \midrule
-\multirow{4}{*}{80 ppm}   & Pellet, L$\beta$ & 10 & 1 & 1 & 21 & 0.91 & 0.95 & 0.94 \\
-                          & Powder, L$\beta$ & 9  & 2 & 3 & 19 & 0.82 & 0.86 & 0.85 \\
-                          & Pellet, FP       & 8  & 3 & 1 & 21 & 0.73 & 0.95 & 0.88 \\
-                          & Powder, FP       & 10 & 1 & 5 & 17 & 0.91 & 0.77 & 0.82 \\
+\multirow{4}{*}{80 ppm}   & Pellet, L$\beta_1$+L$\beta_2$ & 10 & 1 & 1 & 21 & 0.91 & 0.95 & 0.94 \\
+                          & Powder, L$\beta_1$+L$\beta_3$ & 9  & 2 & 3 & 19 & 0.82 & 0.86 & 0.85 \\
+                          & Pellet, FP                    & 8  & 3 & 1 & 21 & 0.73 & 0.95 & 0.88 \\
+                          & Powder, FP                    & 10 & 1 & 5 & 17 & 0.91 & 0.77 & 0.82 \\
 \midrule
-\multirow{4}{*}{320 ppm}  & Pellet, L$\beta$ & 6 & 0 & 0 & 27 & 1.00 & 1.00 & 1.00 \\
-                          & Powder, L$\beta$ & 6 & 0 & 0 & 27 & 1.00 & 1.00 & 1.00 \\
-                          & Pellet, FP       & 6 & 0 & 0 & 27 & 1.00 & 1.00 & 1.00 \\
-                          & Powder, FP       & 5 & 1 & 0 & 27 & 0.83 & 1.00 & 0.97 \\
+\multirow{4}{*}{320 ppm}  & Pellet, L$\beta_1$+L$\beta_2$ & 6 & 0 & 0 & 27 & 1.00 & 1.00 & 1.00 \\
+                          & Powder, L$\beta_1$+L$\beta_3$ & 6 & 0 & 0 & 27 & 1.00 & 1.00 & 1.00 \\
+                          & Pellet, FP                    & 6 & 0 & 0 & 27 & 1.00 & 1.00 & 1.00 \\
+                          & Powder, FP                    & 5 & 1 & 0 & 27 & 0.83 & 1.00 & 0.97 \\
 \midrule
-\multirow{4}{*}{1000 ppm} & Pellet, L$\beta$ & 2 & 0 & 1 & 30 & 1.00 & 0.97 & 0.97 \\
-                          & Powder, L$\beta$ & 2 & 0 & 1 & 30 & 1.00 & 0.97 & 0.97 \\
-                          & Pellet, FP       & 2 & 0 & 1 & 30 & 1.00 & 0.97 & 0.97 \\
-                          & Powder, FP       & 2 & 0 & 1 & 30 & 1.00 & 0.97 & 0.97 \\
+\multirow{4}{*}{1000 ppm} & Pellet, L$\beta_1$+L$\beta_2$ & 2 & 0 & 1 & 30 & 1.00 & 0.97 & 0.97 \\
+                          & Powder, L$\beta_1$+L$\beta_3$ & 2 & 0 & 1 & 30 & 1.00 & 0.97 & 0.97 \\
+                          & Pellet, FP                    & 2 & 0 & 1 & 30 & 1.00 & 0.97 & 0.97 \\
+                          & Powder, FP                    & 2 & 0 & 1 & 30 & 1.00 & 0.97 & 0.97 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -251,15 +251,15 @@ Threshold & Method & TP & FN & FP & TN & Sensitivity & Specificity & Accuracy \\
 \toprule
 Preparation & Response & Sensitivity & Specificity & Accuracy & False negatives \\
 \midrule
-Pellet  & L$\beta$ intensity  & 0.91 & 0.98 & 0.96 & 3 \\
-Powder  & L$\beta$ intensity  & 0.85 & 0.96 & 0.94 & 5 \\
-Pellet  & Fund.\ param.       & 0.82 & 0.98 & 0.95 & 6 \\
-Powder  & Fund.\ param.       & 0.85 & 0.95 & 0.93 & 5 \\
+Pellet  & L$\beta_1$+L$\beta_2$ & 0.91 & 0.98 & 0.96 & 3 \\
+Powder  & L$\beta_1$+L$\beta_3$ & 0.85 & 0.96 & 0.94 & 5 \\
+Pellet  & Fund.\ param.         & 0.82 & 0.98 & 0.95 & 6 \\
+Powder  & Fund.\ param.         & 0.85 & 0.95 & 0.93 & 5 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The pellet L$\beta$ intensity method had the highest sensitivity (0.91) and fewest false negatives (3 of 34 positive tests).
+The pellet L$\beta_1$+L$\beta_2$ method had the highest sensitivity (0.91) and fewest false negatives (3 of 34 positive tests).
 
 \newpage
 
@@ -280,10 +280,10 @@ Because XRF response differs between clay standards and ash samples due to matri
 \toprule
 Preparation & Response & $n$ used & Excluded & Correction factor \\
 \midrule
-Pellet  & L$\beta$ intensity  & 31 & 2 & 2.72 \\
-Powder  & L$\beta$ intensity  & 31 & 2 & 0.71 \\
-Pellet  & Fund.\ param.       & 30 & 3 & 1.14 \\
-Powder  & Fund.\ param.       & 30 & 3 & 0.33 \\
+Pellet  & L$\beta_1$+L$\beta_2$ & 31 & 2 & 2.72 \\
+Powder  & L$\beta_1$+L$\beta_3$ & 31 & 2 & 0.71 \\
+Pellet  & Fund.\ param.         & 30 & 3 & 1.14 \\
+Powder  & Fund.\ param.         & 30 & 3 & 0.33 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -293,7 +293,7 @@ Powder  & Fund.\ param.       & 30 & 3 & 0.33 \\
 Excluding high-leverage samples using Cook's distance substantially improved model performance (Table~\ref{tab:s8_outlier_sensitivity}).
 
 \begin{table}[htbp]
-\caption{Effect of outlier handling on pellet L$\beta$ intensity method performance.}
+\caption{Effect of outlier handling on pellet L$\beta_1$+L$\beta_2$ method performance.}
 \label{tab:s7_outlier_sensitivity}
 \centering
 \small
