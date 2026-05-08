@@ -33,32 +33,33 @@
   \item \S 1. XRF calibration and response selection
   \begin{itemize}
     \item Clay standard preparation
-    \item Table S1. Clay reference series
-    \item Table S2. Response variable comparison
+    \item Table S1. PBP clay reference series
+    \item Table S2. Clay calibration performance (Stage A)
     \item Figure S1. Calibration curves
+    \item Table S3. Validation on ash (Stage C)
   \end{itemize}
   \item \S 2. Validation results
   \begin{itemize}
-    \item Table S3. Validation metrics
+    \item Table S4. Full validation metrics
     \item Figure S2. XRF vs.\ ICP-MS comparison
     \item Figure S3. Method agreement
-    \item Table S4. Classification by threshold
-    \item Table S5. Overall classification summary
+    \item Table S5. Classification by threshold
+    \item Table S6. Overall classification summary
   \end{itemize}
   \item \S 3. Matrix correction
   \begin{itemize}
-    \item Table S6. Correction factors
-    \item Table S7. Outlier sensitivity
+    \item Table S7. Correction factors
+    \item Table S8. Outlier sensitivity
   \end{itemize}
   \item \S 4. Sampling protocol and metadata
   \begin{itemize}
     \item Sampling campaign logistics
-    \item Table S8. Sample locations
+    \item Table S9. Sample locations
     \item Datasets available at Zenodo
   \end{itemize}
   \item \S 5. ICP-MS characterization
   \begin{itemize}
-    \item Table S9. Major element concentrations
+    \item Table S10. Major element concentrations
     \item Figure S4. Element concentration and variability
   \end{itemize}
 \end{itemize}
@@ -105,14 +106,42 @@ PBP04 & 0 (blank) & 3 \\
 \end{tabular}
 \end{table}
 
-\subsection*{Response variable selection}
+\subsection*{Clay calibration (Stage A)}
 
 We evaluated two classes of XRF response variables for Pb quantification: (1) empirical L-line intensities and (2) the instrument's built-in fundamental-parameters (FP) algorithm. For L-line intensities, six Pb L-lines (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$\beta_4$) were tested as single lines, summed-intensity combinations, and multi-predictor regressions. The L$\alpha$ lines overlap with As K$\alpha$ emission at 10.5~keV, which can bias Pb quantification in arsenic-bearing samples; L$\beta$ lines were therefore preferred.
 
-Table~\ref{tab:response_comparison} ranks all candidate responses by validation RMSE against ICP-MS. The pellet L$\beta_1$+L$\beta_2$ multi-predictor model achieved the lowest RMSE (151~ppm) and negligible bias ($-$2~ppm). The fundamental-parameters approach showed RMSE values 10$\times$ higher (1726--1880~ppm) with systematic positive bias (+308 to +319~ppm), likely because the instrument's built-in matrix corrections are optimized for homogeneous geological samples rather than heterogeneous ash. Calibration curves for the four primary methods (pellet/powder $\times$ intensity/FP) are shown in Figure~S1.
+Linear calibrations were fit on the PBP clay standards for each combination of sample preparation (pellet or powder) and response variable. Table~\ref{tab:clay_calibration} summarizes calibration performance for the four primary methods; calibration curves are shown in Figure~S1.
 
 \begin{table}[htbp]
-\caption{Response variable comparison ranked by validation RMSE. Bold rows indicate the selected response for each preparation method. Type: single = individual line; sum = summed intensities; multi = multi-predictor regression; FP = fundamental parameters.}
+\caption{Clay calibration performance on PBP standards. LOOCV = leave-one-out cross-validation.}
+\label{tab:clay_calibration}
+\centering
+\small
+\begin{tabular}{llrrrr}
+\toprule
+Preparation & Response & $n$ & $R^2$ & RMSE (ppm) & LOOCV RMSE (ppm) \\
+\midrule
+Pellet  & L$\beta_1$ + L$\beta_2$ intensity & 12 & 0.999 & 14 & 20  \\
+Powder  & L$\beta_1$ + L$\beta_3$ intensity & 11 & 0.937 & 98 & 361 \\
+Pellet  & Fundamental parameters            & 12 & 0.995 & 28 & 33  \\
+Powder  & Fundamental parameters            & 11 & 0.913 & 116 & 138 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{Fig_calibration_4panel.png}
+\caption{Clay calibration curves for the four primary methods. Solid lines are fitted regressions; points are color-coded by Pb concentration level.}
+\label{fig:calibration_4panel}
+\end{figure*}
+
+\subsection*{Validation on ash (Stage C)}
+
+The clay calibrations were applied to ash samples and validated against ICP-MS Pb. Table~\ref{tab:response_comparison} ranks all candidate responses by validation RMSE. The pellet L$\beta_1$+L$\beta_2$ model achieved the lowest RMSE (151~ppm) with negligible bias ($-$2~ppm). The fundamental-parameters approach showed RMSE values 10$\times$ higher (1726--1880~ppm) with systematic positive bias (+308 to +319~ppm), likely because the instrument's built-in matrix corrections are optimized for homogeneous geological samples rather than heterogeneous ash.
+
+\begin{table}[htbp]
+\caption{Response variable validation on ash ($n$ = 33), ranked by RMSE against ICP-MS. Bold rows indicate the selected response for each preparation method.}
 \label{tab:response_comparison}
 \centering
 \small
@@ -135,13 +164,6 @@ Powder & Fundamental parameters   & FP     & 33 & 1880 & $+319$ \\
 \bottomrule
 \end{tabular}
 \end{table}
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=\textwidth]{Fig_calibration_4panel.png}
-\caption{Clay calibration curves for the four primary methods (pellet/powder $\times$ L$\beta$ intensity/fundamental parameters). Solid lines are fitted regressions; points are color-coded by Pb concentration level.}
-\label{fig:calibration_4panel}
-\end{figure*}
 
 \newpage
 
