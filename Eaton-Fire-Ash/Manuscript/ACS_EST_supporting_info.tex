@@ -138,24 +138,34 @@ Calibration curves are shown in Figure~S1.
 
 \subsection*{Pb L-line selection}
 
-Six Pb L-lines were evaluated as potential calibration responses. The L$\alpha$ lines overlap with As K$\alpha$ emission at 10.5~keV; therefore, L$\beta$ lines were preferred. We tested single lines, summed lines, and two-line combinations, ranking each by validation RMSE against ICP-MS (Table~\ref{tab:line_sweep}). For pellets, the L$\beta_1$+L$\beta_2$ combination performed best (RMSE = 151~ppm); for powders, L$\beta_1$+L$\beta_3$ was optimal (RMSE = 282~ppm).
+Six Pb L-lines (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$\beta_4$) were evaluated as potential calibration responses. The L$\alpha$ lines overlap with As K$\alpha$ emission at 10.5~keV, which can bias Pb quantification in arsenic-bearing samples; therefore, L$\beta$ lines were preferred. We tested each single line, summed-intensity combinations, and multi-predictor regressions, ranking each by validation RMSE against ICP-MS (Table~\ref{tab:line_sweep}). For pellets, the L$\beta_1$+L$\beta_2$ multi-predictor model performed best (RMSE = 151~ppm); for powders, L$\beta_1$+L$\beta_3$ was optimal (RMSE = 282~ppm).
 
 \begin{table}[htbp]
-\caption{Pb L-line selection results, ranked by validation RMSE. Bold rows indicate the selected response for each preparation method.}
+\caption{Pb L-line selection results, ranked by validation RMSE within each preparation method. Bold rows indicate the selected response. Single = individual line intensity; sum = summed intensities in one predictor; multi = separate predictors in multiple regression.}
 \label{tab:line_sweep}
 \centering
 \small
-\begin{tabular}{llrrr}
+\begin{tabular}{lllrrr}
 \toprule
-Preparation & Response & $n$ & RMSE (ppm) & Bias (ppm) \\
+Prep & Response & Type & $n$ & RMSE (ppm) & Bias (ppm) \\
 \midrule
-Pellet & \textbf{L$\beta_1$ + L$\beta_2$} & 33 &  \textbf{151} &  $-2$ \\
-Pellet & L$\alpha_1$ (single)              & 33 &  719 & $+125$ \\
-Pellet & L$\alpha_1$ + L$\alpha_2$         & 32 &  730 & $+128$ \\
+Pellet & \textbf{L$\beta_1$ + L$\beta_2$} & \textbf{multi} & 33 & \textbf{151} & $-2$ \\
+Pellet & L$\alpha_1$           & single & 33 &  719 & $+125$ \\
+Pellet & L$\alpha_2$           & single & 32 &  726 & $+127$ \\
+Pellet & L$\alpha_1$ + L$\alpha_2$ & sum & 32 &  730 & $+128$ \\
+Pellet & L$\beta_4$            & single & 33 &  789 & $+139$ \\
+Pellet & L$\beta_2$            & single & 33 &  811 & $+141$ \\
+Pellet & L$\beta_1$            & single & 33 &  818 & $+142$ \\
+Pellet & L$\beta_3$            & single & 33 &  836 & $+142$ \\
 \midrule
-Powder & \textbf{L$\beta_1$ + L$\beta_3$} & 33 &  \textbf{282} &  $+36$ \\
-Powder & L$\alpha_2$ (single)              & 32 & 1633 & $+308$ \\
-Powder & L$\beta_1$ + L$\beta_2$           & 33 & 2572 & $+471$ \\
+Powder & \textbf{L$\beta_1$ + L$\beta_3$} & \textbf{multi} & 33 & \textbf{282} & $+36$ \\
+Powder & L$\alpha_2$           & single & 32 & 1633 & $+308$ \\
+Powder & L$\beta_4$            & single & 33 & 1671 & $+311$ \\
+Powder & L$\beta_2$            & single & 33 & 1676 & $+312$ \\
+Powder & L$\beta_1$            & single & 33 & 1681 & $+312$ \\
+Powder & L$\beta_3$            & single & 33 & 1686 & $+313$ \\
+Powder & L$\beta_1$ + L$\beta_2$ & multi & 33 & 2572 & $+471$ \\
+Powder & L$\alpha_1$           & single & 33 & 2659 & $+483$ \\
 \bottomrule
 \end{tabular}
 \end{table}
