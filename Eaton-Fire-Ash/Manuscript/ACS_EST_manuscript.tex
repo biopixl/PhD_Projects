@@ -153,7 +153,7 @@ Ashes from within and southwest of the urban burn perimeter showed the highest c
 
 % Figure 3 (ICP-MS element summary) moved to Supporting Information Figure S4
 
-The pressed-pellet L$\beta_{1}$+L$\beta_{2}$ intensity model showed strong correlation with ICP-MS Pb across the 33 fully paired ash samples (Table~\ref{tab:xrf_validation}): $r = 0.999$, RMSE = 151~ppm, Bland-Altman bias of $-$2~ppm, and 95\% limits of agreement (LOA) from $-$302 to +299~ppm (LOA range = 601~ppm). Validation plots comparing all calibration approaches are provided in Supporting Information Figures~S2--S3.
+The pressed-pellet L$\beta_{1}$+L$\beta_{2}$ intensity model showed strong correlation with ICP-MS Pb across the 33 fully paired ash samples (Table~\ref{tab:xrf_validation}; Figure~\ref{fig:xrf_validation}): $r = 0.999$, RMSE = 151~ppm, Bland-Altman bias of $-$2~ppm, and 95\% limits of agreement (LOA) from $-$302 to +299~ppm (LOA range = 601~ppm).
 
 Threshold classification performance is summarized in Table~\ref{tab:threshold_classification}. At the 320~ppm threshold, the pellet intensity model achieved sensitivity = 1.00 [0.61--1.00] and specificity = 1.00 [0.88--1.00] with no misclassifications. At the 80~ppm threshold, sensitivity was 0.91 [0.62--0.98] with 1 false negative and 1 false positive. Across all six thresholds, the model produced 3 false negatives in 34 above-threshold tests (pooled sensitivity = 0.91 [0.77--0.97]) and 4 false positives in 164 below-threshold tests (pooled specificity = 0.98 [0.94--0.99]). Comparison with alternative calibration approaches is provided in Supporting Information \S 2.
 % Table 1 (major elements) moved to Supporting Information Table S10
@@ -193,8 +193,13 @@ pellet (L$\beta_{1}$+L$\beta_{2}$)  & 33 & 0.999 &  151 &  64 & $-2$   & $[-302,
 \bottomrule
 \end{tabular}
 \end{table}
-% Figures 4-5 (XRF validation plots) consolidated in Supporting Information Figures S2-S3
-% Main text references SI figures to avoid redundancy with 4-panel comparison figures
+% Figure 4: XRF validation — pellet intensity model (2-panel: predicted vs measured + Bland-Altman)
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{Fig_validation_pellet_2panel.png}
+\caption{Validation of the pellet L$\beta_{1}$+L$\beta_{2}$ intensity model against ICP-MS. \textbf{(a)} XRF-predicted vs.\ ICP-MS Pb concentration (log-log scale); dashed line = 1:1 agreement. \textbf{(b)} Bland-Altman plot showing difference (XRF $-$ ICP-MS) vs.\ mean concentration; dashed lines indicate bias ($-$2~ppm) and 95\% limits of agreement ($-$302 to +299~ppm). Comparison with alternative calibration methods is in Supporting Information Figures~S2--S3.}
+\label{fig:xrf_validation}
+\end{figure}
 % Insert Table 4 here — threshold classification for pellet intensity model with Wilson 95% CIs
 \begin{table}[htbp]
 \caption{Threshold classification performance of the pellet L$\beta_{1}$+L$\beta_{2}$ intensity model on the 33 fully paired ash samples. For each Pb regulatory threshold we report the confusion matrix (TP, FN, FP, TN) and Wilson 95\% binomial confidence intervals on sensitivity and specificity. Of the 33 paired samples, 11, 7, 6, 5, 3, and 2 exceeded the 80, 200, 320, 500, 800, and 1000~ppm thresholds, respectively. CIs are necessarily wide at the higher thresholds where $n_+ \leq 6$. Full classification results for all calibration approaches are in Supporting Information Table~S5.}
