@@ -323,6 +323,66 @@ ggsave(file.path(FIGURES, "Fig_AgreementRatio_4panel.pdf"), fig_agr, width = 11,
 ggsave(file.path(FIGURES, "Fig_AgreementRatio_4panel.png"), fig_agr, width = 11, height = 9, dpi = 300)
 
 # -----------------------------------------------------------------------------
+# 4d. Main text Figure 4: Pellet intensity 2-panel (scatter + Bland-Altman)
+# -----------------------------------------------------------------------------
+
+# Subset to pellet intensity only
+pellet_val <- val_long %>% filter(arm == "pellet_intensity")
+
+# Get Bland-Altman statistics for annotation
+pellet_stats <- summary_4arms %>% filter(arm == "pellet_intensity")
+ba_bias <- pellet_stats$BA_bias_ppm
+ba_loa_lo <- pellet_stats$BA_LOA_lo_ppm
+ba_loa_hi <- pellet_stats$BA_LOA_hi_ppm
+
+# Panel A: XRF vs ICP-MS scatter (log-log)
+p_scatter <- pellet_val %>%
+  ggplot(aes(Pb_icpms, Pb_pred)) +
+  geom_abline(slope = 1, linetype = "dashed", colour = "grey40", linewidth = 0.6) +
+  geom_point(colour = "#7E3FA8", alpha = 0.85, size = 2.5) +
+  scale_x_log10(labels = scales::comma) +
+  scale_y_log10(labels = scales::comma) +
+  labs(x = "ICP-MS Pb (ppm)", y = "XRF-predicted Pb (ppm)",
+       tag = "(a)") +
+  theme_bw(base_size = 11) +
+  theme(plot.tag = element_text(face = "bold"))
+
+# Panel B: Bland-Altman (difference vs mean)
+pellet_val <- pellet_val %>%
+  mutate(ba_mean = (Pb_pred + Pb_icpms) / 2,
+         ba_diff = Pb_pred - Pb_icpms)
+
+p_ba <- pellet_val %>%
+  ggplot(aes(ba_mean, ba_diff)) +
+  geom_hline(yintercept = 0, linetype = "solid", colour = "grey60", linewidth = 0.4) +
+  geom_hline(yintercept = ba_bias, linetype = "dashed", colour = "steelblue", linewidth = 0.6) +
+  geom_hline(yintercept = ba_loa_lo, linetype = "dotted", colour = "firebrick", linewidth = 0.6) +
+  geom_hline(yintercept = ba_loa_hi, linetype = "dotted", colour = "firebrick", linewidth = 0.6) +
+  geom_point(colour = "#7E3FA8", alpha = 0.85, size = 2.5) +
+  scale_x_log10(labels = scales::comma) +
+  annotate("text", x = max(pellet_val$ba_mean) * 0.7, y = ba_bias + 30,
+           label = sprintf("Bias = %.0f ppm", ba_bias), hjust = 0, size = 3, colour = "steelblue") +
+  annotate("text", x = max(pellet_val$ba_mean) * 0.7, y = ba_loa_hi + 30,
+           label = sprintf("+1.96 SD = %.0f ppm", ba_loa_hi), hjust = 0, size = 3, colour = "firebrick") +
+  annotate("text", x = max(pellet_val$ba_mean) * 0.7, y = ba_loa_lo - 30,
+           label = sprintf("-1.96 SD = %.0f ppm", ba_loa_lo), hjust = 0, size = 3, colour = "firebrick") +
+  labs(x = "Mean of XRF and ICP-MS (ppm)", y = "XRF − ICP-MS (ppm)",
+       tag = "(b)") +
+  theme_bw(base_size = 11) +
+  theme(plot.tag = element_text(face = "bold"))
+
+# Combine into 2-panel figure
+fig_pellet_2panel <- p_scatter + p_ba + plot_layout(ncol = 2)
+
+ggsave(file.path(FIGURES, "Fig_validation_pellet_2panel.pdf"), fig_pellet_2panel, width = 10, height = 4.5)
+ggsave(file.path(FIGURES, "Fig_validation_pellet_2panel.png"), fig_pellet_2panel, width = 10, height = 4.5, dpi = 300)
+
+# Also copy to manuscript figures directory
+MANUSCRIPT_FIGS <- "/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/Manuscript/Data/final-figs"
+dir.create(MANUSCRIPT_FIGS, showWarnings = FALSE, recursive = TRUE)
+ggsave(file.path(MANUSCRIPT_FIGS, "Fig_validation_pellet_2panel.png"), fig_pellet_2panel, width = 10, height = 4.5, dpi = 300)
+
+# -----------------------------------------------------------------------------
 # 5. Console summary
 # -----------------------------------------------------------------------------
 
@@ -351,3 +411,5 @@ cat("  ", file.path(RESULTS, "Table5_method_summary.csv"), "\n")
 cat("  ", file.path(FIGURES, "Fig_calibration_4panel.{pdf,png}"), "\n")
 cat("  ", file.path(FIGURES, "Fig_validation_4panel.{pdf,png}"), "\n")
 cat("  ", file.path(FIGURES, "Fig_AgreementRatio_4panel.{pdf,png}"), "\n")
+cat("  ", file.path(FIGURES, "Fig_validation_pellet_2panel.{pdf,png}"), " [MAIN TEXT]\n")
+cat("  ", file.path(MANUSCRIPT_FIGS, "Fig_validation_pellet_2panel.png"), "\n")
