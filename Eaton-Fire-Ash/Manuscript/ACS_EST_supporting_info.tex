@@ -36,27 +36,24 @@
     \item Table S1. PBP clay reference series
     \item Table S2. Response variable selection (calibration + validation)
     \item Figure S1. Calibration curves
+    \item Table S3. Matrix correction factors
+    \item Table S4. Outlier sensitivity
   \end{itemize}
   \item \S 2. Validation results
   \begin{itemize}
-    \item Table S3. Full validation metrics
+    \item Table S5. Full validation metrics
     \item Figure S2. XRF vs.\ ICP-MS comparison
     \item Figure S3. Method agreement
-    \item Table S4. Classification by threshold
-    \item Table S5. Overall classification summary
+    \item Table S6. Classification by threshold
+    \item Table S7. Overall classification summary
   \end{itemize}
-  \item \S 3. Matrix correction
-  \begin{itemize}
-    \item Table S6. Correction factors
-    \item Table S7. Outlier sensitivity
-  \end{itemize}
-  \item \S 4. Sampling protocol and metadata
+  \item \S 3. Sampling protocol and metadata
   \begin{itemize}
     \item Sampling campaign logistics
     \item Table S8. Sample locations
     \item Datasets available at Zenodo
   \end{itemize}
-  \item \S 5. ICP-MS characterization
+  \item \S 4. ICP-MS characterization
   \begin{itemize}
     \item Table S9. Major element concentrations
     \item Figure S4. Element concentration and variability
@@ -146,6 +143,45 @@ Powder & Fund.\ param.       & FP     & 0.913 & 116 & 0.983 & 1880 & $+$319 \\
 \label{fig:calibration_4panel}
 \end{figure*}
 
+\subsection*{Matrix correction (Stage B)}
+
+Because XRF response differs between clay standards and ash samples due to matrix effects, we applied a proportional correction factor derived from paired XRF--ICP-MS data. Two samples with extreme Pb concentrations (XPAH28: 18,528~ppm; JPL73: 804~ppm) were excluded from correction factor estimation using Cook's distance ($D > 4/n$) but were retained in validation.
+
+\begin{table}[htbp]
+\caption{Matrix correction factors. Outliers identified by Cook's distance were excluded from slope estimation but included in validation.}
+\label{tab:matrix_correction}
+\centering
+\small
+\begin{tabular}{llrrr}
+\toprule
+Preparation & Response & $n$ used & Excluded & Correction factor \\
+\midrule
+Pellet  & L$\beta_1$+L$\beta_2$ & 31 & 2 & 2.72 \\
+Powder  & L$\beta_1$+L$\beta_3$ & 31 & 2 & 0.71 \\
+Pellet  & Fund.\ param.         & 30 & 3 & 1.14 \\
+Powder  & Fund.\ param.         & 30 & 3 & 0.33 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Excluding high-leverage samples substantially improved model performance. For the pellet L$\beta_1$+L$\beta_2$ method, Cook's distance exclusion reduced RMSE from 478 to 151~ppm and narrowed the 95\% LOA range from 1890 to 601~ppm (Table~\ref{tab:outlier_sensitivity}).
+
+\begin{table}[htbp]
+\caption{Effect of outlier handling on pellet L$\beta_1$+L$\beta_2$ validation performance.}
+\label{tab:outlier_sensitivity}
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Approach & RMSE (ppm) & Bias (ppm) & 95\% LOA range (ppm) \\
+\midrule
+No exclusion               & 478  & $+59$  & 1890 \\
+Drop highest only          & 492  & $+93$  & 1925 \\
+\textbf{Cook's distance}   & \textbf{151} & \textbf{$-2$} & \textbf{601} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \newpage
 
 % ============================================================================
@@ -154,7 +190,7 @@ Powder & Fund.\ param.       & FP     & 0.913 & 116 & 0.983 & 1880 & $+$319 \\
 
 \section*{S2. Validation Results}
 
-This section presents detailed validation metrics for the four primary methods. Based on the L-line selection in \S 1, the intensity-based models use L$\beta_1$+L$\beta_2$ for pellets and L$\beta_1$+L$\beta_3$ for powders, each as a multi-predictor regression with independent coefficients. The main text reports only the recommended method (pellet L$\beta_1$+L$\beta_2$ intensity).
+This section presents detailed validation metrics for the four primary methods (pellet/powder $\times$ L$\beta$ intensity/fundamental parameters). The main text reports only the recommended method (pellet L$\beta_1$+L$\beta_2$ intensity).
 
 \subsection*{Validation against ICP-MS}
 
@@ -268,57 +304,10 @@ The pellet L$\beta_1$+L$\beta_2$ method had the highest sensitivity (0.91) and f
 \newpage
 
 % ============================================================================
-% S3. ASH-MATRIX CORRECTION AND OUTLIER HANDLING
+% S3. SAMPLE METADATA
 % ============================================================================
 
-\section*{S3. Matrix Correction}
-
-Because XRF response differs between clay standards and ash samples due to matrix effects, we applied a correction factor derived from the paired XRF--ICP-MS data. Two samples with extreme Pb concentrations (XPAH28: 18,528~ppm; JPL73: 804~ppm) were excluded from correction factor estimation using Cook's distance criteria but were still included in validation.
-
-\begin{table}[htbp]
-\caption{Matrix correction factors by method. Excluded samples were identified by Cook's distance ($D > 4/n$).}
-\label{tab:s6_matrix_correction}
-\centering
-\small
-\begin{tabular}{llrrr}
-\toprule
-Preparation & Response & $n$ used & Excluded & Correction factor \\
-\midrule
-Pellet  & L$\beta_1$+L$\beta_2$ & 31 & 2 & 2.72 \\
-Powder  & L$\beta_1$+L$\beta_3$ & 31 & 2 & 0.71 \\
-Pellet  & Fund.\ param.         & 30 & 3 & 1.14 \\
-Powder  & Fund.\ param.         & 30 & 3 & 0.33 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection*{Outlier sensitivity}
-
-Excluding high-leverage samples using Cook's distance substantially improved model performance (Table~\ref{tab:s7_outlier_sensitivity}).
-
-\begin{table}[htbp]
-\caption{Effect of outlier handling on pellet L$\beta_1$+L$\beta_2$ method performance.}
-\label{tab:s7_outlier_sensitivity}
-\centering
-\small
-\begin{tabular}{lrrr}
-\toprule
-Approach & RMSE (ppm) & Bias (ppm) & 95\% LOA range (ppm) \\
-\midrule
-No exclusion               & 478  & $+59$  & 1890 \\
-Drop highest only          & 492  & $+93$  & 1925 \\
-\textbf{Cook's distance}   & \textbf{151} & \textbf{$-2$} & \textbf{601} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\newpage
-
-% ============================================================================
-% S4. SAMPLE METADATA (renumbered from S5)
-% ============================================================================
-
-\section*{S4. Sampling Protocol and Metadata}
+\section*{S3. Sampling Protocol and Metadata}
 
 \subsection*{Sampling campaign logistics}
 
@@ -346,10 +335,10 @@ GPS03 & 34.1300 & -118.1440 & 2025-01-16 & Ash \\
 \newpage
 
 % ============================================================================
-% S5. ICP-MS CHARACTERIZATION
+% S4. ICP-MS CHARACTERIZATION
 % ============================================================================
 
-\section*{S5. ICP-MS Characterization}
+\section*{S4. ICP-MS Characterization}
 
 This section provides the full ICP-MS element characterization summarized in the main text.
 
