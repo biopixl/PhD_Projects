@@ -73,13 +73,17 @@ icpms         <- icpms %>% filter(ID %in% fully_paired)
 
 # Canonical 4 arms — ordered best-to-worst (pellet/powder intensity first,
 # FP arms last) so all downstream tables and figures share a consistent order.
+# The `label` column provides descriptive facet titles for figures.
 arms <- tribble(
-  ~arm,                ~method,  ~response_type, ~formula_rhs,
-  "pellet_intensity",  "pellet", "Intensity",    "Pb_Lb1_cps + Pb_Lb2_cps",
-  "powder_intensity",  "powder", "Intensity",    "Pb_Lb1_cps + Pb_Lb3_cps",
-  "pellet_FP",         "pellet", "FP",           "FP_value_ppm",
-  "powder_FP",         "powder", "FP",           "FP_value_ppm"
+  ~arm,                ~method,  ~response_type, ~formula_rhs,                 ~label,
+  "pellet_intensity",  "pellet", "Intensity",    "Pb_Lb1_cps + Pb_Lb2_cps",    "Pellet, Lβ1+Lβ2",
+
+  "powder_intensity",  "powder", "Intensity",    "Pb_Lb1_cps + Pb_Lb3_cps",    "Powder, Lβ1+Lβ3",
+  "pellet_FP",         "pellet", "FP",           "FP_value_ppm",               "Pellet, Fund. Param.",
+  "powder_FP",         "powder", "FP",           "FP_value_ppm",               "Powder, Fund. Param."
 )
+# Named vector for facet labelling
+arm_labels <- setNames(arms$label, arms$arm)
 
 # -----------------------------------------------------------------------------
 # 1. Helpers
@@ -270,7 +274,7 @@ fig_cal <- clay_long %>% mutate(arm = factor(arm, levels = arms$arm)) %>%
   geom_abline(slope = 1, linetype = "dotted", colour = "grey50") +
   geom_smooth(method = "lm", se = FALSE, colour = "steelblue", linewidth = 0.6) +
   geom_point(size = 2.4) +
-  facet_wrap(~ arm, ncol = 2, scales = "free") +
+  facet_wrap(~ arm, ncol = 2, scales = "free", labeller = as_labeller(arm_labels)) +
   labs(x = "Known Pb in PBP clay (ppm)", y = "Calibrated Pb prediction (ppm)",
        title = "Stage A: clay calibration on PBP01–PBP04 standards") +
   theme_bw(base_size = 11)
@@ -291,7 +295,7 @@ fig_val <- val_long %>%
   geom_point(alpha = 0.85, size = 2) +
   scale_colour_manual(values = prep_palette) +
   scale_x_log10() + scale_y_log10() +
-  facet_wrap(~ arm, ncol = 2) +
+  facet_wrap(~ arm, ncol = 2, labeller = as_labeller(arm_labels)) +
   labs(x = "ICP-MS Pb (ppm, log)", y = "XRF-predicted Pb (ppm, log)",
        title = "Stage C: validation against ICP-MS gold standard") +
   theme_bw(base_size = 11) +
@@ -313,7 +317,7 @@ fig_agr <- val_long %>%
   geom_point(alpha = 0.85, size = 2) +
   scale_colour_manual(values = prep_palette) +
   scale_x_log10() +
-  facet_wrap(~ arm, ncol = 2, scales = "free_y") +
+  facet_wrap(~ arm, ncol = 2, scales = "free_y", labeller = as_labeller(arm_labels)) +
   labs(x = "ICP-MS Pb (ppm, log)",
        y = "XRF-predicted / ICP-MS (ratio)",
        title = "Method agreement: XRF/ICP-MS ratio vs ICP-MS reference") +
