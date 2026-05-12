@@ -30,16 +30,21 @@
 \section*{Contents}
 
 \begin{itemize}
-  \item \S 1. XRF calibration and response selection
+  \item \S 1. XRF calibration pipeline
   \begin{itemize}
-    \item Clay standard preparation
-    \item Table S1. PBP clay reference series
-    \item Table S2. Response variable selection (calibration + validation)
-    \item Figure S1. Calibration curves
-    \item Table S3. Matrix correction factors
-    \item Table S4. Outlier sensitivity
+    \item Stage A: Clay calibration
+    \begin{itemize}
+      \item Table S1. PBP clay reference series
+      \item Table S2. Clay calibration performance
+      \item Figure S1. Calibration curves
+    \end{itemize}
+    \item Stage B: Matrix correction
+    \begin{itemize}
+      \item Table S3. Matrix correction factors
+      \item Table S4. Outlier sensitivity
+    \end{itemize}
   \end{itemize}
-  \item \S 2. Validation results
+  \item \S 2. Validation results (Stage C)
   \begin{itemize}
     \item Table S5. Full validation metrics
     \item Figure S2. XRF vs.\ ICP-MS comparison
@@ -73,9 +78,13 @@
 % S1. XRF CALIBRATION AND RESPONSE SELECTION
 % ============================================================================
 
-\section*{S1. XRF Calibration and Response Selection}
+\section*{S1. XRF Calibration Pipeline}
 
-\subsection*{Clay standard preparation}
+The XRF calibration followed a three-stage workflow: \textbf{Stage A} (clay calibration) established the relationship between Pb concentration and XRF response using reference standards; \textbf{Stage B} (matrix correction) derived multiplicative correction factors from paired XRF--ICP-MS ash data to account for matrix differences between clay and ash; \textbf{Stage C} (validation) applied the corrected models to ash samples and evaluated agreement with ICP-MS reference values. This section describes Stages A and B; Stage C results are presented in \S2.
+
+\subsection*{Stage A: Clay calibration}
+
+\subsubsection*{Clay standard preparation}
 
 % TODO (author): replace this placeholder with the lab protocol for the
 % PBP01--PBP04 standard synthesis. Suggested content: source of kaolinite
@@ -89,7 +98,7 @@ source and grade; Pb spike compound and addition procedure; gravimetric
 mixing and drying steps; final sieve fraction; and QA/QC certification of
 the nominal Pb concentrations.]}
 
-\subsection*{Clay reference standards}
+\subsubsection*{Clay reference standards}
 
 We prepared kaolinite-clay standards (PBP01--PBP04) with certified Pb concentrations of 0, 100, 500, and 1000~ppm. Three replicate pellets and three replicate powder samples were prepared per concentration level, yielding 12 pellet and 11 powder calibration points (one blank powder replicate was excluded due to no detectable Pb signal).
 
@@ -109,36 +118,33 @@ PBP04 & 0 (blank) & 3 \\
 \end{tabular}
 \end{table}
 
-\subsection*{Response variable selection}
+\subsubsection*{Response variable selection}
 
 We evaluated two classes of XRF response variables for Pb quantification: (1) empirical L-line intensities and (2) the instrument's built-in fundamental-parameters (FP) algorithm. For L-line intensities, six Pb L-lines (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$\beta_4$) were tested as single lines, summed-intensity combinations, and multi-predictor regressions. The L$\alpha$ lines overlap with As K$\alpha$ emission at 10.5~keV, which can bias Pb quantification in arsenic-bearing samples; L$\beta$ lines were therefore preferred.
 
-Each candidate response was calibrated on PBP clay standards (Stage A) and then validated against ICP-MS on ash samples (Stage C). Table~\ref{tab:response_selection} presents both calibration and validation metrics for the primary candidates, ranked by validation RMSE. The pellet L$\beta_1$+L$\beta_2$ multi-predictor model achieved the best performance: clay calibration $R^2$ = 0.999, RMSE = 14~ppm; ash validation RMSE = 151~ppm with negligible bias ($-$2~ppm). Calibration curves for the four primary methods are shown in Figure~S1.
+Table~\ref{tab:clay_calibration} presents clay calibration performance for all candidate response variables. The pellet L$\beta_1$+L$\beta_2$ multi-predictor model achieved the best calibration fit ($R^2$ = 0.999, RMSE = 14~ppm). Calibration curves for the four primary methods are shown in Figure~S1.
 
 \begin{table}[htbp]
-\caption{Response variable selection: clay calibration (Stage A) and ash validation (Stage C) performance, ranked by validation RMSE. Bold rows indicate the selected response for each preparation method. Multi = multi-predictor regression with independent coefficients.}
-\label{tab:response_selection}
+\caption{Clay calibration (Stage A) performance for candidate response variables. Bold rows indicate the selected response for each preparation method. Multi = multi-predictor regression with independent coefficients.}
+\label{tab:clay_calibration}
 \centering
 \footnotesize
-\begin{tabular}{llcrrrrrr}
+\begin{tabular}{llcrrr}
 \toprule
- &  &  & \multicolumn{2}{c}{Clay calibration} & \multicolumn{3}{c}{Ash validation} \\
-\cmidrule(lr){4-5} \cmidrule(lr){6-8}
-Prep & Response & Type & $R^2$ & RMSE & $r$ & RMSE & Bias \\
- &  &  &  & (ppm) &  & (ppm) & (ppm) \\
+Prep & Response & Type & $n$ & $R^2$ & RMSE (ppm) \\
 \midrule
-Pellet & \textbf{L$\beta_1$+L$\beta_2$} & \textbf{multi} & \textbf{0.999} & \textbf{14} & \textbf{0.999} & \textbf{151} & $-$\textbf{2} \\
-Pellet & L$\alpha_1$         & single & 0.998 & 17 & 0.998 &  719 & $+$125 \\
-Pellet & L$\beta_1$+L$\beta_3$ & multi & 0.998 & 18 & 0.998 &  787 & $+$142 \\
-Pellet & L$\beta_4$          & single & 0.998 & 18 & 0.998 &  789 & $+$139 \\
-Pellet & L$\beta_1$          & single & 0.998 & 18 & 0.998 &  818 & $+$142 \\
-Pellet & Fund.\ param.       & FP     & 0.995 & 28 & 0.990 & 1726 & $+$308 \\
+Pellet & \textbf{L$\beta_1$+L$\beta_2$} & \textbf{multi} & \textbf{12} & \textbf{0.999} & \textbf{14} \\
+Pellet & L$\alpha_1$         & single & 12 & 0.998 & 17 \\
+Pellet & L$\beta_1$+L$\beta_3$ & multi & 12 & 0.998 & 18 \\
+Pellet & L$\beta_4$          & single & 12 & 0.998 & 18 \\
+Pellet & L$\beta_1$          & single & 12 & 0.998 & 18 \\
+Pellet & Fund.\ param.       & FP     & 12 & 0.995 & 28 \\
 \midrule
-Powder & \textbf{L$\beta_1$+L$\beta_3$} & \textbf{multi} & \textbf{0.937} & \textbf{98} & \textbf{0.998} & \textbf{282} & $+$\textbf{36} \\
-Powder & L$\alpha_2$         & single & 0.904 & 121 & 0.990 & 1633 & $+$308 \\
-Powder & L$\beta_4$          & single & 0.904 & 121 & 0.989 & 1671 & $+$311 \\
-Powder & L$\beta_1$          & single & 0.904 & 121 & 0.989 & 1681 & $+$312 \\
-Powder & Fund.\ param.       & FP     & 0.913 & 116 & 0.983 & 1880 & $+$319 \\
+Powder & \textbf{L$\beta_1$+L$\beta_3$} & \textbf{multi} & \textbf{11} & \textbf{0.937} & \textbf{98} \\
+Powder & L$\alpha_2$         & single & 11 & 0.904 & 121 \\
+Powder & L$\beta_4$          & single & 11 & 0.904 & 121 \\
+Powder & L$\beta_1$          & single & 11 & 0.904 & 121 \\
+Powder & Fund.\ param.       & FP     & 11 & 0.913 & 116 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -146,16 +152,16 @@ Powder & Fund.\ param.       & FP     & 0.913 & 116 & 0.983 & 1880 & $+$319 \\
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=\textwidth]{Fig_calibration_4panel.png}
-\caption{Clay calibration curves for the four primary methods: \textbf{(a)} Pellet, L$\beta_1$+L$\beta_2$; \textbf{(b)} Powder, L$\beta_1$+L$\beta_3$; \textbf{(c)} Pellet, fundamental parameters; \textbf{(d)} Powder, fundamental parameters. Solid lines are fitted regressions; points are color-coded by Pb concentration level.}
+\caption{Clay calibration curves (Stage A) for the four primary methods: \textbf{(a)} Pellet, L$\beta_1$+L$\beta_2$; \textbf{(b)} Powder, L$\beta_1$+L$\beta_3$; \textbf{(c)} Pellet, fundamental parameters; \textbf{(d)} Powder, fundamental parameters. Solid lines are fitted regressions; points are color-coded by Pb concentration level.}
 \label{fig:calibration_4panel}
 \end{figure*}
 
-\subsection*{Matrix correction (Stage B)}
+\subsection*{Stage B: Matrix correction}
 
-Because XRF response differs between clay standards and ash samples due to matrix effects, we applied a proportional correction factor derived from paired XRF--ICP-MS data. Two samples with extreme Pb concentrations (XPAH28: 18,528~ppm; JPL73: 804~ppm) were excluded from correction factor estimation using Cook's distance ($D > 4/n$) but were retained in validation.
+Because XRF response differs between clay standards and ash samples due to matrix effects, we derived proportional correction factors from paired XRF--ICP-MS ash data. The clay-calibrated models were applied to ash samples, and the slope of XRF-predicted vs.\ ICP-MS Pb concentration provided the matrix correction factor for each method. Two samples with extreme Pb concentrations (XPAH28: 18,528~ppm; JPL73: 804~ppm) were excluded from correction factor estimation using Cook's distance ($D > 4/n$) but were retained in subsequent validation.
 
 \begin{table}[htbp]
-\caption{Matrix correction factors. Outliers identified by Cook's distance were excluded from slope estimation but included in validation.}
+\caption{Matrix correction factors (Stage B). Outliers identified by Cook's distance were excluded from slope estimation but included in validation.}
 \label{tab:matrix_correction}
 \centering
 \small
@@ -171,10 +177,10 @@ Powder  & Fund.\ param.         & 30 & 3 & 0.33 \\
 \end{tabular}
 \end{table}
 
-Excluding high-leverage samples substantially improved model performance. For the pellet L$\beta_1$+L$\beta_2$ method, Cook's distance exclusion reduced RMSE from 478 to 151~ppm and narrowed the 95\% LOA range from 1890 to 601~ppm (Table~\ref{tab:outlier_sensitivity}).
+Excluding high-leverage samples substantially improved model performance. For the pellet L$\beta_1$+L$\beta_2$ method, Cook's distance exclusion reduced RMSE from 478 to 151~ppm and narrowed the 95\% limits of agreement range from 1890 to 601~ppm (Table~\ref{tab:outlier_sensitivity}).
 
 \begin{table}[htbp]
-\caption{Effect of outlier handling on pellet L$\beta_1$+L$\beta_2$ validation performance.}
+\caption{Effect of outlier handling on pellet L$\beta_1$+L$\beta_2$ validation performance (Stage C metrics shown for comparison).}
 \label{tab:outlier_sensitivity}
 \centering
 \small
@@ -195,9 +201,9 @@ Drop highest only          & 492  & $+93$  & 1925 \\
 % S2. VALIDATION RESULTS
 % ============================================================================
 
-\section*{S2. Validation Results}
+\section*{S2. Validation Results (Stage C)}
 
-This section presents detailed validation metrics for the four primary methods (pellet/powder $\times$ L$\beta$ intensity/fundamental parameters). The main text reports only the recommended method (pellet L$\beta_1$+L$\beta_2$ intensity).
+Following clay calibration (Stage A, \S1) and matrix correction (Stage B, \S1), the corrected models were applied to ash samples and validated against ICP-MS reference values (Stage C). This section presents detailed validation metrics for the four primary methods (pellet/powder $\times$ L$\beta$ intensity/fundamental parameters). The main text reports only the recommended method (pellet L$\beta_1$+L$\beta_2$ intensity).
 
 \subsection*{Validation against ICP-MS}
 
