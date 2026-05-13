@@ -158,21 +158,21 @@ Powder & L$\beta_1$          & single & 11 & 0.904 & 121 \\
 
 \subsection*{Stage B: Matrix correction}
 
-Because XRF response differs between clay standards and ash samples due to matrix effects, we derived proportional correction factors from paired XRF--ICP-MS ash data. The clay-calibrated models were applied to ash samples, and the slope of XRF-predicted vs.\ ICP-MS Pb concentration provided the matrix correction factor for each method. Two samples with extreme Pb concentrations (XPAH28: 18,528~ppm; JPL73: 804~ppm) were excluded from correction factor estimation using Cook's distance ($D > 4/n$) but were retained in subsequent validation.
+Because XRF response differs between clay standards and ash samples due to matrix effects, we derived proportional correction factors from paired XRF--ICP-MS ash data. The clay-calibrated models were applied to ash samples, and the slope of XRF-predicted vs.\ ICP-MS Pb concentration provided the matrix correction factor for each method. High-leverage samples were identified using Cook's distance ($D > 4/n$) and excluded from correction factor estimation but retained in subsequent validation. The number of excluded samples was method-specific: for L$\beta$ intensity methods, two samples were excluded (XPAH28: 18,528~ppm; JPL73: 804~ppm); for fundamental-parameters methods, three samples were excluded (XPAH28, XPAH20: 1,933~ppm, and JPL73).
 
 \begin{table}[htbp]
-\caption{Matrix correction factors (Stage B). Outliers identified by Cook's distance were excluded from slope estimation but included in validation.}
+\caption{Matrix correction factors (Stage B). Outliers identified by Cook's distance ($D > 4/n$) were excluded from slope estimation but included in validation.}
 \label{tab:matrix_correction}
 \centering
 \small
-\begin{tabular}{llrrr}
+\begin{tabular}{llrll}
 \toprule
-Preparation & Response & $n$ used & Excluded & Correction factor \\
+Preparation & Response & $n$ used & Excluded samples & Correction factor \\
 \midrule
-Pellet  & L$\beta_1$+L$\beta_2$ & 31 & 2 & 2.72 \\
-Powder  & L$\beta_1$+L$\beta_3$ & 31 & 2 & 0.71 \\
-Pellet  & Fund.\ param.         & 30 & 3 & 1.14 \\
-Powder  & Fund.\ param.         & 30 & 3 & 0.33 \\
+Pellet  & L$\beta_1$+L$\beta_2$ & 31 & XPAH28, JPL73 & 2.72 \\
+Powder  & L$\beta_1$+L$\beta_3$ & 31 & XPAH28, JPL73 & 0.71 \\
+Pellet  & Fund.\ param.         & 30 & XPAH28, XPAH20, JPL73 & 1.14 \\
+Powder  & Fund.\ param.         & 30 & XPAH28, XPAH20, JPL73 & 0.33 \\
 \bottomrule
 \end{tabular}
 \end{table}
