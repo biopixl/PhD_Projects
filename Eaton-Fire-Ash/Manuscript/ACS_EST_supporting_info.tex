@@ -330,8 +330,16 @@ The pellet L$\beta_1$+L$\beta_2$ method achieved 10$\times$ narrower limits of a
 
 Classification performance was evaluated at six regulatory screening levels: 80~ppm (DTSC residential), 200~ppm (EPA residential RSL), 320~ppm (California CHHSL industrial), 500~ppm (DTSC industrial), 800~ppm (EPA industrial RSL), and 1000~ppm (California TTLC hazardous waste).
 
+For each threshold, samples were classified as positive (above threshold) or negative (below threshold) based on both ICP-MS reference values and XRF predictions. Performance metrics are defined as:
+\begin{align}
+\text{Sensitivity} &= \frac{\text{TP}}{\text{TP} + \text{FN}} \quad \text{(proportion of true positives correctly identified)} \label{eq:sens} \\[0.5em]
+\text{Specificity} &= \frac{\text{TN}}{\text{TN} + \text{FP}} \quad \text{(proportion of true negatives correctly identified)} \label{eq:spec} \\[0.5em]
+\text{Accuracy} &= \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}} \quad \text{(overall correct classification rate)} \label{eq:acc}
+\end{align}
+where TP = true positive (ICP-MS and XRF both above threshold), TN = true negative (both below), FP = false positive (XRF above, ICP-MS below), and FN = false negative (XRF below, ICP-MS above). For screening applications, high sensitivity is prioritized to minimize false negatives (missed contamination).
+
 \begin{table}[htbp]
-\caption{Classification performance at each regulatory threshold ($n$ = 33 samples). TP = true positive, FN = false negative, FP = false positive, TN = true negative. $n_+$ = samples above threshold.}
+\caption{Classification performance at each regulatory threshold ($n$ = 33 samples). $n_+$ = samples above threshold by ICP-MS.}
 \label{tab:s4_threshold_classification}
 \centering
 \footnotesize
