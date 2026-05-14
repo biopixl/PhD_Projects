@@ -2,14 +2,14 @@
 
 A walkthrough of the three-stage statistical workflow used to predict Pb in
 Eaton Fire ash from benchtop XRF measurements, calibrated against ICP-MS
-ground truth. Pipeline source: [eaton_xrf_pipeline.R](scripts/eaton_xrf_pipeline.R).
+reference concentrations. Pipeline source: [eaton_xrf_pipeline.R](scripts/eaton_xrf_pipeline.R).
 
 The pipeline runs four arms in parallel:
 
 | Method | Response variable | Use |
 |---|---|---|
-| pellet_intensity | Pb Lβ₁ + Lβ₂ multi-predictor | recommended primary screening |
-| powder_intensity | Pb Lβ₁ + Lβ₃ multi-predictor | field-portable alternative |
+| pellet_intensity | Pb Lβ₁ + Lβ₂ multi-predictor |  primary screening |
+| powder_intensity | Pb Lβ₁ + Lβ₃ multi-predictor | field alternative |
 | pellet_FP | instrument FP-derived ppm | comparison baseline |
 | powder_FP | instrument FP-derived ppm | comparison baseline |
 
@@ -75,7 +75,7 @@ remaining systematic offset is multiplicative (a function of the mass-
 attenuation ratio between ash and clay), not additive. An intercept would
 let the regression absorb noise that should not exist.
 
-**Two robustness layers wrap this fit:**
+**Two methods wrap this fit:**
 
 ### B.1 — Cook's distance outlier filter (D > 4/n)
 
@@ -101,8 +101,8 @@ Code: [eaton_xrf_pipeline.R:78-84, 163-164](scripts/eaton_xrf_pipeline.R#L78-L84
 ### B.2 — Per-sample LOOCV slope
 
 For each *eligible* (non-excluded) sample, we refit the slope leaving that
-sample out of the fit but predicting it from the held-out slope. This avoids
-in-sample optimism without sacrificing the small (n=33) validation set.
+sample out of the fit but predicting it from the held-out slope to avoid correlation 
+within the validation set.
 
 ```
 for i in eligible:
@@ -193,13 +193,6 @@ For a proportion `p̂ = k/n` (e.g., sensitivity), Wilson² gives:
                                                       with z = 1.96
 ```
 
-**Why Wilson, not normal-approximation Wald?** With n = 33 and only 2–11
-positives at the higher thresholds, the Wald CI `p̂ ± 1.96·√(p̂(1-p̂)/n)`
-collapses to zero width when `p̂ = 1.00` (no uncertainty reported, which is
-nonsense) and underestimates uncertainty for extreme proportions in general.
-Wilson handles small n and `p̂ → 0` or `→ 1` correctly; it never gives
-zero-width CIs and stays bounded in [0, 1].
-
 For `p̂ = 1.00` with n = 6 (sensitivity at 320 ppm): Wilson gives
 `[0.61, 1.00]`, honestly reflecting that only 6 above-threshold samples
 were observed and a ~40% chance some real sample-population sensitivity
@@ -223,7 +216,7 @@ method with much narrower Wilson CIs (n_+ = 34 instead of 2–11). The
 pooled metric is the cleanest one-glance summary for comparing methods
 across the regulatory range.
 
-**Caveat.** Sample-threshold pairs are not strictly independent — a sample's
+Sample-threshold pairs are not strictly independent — a sample's
 classification at 80 ppm is correlated with its classification at 200 ppm
 because both depend on the same underlying Pb_pred. The pooled CIs are
 therefore *anti-conservative* (slightly tighter than they should be); but
@@ -235,7 +228,7 @@ Code: [eaton_xrf_pipeline.R:240-261](scripts/eaton_xrf_pipeline.R#L240-L261).
 
 ---
 
-## Why these choices, in one sentence each
+## Notes
 
 - **Two-stage calibration (clay → ash) instead of fitting ash directly.**
   Pulling the in-sample fit on ash would be circular; clay anchors give an
