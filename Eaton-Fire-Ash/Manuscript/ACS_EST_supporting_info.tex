@@ -183,19 +183,29 @@ Powder & L$\beta_1$          & single & 12 & 0.904 & 121 \\
 
 \subsubsection*{Calibration model equations}
 
-The calibration models relate known Pb concentration (ppm) to XRF response. For L-line intensity models, the formula is:
+The calibration models relate known Pb concentration (ppm) to XRF response. For L-line intensity models, the multi-predictor formula is:
 \begin{equation}
-\text{Pb}_\text{known} = \beta_0 + \beta_1 \cdot \text{L}\beta_1 + \beta_2 \cdot \text{L}\beta_x
+\text{Pb}_\text{clay} = \beta_0 + \beta_1 \cdot \text{L}\beta_1\text{(cps)} + \beta_2 \cdot \text{L}\beta_x\text{(cps)}
 \label{eq:intensity_model}
 \end{equation}
-where L$\beta_x$ is L$\beta_2$ for pellet or L$\beta_3$ for powder. For fundamental parameters:
+where L$\beta_x$ is L$\beta_2$ for pellet or L$\beta_3$ for powder. The fitted coefficients are:
+
+\textbf{Pellet} (L$\beta_1$+L$\beta_2$):
 \begin{equation}
-\text{Pb}_\text{known} = \beta_0 + \beta_1 \cdot \text{FP}_\text{raw}
-\label{eq:fp_model}
+\text{Pb}_\text{clay} = -16.4 - 70.7 \cdot \text{L}\beta_1 + 151.5 \cdot \text{L}\beta_2
+\label{eq:pellet_model}
 \end{equation}
 
+\textbf{Powder} (L$\beta_1$+L$\beta_3$):
+\begin{equation}
+\text{Pb}_\text{clay} = -52.6 + 430.2 \cdot \text{L}\beta_1 - 3327.1 \cdot \text{L}\beta_3
+\label{eq:powder_model}
+\end{equation}
+
+The opposing signs of the L-line coefficients reflect collinearity between the predictors; the net effect produces accurate Pb estimates despite the counter-intuitive individual slopes. For fundamental parameters, the instrument's internal algorithm provides direct ppm values that are corrected via simple linear regression against known concentrations.
+
 \begin{table}[htbp]
-\caption{Calibration model coefficients from Stage A clay calibration. Matrix correction factors (Stage B) are applied multiplicatively: $\text{Pb}_\text{predicted} = \text{Pb}_\text{clay} \times k_\text{matrix}$.}
+\caption{Summary of calibration model performance. Matrix correction factors (Stage B) are applied multiplicatively: $\text{Pb}_\text{predicted} = \text{Pb}_\text{clay} \times k_\text{matrix}$.}
 \label{tab:model_coefficients}
 \centering
 \small
