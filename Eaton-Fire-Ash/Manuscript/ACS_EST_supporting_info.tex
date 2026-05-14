@@ -35,40 +35,36 @@
     \item Stage A: Clay calibration
     \begin{itemize}
       \item Table S1. PBP clay reference series
-      \item Table S2. Clay calibration performance
+      \item Table S2. Clay calibration intensities
+      \item Table S3. Calibration performance (response selection)
       \item Figure S1. Calibration curves
+      \item Table S4. Calibration model coefficients
     \end{itemize}
     \item Stage B: Matrix correction
     \begin{itemize}
-      \item Table S3. Matrix correction factors
-      \item Table S4. Outlier sensitivity
+      \item Table S5. Matrix correction factors
+      \item Table S6. Outlier sensitivity analysis
     \end{itemize}
   \end{itemize}
   \item \S 2. Validation results (Stage C)
   \begin{itemize}
-    \item Table S5. Full validation metrics
+    \item Table S7. Full validation metrics
     \item Figure S2. XRF vs.\ ICP-MS comparison
-    \item Figure S3. Method agreement
-    \item Table S6. Classification by threshold
-    \item Table S7. Overall classification summary
+    \item Figure S3. Method agreement ratio
+    \item Table S8. Classification by threshold
+    \item Table S9. Overall classification summary
+    \item Table S10. Sample-level paired predictions
   \end{itemize}
   \item \S 3. Sampling protocol and metadata
   \begin{itemize}
     \item Sampling campaign logistics
-    \item Table S8. Sample locations
-    \item Datasets available at Zenodo
+    \item Table S11. Sample locations
   \end{itemize}
   \item \S 4. ICP-MS characterization
   \begin{itemize}
-    \item Table S9. Major element concentrations
+    \item Table S12. Major element concentrations
     \item Figure S4. Element concentration and variability
-  \end{itemize}
-  \item \S 5. Raw data tables
-  \begin{itemize}
-    \item Table S10. Clay calibration intensities
-    \item Table S11. Calibration model coefficients
-    \item Table S12. Paired XRF predictions and ICP-MS reference values
-    \item Table S13. Complete ICP-MS element characterization
+    \item Data availability (Zenodo)
   \end{itemize}
 \end{itemize}
 
@@ -118,6 +114,35 @@ PBP04 & 0 (blank) & 3 \\
 \end{tabular}
 \end{table}
 
+\begin{table}[htbp]
+\caption{XRF Pb L-line intensities (counts per second) for PBP clay calibration standards.}
+\label{tab:clay_intensities}
+\centering
+\footnotesize
+\begin{tabular}{llrrrrrrrr}
+\toprule
+Sample & Prep & Known Pb & L$\alpha_1$ & L$\beta_1$ & L$\beta_2$ & L$\beta_3$ & L$\beta_4$ & FP \\
+ &  & (ppm) & (cps) & (cps) & (cps) & (cps) & (cps) & (ppm) \\
+\midrule
+PBP04\_A & Pellet & 0    & 22.4 & 16.6 & 7.8  & 0.4  & 1.6  & 36 \\
+PBP04\_B & Pellet & 0    & 27.5 & 20.5 & 9.7  & 2.6  & 2.0  & 38 \\
+PBP04\_C & Pellet & 0    & 20.2 & 15.0 & 7.1  & 1.9  & 1.5  & 29 \\
+PBP01\_A & Pellet & 100  & 256.3 & 189.9 & 89.4 & 24.4 & 18.4 & 392 \\
+PBP02\_A & Pellet & 500  & 1062.1 & 785.2 & 369.7 & 101.1 & 76.1 & 1750 \\
+PBP03\_A & Pellet & 1000 & 2007.1 & 1469.2 & 692.2 & 188.9 & 142.6 & 3140 \\
+\midrule
+PBP04\_1 & Powder & 0    & 12.2 & 9.1  & 4.3  & 1.2  & 0.9  & 17 \\
+PBP04\_2 & Powder & 0    & 23.4 & 17.4 & 8.2  & 2.2  & 1.7  & 31 \\
+PBP04\_3 & Powder & 0    & 16.8 & 12.5 & 5.9  & 1.6  & 1.2  & 21 \\
+PBP01\_1 & Powder & 100  & 117.6 & 87.5 & 41.2 & 11.3 & 8.5  & 162 \\
+PBP02\_1 & Powder & 500  & 534.9 & 397.0 & 186.9 & 51.1 & 38.5 & 920 \\
+PBP03\_1 & Powder & 1000 & 665.6 & 492.4 & 231.8 & 63.4 & 47.7 & 1170 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textit{Note.} Table shows one representative replicate per concentration level; full 24-point dataset (12 pellet + 12 powder) available in the Zenodo repository as \texttt{EFA\_XRF\_Clay\_Metadata.csv}.
+
 \subsubsection*{Response variable selection}
 
 We evaluated two classes of XRF response variables for Pb quantification: (1) empirical L-line intensities and (2) the instrument's built-in fundamental-parameters (FP) algorithm. For L-line intensities, six Pb L-lines (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$\beta_4$) were tested as single lines, summed-intensity combinations, and multi-predictor regressions. The L$\alpha$ lines overlap with As K$\alpha$ emission at 10.5~keV, which can bias Pb quantification in arsenic-bearing samples; L$\beta$ lines were therefore preferred.
@@ -155,6 +180,36 @@ Powder & L$\beta_1$          & single & 12 & 0.904 & 121 \\
 \caption{Clay calibration curves (Stage A) for the four primary methods: \textbf{(a)} Pellet, L$\beta_1$+L$\beta_2$; \textbf{(b)} Powder, L$\beta_1$+L$\beta_3$; \textbf{(c)} Pellet, fundamental parameters; \textbf{(d)} Powder, fundamental parameters. Solid lines are fitted regressions; points are color-coded by Pb concentration level.}
 \label{fig:calibration_4panel}
 \end{figure*}
+
+\subsubsection*{Calibration model equations}
+
+The calibration models relate known Pb concentration (ppm) to XRF response. For L-line intensity models, the formula is:
+\begin{equation}
+\text{Pb}_\text{known} = \beta_0 + \beta_1 \cdot \text{L}\beta_1 + \beta_2 \cdot \text{L}\beta_x
+\label{eq:intensity_model}
+\end{equation}
+where L$\beta_x$ is L$\beta_2$ for pellet or L$\beta_3$ for powder. For fundamental parameters:
+\begin{equation}
+\text{Pb}_\text{known} = \beta_0 + \beta_1 \cdot \text{FP}_\text{raw}
+\label{eq:fp_model}
+\end{equation}
+
+\begin{table}[htbp]
+\caption{Calibration model coefficients from Stage A clay calibration. Matrix correction factors (Stage B) are applied multiplicatively: $\text{Pb}_\text{predicted} = \text{Pb}_\text{clay} \times k_\text{matrix}$.}
+\label{tab:model_coefficients}
+\centering
+\small
+\begin{tabular}{llrrrrr}
+\toprule
+Prep & Response & $n$ & Intercept ($\beta_0$) & $R^2$ & RMSE (ppm) & $k_\text{matrix}$ \\
+\midrule
+Pellet & L$\beta_1$+L$\beta_2$ & 12 & $-16.4$ & 0.999 & 14 & 2.72 \\
+Powder & L$\beta_1$+L$\beta_3$ & 12 & $-61.7$ & 0.943 & 94 & 0.71 \\
+Pellet & Fund.\ param. & 12 & $-27.2$ & 0.995 & 28 & 1.14 \\
+Powder & Fund.\ param. & 12 & $-47.7$ & 0.920 & 111 & 0.33 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection*{Stage B: Matrix correction}
 
@@ -314,6 +369,57 @@ Powder  & Fund.\ param.         & 0.85 & 0.95 & 0.93 & 5 \\
 
 The pellet L$\beta_1$+L$\beta_2$ method had the highest sensitivity (0.91) and fewest false negatives (3 of 34 positive tests).
 
+\subsection*{Sample-level predictions}
+
+\begin{table}[htbp]
+\caption{Paired XRF-predicted and ICP-MS Pb concentrations (ppm) for the pellet L$\beta_1$+L$\beta_2$ method ($n$ = 33 ash samples). Residual = XRF $-$ ICP-MS.}
+\label{tab:paired_predictions}
+\centering
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+Sample & ICP-MS & XRF pred. & Residual & \% Error \\
+\midrule
+XPAH58 & 14 & $-20$ & $-34$ & $-243$ \\
+XPAH55 & 27 & 13 & $-14$ & $-50$ \\
+JPL43 & 38 & 26 & $-12$ & $-32$ \\
+JPL18 & 45 & 31 & $-14$ & $-31$ \\
+JPL33 & 47 & 28 & $-18$ & $-39$ \\
+JPL48 & 47 & 26 & $-22$ & $-46$ \\
+JPL50 & 48 & 44 & $-4$ & $-8$ \\
+GPS09 & 49 & 68 & $+19$ & $+38$ \\
+JPL11 & 52 & 67 & $+15$ & $+29$ \\
+GPS03 & 53 & 47 & $-6$ & $-12$ \\
+1620 & 54 & 37 & $-17$ & $-31$ \\
+XPAH29 & 54 & 36 & $-17$ & $-32$ \\
+JPL06 & 55 & 20 & $-35$ & $-63$ \\
+JPL25 & 55 & 32 & $-24$ & $-43$ \\
+JPL95 & 59 & 58 & $-1$ & $-2$ \\
+JPL15 & 61 & 71 & $+10$ & $+16$ \\
+JPL29 & 61 & 51 & $-10$ & $-16$ \\
+JPL51 & 63 & 79 & $+16$ & $+26$ \\
+JPL09 & 64 & 43 & $-22$ & $-34$ \\
+JPL89 & 67 & 89 & $+22$ & $+32$ \\
+JPL86 & 74 & 186 & $+112$ & $+150$ \\
+JPL68 & 77 & 80 & $+2$ & $+3$ \\
+JPL61 & 79 & 78 & $-1$ & $-1$ \\
+XPAH26 & 82 & 35 & $-47$ & $-57$ \\
+JPL63 & 85 & 89 & $+4$ & $+5$ \\
+JPL59 & 86 & 82 & $-4$ & $-4$ \\
+JPL07 & 88 & 93 & $+5$ & $+6$ \\
+JPL58 & 209 & 188 & $-21$ & $-10$ \\
+JPL79 & 448 & 832 & $+384$ & $+86$ \\
+JPL76 & 557 & 539 & $-18$ & $-3$ \\
+JPL77 & 557 & 454 & $-104$ & $-19$ \\
+JPL73 & 804 & 1404 & $+600$ & $+75$ \\
+XPAH20 & 1933 & 1496 & $-437$ & $-23$ \\
+XPAH28 & 18528 & 18238 & $-290$ & $-2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textit{Note.} Samples sorted by ICP-MS concentration. Negative XRF prediction for XPAH58 (14~ppm) reflects extrapolation below the calibration range (lowest standard = 0~ppm blank). Complete paired datasets for all four methods available in Zenodo repository.
+
 \newpage
 
 % ============================================================================
@@ -388,190 +494,8 @@ Major elements (Ca, Fe, Al, K, Mg, Na, Ti, Mn) showed relatively low coefficient
 \label{fig:s4_icpms_summary}
 \end{figure*}
 
-\newpage
+\subsection*{Data availability}
 
-% ============================================================================
-% S5. RAW DATA TABLES
-% ============================================================================
-
-\section*{S5. Raw Data Tables}
-
-This section provides complete datasets for reproducibility, including raw XRF intensities, calibration model coefficients, XRF predictions paired with ICP-MS reference values, and full ICP-MS characterization.
-
-\subsection*{Clay calibration intensities}
-
-\begin{table}[htbp]
-\caption{XRF Pb L-line intensities (counts per second) for PBP clay calibration standards. Three replicates per concentration level were measured for each preparation method.}
-\label{tab:s10_clay_intensities}
-\centering
-\footnotesize
-\begin{tabular}{llrrrrrrrr}
-\toprule
-Sample & Prep & Known Pb & L$\alpha_1$ & L$\beta_1$ & L$\beta_2$ & L$\beta_3$ & L$\beta_4$ & FP \\
- &  & (ppm) & (cps) & (cps) & (cps) & (cps) & (cps) & (ppm) \\
-\midrule
-PBP04\_A & Pellet & 0    & 22.4 & 16.6 & 7.8  & 0.4  & 1.6  & 36 \\
-PBP04\_B & Pellet & 0    & 27.5 & 20.5 & 9.7  & 2.6  & 2.0  & 38 \\
-PBP04\_C & Pellet & 0    & 20.2 & 15.0 & 7.1  & 1.9  & 1.5  & 29 \\
-PBP01\_A & Pellet & 100  & 256.3 & 189.9 & 89.4 & 24.4 & 18.4 & 392 \\
-PBP01\_B & Pellet & 100  & 239.7 & 177.8 & 83.7 & 22.9 & 17.2 & 386 \\
-PBP01\_C & Pellet & 100  & 248.0 & 184.2 & 86.7 & 23.7 & 17.8 & 367 \\
-PBP02\_A & Pellet & 500  & 1062.1 & 785.2 & 369.7 & 101.1 & 76.1 & 1750 \\
-PBP02\_B & Pellet & 500  & 1080.5 & 799.4 & 376.4 & 102.9 & 77.5 & 1710 \\
-PBP02\_C & Pellet & 500  & 1133.9 & 836.0 & 393.7 & 107.6 & 81.1 & 1780 \\
-PBP03\_A & Pellet & 1000 & 2007.1 & 1469.2 & 692.2 & 188.9 & 142.6 & 3140 \\
-PBP03\_B & Pellet & 1000 & 2001.8 & 1477.2 & 695.7 & 190.1 & 143.2 & 3020 \\
-PBP03\_C & Pellet & 1000 & 2058.2 & 1514.3 & 713.3 & 194.8 & 146.9 & 3060 \\
-\midrule
-PBP04\_1 & Powder & 0    & 12.2 & 9.1  & 4.3  & 1.2  & 0.9  & 17 \\
-PBP04\_2 & Powder & 0    & 23.4 & 17.4 & 8.2  & 2.2  & 1.7  & 31 \\
-PBP04\_3 & Powder & 0    & 16.8 & 12.5 & 5.9  & 1.6  & 1.2  & 21 \\
-PBP01\_1 & Powder & 100  & 117.6 & 87.5 & 41.2 & 11.3 & 8.5  & 162 \\
-PBP01\_2 & Powder & 100  & 134.8 & 100.2 & 47.2 & 12.9 & 9.7  & 184 \\
-PBP01\_3 & Powder & 100  & 97.5  & 72.5 & 34.1 & 9.3  & 7.0  & 138 \\
-PBP02\_1 & Powder & 500  & 534.9 & 397.0 & 186.9 & 51.1 & 38.5 & 920 \\
-PBP02\_2 & Powder & 500  & 519.2 & 384.9 & 181.2 & 49.5 & 37.3 & 870 \\
-PBP02\_3 & Powder & 500  & 553.3 & 409.3 & 193.0 & 52.8 & 39.7 & 930 \\
-PBP03\_1 & Powder & 1000 & 665.6 & 492.4 & 231.8 & 63.4 & 47.7 & 1170 \\
-PBP03\_2 & Powder & 1000 & 678.6 & 502.4 & 236.5 & 64.7 & 48.7 & 1200 \\
-PBP03\_3 & Powder & 1000 & 654.2 & 484.8 & 228.2 & 62.4 & 47.0 & 1100 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection*{Calibration model coefficients}
-
-The calibration models relate known Pb concentration (ppm) to XRF response. For L-line intensity models, the formula is:
-\begin{equation}
-\text{Pb}_\text{known} = \beta_0 + \beta_1 \cdot \text{L}\beta_1 + \beta_2 \cdot \text{L}\beta_x
-\label{eq:intensity_model}
-\end{equation}
-where L$\beta_x$ is L$\beta_2$ for pellet or L$\beta_3$ for powder. For fundamental parameters:
-\begin{equation}
-\text{Pb}_\text{known} = \beta_0 + \beta_1 \cdot \text{FP}_\text{raw}
-\label{eq:fp_model}
-\end{equation}
-
-\begin{table}[htbp]
-\caption{Calibration model coefficients from Stage A clay calibration.}
-\label{tab:s11_model_coefficients}
-\centering
-\small
-\begin{tabular}{llrrrr}
-\toprule
-Prep & Response & $n$ & Intercept ($\beta_0$) & $R^2$ & RMSE (ppm) \\
-\midrule
-Pellet & L$\beta_1$+L$\beta_2$ & 12 & $-16.4$ & 0.999 & 14 \\
-Powder & L$\beta_1$+L$\beta_3$ & 12 & $-61.7$ & 0.943 & 94 \\
-Pellet & Fund.\ param. & 12 & $-27.2$ & 0.995 & 28 \\
-Powder & Fund.\ param. & 12 & $-47.7$ & 0.920 & 111 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\textit{Note.} Multi-predictor intensity models fit independent coefficients for each L-line; individual slopes are sample-specific via the R pipeline. Matrix correction factors (Stage B) are applied multiplicatively: $\text{Pb}_\text{predicted} = \text{Pb}_\text{clay} \times k_\text{matrix}$ where $k = 2.72$ (pellet L$\beta$), $0.71$ (powder L$\beta$), $1.14$ (pellet FP), or $0.33$ (powder FP).
-
-\subsection*{Paired XRF predictions and ICP-MS reference values}
-
-\begin{table}[htbp]
-\caption{Paired XRF-predicted and ICP-MS Pb concentrations (ppm) for the pellet L$\beta_1$+L$\beta_2$ method ($n$ = 33 ash samples). Residual = XRF $-$ ICP-MS.}
-\label{tab:s12_paired_predictions}
-\centering
-\footnotesize
-\begin{tabular}{lrrrr}
-\toprule
-Sample & ICP-MS & XRF pred. & Residual & \% Error \\
-\midrule
-1620 & 54 & 37 & $-17$ & $-31$ \\
-GPS03 & 53 & 47 & $-6$ & $-12$ \\
-GPS09 & 49 & 68 & $+19$ & $+38$ \\
-JPL06 & 55 & 20 & $-35$ & $-63$ \\
-JPL07 & 88 & 93 & $+5$ & $+6$ \\
-JPL09 & 64 & 43 & $-22$ & $-34$ \\
-JPL11 & 52 & 67 & $+15$ & $+29$ \\
-JPL15 & 61 & 71 & $+10$ & $+16$ \\
-JPL18 & 45 & 31 & $-14$ & $-31$ \\
-JPL25 & 55 & 32 & $-24$ & $-43$ \\
-JPL29 & 61 & 51 & $-10$ & $-16$ \\
-JPL33 & 47 & 28 & $-18$ & $-39$ \\
-JPL43 & 38 & 26 & $-12$ & $-32$ \\
-JPL48 & 47 & 26 & $-22$ & $-46$ \\
-JPL50 & 48 & 44 & $-4$ & $-8$ \\
-JPL51 & 63 & 79 & $+16$ & $+26$ \\
-JPL58 & 209 & 188 & $-21$ & $-10$ \\
-JPL59 & 86 & 82 & $-4$ & $-4$ \\
-JPL61 & 79 & 78 & $-1$ & $-1$ \\
-JPL63 & 85 & 89 & $+4$ & $+5$ \\
-JPL68 & 77 & 80 & $+2$ & $+3$ \\
-JPL73 & 804 & 1404 & $+600$ & $+75$ \\
-JPL76 & 557 & 539 & $-18$ & $-3$ \\
-JPL77 & 557 & 454 & $-104$ & $-19$ \\
-JPL79 & 448 & 832 & $+384$ & $+86$ \\
-JPL86 & 74 & 186 & $+112$ & $+150$ \\
-JPL89 & 67 & 89 & $+22$ & $+32$ \\
-JPL95 & 59 & 58 & $-1$ & $-2$ \\
-XPAH20 & 1933 & 1496 & $-437$ & $-23$ \\
-XPAH26 & 82 & 35 & $-47$ & $-57$ \\
-XPAH28 & 18528 & 18238 & $-290$ & $-2$ \\
-XPAH29 & 54 & 36 & $-17$ & $-32$ \\
-XPAH55 & 27 & 13 & $-14$ & $-50$ \\
-XPAH58 & 14 & $-20$ & $-34$ & $-243$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection*{Complete ICP-MS element characterization}
-
-\begin{table}[htbp]
-\caption{ICP-MS element concentrations (ppm) for ash samples analyzed by paired XRF-ICP-MS comparison. Complete dataset available in \texttt{EFA\_ICPMS\_PPM.csv}.}
-\label{tab:s13_icpms_full}
-\centering
-\footnotesize
-\begin{tabular}{lrrrrrrrrr}
-\toprule
-Sample & Pb & Zn & Cu & Ca & Fe & Al & K & Mg & Ti \\
-\midrule
-1590 & 53 & 446 & 858 & 30194 & 44850 & 37223 & 12326 & 12427 & 4856 \\
-1601 & 54 & 313 & 111 & 126842 & 24283 & 7864 & 35972 & 7001 & 3587 \\
-1620 & 54 & 166 & 41 & 18405 & 40680 & 47664 & 20332 & 11348 & 5152 \\
-GPS03 & 53 & 351 & 63 & 31778 & 50545 & 46206 & 18070 & 14711 & 5910 \\
-GPS05 & 62 & 198 & 85 & 101205 & 25742 & 26540 & 27984 & 17714 & 3171 \\
-GPS09 & 49 & 147 & 39 & 22420 & 43762 & 52282 & 21233 & 12881 & 4713 \\
-JPL06 & 55 & 158 & 60 & 65030 & 30438 & 35366 & 24339 & 13850 & 3962 \\
-JPL07 & 88 & 788 & 71 & 34849 & 37223 & 42118 & 19180 & 11381 & 7132 \\
-JPL09 & 64 & 176 & 37 & 21188 & 38332 & 51175 & 21301 & 11127 & 4089 \\
-JPL11 & 52 & 503 & 53 & 35229 & 49476 & 56585 & 22555 & 13608 & 6146 \\
-JPL15 & 61 & 488 & 58 & 61032 & 43913 & 48266 & 20130 & 15126 & 6704 \\
-JPL18 & 45 & 368 & 47 & 29879 & 63303 & 49212 & 18174 & 15621 & 7468 \\
-JPL25 & 55 & 175 & 61 & 36939 & 49708 & 44162 & 19107 & 14116 & 5553 \\
-JPL29 & 61 & 153 & 69 & 43909 & 45172 & 43973 & 18309 & 15615 & 4987 \\
-JPL33 & 47 & 426 & 57 & 30868 & 51397 & 47323 & 17536 & 14289 & 6346 \\
-JPL43 & 38 & 144 & 121 & 26090 & 40227 & 47220 & 19676 & 11973 & 4193 \\
-JPL48 & 47 & 184 & 74 & 38155 & 47989 & 48769 & 19162 & 15624 & 6376 \\
-JPL50 & 48 & 223 & 59 & 44366 & 43764 & 40180 & 19038 & 11518 & 6252 \\
-JPL51 & 63 & 222 & 44 & 30007 & 44982 & 41538 & 15686 & 8807 & 3578 \\
-JPL58 & 209 & 572 & 59 & 36256 & 41723 & 47443 & 22678 & 11443 & 5936 \\
-JPL59 & 86 & 388 & 73 & 28616 & 40996 & 46306 & 19633 & 10894 & 6350 \\
-JPL61 & 79 & 215 & 52 & 21408 & 45877 & 46463 & 19522 & 11876 & 5246 \\
-JPL63 & 85 & 333 & 57 & 35598 & 36980 & 45711 & 21656 & 11880 & 4646 \\
-JPL68 & 77 & 779 & 74 & 32605 & 23945 & 7852 & 20221 & 3449 & 3733 \\
-JPL73 & 804 & 3685 & 292 & 75199 & 35466 & 40179 & 17011 & 13358 & 16849 \\
-JPL76 & 557 & 2043 & 180 & 26764 & 17649 & 1912 & 22960 & 1089 & 9502 \\
-JPL77 & 557 & 2839 & 240 & 64673 & 28159 & 40139 & 21154 & 10657 & 12130 \\
-JPL79 & 448 & 3077 & 619 & 54693 & 19965 & 5727 & 20821 & 3383 & 19222 \\
-JPL86 & 74 & 797 & 85 & 31047 & 35494 & 51838 & 24122 & 8852 & 6877 \\
-JPL89 & 67 & 300 & 41 & 28558 & 38316 & 54160 & 21555 & 11090 & 5792 \\
-JPL95 & 59 & 215 & 98 & 33378 & 43059 & 46052 & 18063 & 13858 & 4705 \\
-XPAH20 & 1933 & 3328 & 14 & 322441 & 8336 & 10640 & 3101 & 15540 & 9833 \\
-XPAH26 & 82 & 23829 & 253 & 58967 & 9127 & 18756 & 6407 & 13682 & 3691 \\
-XPAH28 & 18528 & 1993 & 3650 & 41184 & 16373 & 34712 & 10073 & 117363 & 3402 \\
-XPAH29 & 54 & 169 & 43 & 10148 & 37162 & 15969 & 16938 & 6836 & 4600 \\
-XPAH55 & 27 & 100 & 24 & 20556 & 64081 & 46319 & 17350 & 11065 & 5291 \\
-XPAH58 & 14 & 514 & 115 & 262415 & 9175 & 12385 & 4504 & 4488 & 3589 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\textit{Note.} Full ICP-MS datasets for all 42 ICP-MS-analyzed samples (38 ash + 4 soil) including all 60 elements are provided in the Zenodo repository as \texttt{EFA\_ICPMS\_PPM.csv}. Raw XRF spectra, L-line intensities for all ash samples, and the complete analysis pipeline are available in \texttt{D2D/XRF/}.
+Complete datasets are provided in the Zenodo repository: ICP-MS concentrations for all 60 elements (\texttt{EFA\_ICPMS\_PPM.csv}), XRF L-line intensities for all ash samples (\texttt{EFA\_XRF\_Ash.csv}), clay calibration standards (\texttt{EFA\_XRF\_Clay\_Metadata.csv}), and the reproducible analysis pipeline (\texttt{eaton\_xrf\_pipeline.R}).
 
 \end{document}
