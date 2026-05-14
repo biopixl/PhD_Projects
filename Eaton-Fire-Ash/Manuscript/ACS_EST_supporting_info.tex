@@ -202,7 +202,27 @@ where L$\beta_x$ is L$\beta_2$ for pellet or L$\beta_3$ for powder. The fitted c
 \label{eq:powder_model}
 \end{equation}
 
-The opposing signs of the L-line coefficients reflect collinearity between the predictors; the net effect produces accurate Pb estimates despite the counter-intuitive individual slopes. For fundamental parameters, the instrument's internal algorithm provides direct ppm values that are corrected via simple linear regression against known concentrations.
+The opposing signs of the L-line coefficients reflect collinearity between the predictors; the net effect produces accurate Pb estimates despite the counter-intuitive individual slopes.
+
+For fundamental parameters (FP), the instrument's internal algorithm provides direct ppm values that are corrected via simple linear regression:
+\begin{equation}
+\text{Pb}_\text{clay} = \beta_0 + \beta_1 \cdot \text{FP}_\text{raw}\text{(ppm)}
+\label{eq:fp_model}
+\end{equation}
+
+\textbf{Pellet} (FP):
+\begin{equation}
+\text{Pb}_\text{clay} = -27.2 + 0.326 \cdot \text{FP}_\text{raw}
+\label{eq:pellet_fp_model}
+\end{equation}
+
+\textbf{Powder} (FP):
+\begin{equation}
+\text{Pb}_\text{clay} = -41.1 + 0.785 \cdot \text{FP}_\text{raw}
+\label{eq:powder_fp_model}
+\end{equation}
+
+The FP slopes $<1$ indicate the instrument over-reports Pb in the clay matrix; calibration corrects this systematic bias.
 
 \begin{table}[htbp]
 \caption{Summary of calibration model performance. Matrix correction factors (Stage B) are applied multiplicatively: $\text{Pb}_\text{predicted} = \text{Pb}_\text{clay} \times k_\text{matrix}$.}
