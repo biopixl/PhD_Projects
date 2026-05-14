@@ -20,6 +20,6 @@ PBP03_powder_3,powder,Pb,0.079,0.008,0.11,%,0.001,1100.0,654.224,PBP03,1000
 PBP04_pellet_A,pellet,Pb,0.051,0.009,392.0,ppm,4.9,36.0,22.361,PBP04,0
 PBP04_pellet_B,pellet,Pb,0.044,0.008,38.0,ppm,3.2,38.0,27.493,PBP04,0
 PBP04_pellet_C,pellet,Pb,0.0,,29.0,ppm,3.4,29.0,20.193,PBP04,0
-PBP04_powder_1,powder,,,,,,,0.0,20.0,PBP04,0
+PBP04_powder_1,powder,Pb,0.0,0.0,17.0,ppm,3.5,0.0,10.241,PBP04,0
 PBP04_powder_2,powder,Pb,0.0,0.0,31.0,ppm,3.1,31.0,23.371,PBP04,0
 PBP04_powder_3,powder,Pb,0.0,0.0,21.0,ppm,3.0,21.0,16.849,PBP04,0

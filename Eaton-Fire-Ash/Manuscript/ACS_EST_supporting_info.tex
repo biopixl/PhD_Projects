@@ -100,7 +100,7 @@ the nominal Pb concentrations.]}
 
 \subsubsection*{Clay reference standards}
 
-We prepared kaolinite-clay standards (PBP01--PBP04) with certified Pb concentrations of 0, 100, 500, and 1000~ppm. Three replicate pellets and three replicate powder samples were prepared per concentration level, yielding 12 pellet and 11 powder calibration points (one blank powder replicate was excluded due to no detectable Pb signal).
+We prepared kaolinite-clay standards (PBP01--PBP04) with certified Pb concentrations of 0, 100, 500, and 1000~ppm. Three replicate pellets and three replicate powder samples were prepared per concentration level, yielding 12 pellet and 12 powder calibration points.
 
 \begin{table}[htbp]
 \caption{PBP clay reference series.}
@@ -140,11 +140,11 @@ Pellet & L$\beta_4$          & single & 12 & 0.998 & 18 \\
 Pellet & L$\beta_1$          & single & 12 & 0.998 & 18 \\
 \textbf{Pellet} & \textbf{Fund.\ param.} & \textbf{FP} & \textbf{12} & \textbf{0.995} & \textbf{28} \\
 \midrule
-\textbf{Powder} & \textbf{L$\beta_1$+L$\beta_3$} & \textbf{multi} & \textbf{11} & \textbf{0.937} & \textbf{98} \\
-Powder & L$\alpha_2$         & single & 11 & 0.904 & 121 \\
-Powder & L$\beta_4$          & single & 11 & 0.904 & 121 \\
-Powder & L$\beta_1$          & single & 11 & 0.904 & 121 \\
-\textbf{Powder} & \textbf{Fund.\ param.} & \textbf{FP} & \textbf{11} & \textbf{0.913} & \textbf{116} \\
+\textbf{Powder} & \textbf{L$\beta_1$+L$\beta_3$} & \textbf{multi} & \textbf{12} & \textbf{0.943} & \textbf{94} \\
+Powder & L$\alpha_2$         & single & 12 & 0.904 & 121 \\
+Powder & L$\beta_4$          & single & 12 & 0.904 & 121 \\
+Powder & L$\beta_1$          & single & 12 & 0.904 & 121 \\
+\textbf{Powder} & \textbf{Fund.\ param.} & \textbf{FP} & \textbf{12} & \textbf{0.920} & \textbf{111} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -218,9 +218,9 @@ Preparation & Response & $r$ & RMSE & MAE & Bias & 95\% LOA & LOA range \\
     &     &     & (ppm) & (ppm) & (ppm) & (ppm) & (ppm) \\
 \midrule
 Pellet  & L$\beta_1$+L$\beta_2$ & 0.999 &  151 &  64 & $-2$   & $[-302, +299]$   &  601 \\
-Powder  & L$\beta_1$+L$\beta_3$ & 0.998 &  282 & 117 & $+36$  & $[-521, +593]$   & 1114 \\
+Powder  & L$\beta_1$+L$\beta_3$ & 0.998 &  282 & 116 & $+31$  & $[-527, +590]$   & 1116 \\
 Pellet  & Fund.\ param.         & 0.990 & 1726 & 363 & $+308$ & $[-3072, +3689]$ & 6760 \\
-Powder  & Fund.\ param.         & 0.983 & 1880 & 394 & $+319$ & $[-3370, +4007]$ & 7377 \\
+Powder  & Fund.\ param.         & 0.983 & 1890 & 396 & $+320$ & $[-3387, +4027]$ & 7414 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -305,7 +305,7 @@ Threshold & Method & $n_+$ & TP & FN & FP & TN & Sens & Spec & Acc \\
 Preparation & Response & Sensitivity & Specificity & Accuracy & False negatives \\
 \midrule
 Pellet  & L$\beta_1$+L$\beta_2$ & 0.91 & 0.98 & 0.96 & 3 \\
-Powder  & L$\beta_1$+L$\beta_3$ & 0.85 & 0.96 & 0.94 & 5 \\
+Powder  & L$\beta_1$+L$\beta_3$ & 0.88 & 0.96 & 0.94 & 4 \\
 Pellet  & Fund.\ param.         & 0.82 & 0.98 & 0.95 & 6 \\
 Powder  & Fund.\ param.         & 0.85 & 0.95 & 0.93 & 5 \\
 \bottomrule
@@ -423,6 +423,7 @@ PBP03\_A & Pellet & 1000 & 2007.1 & 1469.2 & 692.2 & 188.9 & 142.6 & 3140 \\
 PBP03\_B & Pellet & 1000 & 2001.8 & 1477.2 & 695.7 & 190.1 & 143.2 & 3020 \\
 PBP03\_C & Pellet & 1000 & 2058.2 & 1514.3 & 713.3 & 194.8 & 146.9 & 3060 \\
 \midrule
+PBP04\_1 & Powder & 0    & 12.2 & 9.1  & 4.3  & 1.2  & 0.9  & 17 \\
 PBP04\_2 & Powder & 0    & 23.4 & 17.4 & 8.2  & 2.2  & 1.7  & 31 \\
 PBP04\_3 & Powder & 0    & 16.8 & 12.5 & 5.9  & 1.6  & 1.2  & 21 \\
 PBP01\_1 & Powder & 100  & 117.6 & 87.5 & 41.2 & 11.3 & 8.5  & 162 \\
@@ -461,9 +462,9 @@ where L$\beta_x$ is L$\beta_2$ for pellet or L$\beta_3$ for powder. For fundamen
 Prep & Response & $n$ & Intercept ($\beta_0$) & $R^2$ & RMSE (ppm) \\
 \midrule
 Pellet & L$\beta_1$+L$\beta_2$ & 12 & $-16.4$ & 0.999 & 14 \\
-Powder & L$\beta_1$+L$\beta_3$ & 11 & $-61.7$ & 0.937 & 98 \\
+Powder & L$\beta_1$+L$\beta_3$ & 12 & $-61.7$ & 0.943 & 94 \\
 Pellet & Fund.\ param. & 12 & $-27.2$ & 0.995 & 28 \\
-Powder & Fund.\ param. & 11 & $-47.7$ & 0.913 & 116 \\
+Powder & Fund.\ param. & 12 & $-47.7$ & 0.920 & 111 \\
 \bottomrule
 \end{tabular}
 \end{table}
