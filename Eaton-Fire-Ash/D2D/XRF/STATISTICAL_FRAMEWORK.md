@@ -31,8 +31,7 @@ The pipeline runs four arms in parallel:
 **Goal.** Convert a raw XRF response (counts/s on the chosen Pb L-line, or the
 instrument's FP-derived ppm) into a first-pass Pb prediction in ppm units,
 anchored to four kaolinite-clay standards spiked at 0, 100, 500, and 1000 ppm
-Pb (3 replicate preparations each, except powder PBP04_1 excluded → n=11 for
-powder calibrations, n=12 for pellet).
+Pb (3 replicate preparations each, n = 12 for all methods).
 
 **Model.** Ordinary least-squares linear regression:
 
@@ -40,15 +39,30 @@ powder calibrations, n=12 for pellet).
 Pb_known = a + b · response   (lm in R)
 ```
 
+**Fitted equations (from n = 12 clay standards):**
+
+```r
+# L-intensity models (multi-predictor)
+Pellet:  Pb_clay = -16.4 - 70.7·Lβ₁ + 151.5·Lβ₂   (R² = 0.999, RMSE = 14 ppm)
+Powder:  Pb_clay = -52.6 + 430.2·Lβ₁ - 3327.1·Lβ₃  (R² = 0.943, RMSE = 94 ppm)
+
+# Fundamental parameters models (single-predictor)
+Pellet:  Pb_clay = -27.2 + 0.326·FP_raw            (R² = 0.995, RMSE = 28 ppm)
+Powder:  Pb_clay = -41.1 + 0.785·FP_raw            (R² = 0.920, RMSE = 111 ppm)
+```
+
+Note: The opposing signs in L-intensity coefficients reflect predictor collinearity;
+the net effect produces accurate estimates. FP slopes < 1 indicate the instrument
+over-reports Pb in the clay matrix.
+
 **Diagnostics.**
 - **Cal R²** — fraction of variance in known Pb explained by the response.
-  All four arms exceed 0.91; intensity arms reach 0.99+.
+  All four arms exceed 0.92; intensity arms reach 0.94–0.999.
 - **Cal RMSE** — root-mean-square error on the calibration set itself
-  (in-sample residuals).
-- **LOOCV RMSE** — leave-one-out cross-validated RMSE: predict each PBP point
-  from the remaining 10 or 11. Larger than cal RMSE because each fit has 1
-  fewer point. Powder-intensity inflates from 98 to 361 ppm because the
-  multi-predictor fit at n=11 is sensitive to leaving a single anchor out.
+  (in-sample residuals): 14–111 ppm depending on method.
+
+![Stage A calibration](figures/Fig_calibration_4panel.png)
+*Figure: Clay calibration curves for all four methods.*
 
 **Code.** [eaton_xrf_pipeline.R:103-108](scripts/eaton_xrf_pipeline.R#L103-L108) inside `run_arm()`.
 
@@ -152,6 +166,12 @@ FP arms (>6700 ppm).
 
 Code: [eaton_xrf_pipeline.R:148-158](scripts/eaton_xrf_pipeline.R#L148-L158).
 
+![Stage C validation](figures/Fig_validation_4panel.png)
+*Figure: XRF-predicted vs ICP-MS Pb concentration for all four methods.*
+
+![Bland-Altman ratio](figures/Fig_AgreementRatio_4panel.png)
+*Figure: Method agreement shown as XRF/ICP-MS ratio vs ICP-MS concentration.*
+
 ### C.2 — Threshold classification (Table 4)
 
 For each combination of (arm × regulatory threshold), build the 2×2
@@ -163,15 +183,23 @@ confusion matrix:
    Pb_ICP-MS ≤ T  │     FP      │     TN     │   ← n_- (negatives)
 ```
 
-From the confusion matrix:
+From the confusion matrix, compute performance metrics:
 
+```r
+# R code for classification metrics
+sensitivity <- TP / (TP + FN)  # true-positive rate
+specificity <- TN / (TN + FP)  # true-negative rate
+accuracy    <- (TP + TN) / n   # overall correct fraction
 ```
-sensitivity  =  TP / n_+      (true-positive rate; fraction of contaminated
-                              samples correctly flagged)
-specificity  =  TN / n_-      (true-negative rate; fraction of clean
-                              samples correctly cleared)
-accuracy     =  (TP+TN) / n   (overall correct fraction)
-```
+
+| Metric | Formula | Interpretation |
+|--------|---------|----------------|
+| Sensitivity | TP / (TP + FN) | Proportion of true positives correctly identified |
+| Specificity | TN / (TN + FP) | Proportion of true negatives correctly identified |
+| Accuracy | (TP + TN) / n | Overall correct classification rate |
+
+For screening applications, **high sensitivity is prioritized** to minimize false
+negatives (missed contamination).
 
 The six thresholds span the regulatory framework: 80 (DTSC residential),
 200 (EPA RSL), 320 (CHHSL industrial), 500 (DTSC industrial), 800 (EPA
@@ -254,6 +282,72 @@ Code: [eaton_xrf_pipeline.R:240-261](scripts/eaton_xrf_pipeline.R#L240-L261).
 - **Six regulatory thresholds, not one.** Different jurisdictions use
   different cut-offs; reporting at all six lets each reader find their
   jurisdiction's number.
+
+---
+
+## Quick R walkthrough
+
+Run the full pipeline:
+
+```r
+source("scripts/eaton_xrf_pipeline.R")
+```
+
+Or step through manually:
+
+```r
+# Load data
+clay <- read.csv("data/calibration/PBP_calibration_table.csv")
+ash  <- read.csv("data/cleaned/xrf_intensities_wide.csv")
+icpms <- read.csv("data/zenodo/EFA_ICPMS_PPM.csv")
+
+# Stage A: Fit calibration model (pellet L-intensity example)
+pellet_clay <- clay[clay$method == "pellet", ]
+mod_A <- lm(Known_Pb_ppm ~ Pb_Lb1_cps + Pb_Lb2_cps, data = pellet_clay)
+summary(mod_A)  # R² = 0.999
+
+# Apply to ash
+pellet_ash <- ash[ash$method == "pellet", ]
+pellet_ash$Pb_clay <- predict(mod_A, newdata = pellet_ash)
+pellet_ash$Pb_clay <- pmax(pellet_ash$Pb_clay, 0)  # floor clip
+
+# Stage B: Matrix correction (proportional regression)
+merged <- merge(pellet_ash, icpms, by.x = "sample_id", by.y = "EFA.ID")
+mod_B <- lm(Pb ~ 0 + Pb_clay, data = merged)  # no intercept
+k_matrix <- coef(mod_B)  # matrix correction factor
+
+# Identify outliers via Cook's distance
+cooks_d <- cooks.distance(mod_B)
+threshold <- 4 / nrow(merged)
+outliers <- which(cooks_d > threshold)
+
+# Refit without outliers
+merged_clean <- merged[-outliers, ]
+mod_B_clean <- lm(Pb ~ 0 + Pb_clay, data = merged_clean)
+k_matrix <- coef(mod_B_clean)
+
+# Apply correction
+merged$Pb_pred <- merged$Pb_clay * k_matrix
+
+# Stage C: Validation metrics
+rmse <- sqrt(mean((merged$Pb_pred - merged$Pb)^2))
+mae  <- mean(abs(merged$Pb_pred - merged$Pb))
+bias <- mean(merged$Pb - merged$Pb_pred)
+cat("RMSE:", round(rmse), "ppm | MAE:", round(mae), "ppm | Bias:", round(bias), "ppm\n")
+```
+
+## Output files
+
+| File | Description |
+|------|-------------|
+| `results/Table3_calibration_validation.csv` | Calibration & validation metrics |
+| `results/Table4_threshold_classification.csv` | Confusion matrix at each threshold |
+| `results/Table5_method_summary.csv` | Pooled sensitivity/specificity/accuracy |
+| `figures/Fig_calibration_4panel.png` | Stage A calibration curves |
+| `figures/Fig_validation_4panel.png` | Stage C XRF vs ICP-MS scatter |
+| `figures/Fig_AgreementRatio_4panel.png` | Bland-Altman ratio plots |
+
+---
 
 ## References
 
