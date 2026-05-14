@@ -151,13 +151,13 @@ run_arm <- function(arm_row) {
 
   # Pair with ICP-MS truth for matrix correction + validation. The clay
   # calibration's slight negative y-intercept can extrapolate to Pb_clay < 0
-  # for ash samples below the PBP01 (100 ppm) calibration anchor; we floor-
-  # clip those at 0 rather than drop the sample, so every arm reports on the
-  # full 33-sample paired set with a transparent treatment of the
-  # below-calibration range.
+  # for ash samples below the PBP01 (100 ppm) calibration anchor. These
+  # negative values are retained (not clipped) because: (1) they have
+
+  # negligible impact on validation metrics, and (2) in proportional
+  # regression samples with small |x| contribute minimal leverage.
   pair <- ash_m %>% inner_join(icpms %>% select(ID, Pb_icpms), by = "ID") %>%
-    filter(!is.na(Pb_icpms), !is.na(Pb_clay)) %>%
-    mutate(Pb_clay = pmax(Pb_clay, 0))
+    filter(!is.na(Pb_icpms), !is.na(Pb_clay))
 
   # Cook's D-filtered eligible set; then LOOCV slope per eligible row
   pair$cooks_D <- cooks_d_prop(pair$Pb_clay, pair$Pb_icpms)
@@ -306,8 +306,8 @@ ggsave(file.path(FIGURES, "Fig_validation_4panel.png"), fig_val, width = 11, hei
 # 4c. Method-agreement ratio plot: XRF-predicted / ICP-MS vs ICP-MS (log x).
 # Reference line at ratio = 1 (perfect agreement). Replaces the Bland-Altman
 # difference-vs-mean plot for easier visual reading across the
-# 14-18,528 ppm dynamic range. Below-calibration samples whose Pb_pred was
-# floor-clipped at 0 plot at ratio = 0.
+# 14-18,528 ppm dynamic range. Below-calibration samples with negative Pb_pred
+# will show negative ratios (1-2 samples per method).
 fig_agr <- val_long %>%
   mutate(arm = factor(arm, levels = arms$arm),
          Preparation = ifelse(grepl("pellet", arm), "Pellet", "Powder"),

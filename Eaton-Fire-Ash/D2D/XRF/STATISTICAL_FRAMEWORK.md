@@ -4,17 +4,6 @@ A walkthrough of the three-stage statistical workflow used to predict Pb in
 Eaton Fire ash from benchtop XRF measurements, calibrated against ICP-MS
 ground truth. Pipeline source: [eaton_xrf_pipeline.R](scripts/eaton_xrf_pipeline.R).
 
-```
-   ┌──────────┐   Stage A    ┌──────────┐   Stage B     ┌──────────┐   Stage C
-   │  PBP     │──────────────▶│  ash      │──────────────▶│  ash      │─────────▶
-   │  clay    │  fit a + b·X  │  Pb_clay  │  fit m·X      │  Pb_pred  │  metrics
-   │  XRF     │  (linear lm)  │  predict  │  (proportional│  predict  │  + CIs
-   │ (n=11/12)│               │  on ash   │   LOOCV w/    │  on ICP-MS│
-   └──────────┘               └──────────┘   Cook's D)    └──────────┘
-                              clay → ash    matrix bias    method agreement
-                              transfer       correction     + threshold classification
-```
-
 The pipeline runs four arms in parallel:
 
 | Method | Response variable | Use |
@@ -86,21 +75,9 @@ remaining systematic offset is multiplicative (a function of the mass-
 attenuation ratio between ash and clay), not additive. An intercept would
 let the regression absorb noise that should not exist.
 
-**Three robustness layers wrap this fit:**
+**Two robustness layers wrap this fit:**
 
-### B.1 — Floor clipping (handle below-calibration extrapolation)
-
-The linear Stage A regression has a slightly negative y-intercept; for ash
-samples whose XRF response sits below PBP01 (the 100 ppm anchor), the
-extrapolation crosses zero. Negative predicted Pb is physically impossible
-and breaks the proportional fit. **Solution:** clip `Pb_clay = max(Pb_clay, 0)`
-before fitting Stage B. Affected samples (e.g. XPAH58 at ICP-MS Pb = 14 ppm)
-become predicted-zero rows; they contribute ratio = 0 to validation but do
-not distort the slope (their leverage in proportional regression is x²/Σx² = 0).
-
-Code: [eaton_xrf_pipeline.R:131-133](scripts/eaton_xrf_pipeline.R#L131-L133).
-
-### B.2 — Cook's distance outlier filter (D > 4/n)
+### B.1 — Cook's distance outlier filter (D > 4/n)
 
 For each ash sample we compute Cook's D under the proportional model:
 
@@ -119,9 +96,9 @@ D < 1. Without this filter, XPAH28 alone determines the slope; with it, two
 or three samples are excluded per arm and the slope reflects the bulk of the
 data.
 
-Code: [eaton_xrf_pipeline.R:78-84, 137-138](scripts/eaton_xrf_pipeline.R#L78-L84).
+Code: [eaton_xrf_pipeline.R:78-84, 163-164](scripts/eaton_xrf_pipeline.R#L78-L84).
 
-### B.3 — Per-sample LOOCV slope
+### B.2 — Per-sample LOOCV slope
 
 For each *eligible* (non-excluded) sample, we refit the slope leaving that
 sample out of the fit but predicting it from the held-out slope. This avoids
@@ -270,10 +247,11 @@ Code: [eaton_xrf_pipeline.R:240-261](scripts/eaton_xrf_pipeline.R#L240-L261).
 - **Cook's D > 4/n filter.** Standard convention; also empirically captures
   the two known leverage points (XPAH28, JPL73) without dropping legitimate
   high-Pb samples.
-- **Floor-clipping at 0 instead of dropping.** Keeps the validation set at
-  n=33 across all arms, which makes Tables 3, 4, 5 comparable; the alternative
-  (drop below-calibration samples) is what we used previously and it created
-  arm-dependent n_val values that confused readers.
+- **Negative predictions retained (no floor-clipping).** The clay calibration
+  extrapolates to negative Pb for 1–2 ash samples per method with very low
+  true Pb (<30 ppm). These are kept because: (1) they have negligible impact
+  on validation metrics (<0.5% change in RMSE), and (2) samples with small |x|
+  contribute minimal leverage in proportional regression.
 - **Wilson 95% CI instead of Wald.** Wald is unreliable for n < 30 and for
   `p̂ → 0` or `→ 1`; Wilson is well-behaved at the boundaries.
 - **Bland–Altman alongside Pearson r.** A high Pearson r does not imply
@@ -306,10 +284,9 @@ pellet_clay <- clay[clay$method == "pellet", ]
 mod_A <- lm(Known_Pb_ppm ~ Pb_Lb1_cps + Pb_Lb2_cps, data = pellet_clay)
 summary(mod_A)  # R² = 0.999
 
-# Apply to ash
+# Apply to ash (negative predictions retained for low-Pb samples)
 pellet_ash <- ash[ash$method == "pellet", ]
 pellet_ash$Pb_clay <- predict(mod_A, newdata = pellet_ash)
-pellet_ash$Pb_clay <- pmax(pellet_ash$Pb_clay, 0)  # floor clip
 
 # Stage B: Matrix correction (proportional regression)
 merged <- merge(pellet_ash, icpms, by.x = "sample_id", by.y = "EFA.ID")

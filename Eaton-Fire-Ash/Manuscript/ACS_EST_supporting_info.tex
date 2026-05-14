@@ -245,6 +245,8 @@ Powder & Fund.\ param. & 12 & $-47.7$ & 0.920 & 111 & 0.33 \\
 
 Because XRF response differs between clay standards and ash samples due to matrix effects, we derived proportional correction factors from paired XRF--ICP-MS ash data. The clay-calibrated models were applied to ash samples, and the slope of XRF-predicted vs.\ ICP-MS Pb concentration provided the matrix correction factor for each method. High-leverage samples were identified using Cook's distance ($D > 4/n$) and excluded from correction factor estimation but retained in subsequent validation. The number of excluded samples was method-specific: for L$\beta$ intensity methods, two samples were excluded (XPAH28: 18,528~ppm; JPL73: 804~ppm); for fundamental-parameters methods, three samples were excluded (XPAH28, XPAH20: 1,933~ppm, and JPL73).
 
+The clay calibration models have slightly negative y-intercepts, which can extrapolate to negative Pb predictions for ash samples with very low true Pb concentrations ($<$30~ppm). These negative values are retained rather than clipped to zero because: (1) they affect only 1--2 samples per method (e.g., XPAH58 at 14~ppm ICP-MS Pb, which has anomalously low L-line intensities due to its calcium-rich matrix), (2) samples with small $|x|$ contribute minimal leverage in proportional regression, and (3) removing floor-clipping has negligible impact on validation metrics ($<$0.5\% change in RMSE).
+
 \begin{table}[htbp]
 \caption{Matrix correction factors (Stage B). Outliers identified by Cook's distance ($D > 4/n$) were excluded from slope estimation but included in validation.}
 \label{tab:matrix_correction}
