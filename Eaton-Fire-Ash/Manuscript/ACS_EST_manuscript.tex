@@ -123,9 +123,7 @@ A total of 169 physical samples were collected directly by field teams (95 by JP
 
 Thirty-eight ash samples (collected 16--25 January 2025) were selected for their spatial distribution and temporal representativeness (pre-rainfall) to proceed with elemental analysis by inductively coupled plasma mass spectrometry (ICP-MS). Per EPA Method 6200 protocols, bulk ash samples were stored dry and non-representative material (e.g., leaves, twigs, etc.) was removed before ash was pulverized with a mortar and pestle, then sieved through a 250 µm mesh to provide an ash powder aliquot to XRF and ICP-MS analysis (Figure 2C) \cite{epa6200}, \cite{epa6020b}. Of these, the 33 samples with sufficient collected material for both powder and pressed pellet preparation constitute the validation set used throughout the XRF calibration analysis described here out, the remaining opportunistic samples with partial XRF and ICPMS coverage are included in the Supplementary Information. 
 
-The 33 fully paired ash samples were aliquoted for Pb analysis with a benchtop energy-dispersive X-ray fluorescence (XRF) spectrometer (INAM Expert 3L, RPE Institute of Analytical Control Methods, LLC) over 60 seconds of exposure. To minimize grain-size effects on XRF spectra, pressed pellet subsamples were homogenized by grinding and sieving to a $<$106~µm grain size, mixed with cellulose binder (Corporation), and pressed into 13-mm diameter pellets (Figure~2D). Rather than relying on the instrument's fundamental-parameters (FP) semi-quantitative output, we developed an empirical calibration using cumulative Pb~L$\beta_{1}$+L$\beta_{2}$ line intensity (counts~s$^{-1}$). This response avoids spectral interference with other elements and was selected from an empirical sweep over single-line, summed-line, and multi-predictor combinations of six Pb L-lines described in the Supplementary Information along with laboratory control spikes and matrix correction used in model calibration. 
-
-The XRF Pb predictive model using the ash pellet L$\beta_{1}$+L$\beta_{2}$ response was validated against ICP-MS Pb reference values on the 33 fully paired ash samples. Model performance is reported by Pearson $r$ and root-mean-square error (RMSE) for prediction accuracy, by Bland-Altman bias and 95\% limits of agreement (LOA) for method interchangeability,\cite{bland1986statistical,giavarina2015understanding} and by sensitivity, specificity, and accuracy at six soil-Pb regulatory thresholds (Table 1).
+The 33 fully paired ash samples were aliquoted for Pb analysis with a benchtop energy-dispersive X-ray fluorescence (XRF) spectrometer (INAM Expert 3L, RPE Institute of Analytical Control Methods, LLC) over 60 seconds of exposure. To minimize grain-size effects on XRF spectra, pressed pellet subsamples were homogenized by grinding and sieving to a $<$106~µm grain size, mixed with cellulose binder (Corporation), and pressed into 13-mm diameter pellets (Figure~2D). Rather than relying on the instrument's fundamental-parameters (FP) semi-quantitative output, we developed an empirical calibration using Pb~L$\beta_{1}$ and L$\beta_{2}$ line intensity (counts~s$^{-1}$). This response avoids spectral interference with other elements and was selected from an empirical sweep over single-line, summed-line, and multi-predictor combinations of six Pb L-lines described in the Supplementary Information along with laboratory control spikes and matrix correction used in model calibration. The XRF Pb predictive model using the ash pellet L$\beta_{1}$ and L$\beta_{2}$ response was validated against ICP-MS Pb reference values on the 33 fully paired ash samples. Model performance is reported by Pearson $r$ and root-mean-square error (RMSE) for prediction accuracy, by Bland-Altman bias and 95\% limits of agreement (LOA) for method interchangeability,\cite{bland1986statistical,giavarina2015understanding} and by sensitivity, specificity, and accuracy at six soil-Pb regulatory thresholds (Table 1).
 \begin{table}[htbp]
 \caption{Lead (PB) regulatory thresholds}
 \label{tab:trace_metals}
@@ -156,7 +154,7 @@ DTSC TTLC& 1000\\ \hline
 
 \section{Results}
 
-ICP-MS analysis quantified more than 50 elements in the 38 analyzed ash samples (Table~\ref{tab:trace_metals}; major elements in Supporting Information Table~S9). Major elements (Ca, Fe, Al) showed low variability (CV~=~36--115\%), while toxic heavy metals showed extreme spatial heterogeneity, with Pb (CV~=~459\%, range 14--18,528~ppm), Zn (CV~=~288\%), and Cu (CV~=~281\%) spanning two to three orders of magnitude across samples (Figure~\ref{fig:icpms_summary}).
+ICP-MS analysis quantified more than 50 elements across the 38 analyzed ash samples (Complete dataset in Supporting Information Table~S9). Major elements (Ca, Fe, Al) showed low to moderate variability (CV~=~36--115\%), wheras toxic heavy metas (HM) showed extreme spatial heterogeneity. Pb varied most dramatically (CV~=~459\%, range 14--18,528~ppm), followed by zinc (Zn, CV~=~288\%), and copper (Cu, CV~=~281\%), each spanning two to three orders of magnitude across the sample set (Figure~\ref{fig:icpms_summary}). The highest Pb concentrations, along with elevated Co, Cu, and Zn, occured in ashes collected within and southwest of the urban burn perimeter (Figure~\ref{fig:spatial_map}).
 
 % Figure 3: ICP-MS element summary (concentration and CV)
 \begin{figure}[htbp]
@@ -166,7 +164,7 @@ ICP-MS analysis quantified more than 50 elements in the 38 analyzed ash samples 
 \label{fig:icpms_summary}
 \end{figure}
 
-Ashes from within and southwest of the urban burn perimeter showed the highest concentrations of Pb and other heavy metals including Co, Cu, and Zn (Figure~\ref{fig:spatial_map}).
+
 
 % Figure 3: Spatial distribution map (moved here from Discussion)
 \begin{figure}[htbp]
@@ -176,32 +174,18 @@ Ashes from within and southwest of the urban burn perimeter showed the highest c
 \label{fig:spatial_map}
 \end{figure}
 
-Across all XRF responses, the pressed-pellet L$\beta_{1}$+L$\beta_{2}$ intensity model achieved the best agreement with ICP-MS Pb reference values across the 33 fully paired ash samples (Table~\ref{tab:xrf_validation}; Figure~\ref{fig:xrf_validation}): $r = 0.999$, RMSE = 151~ppm, Bland-Altman bias of $-$2~ppm, and 95\% limits of agreement (LOA) from $-$302 to +299~ppm (LOA range = 601~ppm).
-
-Threshold classification performance is summarized in Table~\ref{tab:threshold_classification}. At the 320~ppm threshold, the pellet intensity model achieved sensitivity = 1.00 [0.61--1.00] and specificity = 1.00 [0.88--1.00] with no misclassifications. At the 80~ppm threshold, sensitivity was 0.91 [0.62--0.98] with 1 false negative and 1 false positive. Across all six thresholds, the model produced 3 false negatives in 34 above-threshold tests (pooled sensitivity = 0.91 [0.77--0.97]) and 4 false positives in 164 below-threshold tests (pooled specificity = 0.98 [0.94--0.99]). Comparison with alternative calibration approaches is provided in Supporting Information \S 2.
+Among XRF calibration approaches tested, the pressed-pellet L$\beta_{1}$+L$\beta_{2}$ intensity model showed the strongest agreement with ICP-MS Pb reference values across the 33 fully paired ash samples (Table~\ref{tab:xrf_validation}; Figure~\ref{fig:xrf_validation}): $r = 0.999$, RMSE = 151~ppm, and a Bland-Altman 95\% limits of agreement (LOA) range of 601 ppm with negligible bias (-2 ppm). Threshold classification performance is summarized in Table~\ref{tab:threshold_classification}. At the 320~ppm threshold, the pellet intensity model achieved perfect classification (sensitivity = 1.00 [0.61--1.00]; specificity = 1.00 [0.88--1.00]. At the 80~ppm threshold, sensitivity dropped to 0.91 [0.62--0.98], with one false negative and one false positive. Pooled across all six thresholds, the model produced 3 false negatives in 34 above-threshold tests (sensitivity = 0.91 [0.77--0.97]), and 4 false positives in 164 below-threshold tests (specificity = 0.98 [0.94--0.99]). Comparison with alternative calibration approaches are provided in Supporting Information \S 2.
 % Table 1 (major elements) moved to Supporting Information Table S9
-% Insert Table 2 here
-\begin{table}[htbp]
-\caption{Metal concentrations (ppm) in ash, ranked by order of variation}
-\label{tab:trace_metals}
-\begin{tabular}{lrrrr}
-\toprule
-Element& Mean & Median & Range & CV (\%) \\
-\midrule
-Pb & 654 & 61 & 14--18,528 & 459 \\
-Zn & 1,342 & 342 & 144--23,828 & 288 \\
-Cu & 212 & 62 & 14--3,650 & 281 \\
-Co & 22 & 14 & 5--216 & 150 \\
-Ni & 47 & 27 & 17--372 & 143 \\
-Sb & 9.3 & 4.1 & 2--49 & 133 \\
-Cr & 55 & 43 & 22--332 & 92 \\
-Cd & 0.5 & 0.3 & 0.2--1.5 & 73 \\
-As & 6.5 & 6.0 & 3--12 & 34 \\
-V & 84 & 82 & 20--140 & 30 \\
-\bottomrule
-\end{tabular}
-\end{table}
+
 % Insert Table 3 here — pellet intensity validation with Bland-Altman agreement
+% Figure 4: XRF validation — pellet intensity model (2-panel: predicted vs measured + Bland-Altman)
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{Fig_validation_pellet_2panel.png}
+\caption{Validation of the pellet L$\beta_{1}$+L$\beta_{2}$ intensity model against ICP-MS. \textbf{(a)} XRF-predicted vs.\ ICP-MS Pb concentration (log-log scale); dashed line = 1:1 agreement. \textbf{(b)} Bland-Altman plot showing difference (XRF $-$ ICP-MS) vs.\ mean concentration; dashed lines indicate bias ($-$2~ppm) and 95\% limits of agreement ($-$302 to +299~ppm). Comparison with alternative calibration methods is in Supporting Information Figures~S2--S3.}
+\label{fig:xrf_validation}
+\end{figure}
+% Insert Table 4 here — threshold classification for pellet intensity model with Wilson 95% CIs
 \begin{table}[htbp]
 \caption{Validation of the pellet L$\beta_{1}$+L$\beta_{2}$ intensity model against ICP-MS Pb on the 33 fully paired ash samples. The two-stage calibration pipeline (clay-pellet calibration followed by ash-matrix correction with leave-one-out cross-validation) is detailed in Supporting Information \S 1--2; comparison with alternative calibration approaches (powder preparation, fundamental-parameters concentration) is in Supporting Information Table~S2.}
 \label{tab:xrf_validation}
@@ -216,14 +200,6 @@ pellet (L$\beta_{1}$+L$\beta_{2}$)  & 33 & 0.999 &  151 &  64 & $-2$   & $[-302,
 \bottomrule
 \end{tabular}
 \end{table}
-% Figure 4: XRF validation — pellet intensity model (2-panel: predicted vs measured + Bland-Altman)
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\columnwidth]{Fig_validation_pellet_2panel.png}
-\caption{Validation of the pellet L$\beta_{1}$+L$\beta_{2}$ intensity model against ICP-MS. \textbf{(a)} XRF-predicted vs.\ ICP-MS Pb concentration (log-log scale); dashed line = 1:1 agreement. \textbf{(b)} Bland-Altman plot showing difference (XRF $-$ ICP-MS) vs.\ mean concentration; dashed lines indicate bias ($-$2~ppm) and 95\% limits of agreement ($-$302 to +299~ppm). Comparison with alternative calibration methods is in Supporting Information Figures~S2--S3.}
-\label{fig:xrf_validation}
-\end{figure}
-% Insert Table 4 here — threshold classification for pellet intensity model with Wilson 95% CIs
 \begin{table}[htbp]
 \caption{Threshold classification performance of the pellet L$\beta_{1}$+L$\beta_{2}$ intensity model on the 33 fully paired ash samples. For each Pb regulatory threshold we report the confusion matrix (TP, FN, FP, TN) and Wilson 95\% binomial confidence intervals on sensitivity and specificity. Of the 33 paired samples, 11, 7, 6, 5, 3, and 2 exceeded the 80, 200, 320, 500, 800, and 1000~ppm thresholds, respectively. CIs are necessarily wide at the higher thresholds where $n_+ \leq 6$. Full classification results for all calibration approaches are in Supporting Information Table~S6.}
 \label{tab:threshold_classification}
