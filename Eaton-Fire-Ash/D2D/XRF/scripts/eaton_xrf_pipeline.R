@@ -364,6 +364,7 @@ p_ba <- pellet_val %>%
   geom_hline(yintercept = ba_loa_hi, linetype = "dotted", colour = "firebrick", linewidth = 0.6) +
   geom_point(colour = "#7E3FA8", alpha = 0.85, size = 2.5) +
   scale_x_log10(labels = scales::comma) +
+  expand_limits(y = c(ba_loa_lo - 60, ba_loa_hi + 60)) +
   annotate("text", x = max(pellet_val$ba_mean) * 0.7, y = ba_bias + 30,
            label = sprintf("Bias = %.0f ppm", ba_bias), hjust = 0, size = 3, colour = "steelblue") +
   annotate("text", x = max(pellet_val$ba_mean) * 0.7, y = ba_loa_hi + 30,
