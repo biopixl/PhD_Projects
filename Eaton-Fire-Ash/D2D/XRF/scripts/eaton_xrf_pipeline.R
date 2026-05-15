@@ -171,8 +171,9 @@ run_arm <- function(arm_row) {
   pair$Pb_pred <- pair$Pb_clay * pair$slope
 
   # Stage C — validation metrics on the full paired set
+  # Use XRF - ICP-MS convention throughout (consistent with figure y-axis)
   resid   <- pair$Pb_pred - pair$Pb_icpms
-  ba_diff <- pair$Pb_icpms - pair$Pb_pred
+  ba_diff <- pair$Pb_pred - pair$Pb_icpms  # XRF minus ICP-MS
   pearson <- cor(pair$Pb_pred, pair$Pb_icpms)
   rmse    <- sqrt(mean(resid^2))
   mae     <- mean(abs(resid))

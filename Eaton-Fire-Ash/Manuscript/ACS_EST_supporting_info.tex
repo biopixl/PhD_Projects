@@ -277,7 +277,7 @@ Approach & RMSE (ppm) & Bias (ppm) & 95\% LOA range (ppm) \\
 \midrule
 No exclusion               & 478  & $+59$  & 1890 \\
 Drop highest only          & 492  & $+93$  & 1925 \\
-\textbf{Cook's distance}   & \textbf{151} & \textbf{$-2$} & \textbf{601} \\
+\textbf{Cook's distance}   & \textbf{151} & \textbf{$+1$} & \textbf{602} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -304,15 +304,15 @@ Following clay calibration (Stage A, \S1) and matrix correction (Stage B, \S1), 
 Preparation & Response & $r$ & RMSE & MAE & Bias & 95\% LOA & LOA range \\
     &     &     & (ppm) & (ppm) & (ppm) & (ppm) & (ppm) \\
 \midrule
-Pellet  & L$\beta_1$+L$\beta_2$ & 0.999 &  151 &  64 & $-2$   & $[-302, +299]$   &  601 \\
-Powder  & L$\beta_1$+L$\beta_3$ & 0.998 &  282 & 116 & $+31$  & $[-527, +590]$   & 1116 \\
-Pellet  & Fund.\ param.         & 0.990 & 1726 & 363 & $+308$ & $[-3072, +3689]$ & 6760 \\
-Powder  & Fund.\ param.         & 0.983 & 1890 & 396 & $+320$ & $[-3387, +4027]$ & 7414 \\
+Pellet  & L$\beta_1$+L$\beta_2$ & 0.999 &  151 &  65 & $+1$   & $[-300, +302]$   &  602 \\
+Powder  & L$\beta_1$+L$\beta_3$ & 0.998 &  282 & 116 & $-32$  & $[-591, +527]$   & 1117 \\
+Pellet  & Fund.\ param.         & 0.990 & 1731 & 364 & $-310$ & $[-3699, +3079]$ & 6778 \\
+Powder  & Fund.\ param.         & 0.983 & 1890 & 396 & $-320$ & $[-4027, +3387]$ & 7414 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The pellet L$\beta_1$+L$\beta_2$ method achieved 10$\times$ narrower limits of agreement than the fundamental-parameters methods (601 vs.\ 6760--7377~ppm).
+The pellet L$\beta_1$+L$\beta_2$ method achieved 10$\times$ narrower limits of agreement than the fundamental-parameters methods (602 vs.\ 6778--7414~ppm).
 
 \begin{figure*}[htbp]
 \centering
