@@ -404,21 +404,21 @@ p_ba_zoom <- low_conc_data %>%
   geom_point(colour = "#7E3FA8", alpha = 0.85, size = 2.5) +
   scale_x_continuous(labels = scales::comma, limits = c(0, x_max_zoom)) +
   scale_y_continuous(limits = c(y_min_zoom, y_max_zoom)) +
-  labs(x = "Mean of XRF and ICP-MS (ppm)", y = NULL,
+  labs(x = "Mean of XRF and ICP-MS (ppm)", y = "XRF − ICP-MS (ppm)",
        tag = "c") +
   theme_bw(base_size = 10) +
   theme(plot.tag = element_text(face = "bold"))
 
-# Combine into 3-panel figure side by side
-fig_pellet_3panel <- p_scatter + p_ba + p_ba_zoom + plot_layout(ncol = 3, widths = c(1, 1, 1))
+# Combine into 3-panel figure: a tall on left, b/c stacked on right
+fig_pellet_3panel <- p_scatter + (p_ba / p_ba_zoom) + plot_layout(widths = c(1, 1))
 
-ggsave(file.path(FIGURES, "Fig_validation_pellet_3panel.pdf"), fig_pellet_3panel, width = 14, height = 4)
-ggsave(file.path(FIGURES, "Fig_validation_pellet_3panel.png"), fig_pellet_3panel, width = 14, height = 4, dpi = 300)
+ggsave(file.path(FIGURES, "Fig_validation_pellet_3panel.pdf"), fig_pellet_3panel, width = 10, height = 6)
+ggsave(file.path(FIGURES, "Fig_validation_pellet_3panel.png"), fig_pellet_3panel, width = 10, height = 6, dpi = 300)
 
 # Also copy to manuscript figures directory
 MANUSCRIPT_FIGS <- "/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/Manuscript/Data/final-figs"
 dir.create(MANUSCRIPT_FIGS, showWarnings = FALSE, recursive = TRUE)
-ggsave(file.path(MANUSCRIPT_FIGS, "Fig_validation_pellet_3panel.png"), fig_pellet_3panel, width = 14, height = 4, dpi = 300)
+ggsave(file.path(MANUSCRIPT_FIGS, "Fig_validation_pellet_3panel.png"), fig_pellet_3panel, width = 10, height = 6, dpi = 300)
 
 # -----------------------------------------------------------------------------
 # 5. Console summary
