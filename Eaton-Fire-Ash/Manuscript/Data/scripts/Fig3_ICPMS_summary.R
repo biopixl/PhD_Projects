@@ -1,9 +1,10 @@
 # Figure 3: ICP-MS metal concentrations and CV for 38 ash samples
 # Two-panel figure: (a) concentrations ranked by median, (b) CV same order
-# Color only elements that clearly support pyrogenic vs geogenic narrative
+# Color/pattern by element origin: pyrogenic, geogenic, hybrid
 
 library(tidyverse)
 library(patchwork)
+library(ggpattern)  # For pattern fills
 
 # Read ICP-MS data
 icpms <- read.csv("/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/D2D/XRF/data/zenodo/EFA_ICPMS_PPM.csv")
@@ -12,34 +13,35 @@ icpms <- read.csv("/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/D2D
 ash <- icpms %>% filter(alq.type == "ASH")
 cat("Number of ash samples:", nrow(ash), "\n")
 
-# Define element classification
-# Only color elements that CLEARLY support the narrative:
-# - Pyrogenic (red): high CV metals from built environment combustion
-# - Geogenic (blue): low CV elements from geological substrate
-# - Other (gray): ambiguous or intermediate elements
+# Define element classification based on CV and origin:
+# - Pyrogenic (red): high CV (>100%) metals from built environment combustion
+# - Geogenic (blue): low CV (<60%) elements from geological substrate
+# - Hybrid (striped): major geogenic elements with high CV from building materials
+# - Other (gray): intermediate or ambiguous
 element_info <- tribble(
   ~Element, ~Type,
-  # Clear pyrogenic (CV > 140%)
+  # Pyrogenic: high CV, anthropogenic sources
   "Pb", "Pyrogenic",
   "Zn", "Pyrogenic",
   "Cu", "Pyrogenic",
   "Co", "Pyrogenic",
   "Ni", "Pyrogenic",
-  # Clear geogenic (CV < 60%)
+  "Sb", "Pyrogenic",
+  # Geogenic: low CV, geological substrate
   "Fe", "Geogenic",
   "Al", "Geogenic",
   "Ti", "Geogenic",
   "V",  "Geogenic",
   "Mn", "Geogenic",
   "As", "Geogenic",
-  # Ambiguous or intermediate (gray)
-  "Ca", "Other",
-  "K",  "Other",
-  "Na", "Other",
-  "Mg", "Other",
+  "K",  "Geogenic",
+  "Na", "Geogenic",
+  # Hybrid: major elements with high CV from building material combustion
+  "Ca", "Hybrid",
+  "Mg", "Hybrid",
+  # Other: intermediate CV or ambiguous origin
   "Ba", "Other",
   "Cr", "Other",
-  "Sb", "Other",
   "Cd", "Other",
   "Sr", "Other"
 )
@@ -85,32 +87,51 @@ plot_data <- ash %>%
   filter(!is.na(Concentration)) %>%
   left_join(element_info, by = "Element") %>%
   mutate(Element = factor(Element, levels = element_order),
-         Type = factor(Type, levels = c("Pyrogenic", "Geogenic", "Other")))
+         Type = factor(Type, levels = c("Pyrogenic", "Geogenic", "Hybrid", "Other")))
 
 # CV data for panel B
 cv_data <- stats %>%
   mutate(Element = factor(Element, levels = element_order),
-         Type = factor(Type, levels = c("Pyrogenic", "Geogenic", "Other")))
+         Type = factor(Type, levels = c("Pyrogenic", "Geogenic", "Hybrid", "Other")))
 
 # Color palette
 type_colors <- c(
-  "Pyrogenic" = "#E41A1C",  # Red
-  "Geogenic" = "#377EB8",   # Blue
-  "Other" = "gray60"        # Gray
+  "Pyrogenic" = "#E41A1C",
+  "Geogenic" = "#377EB8",
+  "Hybrid" = "#984EA3",
+  "Other" = "gray60"
 )
 
 # Panel A: Concentration boxplots (top panel)
+# Use ggpattern for hybrid elements
 p_conc <- ggplot(plot_data, aes(x = Element, y = Concentration, fill = Type)) +
-  geom_boxplot(outlier.shape = 21, outlier.size = 1.5, alpha = 0.7) +
+  geom_boxplot_pattern(
+    aes(pattern = Type),
+    outlier.shape = 21,
+    outlier.size = 1.5,
+    alpha = 0.7,
+    pattern_fill = "white",
+    pattern_colour = "white",
+    pattern_density = 0.3,
+    pattern_spacing = 0.02,
+    pattern_angle = 45
+  ) +
+  scale_pattern_manual(
+    values = c("Pyrogenic" = "none", "Geogenic" = "none",
+               "Hybrid" = "stripe", "Other" = "none"),
+    guide = "none"
+  ) +
   scale_y_log10(
     labels = scales::label_comma(),
     breaks = c(0.1, 1, 10, 100, 1000, 10000, 100000),
     limits = c(0.1, 500000)
   ) +
-  scale_fill_manual(values = type_colors,
-                    name = NULL,
-                    breaks = c("Pyrogenic", "Geogenic"),
-                    labels = c("Pyrogenic (high CV)", "Geogenic (low CV)")) +
+  scale_fill_manual(
+    values = type_colors,
+    name = NULL,
+    breaks = c("Pyrogenic", "Geogenic", "Hybrid"),
+    labels = c("Pyrogenic", "Geogenic", "Hybrid (geo + pyro)")
+  ) +
   labs(
     x = NULL,
     y = "Concentration (ppm)",
@@ -130,7 +151,21 @@ p_conc <- ggplot(plot_data, aes(x = Element, y = Concentration, fill = Type)) +
 
 # Panel B: CV barplot (bottom panel, same x-axis order)
 p_cv <- ggplot(cv_data, aes(x = Element, y = CV, fill = Type)) +
-  geom_col(alpha = 0.8, width = 0.7) +
+  geom_col_pattern(
+    aes(pattern = Type),
+    alpha = 0.8,
+    width = 0.7,
+    pattern_fill = "white",
+    pattern_colour = "white",
+    pattern_density = 0.3,
+    pattern_spacing = 0.02,
+    pattern_angle = 45
+  ) +
+  scale_pattern_manual(
+    values = c("Pyrogenic" = "none", "Geogenic" = "none",
+               "Hybrid" = "stripe", "Other" = "none"),
+    guide = "none"
+  ) +
   geom_hline(yintercept = 100, linetype = "dashed", color = "gray40", linewidth = 0.5) +
   scale_fill_manual(values = type_colors, guide = "none") +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)), limits = c(0, 500)) +
@@ -169,3 +204,9 @@ cat("\n=== Summary Statistics (ranked by median) ===\n")
 print(stats %>%
         select(Element, Type, Median, Mean, CV) %>%
         mutate(across(where(is.numeric), ~round(., 1))))
+
+cat("\n=== Classification Summary ===\n")
+cat("Pyrogenic (CV > 100%): Pb, Zn, Cu, Co, Ni, Sb\n")
+cat("Geogenic (CV < 60%): Al, Fe, Ti, V, Mn, As, K, Na\n")
+cat("Hybrid (major element + high CV): Ca, Mg\n")
+cat("Other: Ba, Cr, Cd\n")
