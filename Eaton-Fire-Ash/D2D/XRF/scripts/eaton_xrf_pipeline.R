@@ -339,7 +339,7 @@ ba_bias <- pellet_stats$BA_bias_ppm
 ba_loa_lo <- pellet_stats$BA_LOA_lo_ppm
 ba_loa_hi <- pellet_stats$BA_LOA_hi_ppm
 
-# Panel A: XRF vs ICP-MS scatter (log-log)
+# Panel a: XRF vs ICP-MS scatter (log-log)
 p_scatter <- pellet_val %>%
   ggplot(aes(Pb_icpms, Pb_pred)) +
   geom_abline(slope = 1, linetype = "dashed", colour = "grey40", linewidth = 0.6) +
@@ -347,14 +347,24 @@ p_scatter <- pellet_val %>%
   scale_x_log10(labels = scales::comma) +
   scale_y_log10(labels = scales::comma) +
   labs(x = "ICP-MS Pb (ppm)", y = "XRF-predicted Pb (ppm)",
-       tag = "(a)") +
+       tag = "a") +
   theme_bw(base_size = 11) +
   theme(plot.tag = element_text(face = "bold"))
 
-# Panel B: Bland-Altman (difference vs mean)
+# Panel b: Bland-Altman (difference vs mean) - full range with LOA labels
 pellet_val <- pellet_val %>%
   mutate(ba_mean = (Pb_pred + Pb_icpms) / 2,
          ba_diff = Pb_pred - Pb_icpms)
+
+# Calculate y-axis limits to include all points plus padding for labels
+y_min <- min(c(pellet_val$ba_diff, ba_loa_lo)) - 100
+y_max <- max(c(pellet_val$ba_diff, ba_loa_hi)) + 100
+
+# Define zoom region for panel c (to draw inset box)
+x_max_zoom <- 300
+low_conc_data <- pellet_val %>% filter(ba_mean < x_max_zoom)
+y_min_zoom <- min(low_conc_data$ba_diff) - 30
+y_max_zoom <- max(low_conc_data$ba_diff) + 30
 
 p_ba <- pellet_val %>%
   ggplot(aes(ba_mean, ba_diff)) +
@@ -363,29 +373,52 @@ p_ba <- pellet_val %>%
   geom_hline(yintercept = ba_loa_lo, linetype = "dotted", colour = "firebrick", linewidth = 0.6) +
   geom_hline(yintercept = ba_loa_hi, linetype = "dotted", colour = "firebrick", linewidth = 0.6) +
   geom_point(colour = "#7E3FA8", alpha = 0.85, size = 2.5) +
+  # Inset box showing panel c region (drawn after points so it's on top)
+  annotate("rect", xmin = 10, xmax = x_max_zoom,
+           ymin = y_min_zoom, ymax = y_max_zoom,
+           fill = NA, colour = "black", linetype = "dashed", linewidth = 0.7) +
+  annotate("text", x = 150, y = y_max_zoom + 35, label = "c", fontface = "bold", size = 3) +
   scale_x_log10(labels = scales::comma) +
-  expand_limits(y = c(ba_loa_lo - 60, ba_loa_hi + 60)) +
-  annotate("text", x = max(pellet_val$ba_mean) * 0.7, y = ba_bias + 30,
-           label = sprintf("Bias = %.0f ppm", ba_bias), hjust = 0, size = 3, colour = "steelblue") +
-  annotate("text", x = max(pellet_val$ba_mean) * 0.7, y = ba_loa_hi + 30,
-           label = sprintf("+1.96 SD = %.0f ppm", ba_loa_hi), hjust = 0, size = 3, colour = "firebrick") +
-  annotate("text", x = max(pellet_val$ba_mean) * 0.7, y = ba_loa_lo - 30,
-           label = sprintf("-1.96 SD = %.0f ppm", ba_loa_lo), hjust = 0, size = 3, colour = "firebrick") +
+  scale_y_continuous(limits = c(y_min, y_max)) +
+  annotate("text", x = max(pellet_val$ba_mean) * 0.12, y = ba_bias + 30,
+           label = sprintf("Bias = %.0f ppm", ba_bias), hjust = 0, size = 2.8,
+           colour = "steelblue") +
+  annotate("text", x = max(pellet_val$ba_mean) * 0.12, y = ba_loa_hi + 30,
+           label = sprintf("+1.96 SD = %.0f ppm", ba_loa_hi), hjust = 0, size = 2.8,
+           colour = "firebrick") +
+  annotate("text", x = max(pellet_val$ba_mean) * 0.12, y = ba_loa_lo - 30,
+           label = sprintf("-1.96 SD = %.0f ppm", ba_loa_lo), hjust = 0, size = 2.8,
+           colour = "firebrick") +
   labs(x = "Mean of XRF and ICP-MS (ppm)", y = "XRF − ICP-MS (ppm)",
-       tag = "(b)") +
-  theme_bw(base_size = 11) +
+       tag = "b") +
+  theme_bw(base_size = 10) +
   theme(plot.tag = element_text(face = "bold"))
 
-# Combine into 2-panel figure
-fig_pellet_2panel <- p_scatter + p_ba + plot_layout(ncol = 2)
+# Panel c: Bland-Altman zoomed to lower concentrations (<500 ppm mean)
+# Y-axis zoomed to show actual spread of low-concentration samples
 
-ggsave(file.path(FIGURES, "Fig_validation_pellet_2panel.pdf"), fig_pellet_2panel, width = 10, height = 4.5)
-ggsave(file.path(FIGURES, "Fig_validation_pellet_2panel.png"), fig_pellet_2panel, width = 10, height = 4.5, dpi = 300)
+p_ba_zoom <- low_conc_data %>%
+  ggplot(aes(ba_mean, ba_diff)) +
+  geom_hline(yintercept = 0, linetype = "solid", colour = "grey60", linewidth = 0.4) +
+  geom_hline(yintercept = ba_bias, linetype = "dashed", colour = "steelblue", linewidth = 0.6) +
+  geom_point(colour = "#7E3FA8", alpha = 0.85, size = 2.5) +
+  scale_x_continuous(labels = scales::comma, limits = c(0, x_max_zoom)) +
+  scale_y_continuous(limits = c(y_min_zoom, y_max_zoom)) +
+  labs(x = "Mean of XRF and ICP-MS (ppm)", y = NULL,
+       tag = "c") +
+  theme_bw(base_size = 10) +
+  theme(plot.tag = element_text(face = "bold"))
+
+# Combine into 3-panel figure side by side
+fig_pellet_3panel <- p_scatter + p_ba + p_ba_zoom + plot_layout(ncol = 3, widths = c(1, 1, 1))
+
+ggsave(file.path(FIGURES, "Fig_validation_pellet_3panel.pdf"), fig_pellet_3panel, width = 14, height = 4)
+ggsave(file.path(FIGURES, "Fig_validation_pellet_3panel.png"), fig_pellet_3panel, width = 14, height = 4, dpi = 300)
 
 # Also copy to manuscript figures directory
 MANUSCRIPT_FIGS <- "/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/Manuscript/Data/final-figs"
 dir.create(MANUSCRIPT_FIGS, showWarnings = FALSE, recursive = TRUE)
-ggsave(file.path(MANUSCRIPT_FIGS, "Fig_validation_pellet_2panel.png"), fig_pellet_2panel, width = 10, height = 4.5, dpi = 300)
+ggsave(file.path(MANUSCRIPT_FIGS, "Fig_validation_pellet_3panel.png"), fig_pellet_3panel, width = 14, height = 4, dpi = 300)
 
 # -----------------------------------------------------------------------------
 # 5. Console summary
