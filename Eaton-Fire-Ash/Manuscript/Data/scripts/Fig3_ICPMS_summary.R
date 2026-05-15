@@ -1,5 +1,6 @@
 # Figure 3: ICP-MS metal concentrations and CV for 38 ash samples
-# Two-panel figure: (a) concentrations, (b) coefficient of variation
+# Two-panel figure: (a) concentrations ranked by median, (b) CV same order
+# Color by pyrogenic vs geogenic origin
 
 library(tidyverse)
 library(patchwork)
@@ -11,145 +12,149 @@ icpms <- read.csv("/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/D2D
 ash <- icpms %>% filter(alq.type == "ASH")
 cat("Number of ash samples:", nrow(ash), "\n")
 
-# Define elements of interest (toxic heavy metals + major elements for context)
-toxic_metals <- c("Pb", "Zn", "Cu", "Co", "Ni", "Sb", "Cr", "Cd", "As", "V")
-major_elements <- c("Ca", "Fe", "Al", "Ti", "Mg", "K", "Na", "Mn")
+# Define elements with classification
+# Pyrogenic: derived from combustion of built-environment materials (high CV)
+# Geogenic: reflect regional geological substrate (low CV)
+element_info <- tribble(
+  ~Element, ~Type,
+  "Pb", "Pyrogenic",
+  "Zn", "Pyrogenic",
+  "Cu", "Pyrogenic",
+  "Co", "Pyrogenic",
+  "Ni", "Pyrogenic",
+  "Sb", "Pyrogenic",
+  "Cr", "Geogenic",
+  "Cd", "Pyrogenic",
+  "As", "Geogenic",
+  "V",  "Geogenic",
+  "Fe", "Geogenic",
+  "Al", "Geogenic",
+  "Ti", "Geogenic",
+  "Mn", "Geogenic",
+  "Ca", "Geogenic",
+  "Mg", "Geogenic",
+  "K",  "Geogenic",
+  "Na", "Geogenic",
+  "Ba", "Geogenic",
+  "Sr", "Geogenic"
+)
 
-# Calculate summary statistics for each element
+# Select elements to display (top metals by interest)
+elements_to_plot <- c("Ca", "Fe", "Al", "Zn", "Mn", "Ti", "Pb", "Cu",
+                      "Ba", "V", "Cr", "Co", "Ni", "As", "Sb", "Cd")
+
+# Calculate summary statistics
 calc_stats <- function(data, elements) {
-  stats <- data.frame(
-    Element = character(),
-    Mean = numeric(),
-    Median = numeric(),
-    Min = numeric(),
-    Max = numeric(),
-    CV = numeric(),
-    stringsAsFactors = FALSE
-  )
-
-  for (elem in elements) {
+  stats <- map_dfr(elements, function(elem) {
     if (elem %in% names(data)) {
       vals <- data[[elem]]
       vals <- vals[!is.na(vals)]
       if (length(vals) > 0) {
-        stats <- rbind(stats, data.frame(
+        tibble(
           Element = elem,
           Mean = mean(vals),
           Median = median(vals),
           Min = min(vals),
           Max = max(vals),
+          SD = sd(vals),
           CV = sd(vals) / mean(vals) * 100
-        ))
+        )
       }
     }
-  }
+  })
   return(stats)
 }
 
-# Calculate stats for toxic metals
-toxic_stats <- calc_stats(ash, toxic_metals)
-toxic_stats$Type <- "Toxic Heavy Metals"
+# Calculate stats
+stats <- calc_stats(ash, elements_to_plot) %>%
+  left_join(element_info, by = "Element") %>%
+  arrange(desc(Median))
 
-# Calculate stats for major elements
-major_stats <- calc_stats(ash, major_elements)
-major_stats$Type <- "Major Elements"
+# Set element order by median concentration (descending)
+element_order <- stats$Element
 
-# Combine
-all_stats <- rbind(toxic_stats, major_stats)
-
-# Order by CV for toxic metals, then by concentration for major elements
-toxic_stats <- toxic_stats %>% arrange(desc(CV))
-major_stats <- major_stats %>% arrange(desc(Mean))
-
-# Panel A: Concentration boxplots for toxic metals (ordered by CV)
-toxic_long <- ash %>%
-  select(EFA.ID, all_of(toxic_metals)) %>%
+# Prepare long-format data for plotting
+plot_data <- ash %>%
+  select(EFA.ID, all_of(elements_to_plot)) %>%
   pivot_longer(cols = -EFA.ID, names_to = "Element", values_to = "Concentration") %>%
-  filter(!is.na(Concentration))
+  filter(!is.na(Concentration)) %>%
+  left_join(element_info, by = "Element") %>%
+  mutate(Element = factor(Element, levels = element_order))
 
-# Set element order by CV
-toxic_long$Element <- factor(toxic_long$Element, levels = toxic_stats$Element)
+# CV data for panel B
+cv_data <- stats %>%
+  mutate(Element = factor(Element, levels = element_order))
 
-# Color scale based on regulatory concern
-element_colors <- c(
-  "Pb" = "#E41A1C",   # Red - highest concern
-  "Zn" = "#377EB8",   # Blue
-  "Cu" = "#4DAF4A",   # Green
-  "Co" = "#984EA3",   # Purple
-  "Ni" = "#FF7F00",   # Orange
-  "Sb" = "#FFFF33",   # Yellow
-  "Cr" = "#A65628",   # Brown
-  "Cd" = "#F781BF",   # Pink
-  "As" = "#999999",   # Gray
-  "V"  = "#66C2A5"    # Teal
+# Color palette
+type_colors <- c(
+  "Pyrogenic" = "#E41A1C",  # Red
+  "Geogenic" = "#377EB8"    # Blue
 )
 
-# Panel A: Boxplot of concentrations
-p_conc <- ggplot(toxic_long, aes(x = Element, y = Concentration, fill = Element)) +
-  geom_boxplot(outlier.shape = 21, outlier.size = 2, alpha = 0.7) +
-  geom_jitter(width = 0.2, alpha = 0.3, size = 1) +
+# Panel A: Concentration boxplots (top panel)
+p_conc <- ggplot(plot_data, aes(x = Element, y = Concentration, fill = Type)) +
+  geom_boxplot(outlier.shape = 21, outlier.size = 1.5, alpha = 0.7) +
   scale_y_log10(
     labels = scales::label_comma(),
-    breaks = c(1, 10, 100, 1000, 10000)
+    breaks = c(0.1, 1, 10, 100, 1000, 10000, 100000),
+    limits = c(0.1, 500000)
   ) +
-  scale_fill_manual(values = element_colors) +
+  scale_fill_manual(values = type_colors, name = "Origin") +
   labs(
     x = NULL,
     y = "Concentration (ppm)",
-    title = "(a) Metal concentrations in ash (n = 38)"
+    tag = "a"
   ) +
   theme_bw(base_size = 11) +
   theme(
-    legend.position = "none",
-    axis.text.x = element_text(angle = 45, hjust = 1, face = "bold"),
+    legend.position = "top",
+    legend.justification = "left",
+    legend.margin = margin(0, 0, 0, 0),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
     panel.grid.minor = element_blank(),
-    plot.title = element_text(size = 11, face = "bold")
-  ) +
-  # Add reference lines for key thresholds
-  geom_hline(yintercept = 200, linetype = "dashed", color = "red", alpha = 0.5) +
-  annotate("text", x = 0.7, y = 200, label = "EPA RSL (Pb)",
-           hjust = 0, vjust = -0.5, size = 2.5, color = "red")
+    plot.tag = element_text(face = "bold", size = 12),
+    plot.margin = margin(5, 10, 0, 10)
+  )
 
-# Panel B: CV barplot
-cv_data <- toxic_stats %>%
-  mutate(Element = factor(Element, levels = Element))
-
-p_cv <- ggplot(cv_data, aes(x = Element, y = CV, fill = Element)) +
-  geom_col(alpha = 0.8) +
-  geom_text(aes(label = sprintf("%.0f%%", CV)),
-            vjust = -0.3, size = 3) +
-  scale_fill_manual(values = element_colors) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +
+# Panel B: CV barplot (bottom panel, same x-axis order)
+p_cv <- ggplot(cv_data, aes(x = Element, y = CV, fill = Type)) +
+  geom_col(alpha = 0.8, width = 0.7) +
+  geom_hline(yintercept = 100, linetype = "dashed", color = "gray40", linewidth = 0.5) +
+  scale_fill_manual(values = type_colors, guide = "none") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)), limits = c(0, 500)) +
   labs(
-    x = NULL,
-    y = "Coefficient of Variation (%)",
-    title = "(b) Spatial heterogeneity"
+    x = "Element (ranked by median concentration)",
+    y = "CV (%)",
+    tag = "b"
   ) +
   theme_bw(base_size = 11) +
   theme(
-    legend.position = "none",
     axis.text.x = element_text(angle = 45, hjust = 1, face = "bold"),
     panel.grid.minor = element_blank(),
-    plot.title = element_text(size = 11, face = "bold")
+    plot.tag = element_text(face = "bold", size = 12),
+    plot.margin = margin(0, 10, 5, 10)
   ) +
-  geom_hline(yintercept = 100, linetype = "dashed", color = "gray50", alpha = 0.5)
+  annotate("text", x = 15.5, y = 100, label = "CV = 100%",
+           hjust = 1, vjust = -0.3, size = 3, color = "gray40")
 
-# Combine panels
-combined <- p_conc + p_cv +
-  plot_layout(ncol = 2, widths = c(1, 1))
+# Combine panels vertically
+combined <- p_conc / p_cv +
+  plot_layout(heights = c(1.2, 1))
 
 # Save figure
 ggsave("/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/Manuscript/Data/final-figs/Fig-3-icpms.png",
-       combined, width = 10, height = 5, dpi = 300, bg = "white")
+       combined, width = 8, height = 7, dpi = 300, bg = "white")
 
 ggsave("/Users/isaac/Documents/GitHub/PhD_Projects/Eaton-Fire-Ash/Manuscript/Data/final-figs/Fig-3-icpms.pdf",
-       combined, width = 10, height = 5)
+       combined, width = 8, height = 7)
 
 cat("\nFigure saved to:\n")
 cat("  - Manuscript/Data/final-figs/Fig-3-icpms.png\n")
 cat("  - Manuscript/Data/final-figs/Fig-3-icpms.pdf\n")
 
 # Print summary statistics
-cat("\n=== Summary Statistics for Toxic Metals ===\n")
-print(toxic_stats %>% select(Element, Mean, Median, Min, Max, CV) %>%
+cat("\n=== Summary Statistics (ranked by median) ===\n")
+print(stats %>%
+        select(Element, Type, Median, Mean, CV) %>%
         mutate(across(where(is.numeric), ~round(., 1))))
