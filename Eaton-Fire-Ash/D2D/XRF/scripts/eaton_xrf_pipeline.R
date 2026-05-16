@@ -16,7 +16,7 @@
 #   Table4_threshold_classification.csv 4 arms × 6 RSL thresholds × sens/spec/acc
 #   Fig_calibration_4panel.{pdf,png}    PBP standards × 4 arms
 #   Fig_validation_4panel.{pdf,png}     ash predicted vs ICP-MS, with thresholds
-#   Fig_AgreementRatio_4panel.{pdf,png} XRF/ICP-MS ratio vs ICP-MS (log x)
+#   Fig_BlandAltman_4panel.{pdf,png}    Bland-Altman difference vs mean (4 arms)
 #
 # Methodology (configured below; see manuscript SI for derivation):
 #   – Pellet-intensity:  Pb_Lb1_cps + Pb_Lb2_cps      (multi-predictor)
@@ -304,28 +304,32 @@ fig_val <- val_long %>%
 ggsave(file.path(FIGURES, "Fig_validation_4panel.pdf"), fig_val, width = 11, height = 9)
 ggsave(file.path(FIGURES, "Fig_validation_4panel.png"), fig_val, width = 11, height = 9, dpi = 300)
 
-# 4c. Method-agreement ratio plot: XRF-predicted / ICP-MS vs ICP-MS (log x).
-# Reference line at ratio = 1 (perfect agreement). Replaces the Bland-Altman
-# difference-vs-mean plot for easier visual reading across the
-# 14-18,528 ppm dynamic range. Below-calibration samples with negative Pb_pred
-# will show negative ratios (1-2 samples per method).
-fig_agr <- val_long %>%
+# 4c. Bland-Altman 4-panel: difference (XRF - ICP-MS) vs mean for all methods.
+# Shows bias and 95% LOA lines for each method.
+ba_long <- val_long %>%
   mutate(arm = factor(arm, levels = arms$arm),
          Preparation = ifelse(grepl("pellet", arm), "Pellet", "Powder"),
-         ratio = Pb_pred / Pb_icpms) %>%
-  ggplot(aes(Pb_icpms, ratio, colour = Preparation)) +
-  geom_hline(yintercept = 1, linetype = "dotted", colour = "grey40") +
+         ba_mean = (Pb_pred + Pb_icpms) / 2,
+         ba_diff = Pb_pred - Pb_icpms) %>%
+  left_join(summary_4arms %>% select(arm, BA_bias_ppm, BA_LOA_lo_ppm, BA_LOA_hi_ppm), by = "arm")
+
+fig_ba4 <- ba_long %>%
+  ggplot(aes(ba_mean, ba_diff, colour = Preparation)) +
+  geom_hline(yintercept = 0, linetype = "solid", colour = "grey60", linewidth = 0.4) +
+  geom_hline(aes(yintercept = BA_bias_ppm), linetype = "dashed", colour = "steelblue", linewidth = 0.5) +
+  geom_hline(aes(yintercept = BA_LOA_lo_ppm), linetype = "dotted", colour = "firebrick", linewidth = 0.5) +
+  geom_hline(aes(yintercept = BA_LOA_hi_ppm), linetype = "dotted", colour = "firebrick", linewidth = 0.5) +
   geom_point(alpha = 0.85, size = 2) +
   scale_colour_manual(values = prep_palette) +
-  scale_x_log10() +
+  scale_x_log10(labels = scales::comma) +
   facet_wrap(~ arm, ncol = 2, scales = "free_y", labeller = as_labeller(arm_labels)) +
-  labs(x = "ICP-MS Pb (ppm, log)",
-       y = "XRF-predicted / ICP-MS (ratio)",
-       title = "Method agreement: XRF/ICP-MS ratio vs ICP-MS reference") +
+  labs(x = "Mean of XRF and ICP-MS (ppm)",
+       y = "XRF − ICP-MS (ppm)",
+       title = "Bland-Altman agreement: difference vs mean") +
   theme_bw(base_size = 11) +
   theme(legend.position = "bottom")
-ggsave(file.path(FIGURES, "Fig_AgreementRatio_4panel.pdf"), fig_agr, width = 11, height = 9)
-ggsave(file.path(FIGURES, "Fig_AgreementRatio_4panel.png"), fig_agr, width = 11, height = 9, dpi = 300)
+ggsave(file.path(FIGURES, "Fig_BlandAltman_4panel.pdf"), fig_ba4, width = 11, height = 9)
+ggsave(file.path(FIGURES, "Fig_BlandAltman_4panel.png"), fig_ba4, width = 11, height = 9, dpi = 300)
 
 # -----------------------------------------------------------------------------
 # 4d. Main text Figure 4: Pellet intensity 2-panel (scatter + Bland-Altman)
@@ -449,6 +453,6 @@ cat("  ", file.path(RESULTS, "Table4_threshold_classification.csv"), "\n")
 cat("  ", file.path(RESULTS, "Table5_method_summary.csv"), "\n")
 cat("  ", file.path(FIGURES, "Fig_calibration_4panel.{pdf,png}"), "\n")
 cat("  ", file.path(FIGURES, "Fig_validation_4panel.{pdf,png}"), "\n")
-cat("  ", file.path(FIGURES, "Fig_AgreementRatio_4panel.{pdf,png}"), "\n")
+cat("  ", file.path(FIGURES, "Fig_BlandAltman_4panel.{pdf,png}"), "\n")
 cat("  ", file.path(FIGURES, "Fig_validation_pellet_2panel.{pdf,png}"), " [MAIN TEXT]\n")
 cat("  ", file.path(MANUSCRIPT_FIGS, "Fig_validation_pellet_2panel.png"), "\n")
