@@ -316,7 +316,7 @@ Following clay calibration (Stage A, \S1) and matrix correction (Stage B, \S1), 
 \subsection*{Validation against ICP-MS}
 
 \begin{table}[htbp]
-\caption{Validation metrics for all methods against ICP-MS ($n$ = 33 ash samples). BA = Bland-Altman; LOA = 95\% limits of agreement.}
+\caption{Validation metrics for all methods against ICP-MS ($n$ = 34 ash samples). BA = Bland-Altman; LOA = 95\% limits of agreement.}
 \label{tab:s3_full_validation}
 \centering
 \small
@@ -362,7 +362,7 @@ For each threshold, samples were classified as positive (above threshold) or neg
 where TP = true positive (ICP-MS and XRF both above threshold), TN = true negative (both below), FP = false positive (XRF above, ICP-MS below), and FN = false negative (XRF below, ICP-MS above). For screening applications, high sensitivity is prioritized to minimize false negatives (missed contamination).
 
 \begin{table}[htbp]
-\caption{Classification performance at each regulatory threshold ($n$ = 33 samples). $n_+$ = samples above threshold by ICP-MS.}
+\caption{Classification performance at each regulatory threshold ($n$ = 34 samples). $n_+$ = samples above threshold by ICP-MS.}
 \label{tab:s4_threshold_classification}
 \centering
 \footnotesize
@@ -433,7 +433,7 @@ The pellet L$\beta_1$+L$\beta_2$ method had the highest sensitivity (0.91) and f
 \subsection*{Sample-level predictions}
 
 \begin{table}[htbp]
-\caption{Paired XRF-predicted and ICP-MS Pb concentrations (ppm) for the pellet L$\beta_1$+L$\beta_2$ method ($n$ = 33 ash samples). Residual = XRF $-$ ICP-MS.}
+\caption{Paired XRF-predicted and ICP-MS Pb concentrations (ppm) for the pellet L$\beta_1$+L$\beta_2$ method ($n$ = 34 ash samples). Residual = XRF $-$ ICP-MS.}
 \label{tab:paired_predictions}
 \centering
 \footnotesize
@@ -494,7 +494,7 @@ XPAH28 & 18528 & 18238 & $-290$ & $-2$ \\
 The sampling campaign was coordinated between Caltech and NASA JPL field teams beginning January 16, 2025. Using a 1~$\times$~1~mile grid to guide spatially even coverage, teams collected ash samples within the burn scar and along the western, southern, and eastern flanks of the fire perimeter. A total of 169 samples were collected directly by field teams (95 by JPL, 74 by Caltech), supplemented by 52 samples from trained community volunteers using standardized sampling kits. Within each grid cell, sites were selected based on: (1) public accessibility, (2) visible ash accumulation, and (3) absence of debris removal activities. As sampling began approximately two weeks post-ignition, ash had accumulated in wind-traps on impervious surfaces (sidewalks against fences, street gutters). Both coarse ash fragments and fine soot were collected to obtain representative composite samples.
 
 \begin{longtable}{lcrrrcccp{4.5cm}}
-\caption{ICP-MS sample inventory ($n$ = 42). Bold rows indicate the XRF validation subset ($n$ = 33): samples with both pellet and powder XRF measurements enabling method comparison.}
+\caption{ICP-MS sample inventory ($n$ = 42). Bold rows indicate the XRF validation subset ($n$ = 34): samples with both pellet and powder XRF measurements enabling method comparison.}
 \label{tab:s11_sample_inventory}\\
 \toprule
 ID & Date & Lat & Lon & Pb & XRF & XRF & Type & Description \\
@@ -528,6 +528,7 @@ ID & Date & Lat & Lon & Pb & Pel & Pwd & Type & Description \\
 \textbf{JPL51} & \textbf{1/19} & \textbf{34.203} & \textbf{118.179} & \textbf{63} & \checkmark & \checkmark & \textbf{Ash} & \textbf{Gutter, 4927 Viro Road} \\
 \textbf{JPL09} & \textbf{1/17} & \textbf{34.162} & \textbf{118.128} & \textbf{64} & \checkmark & \checkmark & \textbf{Ash} & \textbf{Sidewalk, McDonald Park} \\
 \textbf{JPL89} & \textbf{1/23} & \textbf{34.127} & \textbf{118.194} & \textbf{67} & \checkmark & \checkmark & \textbf{Ash} & \textbf{Nolden St, west side} \\
+\textbf{JPL86} & \textbf{1/23} & \textbf{34.201} & \textbf{118.129} & \textbf{74} & \checkmark & \checkmark & \textbf{Ash} & \textbf{Gutter, Parkman St} \\
 \textbf{JPL68} & \textbf{1/23} & \textbf{34.199} & \textbf{118.163} & \textbf{77} & \checkmark & \checkmark & \textbf{Ash} & \textbf{Residential sunroom} \\
 \textbf{JPL61} & \textbf{1/19} & \textbf{34.166} & \textbf{118.135} & \textbf{79} & \checkmark & \checkmark & \textbf{Ash} & \textbf{Sidewalk, 1194 Palm Terrace} \\
 \textbf{XPAH26} & \textbf{1/23} & \textbf{34.195} & \textbf{118.155} & \textbf{82} & \checkmark & \checkmark & \textbf{Ash} & \textbf{Street gutter, Olive Ave} \\
@@ -549,11 +550,10 @@ GPS02 & 1/16 & 34.130 & 118.135 & 43 &  &  & Ash & Street curb, Oak Knoll Cir \\
 1590 & 1/24 & 34.140 & 118.089 & 53 &  & \checkmark & Ash & Cement decking around pool \\
 1601 & 1/17 & 34.136 & 118.127 & 54 &  & \checkmark & Ash & Outdoor tile patio, 3rd floor \\
 GPS05 & 1/16 & 34.142 & 118.136 & 62 &  & \checkmark & Ash & Parking lot curb, Oak Knoll Ave \\
-JPL86 & 1/23 & 34.201 & 118.129 & 74 & \checkmark &  & Ash & Gutter, Parkman St \\
 1637 & 1/23 & 34.191 & 118.154 & 113 &  &  & Soil & Residential soil, Calaveras St \\
 \end{longtable}
 
-\textit{Note.} The 33 bold rows comprise the XRF validation subset with complete pellet and powder coverage. The remaining 9 samples have ICP-MS reference values but incomplete XRF coverage. Pel = pellet; Pwd = powder. Four soil samples were included: XPAH55 (validation subset) plus 1648, 1643, and 1637 (ICP-MS only). Complete datasets available in the Zenodo repository.
+\textit{Note.} The 34 bold rows comprise the XRF validation subset with complete pellet and powder coverage. The remaining 8 samples have ICP-MS reference values but incomplete XRF coverage. Pel = pellet; Pwd = powder. Four soil samples were included: XPAH55 (validation subset) plus 1648, 1643, and 1637 (ICP-MS only). Complete datasets available in the Zenodo repository.
 
 \newpage
 
