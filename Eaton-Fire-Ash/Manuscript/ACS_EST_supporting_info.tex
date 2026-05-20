@@ -152,7 +152,7 @@ Table~\ref{tab:clay_calibration} presents clay calibration performance for all c
 To verify that clay calibration performance predicted ash validation performance, all four multi-predictor combinations were evaluated through the complete pipeline (clay calibration $\rightarrow$ matrix correction $\rightarrow$ ash validation with LOOCV). Powder L$\beta_1$+L$\beta_2$ showed acceptable clay calibration ($R^2$ = 0.93) but failed catastrophically on ash validation (val.\ RMSE = 2,590~ppm vs.\ 282~ppm for L$\beta_1$+L$\beta_3$), likely due to matrix-dependent suppression of the L$\beta_2$ line in calcium-rich ash. Similarly, pellet L$\beta_1$+L$\beta_3$ performed 5$\times$ worse than L$\beta_1$+L$\beta_2$ on ash validation (789 vs.\ 151~ppm). These results justify the asymmetric response variable selection and confirm that response selection based on clay calibration was not circular---the clay ranking correctly predicted ash validation ranking. Calibration curves for the four primary methods are shown in Figure~S1.
 
 \begin{table}[htbp]
-\caption{Clay calibration (Stage A) performance for candidate response variables. Bold rows indicate the four primary methods carried forward to ash validation. Multi = multi-predictor regression with independent coefficients. Both L$\beta_1$+L$\beta_2$ and L$\beta_1$+L$\beta_3$ were tested on both preparations for symmetric comparison.}
+\caption{Clay calibration (Stage A) performance for all candidate response variables. Bold rows indicate the four primary methods carried forward to ash validation. Multi = multi-predictor regression with independent coefficients; single = univariate regression on one L-line; FP = instrument fundamental-parameters algorithm. All multi-predictor combinations and single L-lines were tested symmetrically on both preparations.}
 \label{tab:clay_calibration}
 \centering
 \footnotesize
@@ -160,16 +160,34 @@ To verify that clay calibration performance predicted ash validation performance
 \toprule
 Prep & Response & Type & $n$ & $R^2$ & RMSE (ppm) \\
 \midrule
+\multicolumn{6}{l}{\textit{Multi-predictor models}} \\
 \textbf{Pellet} & \textbf{L$\beta_1$+L$\beta_2$} & \textbf{multi} & \textbf{12} & \textbf{0.999} & \textbf{14} \\
+Pellet & L$\beta_1$+L$\beta_4$ & multi & 12 & 0.998 & 16 \\
+Pellet & L$\alpha_1$+L$\beta_1$ & multi & 12 & 0.998 & 16 \\
+Pellet & L$\beta_2$+L$\beta_3$ & multi & 12 & 0.998 & 17 \\
 Pellet & L$\beta_1$+L$\beta_3$ & multi & 12 & 0.998 & 18 \\
-Pellet & L$\alpha_1$         & single & 12 & 0.998 & 17 \\
-Pellet & L$\beta_1$          & single & 12 & 0.998 & 18 \\
-\textbf{Pellet} & \textbf{Fund.\ param.} & \textbf{FP} & \textbf{12} & \textbf{0.995} & \textbf{28} \\
-\midrule
 \textbf{Powder} & \textbf{L$\beta_1$+L$\beta_3$} & \textbf{multi} & \textbf{12} & \textbf{0.943} & \textbf{94} \\
+Powder & L$\beta_2$+L$\beta_3$ & multi & 12 & 0.940 & 97 \\
 Powder & L$\beta_1$+L$\beta_2$ & multi & 12 & 0.933 & 102 \\
-Powder & L$\alpha_2$         & single & 12 & 0.904 & 121 \\
-Powder & L$\beta_1$          & single & 12 & 0.904 & 121 \\
+Powder & L$\beta_1$+L$\beta_4$ & multi & 12 & 0.927 & 106 \\
+Powder & L$\alpha_1$+L$\beta_1$ & multi & 12 & 0.924 & 109 \\
+\midrule
+\multicolumn{6}{l}{\textit{Single L-line models}} \\
+Pellet & L$\alpha_1$          & single & 12 & 0.998 & 17 \\
+Pellet & L$\alpha_2$          & single & 12 & 0.998 & 17 \\
+Pellet & L$\beta_1$           & single & 12 & 0.998 & 18 \\
+Pellet & L$\beta_2$           & single & 12 & 0.998 & 18 \\
+Pellet & L$\beta_3$           & single & 12 & 0.998 & 19 \\
+Pellet & L$\beta_4$           & single & 12 & 0.998 & 18 \\
+Powder & L$\alpha_1$          & single & 12 & 0.912 & 117 \\
+Powder & L$\alpha_2$          & single & 12 & 0.912 & 117 \\
+Powder & L$\beta_1$           & single & 12 & 0.912 & 117 \\
+Powder & L$\beta_2$           & single & 12 & 0.912 & 117 \\
+Powder & L$\beta_3$           & single & 12 & 0.912 & 117 \\
+Powder & L$\beta_4$           & single & 12 & 0.912 & 117 \\
+\midrule
+\multicolumn{6}{l}{\textit{Fundamental parameters}} \\
+\textbf{Pellet} & \textbf{Fund.\ param.} & \textbf{FP} & \textbf{12} & \textbf{0.995} & \textbf{28} \\
 \textbf{Powder} & \textbf{Fund.\ param.} & \textbf{FP} & \textbf{12} & \textbf{0.920} & \textbf{111} \\
 \bottomrule
 \end{tabular}
