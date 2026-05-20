@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{longtable}
+\usepackage{amssymb}  % for \checkmark
+\usepackage{textcomp} % for \textdegree
 
 \graphicspath{{Data/final-figs/}{Data/}}
 
@@ -58,7 +60,7 @@
   \item \S 3. Sampling protocol and metadata
   \begin{itemize}
     \item Sampling campaign logistics
-    \item Table S11. Sample locations
+    \item Table S11. Sample inventory (42 ICP-MS samples; 33 XRF validation subset)
   \end{itemize}
   \item \S 4. ICP-MS characterization
   \begin{itemize}
@@ -491,52 +493,67 @@ XPAH28 & 18528 & 18238 & $-290$ & $-2$ \\
 
 The sampling campaign was coordinated between Caltech and NASA JPL field teams beginning January 16, 2025. Using a 1~$\times$~1~mile grid to guide spatially even coverage, teams collected ash samples within the burn scar and along the western, southern, and eastern flanks of the fire perimeter. A total of 169 samples were collected directly by field teams (95 by JPL, 74 by Caltech), supplemented by 52 samples from trained community volunteers using standardized sampling kits. Within each grid cell, sites were selected based on: (1) public accessibility, (2) visible ash accumulation, and (3) absence of debris removal activities. As sampling began approximately two weeks post-ignition, ash had accumulated in wind-traps on impervious surfaces (sidewalks against fences, street gutters). Both coarse ash fragments and fine soot were collected to obtain representative composite samples.
 
-\begin{table}[htbp]
-\caption{Description of ashes collected following the 2025 Eaton Fire included in this study.(excerpt; complete metadata in \texttt{sample\_id\_harmonization.csv}).}
-\label{tab:s8_metadata}
-\centering
-\small
-\begin{tabular}{lrrlll}
+\begin{longtable}{lrrcrccc}
+\caption{ICP-MS sample inventory ($n$ = 42). Bold rows indicate the XRF validation subset ($n$ = 33): samples with both pellet and powder XRF measurements enabling method comparison. Sampling occurred January 15--30, 2025.}
+\label{tab:s11_sample_inventory}\\
 \toprule
-Sample ID & Latitude & Longitude & Collection Date & Description &ICPMS Reference Pb\\
+Sample ID & Latitude & Longitude & Type & Pb & XRF & XRF \\
+ & (\textdegree N) & (\textdegree W) & & (ppm) & Pellet & Powder \\
 \midrule
-1590  & 34.1399 & -118.0888 & 2025-01-15 & Ash  & \\
-1620  & 34.1719 & -118.1235 & 2025-01-15 & Ash  & \\
-GPS03 & 34.1300 & -118.1440 & 2025-01-16 & Ash  & \\
-% ... additional rows ...
+\endfirsthead
+\multicolumn{7}{l}{\textit{Table S11 continued}} \\
+\toprule
+Sample ID & Lat & Lon & Type & Pb & Pellet & Powder \\
+\midrule
+\endhead
 \bottomrule
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
- & & & & & \\
-\end{tabular}
-\end{table}
+\endfoot
+\textbf{XPAH58} & \textbf{34.1772} & \textbf{118.0972} & \textbf{Ash} & \textbf{14} & \checkmark & \checkmark \\
+\textbf{XPAH55} & \textbf{34.1934} & \textbf{118.1044} & \textbf{Soil} & \textbf{27} & \checkmark & \checkmark \\
+\textbf{JPL43} & \textbf{34.1760} & \textbf{118.0201} & \textbf{Ash} & \textbf{38} & \checkmark & \checkmark \\
+\textbf{JPL18} & \textbf{34.1711} & \textbf{118.1868} & \textbf{Ash} & \textbf{45} & \checkmark & \checkmark \\
+\textbf{JPL33} & \textbf{34.1750} & \textbf{118.0700} & \textbf{Ash} & \textbf{47} & \checkmark & \checkmark \\
+\textbf{JPL48} & \textbf{34.1611} & \textbf{118.0576} & \textbf{Ash} & \textbf{47} & \checkmark & \checkmark \\
+\textbf{JPL50} & \textbf{34.1998} & \textbf{118.1917} & \textbf{Ash} & \textbf{48} & \checkmark & \checkmark \\
+\textbf{GPS09} & \textbf{34.1532} & \textbf{118.1462} & \textbf{Ash} & \textbf{49} & \checkmark & \checkmark \\
+\textbf{JPL11} & \textbf{34.1899} & \textbf{118.1686} & \textbf{Ash} & \textbf{52} & \checkmark & \checkmark \\
+\textbf{GPS03} & \textbf{34.1300} & \textbf{118.1440} & \textbf{Ash} & \textbf{53} & \checkmark & \checkmark \\
+\textbf{XPAH29} & \textbf{34.1883} & \textbf{118.1100} & \textbf{Ash} & \textbf{54} & \checkmark & \checkmark \\
+\textbf{1620} & \textbf{34.1719} & \textbf{118.1235} & \textbf{Ash} & \textbf{54} & \checkmark & \checkmark \\
+\textbf{JPL06} & \textbf{34.1764} & \textbf{118.1103} & \textbf{Ash} & \textbf{55} & \checkmark & \checkmark \\
+\textbf{JPL25} & \textbf{34.1624} & \textbf{118.1001} & \textbf{Ash} & \textbf{55} & \checkmark & \checkmark \\
+\textbf{JPL95} & \textbf{34.1494} & \textbf{118.1189} & \textbf{Ash} & \textbf{59} & \checkmark & \checkmark \\
+\textbf{JPL29} & \textbf{34.1835} & \textbf{118.0830} & \textbf{Ash} & \textbf{61} & \checkmark & \checkmark \\
+\textbf{JPL15} & \textbf{34.1753} & \textbf{118.1755} & \textbf{Ash} & \textbf{61} & \checkmark & \checkmark \\
+\textbf{JPL51} & \textbf{34.2025} & \textbf{118.1789} & \textbf{Ash} & \textbf{63} & \checkmark & \checkmark \\
+\textbf{JPL09} & \textbf{34.1616} & \textbf{118.1277} & \textbf{Ash} & \textbf{64} & \checkmark & \checkmark \\
+\textbf{JPL89} & \textbf{34.1274} & \textbf{118.1943} & \textbf{Ash} & \textbf{67} & \checkmark & \checkmark \\
+\textbf{JPL68} & \textbf{34.1987} & \textbf{118.1631} & \textbf{Ash} & \textbf{77} & \checkmark & \checkmark \\
+\textbf{JPL61} & \textbf{34.1664} & \textbf{118.1353} & \textbf{Ash} & \textbf{79} & \checkmark & \checkmark \\
+\textbf{XPAH26} & \textbf{34.1952} & \textbf{118.1547} & \textbf{Ash} & \textbf{82} & \checkmark & \checkmark \\
+\textbf{JPL63} & \textbf{34.1654} & \textbf{118.1546} & \textbf{Ash} & \textbf{85} & \checkmark & \checkmark \\
+\textbf{JPL59} & \textbf{34.1736} & \textbf{118.1449} & \textbf{Ash} & \textbf{86} & \checkmark & \checkmark \\
+\textbf{JPL07} & \textbf{34.1619} & \textbf{118.1629} & \textbf{Ash} & \textbf{88} & \checkmark & \checkmark \\
+\textbf{JPL58} & \textbf{34.1751} & \textbf{118.1594} & \textbf{Ash} & \textbf{209} & \checkmark & \checkmark \\
+\textbf{JPL79} & \textbf{34.1996} & \textbf{118.1464} & \textbf{Ash} & \textbf{448} & \checkmark & \checkmark \\
+\textbf{JPL76} & \textbf{34.1913} & \textbf{118.1452} & \textbf{Ash} & \textbf{557} & \checkmark & \checkmark \\
+\textbf{JPL77} & \textbf{34.1894} & \textbf{118.1463} & \textbf{Ash} & \textbf{557} & \checkmark & \checkmark \\
+\textbf{JPL73} & \textbf{34.1884} & \textbf{118.1302} & \textbf{Ash} & \textbf{804} & \checkmark & \checkmark \\
+\textbf{XPAH20} & \textbf{34.1911} & \textbf{118.1543} & \textbf{Ash} & \textbf{1933} & \checkmark & \checkmark \\
+\textbf{XPAH28} & \textbf{34.2065} & \textbf{118.1356} & \textbf{Ash} & \textbf{18528} & \checkmark & \checkmark \\
+\midrule
+1648 & 34.1361 & 118.1257 & Soil & 11 &  &  \\
+1643 & 34.2064 & 118.1360 & Soil & 25 &  &  \\
+XPAH17 & 34.1733 & 118.0410 & Ash & 30 &  &  \\
+GPS02 & 34.1304 & 118.1354 & Ash & 43 &  &  \\
+1590 & 34.1399 & 118.0888 & Ash & 53 &  & \checkmark \\
+1601 & 34.1362 & 118.1270 & Ash & 54 &  & \checkmark \\
+GPS05 & 34.1424 & 118.1361 & Ash & 62 &  & \checkmark \\
+JPL86 & 34.2008 & 118.1289 & Ash & 74 & \checkmark &  \\
+1637 & 34.1910 & 118.1540 & Soil & 113 &  &  \\
+\end{longtable}
 
-\textit{Note.} Complete ICP-MS, XRF (cleaned and per-line intensities), PBP calibration, and validation paired datasets are provided as separate machine-readable CSV files. The full prediction pipeline — sample data cleaning, two-stage calibration, ash-matrix correction, validation, and figure/table generation — is reproducible from \texttt{D2D/XRF/scripts/eaton\_xrf\_pipeline.R}.
+\textit{Note.} The 33 bold rows comprise the XRF validation subset with complete pellet and powder coverage. The remaining 9 samples have ICP-MS reference values but incomplete XRF coverage (missing pellet, powder, or both). Four soil samples were included: XPAH55 (validation subset) plus 1648, 1643, and 1637 (ICP-MS only). Complete datasets available in the Zenodo repository.
 
 \newpage
 
