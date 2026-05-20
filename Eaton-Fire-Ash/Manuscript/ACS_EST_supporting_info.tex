@@ -147,10 +147,12 @@ PBP03\_1 & Powder & 1000 & 665.6 & 492.4 & 231.8 & 63.4 & 47.7 & 1170 \\
 
 We evaluated two classes of XRF response variables for Pb quantification: (1) empirical L-line intensities and (2) the instrument's built-in fundamental-parameters (FP) algorithm. For L-line intensities, six Pb L-lines (L$\alpha_1$, L$\alpha_2$, L$\beta_1$, L$\beta_2$, L$\beta_3$, L$\beta_4$) were tested as single lines, summed-intensity combinations, and multi-predictor regressions. The L$\alpha$ lines overlap with As K$\alpha$ emission at 10.5~keV, which can bias Pb quantification in arsenic-bearing samples; L$\beta$ lines were therefore preferred.
 
-Table~\ref{tab:clay_calibration} presents clay calibration performance for all candidate response variables. The pellet L$\beta_1$+L$\beta_2$ multi-predictor model achieved the best calibration fit ($R^2$ = 0.999, RMSE = 14~ppm). Calibration curves for the four primary methods are shown in Figure~S1.
+Table~\ref{tab:clay_calibration} presents clay calibration performance for all candidate response variables. Both L$\beta_1$+L$\beta_2$ and L$\beta_1$+L$\beta_3$ combinations were tested on both pellet and powder preparations for symmetric comparison. The pellet L$\beta_1$+L$\beta_2$ model achieved the best clay calibration fit ($R^2$ = 0.999, RMSE = 14~ppm).
+
+To verify that clay calibration performance predicted ash validation performance, all four multi-predictor combinations were evaluated through the complete pipeline (clay calibration $\rightarrow$ matrix correction $\rightarrow$ ash validation with LOOCV). Powder L$\beta_1$+L$\beta_2$ showed acceptable clay calibration ($R^2$ = 0.93) but failed catastrophically on ash validation (val.\ RMSE = 2,590~ppm vs.\ 282~ppm for L$\beta_1$+L$\beta_3$), likely due to matrix-dependent suppression of the L$\beta_2$ line in calcium-rich ash. Similarly, pellet L$\beta_1$+L$\beta_3$ performed 5$\times$ worse than L$\beta_1$+L$\beta_2$ on ash validation (789 vs.\ 151~ppm). These results justify the asymmetric response variable selection and confirm that response selection based on clay calibration was not circular---the clay ranking correctly predicted ash validation ranking. Calibration curves for the four primary methods are shown in Figure~S1.
 
 \begin{table}[htbp]
-\caption{Clay calibration (Stage A) performance for candidate response variables. Bold rows indicate the four primary methods evaluated in this study. Multi = multi-predictor regression with independent coefficients.}
+\caption{Clay calibration (Stage A) performance for candidate response variables. Bold rows indicate the four primary methods carried forward to ash validation. Multi = multi-predictor regression with independent coefficients. Both L$\beta_1$+L$\beta_2$ and L$\beta_1$+L$\beta_3$ were tested on both preparations for symmetric comparison.}
 \label{tab:clay_calibration}
 \centering
 \footnotesize
@@ -159,15 +161,14 @@ Table~\ref{tab:clay_calibration} presents clay calibration performance for all c
 Prep & Response & Type & $n$ & $R^2$ & RMSE (ppm) \\
 \midrule
 \textbf{Pellet} & \textbf{L$\beta_1$+L$\beta_2$} & \textbf{multi} & \textbf{12} & \textbf{0.999} & \textbf{14} \\
-Pellet & L$\alpha_1$         & single & 12 & 0.998 & 17 \\
 Pellet & L$\beta_1$+L$\beta_3$ & multi & 12 & 0.998 & 18 \\
-Pellet & L$\beta_4$          & single & 12 & 0.998 & 18 \\
+Pellet & L$\alpha_1$         & single & 12 & 0.998 & 17 \\
 Pellet & L$\beta_1$          & single & 12 & 0.998 & 18 \\
 \textbf{Pellet} & \textbf{Fund.\ param.} & \textbf{FP} & \textbf{12} & \textbf{0.995} & \textbf{28} \\
 \midrule
 \textbf{Powder} & \textbf{L$\beta_1$+L$\beta_3$} & \textbf{multi} & \textbf{12} & \textbf{0.943} & \textbf{94} \\
+Powder & L$\beta_1$+L$\beta_2$ & multi & 12 & 0.933 & 102 \\
 Powder & L$\alpha_2$         & single & 12 & 0.904 & 121 \\
-Powder & L$\beta_4$          & single & 12 & 0.904 & 121 \\
 Powder & L$\beta_1$          & single & 12 & 0.904 & 121 \\
 \textbf{Powder} & \textbf{Fund.\ param.} & \textbf{FP} & \textbf{12} & \textbf{0.920} & \textbf{111} \\
 \bottomrule
